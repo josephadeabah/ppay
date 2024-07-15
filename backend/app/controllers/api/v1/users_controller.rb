@@ -4,7 +4,7 @@ module Api
       before_action :set_user, only: [:create, :show, :update, :destroy]
       before_action :authenticate_request!, except: [:create, :login]
       before_action :set_user, only: [:show, :update, :destroy]
-      before_action :authenticate_admin!, only: [:index, :destroy]
+      before_action :authenticate_admin!, only: [:destroy]
       before_action :authenticate_user!, only: [:show, :update]
 
       def create
@@ -35,20 +35,21 @@ module Api
       end
 
       def update
+        @user = User.find(params[:id])
         if @user.update(user_params)
           render json: { status: 'User updated successfully' }
         else
           render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
         end
       end
-
+      
       def destroy
         @user.destroy
         render json: { status: 'User deleted successfully' }
       end
 
       private
-
+ 
       def set_user
         @user = User.find(params[:id])
       end
@@ -58,8 +59,8 @@ module Api
       end
 
       def authenticate_admin!
-        render json: { errors: 'Unauthorized' }, status: :unauthorized unless @current_user.admin?
-      end
+        render json: { errors: 'Unauthorized' }, status: :unauthorized unless @current_user&.admin?
+      end      
 
       def authenticate_user!
         render json: { errors: 'Unauthorized' }, status: :unauthorized unless @current_user == @user

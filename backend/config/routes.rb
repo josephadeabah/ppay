@@ -2,11 +2,16 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       # New route for creating a user
+      resources :users, only: [:create, :show, :update, :destroy]
       post 'register', to: 'users#create'
 
       # Route for fetching all users (not protected)
       get 'allusers', to: 'users#index'
 
+      put '/users/:id', to: 'users#update'
+      patch '/users/:id', to: 'users#update'
+      get '/users/:id', to: 'users#show'
+      delete '/users/:id', to: 'users#destroy'
       # Login route
       post 'login', to: 'users#login'
 
