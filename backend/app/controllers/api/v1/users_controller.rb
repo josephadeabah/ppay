@@ -1,11 +1,10 @@
 module Api
   module V1
     class UsersController < ApplicationController
-      before_action :set_user, only: [:create, :show, :update, :destroy]
-      before_action :authenticate_request!, except: [:create, :login]
       before_action :set_user, only: [:show, :update, :destroy]
+      before_action :authenticate_request!, except: [:create, :login]
+      before_action :authenticate_user!, only: [:update]
       before_action :authenticate_admin!, only: [:destroy]
-      before_action :authenticate_user!, only: [:show, :update]
 
       def create
         user = User.new(user_params)
@@ -35,21 +34,20 @@ module Api
       end
 
       def update
-        @user = User.find(params[:id])
         if @user.update(user_params)
           render json: { status: 'User updated successfully' }
         else
           render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
         end
       end
-      
+
       def destroy
         @user.destroy
         render json: { status: 'User deleted successfully' }
       end
 
       private
- 
+
       def set_user
         @user = User.find(params[:id])
       end
@@ -60,7 +58,7 @@ module Api
 
       def authenticate_admin!
         render json: { errors: 'Unauthorized' }, status: :unauthorized unless @current_user&.admin?
-      end      
+      end
 
       def authenticate_user!
         render json: { errors: 'Unauthorized' }, status: :unauthorized unless @current_user == @user
