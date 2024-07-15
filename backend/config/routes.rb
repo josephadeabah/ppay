@@ -3,10 +3,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:create]
       post 'login', to: 'users#login'
-
-      resources :transactions, only: [:create, :index]
-      get 'account/balance', to: 'transactions#balance'
-      post 'transactions/detect-fraud', to: 'transactions#detect_fraud'
+      resources :wages, only: [:index, :show, :create]
+      resources :negotiations, only: [:index, :show, :create]
     end
   end
 end

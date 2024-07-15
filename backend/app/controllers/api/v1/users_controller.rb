@@ -22,7 +22,7 @@ module Api
       private
 
       def user_params
-        params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :balance, :currency)
+        params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
       end
 
       def generate_token(user_id)

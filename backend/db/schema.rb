@@ -10,20 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_14_204911) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_15_045855) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "transactions", force: :cascade do |t|
-    t.decimal "amount"
-    t.string "status"
+  create_table "negotiations", force: :cascade do |t|
     t.bigint "user_id", null: false
+    t.text "details"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "sender_id"
-    t.integer "receiver_id"
-    t.string "currency"
-    t.index ["user_id"], name: "index_transactions_on_user_id"
+    t.index ["user_id"], name: "index_negotiations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -37,5 +33,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_14_204911) do
     t.string "currency", default: "USD", null: false
   end
 
-  add_foreign_key "transactions", "users"
+  create_table "wages", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "job_title"
+    t.string "location"
+    t.decimal "wage"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_wages_on_user_id"
+  end
+
+  add_foreign_key "negotiations", "users"
+  add_foreign_key "wages", "users"
 end
