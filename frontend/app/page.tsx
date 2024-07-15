@@ -19,7 +19,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col space-y-0 w-full lg:w-1/3">
             <div className="flex-[2] bg-blue-950 p-4">
-              <h2 className="text-lg font-bold text-white text-4xl">Global Wage Transparency</h2>
+              <h2 className="font-bold text-white text-4xl">Global Wage Transparency</h2>
               <p className="text-white">
                 A platform where Professionals can anonymously report their wages and job descriptions to compare pay across different countries.
               </p>
