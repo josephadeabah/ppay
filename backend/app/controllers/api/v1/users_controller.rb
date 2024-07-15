@@ -1,7 +1,7 @@
 module Api
   module V1
     class UsersController < ApplicationController
-      before_action :set_user, only: [:show, :update, :destroy]
+      before_action :set_user, only: [:create, :show, :update, :destroy]
       before_action :authenticate_request!, except: [:create, :login]
       before_action :set_user, only: [:show, :update, :destroy]
       before_action :authenticate_admin!, only: [:index, :destroy]

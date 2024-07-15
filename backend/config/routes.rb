@@ -1,29 +1,36 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      # User routes
-      resources :users, only: [:create]
+      # New route for creating a user
+      post 'register', to: 'users#create'
+
+      # Route for fetching all users (not protected)
+      get 'allusers', to: 'users#index'
+
+      # Login route
       post 'login', to: 'users#login'
-      
+
+      # Other existing routes remain unchanged
+
       # Wage routes
-      resources :wages, only: [:index, :show, :create]
+      resources :wages, only: [:index, :show, :create, :update, :destroy]
 
       # Negotiation routes
-      resources :negotiations, only: [:index, :show, :create]
+      resources :negotiations, only: [:index, :show, :create, :update, :destroy]
 
       # Forum routes
-      resources :forums, only: [:index, :show, :create] do
-        resources :posts, only: [:create]
+      resources :forums, only: [:index, :show, :create, :update, :destroy] do
+        resources :posts, only: [:create, :update, :destroy]
       end
 
       # Pay Equity Calculator route
       post 'pay_equity_calculator', to: 'pay_equity_calculator#calculate'
 
       # Additional routes for interactions
-      resources :negotiators, only: [:index, :show]
-      resources :labor_organizations, only: [:index, :show]
-      resources :admins, only: [:index, :show]
-      resources :employers, only: [:index, :show]
+      resources :negotiators, only: [:index, :show, :update, :destroy]
+      resources :labor_organizations, only: [:index, :show, :update, :destroy]
+      resources :admins, only: [:index, :show, :update, :destroy]
+      resources :employers, only: [:index, :show, :update, :destroy]
     end
   end
 end

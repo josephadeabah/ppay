@@ -67,6 +67,28 @@ Things you may want to cover:
 * Configuration
 
 * Database creation
+rails generate model User first_name:string last_name:string email:string password_digest:string role:string
+rails generate model Wage user:references job_title:string location:string wage:decimal
+rails generate model Negotiation user:references details:text
+rails generate model Forum name:string
+rails generate model Post forum:references user:references content:text
+rails generate model Negotiator user:references details:text
+rails generate model LaborOrganization name:string details:text
+rails generate model Admin user:references details:text
+rails generate model Employer name:string details:text
+
+rails generate controller Api::V1::Users
+rails generate controller Api::V1::Wages
+rails generate controller Api::V1::Negotiations
+rails generate controller Api::V1::Forums
+rails generate controller Api::V1::Posts
+rails generate controller Api::V1::Negotiators
+rails generate controller Api::V1::LaborOrganizations
+rails generate controller Api::V1::Admins
+rails generate controller Api::V1::Employers
+rails generate controller Api::V1::PayEquityCalculator
+rails generate controller Api::V1::DataVisualization
+
 
 * Database initialization
 
