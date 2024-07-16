@@ -1,16 +1,51 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Default",
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
-    "baseUrl": "src",
+    "allowJs": false,
+    "esModuleInterop": true,
+    "baseUrl": ".",
     "strictNullChecks": true,
     "types": ["astro/client"],
+    "incremental": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "noEmit": true,
     "paths": {
+      "@/*": ["./*"],
       "@lib/*": ["lib/*"],
       "@utils/*": ["utils/*"],
       "@components/*": ["components/*"],
       "@layouts/*": ["layouts/*"],
       "@assets/*": ["assets/*"],
-      "@pages/*": ["pages/*"]
-    }
-  }
+      "@pages/*": ["pages/*"],
+      "@content/*": ["content/*"],
+      "@helpers/*": ["helpers/*"],
+      "@types/*": ["types/*"],
+      "@hooks/*": ["hooks/*"],
+      "@context/*": ["context/*"],
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "es5"
+  },
+  "exclude": [".next", "node_modules"],
+  "include": [
+    ".next/types/**/*.ts",
+    "next-env.d.ts",
+    "**/*.cjs",
+    "**/*.mjs",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }

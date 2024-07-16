@@ -1,78 +1,41 @@
 {
-  "name": "flowbite-astro-dashboard",
-  "version": "1.0.0",
-  "description": "A dashboard template built with Tailwind CSS, Flowbite, and Astro",
-  "keywords": [
-    "tailwind",
-    "tailwind css",
-    "flowbite",
-    "admin dashboard",
-    "dashboard ui",
-    "admin dashboard template",
-    "html",
-    "css",
-    "javascript",
-    "astro"
-  ],
+  "type": "module",
+  "name": "flowbite-next-starter",
+  "version": "2.0.0",
+  "description": "Basic dashboard example using Flowbite React on Next.js 14",
+  "homepage": "https://github.com/tulupinc/flowbite-next-starter",
+  "bugs": "https://github.com/tulupinc/flowbite-next-starter/issues",
   "license": "MIT",
-  "style": "dist/flowbite.css",
-  "main": "static/js/app.bundle.js",
-  "homepage": "https://flowbite.com",
+  "author": "Conner Davis <conner@tulup.io>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/themesberg/flowbite-admin-dashboard.git"
+    "url": "https://github.com/tulupinc/flowbite-next-starter.git"
   },
-  "bugs": {
-    "url": "https://github.com/themesberg/flowbite-admin-dashboard/issues"
-  },
-  "contributors": [
-    "Zoltán Szőgyényi <https://twitter.com/zoltanszogyenyi>",
-    "Robert Tanislav <https://twitter.com/roberttanislav>"
-  ],
-  "author": "Bergside Inc.",
-  "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "start": "run-p start:dev:*",
-    "start:dev:hugo": "hugo server -D --watch",
-    "start:dev:webpack": "webpack --mode=development --watch",
-    "build": "NODE_ENV=production && run-s build:webpack build:hugo",
-    "build:hugo": "hugo --destination=./public",
-    "build:webpack": "webpack --mode=production",
-    "build:styles": "npx tailwindcss -i ./src/style.css -o ./dist/css/flowbite.css",
-    "preview": "astro preview",
-    "astro": "astro"
+    "astro:dev": "astro dev",
+    "astro:start": "astro dev",
+    "astro:build": "astro build",
+    "astro:preview": "astro preview",
+    "astro": "astro",
+    "next:dev": "next dev",
+    "next:build": "next build",
+    "next:start": "next start",
+    "next:lint": "next lint --fix",
+    "format": "prettier . --write",
+    "typecheck": "tsc --noEmit"
   },
-  "devDependencies": {
-    "archiver": "^5.3.0",
-    "autoprefixer": "^10.3.7",
-    "core-js": "^3.18.3",
-    "css-loader": "^6.4.0",
-    "css-minimizer-webpack-plugin": "^3.1.1",
-    "file-loader": "^6.2.0",
-    "fs-extra": "^10.0.0",
-    "javascript-obfuscator": "^2.19.0",
-    "js-yaml": "^4.1.0",
-    "jsdom": "^17.0.0",
-    "loader-utils": "^2.0.0",
-    "mini-css-extract-plugin": "^2.4.2",
-    "minimist": "^1.2.5",
-    "multi-stage-sourcemap": "^0.3.1",
-    "multimatch": "^5.0.0",
-    "npm-run-all": "^4.1.5",
-    "postcss": "^8.3.9",
-    "postcss-loader": "^6.2.0",
-    "postcss-preset-env": "^6.7.0",
-    "pretty-bytes": "^5.6.0",
-    "source-map-loader": "^3.0.0",
-    "style-loader": "^3.3.0",
-    "tailwindcss": "^3.4.3",
-    "webpack": "^5.58.2",
-    "webpack-cli": "^4.9.0",
-    "webpack-dev-server": "^4.3.1",
-    "yarn": "^1.22.17"
+  "engines": {
+    "node": ">= 16",
+    "npm": ">= 8"
   },
   "dependencies": {
+    "flowbite": "^2.2.0",
+    "flowbite-react": "^0.7.0",
+    "next": "^14.0.3",
+    "react": "18",
+    "react-dom": "18",
+    "react-icons": "^4.12.0",
+    "tailwind-merge": "^2.0.0",
     "@astrojs/mdx": "^3.0.1",
     "@astrojs/sitemap": "^3.1.5",
     "@astrojs/tailwind": "^5.1.0",
@@ -81,14 +44,41 @@
     "@iconify-json/bx": "^1.1.10",
     "@iconify-json/simple-icons": "^1.1.102",
     "@iconify-json/uil": "^1.1.8",
-    "@popperjs/core": "^2.10.2",
     "@tailwindcss/typography": "^0.5.13",
-    "apexcharts": "^3.29.0",
     "astro": "^4.8.7",
     "astro-icon": "^1.1.0",
     "astro-navbar": "^2.3.2",
     "astro-seo": "^0.8.3",
-    "flowbite": "^2.1.1",
-    "sharp": "^0.33.4"
+    "sharp": "^0.33.4",
+    "tailwindcss": "^3.4.3"
+  },
+  "devDependencies": {
+    "@next/eslint-plugin-next": "^14.0.0",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
+    "@typescript-eslint/parser": "^6.9.0",
+    "autoprefixer": "^10",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-tailwindcss": "^3.13.0",
+    "postcss": "^8",
+    "prettier": "^3.0.3",
+    "prettier-plugin-organize-imports": "^3.2.3",
+    "prettier-plugin-tailwindcss": "^0.5.7",
+    "tailwindcss": "^3",
+    "typescript": "^5"
+  },
+  "private": true,
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }
