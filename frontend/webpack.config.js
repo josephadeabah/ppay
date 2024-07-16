@@ -1,17 +1,11 @@
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
-import webpack from 'webpack';
-import path from 'path';
-import { fileURLToPath } from 'url';
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const { SourceMapDevToolPlugin } = require("webpack");
+const path = require('path');
 
-const { SourceMapDevToolPlugin } = webpack;
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-export default {
+module.exports = {
   entry: {
-    app: path.resolve(__dirname, 'src/index.js'),
+    app: path.resolve(__dirname, 'src/index.js')
   },
   output: {
     filename: '[name].bundle.js',
@@ -27,29 +21,29 @@ export default {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
-          outputPath: 'static/images/',
-        },
+          outputPath: 'static/images/'
+        }
       },
       {
         test: /\.(ttf|eot|svg|gif|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         use: [{
           loader: 'file-loader',
-        }],
+        }]
       },
     ],
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.css'],
+    extensions: ['', '.js', '.jsx', '.css']
   },
   plugins: [
     new MiniCssExtractPlugin(),
     new SourceMapDevToolPlugin({
-      filename: "[file].map",
-    }),
+      filename: "[file].map"
+    })
   ],
   optimization: {
     minimizer: [
-      new CssMinimizerPlugin(),
-    ],
+      new CssMinimizerPlugin()
+    ]
   },
 };

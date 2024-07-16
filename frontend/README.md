@@ -12,6 +12,9 @@ This project is a free and open-source UI admin dashboard template built with th
 ## Landing Page
 https://github.com/surjithctly/astroship
 
+## Dashboard
+https://github.com/themesberg/flowbite-admin-dashboard/
+
 This admin dashboard can quickly help you get started building an application for your project using the newest UI/UX development technologies in the open-source area including Tailwind CSS and Flowbite.
 
 ## 🌀 Built with Flowbite

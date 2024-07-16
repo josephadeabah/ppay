@@ -30,7 +30,6 @@
     "Robert Tanislav <https://twitter.com/roberttanislav>"
   ],
   "author": "Bergside Inc.",
-  "type": "module",
   "private": true,
   "scripts": {
     "dev": "astro dev",
