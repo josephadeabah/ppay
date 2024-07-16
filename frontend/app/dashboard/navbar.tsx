@@ -1,7 +1,8 @@
+"use client";
+
 import { useSidebarContext } from "@/context/SidebarContext";
 import { isSmallScreen } from "@/helpers/is-small-screen";
 import { DarkThemeToggle, Navbar } from "flowbite-react";
-import Image from "next/image";
 import type { FC } from "react";
 import { HiMenuAlt1, HiX } from "react-icons/hi";
 
@@ -31,14 +32,9 @@ export const DashboardNavbar: FC<Record<string, never>> = function () {
                 )}
               </button>
               <Navbar.Brand href="/">
-                <Image
-                  alt="Flowbite logo"
-                  height="24"
-                  src="/favicon.png"
-                  width="24"
-                />
-                <span className="self-center whitespace-nowrap px-3 text-xl font-semibold dark:text-white">
-                  Flowbite
+                pay
+                <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+                  Wage
                 </span>
               </Navbar.Brand>
             </div>
