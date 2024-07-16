@@ -1,19 +1,8 @@
-import typography from "@tailwindcss/typography";
 import flowbite from "flowbite/plugin";
 import type { Config } from "tailwindcss";
-import defaultTheme from "tailwindcss/defaultTheme";
 
 const config: Config = {
-  content: [
-    "./app/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
-    "./components/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
-    "./content/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
-    "./context/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
-    "./helpers/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
-    "./layouts/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
-    "./pages/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
-    "./node_modules/flowbite-react/lib/**/*.js",
-  ],
+  content: ["./app/**/*.{ts,tsx}", "./node_modules/flowbite-react/lib/**/*.js"],
   theme: {
     extend: {
       colors: {
@@ -47,10 +36,6 @@ const config: Config = {
           "Segoe UI Emoji",
           "Segoe UI Symbol",
           "Noto Color Emoji",
-          "Bricolage Grotesque Variable",
-          "Inter Variable",
-          "Inter",
-          ...defaultTheme.fontFamily.sans,
         ],
         body: [
           "Inter",
@@ -82,7 +67,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [flowbite, typography],
+  plugins: [flowbite],
 };
 
 export default config;

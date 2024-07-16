@@ -1,13 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Default",
-  "extends": "astro/tsconfigs/base",
   "compilerOptions": {
     "allowJs": false,
     "esModuleInterop": true,
-    "baseUrl": ".",
-    "strictNullChecks": true,
-    "types": ["astro/client"],
     "incremental": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -16,18 +12,7 @@
     "moduleResolution": "bundler",
     "noEmit": true,
     "paths": {
-      "@/*": ["./*"],
-      "@lib/*": ["lib/*"],
-      "@utils/*": ["utils/*"],
-      "@components/*": ["components/*"],
-      "@layouts/*": ["layouts/*"],
-      "@assets/*": ["assets/*"],
-      "@pages/*": ["pages/*"],
-      "@content/*": ["content/*"],
-      "@helpers/*": ["helpers/*"],
-      "@types/*": ["types/*"],
-      "@hooks/*": ["hooks/*"],
-      "@context/*": ["context/*"],
+      "@/*": ["./*"]
     },
     "plugins": [
       {
