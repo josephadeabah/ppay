@@ -108,7 +108,7 @@ const LandingPage = () => {
                         compares wages across countries and industries,
                         providing fair wage recommendations based on
                         qualifications and job responsibilities, excluding cost
-                        of living or geographical location.
+                        of living or geographical location. It also tracks inflation adjusting pay accordingly.
                       </p>
                     </Accordion.Content>
                   </Accordion.Panel>
