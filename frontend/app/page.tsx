@@ -56,12 +56,15 @@ const LandingPage = () => {
             </div>
             <div className="inline-flex items-center gap-x-3 *:rounded-lg *:px-3 *:py-1.5 *:text-sm *:font-medium *:transition *:duration-[250ms] *:ease-in-out lg:grow lg:basis-0 lg:justify-end">
               <a
-                href="#"
+                href="/auth/login"
                 className="bg-white text-gray-950 ring-1 ring-gray-200 hover:bg-gray-50 dark:bg-gray-950 dark:text-gray-50 dark:ring-gray-800 dark:hover:bg-gray-900"
               >
                 Login
               </a>
-              <a href="#" className="bg-blue-600 text-white hover:bg-blue-700">
+              <a
+                href="/auth/register"
+                className="bg-blue-600 text-white hover:bg-blue-700"
+              >
                 Sign Up
               </a>
             </div>

@@ -1,21 +1,23 @@
 export default function Login() {
   return (
-    <section className="flex h-screen bg-gray-50 dark:bg-gray-900">
+    <section className="flex h-screen bg-white dark:bg-gray-900">
       {/* Left container */}
       <div className="flex w-full items-center justify-center lg:w-1/2">
         <div className="mx-auto flex w-full max-w-md flex-col items-center justify-center px-6 py-8 lg:py-0">
           <a
-            href="#"
+            href="/"
             className="mb-6 flex items-center text-2xl font-semibold text-gray-900 dark:text-white"
           >
-            <img
-              className="mr-2 h-8 w-8"
-              src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
-              alt="logo"
-            />
-            Flowbite
+            <span className="flex items-center justify-center overflow-hidden rounded-xl">
+              <span className="flex h-7 w-auto items-center justify-center rounded-xl bg-blue-600 p-1 text-xs font-extrabold text-white">
+                Pay
+              </span>
+              <span className="inline-block py-2 text-xs font-extrabold  text-blue-600 dark:text-white">
+                Sight
+              </span>
+            </span>
           </a>
-          <div className="w-full rounded-lg bg-white shadow dark:border dark:border-gray-700 dark:bg-gray-800">
+          <div className="w-full rounded-lg bg-white dark:border dark:border-gray-700 dark:bg-gray-800">
             <div className="space-y-4 p-6 sm:p-8 md:space-y-6">
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-2xl">
                 Sign in to your account
@@ -74,7 +76,7 @@ export default function Login() {
                     </div>
                   </div>
                   <a
-                    href="#"
+                    href="/auth/forgotpassword"
                     className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
                   >
                     Forgot password?
@@ -89,7 +91,7 @@ export default function Login() {
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                   Don’t have an account yet?{" "}
                   <a
-                    href="#"
+                    href="/auth/register"
                     className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                   >
                     Sign up
@@ -101,12 +103,55 @@ export default function Login() {
         </div>
       </div>
       {/* Right container */}
-      <div className="hidden w-full items-center justify-center bg-gray-100 lg:flex lg:w-1/2">
-        <img
-          src="https://images.pexels.com/photos/9301896/pexels-photo-9301896.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt="Description of the image"
-          className="h-full w-full object-cover"
-        />
+      <div className="hidden w-full items-center justify-center bg-primary-600 lg:flex lg:w-1/2">
+        <section className="bg-primary-600 text-gray-50 dark:bg-gray-950 dark:text-gray-50">
+          <div className="mx-auto flex max-w-[52.5rem] flex-col items-center gap-y-16 px-6 py-32 lg:max-w-[78rem]">
+            <div className="mx-auto max-w-[36.75rem] text-center">
+              <h2 className="mb-3 text-3xl font-bold lg:text-4xl">
+                Explore the world’s leading HR Insights Platform
+              </h2>
+              <p className="text-base">
+                Our platform provides comprehensive HR insights, tailored to
+                your needs. We provide data-driven insights to help you make
+                better decisions.
+              </p>
+            </div>
+            <div className="flex w-full flex-col items-center gap-12 rounded-lg bg-gray-50 px-6 py-12 *:w-full *:text-center dark:bg-gray-900 lg:flex-row lg:justify-center lg:gap-6 lg:px-12">
+              <div>
+                <h4 className="mb-2 text-2xl font-bold text-blue-600 lg:text-3xl">
+                  500k+
+                </h4>
+                <p className="text-base font-medium text-gray-950 dark:text-gray-50">
+                  Monthly Visitors
+                </p>
+              </div>
+              <div>
+                <h4 className="mb-2 text-2xl font-bold text-blue-600 lg:text-3xl">
+                  250k+
+                </h4>
+                <p className="text-base font-medium text-gray-950 dark:text-gray-50">
+                  Registered Users
+                </p>
+              </div>
+              <div>
+                <h4 className="mb-2 text-2xl font-bold text-blue-600 lg:text-3xl">
+                  175k+
+                </h4>
+                <p className="text-base font-medium text-gray-950 dark:text-gray-50">
+                  Monthly Reports
+                </p>
+              </div>
+              <div>
+                <h4 className="mb-2 text-2xl font-bold text-blue-600 lg:text-3xl">
+                  100k+
+                </h4>
+                <p className="text-base font-medium text-gray-950 dark:text-gray-50">
+                  Email Subscribers
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </section>
   );
