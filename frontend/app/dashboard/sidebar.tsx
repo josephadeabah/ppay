@@ -5,12 +5,14 @@ import { BiBuoy, BiNotepad } from "react-icons/bi";
 import {
   HiOutlineCash,
   HiOutlineChartPie,
+  HiOutlineCollection,
   HiOutlineDocumentReport,
+  HiOutlineDownload,
   HiOutlineFastForward,
   HiOutlineGlobe,
+  HiOutlineTrendingDown,
   HiOutlineTrendingUp,
   HiOutlineUser,
-  HiTrendingDown,
 } from "react-icons/hi";
 import { twMerge } from "tailwind-merge";
 
@@ -47,7 +49,7 @@ export const DashboardSidebar: FC = function () {
           <Sidebar.Item href="#" icon={HiOutlineTrendingUp}>
             Trends
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiTrendingDown}>
+          <Sidebar.Item href="#" icon={HiOutlineTrendingDown}>
             Inflation
           </Sidebar.Item>
           <Sidebar.Item href="#" icon={HiOutlineDocumentReport}>
@@ -55,6 +57,12 @@ export const DashboardSidebar: FC = function () {
           </Sidebar.Item>
         </Sidebar.ItemGroup>
         <Sidebar.ItemGroup>
+          <Sidebar.Item href="#" icon={HiOutlineCollection}>
+            Activity
+          </Sidebar.Item>
+          <Sidebar.Item href="#" icon={HiOutlineDownload}>
+            Download
+          </Sidebar.Item>
           <Sidebar.Item href="#" icon={HiOutlineCash}>
             Upgrade to Pro
           </Sidebar.Item>
