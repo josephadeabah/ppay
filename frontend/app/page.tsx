@@ -105,15 +105,15 @@ const LandingPage = () => {
             </div>
           </div>
           <img
-            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwMCIgaGVpZ2h0PSIxNTAwIiB2aWV3Qm94PSIwIDAgMjAwMCAxNTAwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMjAwMCIgaGVpZ2h0PSIxNTAwIiBmaWxsPSIjRjNGNUY2Ii8+CjxwYXRoIGQ9Ik05NTAgNjkwQzk0NC40NzcgNjkwIDk0MCA2OTQuNDc3IDk0MCA3MDBWNzUwQzk0MCA3ODMuMTM3IDk2Ni44NjMgODEwIDEwMDAgODEwQzEwMDQuNTQgODEwIDEwMDguOTYgODA5LjQ5NiAxMDEzLjIxIDgwOC41NDFDMTAxNy4zNCA4MDcuNjEyIDEwMjAgODAzLjc1MiAxMDIwIDc5OS41MTRWNzkwQzEwMjAgNzc4Ljk1NCAxMDI4Ljk1IDc3MCAxMDQwIDc3MEgxMDUwQzEwNTUuNTIgNzcwIDEwNjAgNzY1LjUyMyAxMDYwIDc2MFY3MDBDMTA2MCA2OTQuNDc3IDEwNTUuNTIgNjkwIDEwNTAgNjkwSDEwMzBDMTAyNC40OCA2OTAgMTAyMCA2OTQuNDc3IDEwMjAgNzAwVjc1MEMxMDIwIDc2MS4wNDYgMTAxMS4wNSA3NzAgMTAwMCA3NzBDOTg4Ljk1NCA3NzAgOTgwIDc2MS4wNDYgOTgwIDc1MFY3MDBDOTgwIDY5NC40NzcgOTc1LjUyMyA2OTAgOTcwIDY5MEg5NTBaIiBmaWxsPSIjODI4RkEwIi8+Cjwvc3ZnPgo="
+            src="/paysightv1.png"
             alt="#"
             className="h-auto w-full rounded-3xl object-cover lg:hidden"
           />
         </div>
         <img
-          src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwMCIgaGVpZ2h0PSIxNTAwIiB2aWV3Qm94PSIwIDAgMjAwMCAxNTAwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMjAwMCIgaGVpZ2h0PSIxNTAwIiBmaWxsPSIjRjNGNUY2Ii8+CjxwYXRoIGQ9Ik05NTAgNjkwQzk0NC40NzcgNjkwIDk0MCA2OTQuNDc3IDk0MCA3MDBWNzUwQzk0MCA3ODMuMTM3IDk2Ni44NjMgODEwIDEwMDAgODEwQzEwMDQuNTQgODEwIDEwMDguOTYgODA5LjQ5NiAxMDEzLjIxIDgwOC41NDFDMTAxNy4zNCA4MDcuNjEyIDEwMjAgODAzLjc1MiAxMDIwIDc5OS41MTRWNzkwQzEwMjAgNzc4Ljk1NCAxMDI4Ljk1IDc3MCAxMDQwIDc3MEgxMDUwQzEwNTUuNTIgNzcwIDEwNjAgNzY1LjUyMyAxMDYwIDc2MFY3MDBDMTA2MCA2OTQuNDc3IDEwNTUuNTIgNjkwIDEwNTAgNjkwSDEwMzBDMTAyNC40OCA2OTAgMTAyMCA2OTQuNDc3IDEwMjAgNzAwVjc1MEMxMDIwIDc2MS4wNDYgMTAxMS4wNSA3NzAgMTAwMCA3NzBDOTg4Ljk1NCA3NzAgOTgwIDc2MS4wNDYgOTgwIDc1MFY3MDBDOTgwIDY5NC40NzcgOTc1LjUyMyA2OTAgOTcwIDY5MEg5NTBaIiBmaWxsPSIjODI4RkEwIi8+Cjwvc3ZnPgo="
+          src="/paysightv1.png"
           alt="#"
-          className="hidden lg:absolute lg:right-0 lg:block lg:h-[30rem] lg:w-1/2 lg:rounded-bl-3xl lg:rounded-tl-3xl lg:object-cover"
+          className="hidden bg-white lg:absolute lg:right-0 lg:block lg:h-[30rem] lg:w-1/2 lg:rounded-bl-3xl lg:rounded-tl-3xl lg:object-contain"
         />
       </section>
       {/* FEATURES */}
