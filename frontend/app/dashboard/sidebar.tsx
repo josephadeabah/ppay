@@ -1,15 +1,16 @@
 import { useSidebarContext } from "@/context/SidebarContext";
 import { Sidebar } from "flowbite-react";
 import type { FC } from "react";
-import { BiBuoy } from "react-icons/bi";
+import { BiBuoy, BiNotepad } from "react-icons/bi";
 import {
-  HiArrowSmRight,
-  HiChartPie,
-  HiInbox,
-  HiShoppingBag,
-  HiTable,
-  HiUser,
-  HiViewBoards,
+  HiOutlineCash,
+  HiOutlineChartPie,
+  HiOutlineDocumentReport,
+  HiOutlineFastForward,
+  HiOutlineGlobe,
+  HiOutlineTrendingUp,
+  HiOutlineUser,
+  HiTrendingDown,
 } from "react-icons/hi";
 import { twMerge } from "tailwind-merge";
 
@@ -28,34 +29,34 @@ export const DashboardSidebar: FC = function () {
     >
       <Sidebar.Items>
         <Sidebar.ItemGroup>
-          <Sidebar.Item href="#" icon={HiChartPie}>
+          <Sidebar.Item href="#" icon={HiOutlineChartPie}>
             Dashboard
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiViewBoards}>
-            Kanban
+          <Sidebar.Item href="#" icon={BiNotepad}>
+            Report Pay
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiInbox}>
-            Inbox
+          <Sidebar.Item href="#" icon={HiOutlineFastForward}>
+            Compare
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiUser}>
-            Users
+          <Sidebar.Item href="#" icon={HiOutlineUser}>
+            Anonymous
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiShoppingBag}>
-            Products
+          <Sidebar.Item href="#" icon={HiOutlineGlobe}>
+            BenchMarks
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiArrowSmRight}>
-            Sign In
+          <Sidebar.Item href="#" icon={HiOutlineTrendingUp}>
+            Trends
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiTable}>
-            Sign Up
+          <Sidebar.Item href="#" icon={HiTrendingDown}>
+            Inflation
+          </Sidebar.Item>
+          <Sidebar.Item href="#" icon={HiOutlineDocumentReport}>
+            Compliance
           </Sidebar.Item>
         </Sidebar.ItemGroup>
         <Sidebar.ItemGroup>
-          <Sidebar.Item href="#" icon={HiChartPie}>
+          <Sidebar.Item href="#" icon={HiOutlineCash}>
             Upgrade to Pro
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiViewBoards}>
-            Documentation
           </Sidebar.Item>
           <Sidebar.Item href="#" icon={BiBuoy}>
             Help
