@@ -39,7 +39,7 @@ const LandingPage = () => {
                     Pay
                   </span>
                   <span className="inline-block bg-white py-2 text-xs font-extrabold  text-blue-600">
-                    Wage
+                    Sight
                   </span>
                 </span>
               </a>
@@ -118,7 +118,7 @@ const LandingPage = () => {
         <div className="mx-auto flex max-w-[52.5rem] flex-col items-center gap-y-16 px-6 py-32 lg:max-w-[78rem]">
           <div className="mx-auto max-w-[36.75rem] text-center *:text-gray-950 dark:*:text-gray-50">
             <h2 className="mb-3 text-3xl font-bold lg:text-4xl">
-              Why choose PayWage
+              Why choose Paysight
             </h2>
             <p className="text-base">
               We provide key data-driven insights that are crucial to provide
@@ -560,7 +560,7 @@ const LandingPage = () => {
         <div className="mx-auto flex max-w-[52.5rem] flex-col items-center gap-y-16 px-6 lg:max-w-[78rem]">
           <div className="mx-auto max-w-[36.75rem] text-center *:text-gray-950 dark:*:text-gray-50">
             <h2 className="mb-3 text-3xl font-bold lg:text-4xl">
-              About Paywage
+              About PaySight
             </h2>
           </div>
           <div className="flex w-full flex-col items-center gap-6 text-base *:w-full *:rounded-lg *:border *:border-solid *:border-gray-200 dark:*:border-gray-800 lg:max-w-[49.5rem]">
@@ -616,7 +616,7 @@ const LandingPage = () => {
                 </svg>
               </summary>
               <p className="-mt-3 pb-6 pl-6 pr-[4.25rem]">
-                Paywage is a platform where Professionals can anonymously report
+                PaySight is a platform where Professionals can anonymously report
                 their job data to compare pay and other data across different
                 countries. The tool compares wages across countries, industries,
                 companies and organizations, providing fair wage
@@ -650,7 +650,7 @@ const LandingPage = () => {
                 Ready to get started?
               </h3>
               <p className="text-base">
-                Paywage is free to use. Start by getting an account.
+              PaySight is free to use. Start by getting an account.
               </p>
             </div>
             <div className="flex w-full max-w-[36.75rem] flex-col items-center justify-center gap-4 *:w-full *:rounded-lg *:px-5 *:py-3 *:text-center *:text-base *:font-medium *:transition *:duration-[250ms] *:ease-in-out lg:max-w-fit lg:flex-row lg:*:w-auto">
@@ -673,7 +673,7 @@ const LandingPage = () => {
           <div className="flex flex-col gap-6 *:flex *:flex-col *:gap-y-12 *:rounded-lg *:bg-gray-50 *:p-12 dark:*:bg-gray-900 lg:flex-row">
             <figure>
               <blockquote className="text-lg text-gray-950 dark:text-gray-50 lg:text-xl">
-                “Paywage is a great tool. I use it every day. It’s easy to use
+                “Paysight is a great tool. I use it every day. It’s easy to use
                 and the results are great.”
               </blockquote>
               <figcaption className="flex items-center gap-4">
@@ -746,8 +746,8 @@ const LandingPage = () => {
             </figure>
             <figure>
               <blockquote className="text-lg text-gray-950 dark:text-gray-50 lg:text-xl">
-                “ Paywage is the best. It saves me time and money and gives
-                valuable insights. I recommend Paywage to all”
+                “Paysight is the best. It saves me time and money and gives
+                valuable insights. I recommend Paysight to all”
               </blockquote>
               <figcaption className="flex items-center gap-4">
                 <div className="w-full lg:order-2">
@@ -823,7 +823,7 @@ const LandingPage = () => {
             <div className="lg:w-full">
               <a href="#">
                 <span className="text-xl font-extrabold text-gray-950 dark:text-white">
-                  PAYWAGE
+                  PAYSIGHT
                 </span>
               </a>
             </div>
@@ -871,7 +871,7 @@ const LandingPage = () => {
             </div>
           </div>
           <div className="gap-y-6 py-8 *:text-sm *:text-gray-500 lg:flex-row lg:justify-between">
-            <p>&copy; 2024 PayWage. All rights reserved.</p>
+            <p>&copy; 2024 PaySight. All rights reserved.</p>
             <div className="flex items-center gap-x-6 *:transition *:duration-[250ms] *:ease-in-out hover:*:text-gray-950 dark:hover:*:text-gray-50">
               <a href="#">Privacy</a>
               <a href="#">Terms</a>

@@ -32,9 +32,9 @@ export const DashboardNavbar: FC<Record<string, never>> = function () {
                 )}
               </button>
               <Navbar.Brand href="/">
-                pay
+                Pay
                 <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-                  Wage
+                  Sight
                 </span>
               </Navbar.Brand>
             </div>
