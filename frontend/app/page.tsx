@@ -38,7 +38,7 @@ const LandingPage = () => {
                   <span className="flex h-7 w-auto items-center justify-center rounded-xl bg-blue-600 p-1 text-xs font-extrabold text-white">
                     Pay
                   </span>
-                  <span className="inline-block bg-white py-2 text-xs font-extrabold  text-blue-600">
+                  <span className="inline-block py-2 text-xs font-extrabold  text-blue-600 dark:text-white">
                     Sight
                   </span>
                 </span>
@@ -616,10 +616,10 @@ const LandingPage = () => {
                 </svg>
               </summary>
               <p className="-mt-3 pb-6 pl-6 pr-[4.25rem]">
-                PaySight is a platform where Professionals can anonymously report
-                their job data to compare pay and other data across different
-                countries. The tool compares wages across countries, industries,
-                companies and organizations, providing fair wage
+                PaySight is a platform where Professionals can anonymously
+                report their job data to compare pay and other data across
+                different countries. The tool compares wages across countries,
+                industries, companies and organizations, providing fair wage
                 recommendations.
                 {/* based on
           qualifications, job responsibilities and experience, excluding cost
@@ -650,7 +650,7 @@ const LandingPage = () => {
                 Ready to get started?
               </h3>
               <p className="text-base">
-              PaySight is free to use. Start by getting an account.
+                PaySight is free to use. Start by getting an account.
               </p>
             </div>
             <div className="flex w-full max-w-[36.75rem] flex-col items-center justify-center gap-4 *:w-full *:rounded-lg *:px-5 *:py-3 *:text-center *:text-base *:font-medium *:transition *:duration-[250ms] *:ease-in-out lg:max-w-fit lg:flex-row lg:*:w-auto">

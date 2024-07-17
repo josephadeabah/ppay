@@ -32,9 +32,13 @@ export const DashboardNavbar: FC<Record<string, never>> = function () {
                 )}
               </button>
               <Navbar.Brand href="/">
-                Pay
-                <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-                  Sight
+                <span className="flex items-center justify-center overflow-hidden rounded-xl">
+                  <span className="flex h-7 w-auto items-center justify-center rounded-xl bg-blue-600 p-1 text-xs font-extrabold text-white">
+                    Pay
+                  </span>
+                  <span className="inline-block py-2 text-xs font-extrabold  text-blue-600 dark:text-white">
+                    Sight
+                  </span>
                 </span>
               </Navbar.Brand>
             </div>
