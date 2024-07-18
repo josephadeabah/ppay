@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 
 export const HomePageContent: NextPage = function () {
   return (
-    <div className="bg-white p-1">
+    <div className="bg-white">
       <main className="h-auto">
         <WagesChart />
       </main>
