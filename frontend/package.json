@@ -25,11 +25,13 @@
   },
   "dependencies": {
     "apexcharts": "^3.50.0",
+    "chart.js": "^4.4.3",
     "flowbite": "^2.2.0",
     "flowbite-react": "^0.7.8",
     "next": "^14.0.3",
     "react": "18",
     "react-apexcharts": "^1.4.1",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "18",
     "react-icons": "^4.12.0",
     "tailwind-merge": "^2.0.0"
