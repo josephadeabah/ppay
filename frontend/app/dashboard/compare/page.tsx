@@ -1,5 +1,6 @@
 "use client";
 
+import DropdownSelect from "@/components/dropdown/DropdownSelect";
 import "chart.js/auto"; // For Chart.js v3
 import React, { useState } from "react";
 import { Bar } from "react-chartjs-2";
@@ -223,14 +224,12 @@ const ComparisonChart: React.FC = () => {
   >("average_salary");
   const [selectedItem, setSelectedItem] = useState<Item | null>(null);
 
-  // Get the data based on the selected category
   const categories: { [key: string]: Item[] } = {
     countries: data.countries,
     industries: data.industries,
     companies: data.companies,
   };
 
-  // Chart data based on selected category and comparison
   const chartData = {
     labels: categories[selectedCategory].map((item) => item.name),
     datasets: [
@@ -246,7 +245,6 @@ const ComparisonChart: React.FC = () => {
     ],
   };
 
-  // Handle bar click event to show detailed information
   const handleBarClick = (event: any, elements: any[]) => {
     if (elements.length > 0) {
       const index = elements[0].index;
@@ -255,12 +253,10 @@ const ComparisonChart: React.FC = () => {
     }
   };
 
-  // Generate options for dropdown based on selected category
-  const dropdownOptions = categories[selectedCategory].map((item) => (
-    <option key={item.name} value={item.name}>
-      {item.name}
-    </option>
-  ));
+  const dropdownOptions = categories[selectedCategory].map((item) => ({
+    value: item.name,
+    label: item.name,
+  }));
 
   return (
     <div className="flex h-screen w-full flex-col overflow-x-hidden bg-gray-100 dark:bg-gray-900 lg:flex-row">
@@ -299,9 +295,14 @@ const ComparisonChart: React.FC = () => {
         </div>
         <div className="flex flex-row flex-wrap gap-4">
           <div className="mb-6 flex-1">
-            <select
-              className="w-full border border-gray-300 bg-white p-2 text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
-              value={selectedComparison}
+            <DropdownSelect
+              options={[
+                { value: "average_salary", label: "Average Salary" },
+                { value: "healthcare_salary", label: "Healthcare Salary" },
+                { value: "tech_salary", label: "Tech Salary" },
+                { value: "education_salary", label: "Education Salary" },
+              ]}
+              selectedValue={selectedComparison}
               onChange={(e) =>
                 setSelectedComparison(
                   e.target.value as
@@ -311,16 +312,13 @@ const ComparisonChart: React.FC = () => {
                     | "education_salary",
                 )
               }
-            >
-              <option value="average_salary">Average Salary</option>
-              <option value="healthcare_salary">Healthcare Salary</option>
-              <option value="tech_salary">Tech Salary</option>
-              <option value="education_salary">Education Salary</option>
-            </select>
+              placeholder="Select Comparison"
+            />
           </div>
           <div className="mb-6 flex-1">
-            <select
-              className="w-full border border-gray-300 bg-white p-2 text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+            <DropdownSelect
+              options={dropdownOptions}
+              selectedValue={selectedItem?.name || ""}
               onChange={(e) => {
                 const selectedName = e.target.value;
                 const item =
@@ -329,10 +327,8 @@ const ComparisonChart: React.FC = () => {
                   ) || null;
                 setSelectedItem(item);
               }}
-            >
-              <option value="">Select {selectedCategory.slice(0, -1)}</option>
-              {dropdownOptions}
-            </select>
+              placeholder={`Select ${selectedCategory.slice(0, -1)}`}
+            />
           </div>
         </div>
         <div className="h-80">
