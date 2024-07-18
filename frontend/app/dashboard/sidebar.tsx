@@ -31,42 +31,48 @@ export const DashboardSidebar: FC = function () {
     >
       <Sidebar.Items>
         <Sidebar.ItemGroup>
-          <Sidebar.Item href="#" icon={HiOutlineChartPie}>
+          <Sidebar.Item href="/dashboard" icon={HiOutlineChartPie}>
             Dashboard
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={BiNotepad}>
+          <Sidebar.Item href="/dashboard/reportpay" icon={BiNotepad}>
             Report Pay
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiOutlineFastForward}>
+          <Sidebar.Item href="/dashboard/compare" icon={HiOutlineFastForward}>
             Compare
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiOutlineUser}>
+          <Sidebar.Item href="/dashboard/anonymous" icon={HiOutlineUser}>
             Anonymous
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiOutlineGlobe}>
+          <Sidebar.Item href="/dashboard/benchmarks" icon={HiOutlineGlobe}>
             BenchMarks
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiOutlineTrendingUp}>
+          <Sidebar.Item href="/dashboard/trends" icon={HiOutlineTrendingUp}>
             Trends
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiOutlineTrendingDown}>
+          <Sidebar.Item
+            href="/dashboard/inflation"
+            icon={HiOutlineTrendingDown}
+          >
             Inflation
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiOutlineDocumentReport}>
+          <Sidebar.Item
+            href="/dashboard/compliance"
+            icon={HiOutlineDocumentReport}
+          >
             Compliance
           </Sidebar.Item>
         </Sidebar.ItemGroup>
         <Sidebar.ItemGroup>
-          <Sidebar.Item href="#" icon={HiOutlineCollection}>
+          <Sidebar.Item href="/dashboard/activity" icon={HiOutlineCollection}>
             Activity
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiOutlineDownload}>
+          <Sidebar.Item href="/dashboard/download" icon={HiOutlineDownload}>
             Download
           </Sidebar.Item>
           <Sidebar.Item href="#" icon={HiOutlineCash}>
             Upgrade to Pro
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={BiBuoy}>
+          <Sidebar.Item href="https://pnpmmedia.com/journal" icon={BiBuoy}>
             Help
           </Sidebar.Item>
         </Sidebar.ItemGroup>

@@ -24,6 +24,7 @@
     "npm": ">= 8"
   },
   "dependencies": {
+    "apexcharts": "^3.50.0",
     "flowbite": "^2.2.0",
     "flowbite-react": "^0.7.8",
     "next": "^14.0.3",
