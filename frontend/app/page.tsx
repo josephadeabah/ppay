@@ -107,7 +107,7 @@ const LandingPage = () => {
           <img
             src="/paysightv1.png"
             alt="#"
-            className="h-auto w-full rounded-3xl object-cover lg:hidden"
+            className="h-auto w-full rounded-3xl object-contain lg:hidden"
           />
         </div>
         <img

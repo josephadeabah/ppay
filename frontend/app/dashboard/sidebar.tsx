@@ -31,48 +31,86 @@ export const DashboardSidebar: FC = function () {
     >
       <Sidebar.Items>
         <Sidebar.ItemGroup>
-          <Sidebar.Item href="/dashboard" icon={HiOutlineChartPie}>
+          <Sidebar.Item
+            href="/dashboard"
+            icon={HiOutlineChartPie}
+            className="text-sm" // Apply Tailwind CSS class for smaller text
+          >
             Dashboard
           </Sidebar.Item>
-          <Sidebar.Item href="/dashboard/reportpay" icon={BiNotepad}>
+          <Sidebar.Item
+            href="/dashboard/reportpay"
+            icon={BiNotepad}
+            className="text-sm"
+          >
             Report Pay
           </Sidebar.Item>
-          <Sidebar.Item href="/dashboard/compare" icon={HiOutlineFastForward}>
+          <Sidebar.Item
+            href="/dashboard/compare"
+            icon={HiOutlineFastForward}
+            className="text-sm"
+          >
             Compare
           </Sidebar.Item>
-          <Sidebar.Item href="/dashboard/anonymous" icon={HiOutlineUser}>
+          <Sidebar.Item
+            href="/dashboard/anonymous"
+            icon={HiOutlineUser}
+            className="text-sm"
+          >
             Anonymous
           </Sidebar.Item>
-          <Sidebar.Item href="/dashboard/benchmarks" icon={HiOutlineGlobe}>
+          <Sidebar.Item
+            href="/dashboard/benchmarks"
+            icon={HiOutlineGlobe}
+            className="text-sm"
+          >
             BenchMarks
           </Sidebar.Item>
-          <Sidebar.Item href="/dashboard/trends" icon={HiOutlineTrendingUp}>
+          <Sidebar.Item
+            href="/dashboard/trends"
+            icon={HiOutlineTrendingUp}
+            className="text-sm"
+          >
             Trends
           </Sidebar.Item>
           <Sidebar.Item
             href="/dashboard/inflation"
             icon={HiOutlineTrendingDown}
+            className="text-sm"
           >
             Inflation
           </Sidebar.Item>
           <Sidebar.Item
             href="/dashboard/compliance"
             icon={HiOutlineDocumentReport}
+            className="text-sm"
           >
             Compliance
           </Sidebar.Item>
         </Sidebar.ItemGroup>
         <Sidebar.ItemGroup>
-          <Sidebar.Item href="/dashboard/activity" icon={HiOutlineCollection}>
+          <Sidebar.Item
+            href="/dashboard/activity"
+            icon={HiOutlineCollection}
+            className="text-sm"
+          >
             Activity
           </Sidebar.Item>
-          <Sidebar.Item href="/dashboard/download" icon={HiOutlineDownload}>
+          <Sidebar.Item
+            href="/dashboard/download"
+            icon={HiOutlineDownload}
+            className="text-sm"
+          >
             Download
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiOutlineCash}>
+          <Sidebar.Item href="#" icon={HiOutlineCash} className="text-sm">
             Upgrade to Pro
           </Sidebar.Item>
-          <Sidebar.Item href="https://pnpmmedia.com/journal" icon={BiBuoy}>
+          <Sidebar.Item
+            href="https://pnpmmedia.com/journal"
+            icon={BiBuoy}
+            className="text-sm"
+          >
             Help
           </Sidebar.Item>
         </Sidebar.ItemGroup>
