@@ -13,6 +13,9 @@ export const HomePageContent: NextPage = function () {
           <div className="p-1">
             <WagesChart />
           </div>
+          <div className="p-1">
+            <WagesChart />
+          </div>
           {/* Add more components here */}
         </div>
       </main>
