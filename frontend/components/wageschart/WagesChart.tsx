@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
-export default function WeatherChart() {
+export default function WagesChart() {
   const [options, setOptions] = useState<{
     chart: {
       id: string;
@@ -105,14 +105,16 @@ export default function WeatherChart() {
 
   return (
     <div className="w-full bg-white dark:bg-gray-800 dark:text-gray-50">
-      <div className="row">
-        <Chart
-          options={options}
-          series={series}
-          type="bar"
-          width="500"
-          height="300"
-        />
+      <div className="p-4">
+        <div className="w-full bg-white dark:bg-gray-800 dark:text-gray-50">
+          <Chart
+            options={options}
+            series={series}
+            type="bar"
+            height="300px" // Ensures height adapts to container
+            width="100%" // Ensures width adapts to container
+          />
+        </div>
       </div>
 
       <ModalComponent
