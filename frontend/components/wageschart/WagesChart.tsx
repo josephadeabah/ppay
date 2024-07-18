@@ -1,5 +1,6 @@
 "use client";
 
+import { Button, Modal } from "flowbite-react"; // Import Flowbite components
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 
@@ -7,13 +8,31 @@ const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 export default function WeatherChart() {
   const [options, setOptions] = useState<{
-    chart: { id: string; toolbar: { show: boolean } };
+    chart: {
+      id: string;
+      toolbar: { show: boolean };
+      events?: {
+        dataPointSelection: (
+          event: any,
+          chartContext: any,
+          config: any,
+        ) => void;
+      };
+    };
     xaxis: { categories: string[] };
+    plotOptions: {
+      bar: { horizontal: boolean; dataLabels: { position: string } };
+    };
   } | null>(null);
   const [series, setSeries] = useState<
     { name: string; data: number[] }[] | null
   >(null);
   const [loading, setLoading] = useState(true); // State to track loading status
+  const [modalOpen, setModalOpen] = useState(false); // State to manage modal visibility
+  const [selectedData, setSelectedData] = useState<{
+    date: string;
+    temperature: number;
+  } | null>(null); // State to store selected bar data
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,9 +51,43 @@ export default function WeatherChart() {
             toolbar: {
               show: false, // Disable the menu dropdown
             },
+            events: {
+              dataPointSelection: (
+                event: any,
+                chartContext: any,
+                config: any,
+              ) => {
+                if (config.dataPointIndex !== undefined) {
+                  // Debugging logs
+                  console.log("Data Point Index:", config.dataPointIndex);
+                  console.log("Categories:", options?.xaxis.categories);
+                  console.log("Series Data:", series?.[0]?.data);
+
+                  const date =
+                    options?.xaxis.categories[config.dataPointIndex] || "";
+                  const temperature =
+                    series?.[0]?.data[config.dataPointIndex] || 0;
+
+                  // Debugging logs
+                  console.log("Selected Date:", date);
+                  console.log("Selected Temperature:", temperature);
+
+                  setSelectedData({ date, temperature });
+                  setModalOpen(true); // Open the modal
+                }
+              },
+            },
           },
           xaxis: {
             categories,
+          },
+          plotOptions: {
+            bar: {
+              horizontal: false, // Make sure bars are vertical
+              dataLabels: {
+                position: "top", // Position of data labels
+              },
+            },
           },
         };
 
@@ -77,6 +130,23 @@ export default function WeatherChart() {
             height="300"
           />
         </div>
+        {/* Flowbite Modal for displaying full data */}
+        <Modal show={modalOpen} onClose={() => setModalOpen(false)}>
+          <Modal.Header>Selected Data</Modal.Header>
+          <Modal.Body>
+            {selectedData ? (
+              <p>
+                Date: {selectedData.date}, Temperature:{" "}
+                {selectedData.temperature} °C
+              </p>
+            ) : (
+              <p>No data selected</p>
+            )}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={() => setModalOpen(false)}>Close</Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     );
   } catch (error) {
