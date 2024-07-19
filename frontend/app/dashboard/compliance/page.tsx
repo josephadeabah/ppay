@@ -69,7 +69,7 @@ export default function CompliancePage() {
       </h1>
 
       {/* Compliance Updates Section */}
-      <div className="mb-6 rounded-lg bg-white p-5 shadow-md dark:bg-gray-800">
+      <div className="mb-6 bg-white p-5 shadow-sm dark:bg-gray-800">
         <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
           Updates on Labor Laws and Regulations
         </h2>
@@ -90,7 +90,7 @@ export default function CompliancePage() {
       </div>
 
       {/* Compliance Resources Section */}
-      <div className="mb-6 rounded-lg bg-white p-5 shadow-md dark:bg-gray-800">
+      <div className="mb-6 bg-white p-5 shadow-sm dark:bg-gray-800">
         <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
           Compliance Resources
         </h2>
@@ -109,7 +109,7 @@ export default function CompliancePage() {
       </div>
 
       {/* Compliance Data Analysis Section */}
-      <div className="mb-6 rounded-lg bg-white p-5 shadow-md dark:bg-gray-800">
+      <div className="mb-6 bg-white p-5 shadow-sm dark:bg-gray-800">
         <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
           Compliance Data Analysis
         </h2>
@@ -141,7 +141,7 @@ export default function CompliancePage() {
       </div>
 
       {/* Data Collection Avenues Section */}
-      <div className="rounded-lg bg-white p-5 shadow-md dark:bg-gray-800">
+      <div className="bg-white p-5 shadow-sm dark:bg-gray-800">
         <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
           Avenues for Compliance Data Collection
         </h2>

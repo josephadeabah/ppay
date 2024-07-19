@@ -175,7 +175,7 @@ export default function PayEquityAnalyzer() {
       </p>
 
       {/* Filters Section */}
-      <div className="mb-6 flex flex-wrap gap-4 rounded-lg bg-white p-5 shadow-md dark:bg-gray-800">
+      <div className="mb-6 flex flex-wrap gap-4 bg-white p-5 shadow-sm dark:bg-gray-800">
         <div className="min-w-[200px] flex-1">
           <DropdownSelect
             options={[
@@ -226,7 +226,7 @@ export default function PayEquityAnalyzer() {
 
       {/* Charts & Graphs */}
       <div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <div className="rounded-lg bg-white p-5 shadow-md dark:bg-gray-800">
+        <div className="bg-white p-5 shadow-sm dark:bg-gray-800">
           <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
             Average Salary by Role
           </h2>
@@ -238,7 +238,7 @@ export default function PayEquityAnalyzer() {
             }}
           />
         </div>
-        <div className="rounded-lg bg-white p-5 shadow-md dark:bg-gray-800">
+        <div className="bg-white p-5 shadow-sm dark:bg-gray-800">
           <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
             Salary Progression Over Experience
           </h2>
@@ -250,7 +250,7 @@ export default function PayEquityAnalyzer() {
             }}
           />
         </div>
-        <div className="rounded-lg bg-white p-5 shadow-md dark:bg-gray-800">
+        <div className="bg-white p-5 shadow-sm dark:bg-gray-800">
           <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
             Salary Distribution by Department
           </h2>
@@ -262,7 +262,7 @@ export default function PayEquityAnalyzer() {
             }}
           />
         </div>
-        <div className="rounded-lg bg-white p-5 shadow-md dark:bg-gray-800">
+        <div className="bg-white p-5 shadow-sm dark:bg-gray-800">
           <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
             Performance and Compensation Correlation
           </h2>
@@ -274,7 +274,7 @@ export default function PayEquityAnalyzer() {
             }}
           />
         </div>
-        <div className="rounded-lg bg-white p-5 shadow-md dark:bg-gray-800">
+        <div className="bg-white p-5 shadow-sm dark:bg-gray-800">
           <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
             Benefits and Perks Analysis
           </h2>
@@ -293,7 +293,7 @@ export default function PayEquityAnalyzer() {
             </Table.Body>
           </Table>
         </div>
-        <div className="rounded-lg bg-white p-5 shadow-md dark:bg-gray-800">
+        <div className="bg-white p-5 shadow-sm dark:bg-gray-800">
           <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
             Cost of Living Adjustments
           </h2>
@@ -308,7 +308,7 @@ export default function PayEquityAnalyzer() {
       </div>
 
       {/* Pay Equity Table */}
-      <div className="rounded-lg bg-white p-5 shadow-md dark:bg-gray-800">
+      <div className="bg-white p-5 shadow-sm dark:bg-gray-800">
         <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
           Employee Salary Details
         </h2>
@@ -343,7 +343,7 @@ export default function PayEquityAnalyzer() {
       </div>
 
       {/* Insights & Recommendations */}
-      <div className="mt-6 rounded-lg bg-white p-5 shadow-md dark:bg-gray-800">
+      <div className="mt-6 bg-white p-5 shadow-sm dark:bg-gray-800">
         <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
           Insights & Recommendations
         </h2>

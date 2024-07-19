@@ -78,7 +78,7 @@ export default function MarketSalaryBenchmarks() {
       </h1>
       <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
         {/* Average Salaries */}
-        <div className="rounded-lg bg-white p-4 shadow dark:bg-gray-800">
+        <div className="bg-white p-4 shadow-sm dark:bg-gray-800">
           <h2 className="mb-3 text-xl font-semibold text-gray-900 dark:text-white">
             Average Salaries by Industry
           </h2>
@@ -86,7 +86,7 @@ export default function MarketSalaryBenchmarks() {
         </div>
 
         {/* Regional Variations */}
-        <div className="rounded-lg bg-white p-4 shadow dark:bg-gray-800">
+        <div className="bg-white p-4 shadow-sm dark:bg-gray-800">
           <h2 className="mb-3 text-xl font-semibold text-gray-900 dark:text-white">
             Regional Salary Variations
           </h2>
@@ -94,7 +94,7 @@ export default function MarketSalaryBenchmarks() {
         </div>
 
         {/* Salary Distribution */}
-        <div className="rounded-lg bg-white p-4 shadow dark:bg-gray-800">
+        <div className="bg-white p-4 shadow-sm dark:bg-gray-800">
           <h2 className="mb-3 text-xl font-semibold text-gray-900 dark:text-white">
             Salary Distribution by Level
           </h2>
@@ -109,7 +109,7 @@ export default function MarketSalaryBenchmarks() {
         </h2>
         <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
           {/* Salary Comparison */}
-          <div className="rounded-lg bg-white p-4 shadow dark:bg-gray-800">
+          <div className="bg-white p-4 shadow-sm dark:bg-gray-800">
             <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
               Compare Your Salary
             </h3>
@@ -127,7 +127,7 @@ export default function MarketSalaryBenchmarks() {
               <input
                 type="number"
                 id="your-salary"
-                className="w-full rounded-md border border-gray-300 p-2 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                className="w-full border border-gray-300 p-2 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
               />
               <button
                 type="submit"

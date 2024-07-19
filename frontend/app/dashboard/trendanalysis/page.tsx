@@ -75,7 +75,7 @@ export default function TrendAnalysis() {
         Trend Analysis
       </h1>
 
-      <div className="mb-6 rounded-lg bg-white p-5 shadow-md dark:bg-gray-800">
+      <div className="mb-6 bg-white p-5 shadow-sm dark:bg-gray-800">
         <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
           Overview
         </h2>
@@ -86,7 +86,7 @@ export default function TrendAnalysis() {
         </p>
       </div>
 
-      <div className="mb-6 rounded-lg bg-white p-5 shadow-md dark:bg-gray-800">
+      <div className="mb-6 bg-white p-5 shadow-sm dark:bg-gray-800">
         <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
           Trend Charts
         </h2>
@@ -116,7 +116,7 @@ export default function TrendAnalysis() {
         </div>
       </div>
 
-      <div className="rounded-lg bg-white p-5 shadow-md dark:bg-gray-800">
+      <div className="bg-white p-5 shadow-sm dark:bg-gray-800">
         <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
           Detailed Analysis
         </h2>
