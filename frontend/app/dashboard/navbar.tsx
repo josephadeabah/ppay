@@ -6,7 +6,8 @@ import type { FC } from "react";
 import { HiMenuAlt1, HiX } from "react-icons/hi";
 
 export const DashboardNavbar: FC = function () {
-  const { isCollapsed: isSidebarCollapsed, setCollapsed: setSidebarCollapsed } = useSidebarContext();
+  const { isCollapsed: isSidebarCollapsed, setCollapsed: setSidebarCollapsed } =
+    useSidebarContext();
 
   return (
     <header>
