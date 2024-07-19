@@ -343,10 +343,10 @@ const Compare: React.FC = () => {
             }
           />
         </div>
-        <div className="flex w-full flex-col p-6 lg:w-1/2">
+        <div className="flex w-full flex-col p-6 lg:w-1/2 text-gray-900 dark:text-gray-100">
           {selectedItem ? (
             <div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">
+              <h3 className="text-xl font-semibold ">
                 Detailed Information
               </h3>
               <p className="mt-4">
