@@ -1,8 +1,10 @@
 import { useSidebarContext } from "@/context/SidebarContext";
 import { Sidebar } from "flowbite-react";
+import { usePathname } from "next/navigation";
 import type { FC } from "react";
 import { BiBuoy, BiNotepad } from "react-icons/bi";
 import {
+  HiOutlineCalculator,
   HiOutlineCash,
   HiOutlineChartPie,
   HiOutlineCollection,
@@ -18,6 +20,13 @@ import { twMerge } from "tailwind-merge";
 
 export const DashboardSidebar: FC = function () {
   const { isCollapsed } = useSidebarContext();
+  const pathname = usePathname(); // Get the current pathname
+
+  const getItemClass = (href: string) =>
+    twMerge(
+      "text-sm rounded-none",
+      pathname === href ? "bg-gray-100" : "", // Apply bg-gray-200 if the item is active
+    );
 
   return (
     <Sidebar
@@ -34,56 +43,63 @@ export const DashboardSidebar: FC = function () {
           <Sidebar.Item
             href="/dashboard"
             icon={HiOutlineChartPie}
-            className="text-sm" // Apply Tailwind CSS class for smaller text
+            className={getItemClass("/dashboard")}
           >
             Dashboard
           </Sidebar.Item>
           <Sidebar.Item
             href="/dashboard/reportpay"
             icon={BiNotepad}
-            className="text-sm"
+            className={getItemClass("/dashboard/reportpay")}
           >
             Report Pay
           </Sidebar.Item>
           <Sidebar.Item
             href="/dashboard/compare"
             icon={HiOutlineFastForward}
-            className="text-sm"
+            className={getItemClass("/dashboard/compare")}
           >
             Compare
           </Sidebar.Item>
           <Sidebar.Item
             href="/dashboard/users"
             icon={HiOutlineUser}
-            className="text-sm"
+            className={getItemClass("/dashboard/users")}
           >
             Anonymous
           </Sidebar.Item>
           <Sidebar.Item
             href="/dashboard/benchmarks"
             icon={HiOutlineGlobe}
-            className="text-sm"
+            className={getItemClass("/dashboard/benchmarks")}
           >
             BenchMarks
           </Sidebar.Item>
           <Sidebar.Item
             href="/dashboard/trends"
             icon={HiOutlineTrendingUp}
-            className="text-sm"
+            className={getItemClass("/dashboard/trends")}
           >
             Trends
           </Sidebar.Item>
           <Sidebar.Item
             href="/dashboard/inflation"
             icon={HiOutlineTrendingDown}
-            className="text-sm"
+            className={getItemClass("/dashboard/inflation")}
           >
             Inflation
           </Sidebar.Item>
           <Sidebar.Item
             href="/dashboard/compliance"
+            icon={HiOutlineCalculator}
+            className={getItemClass("/dashboard/compliance")}
+          >
+            Pay Equity Analyzer
+          </Sidebar.Item>
+          <Sidebar.Item
+            href="/dashboard/compliance"
             icon={HiOutlineDocumentReport}
-            className="text-sm"
+            className={getItemClass("/dashboard/compliance")}
           >
             Compliance
           </Sidebar.Item>
@@ -92,24 +108,28 @@ export const DashboardSidebar: FC = function () {
           <Sidebar.Item
             href="/dashboard/activity"
             icon={HiOutlineCollection}
-            className="text-sm"
+            className={getItemClass("/dashboard/activity")}
           >
             Activity
           </Sidebar.Item>
           <Sidebar.Item
             href="/dashboard/download"
             icon={HiOutlineDownload}
-            className="text-sm"
+            className={getItemClass("/dashboard/download")}
           >
             Download
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiOutlineCash} className="text-sm">
+          <Sidebar.Item
+            href="#"
+            icon={HiOutlineCash}
+            className={getItemClass("/dashboard/upgrade")}
+          >
             Upgrade to Pro
           </Sidebar.Item>
           <Sidebar.Item
             href="https://pnpmmedia.com/journal"
             icon={BiBuoy}
-            className="text-sm"
+            className={getItemClass("https://pnpmmedia.com/journal")}
           >
             Help
           </Sidebar.Item>
