@@ -1,10 +1,12 @@
 import React from "react";
+import { twMerge } from "tailwind-merge";
 
 interface DropdownSelectProps {
   options: { value: string; label: string }[];
   selectedValue: string;
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   placeholder: string;
+  className?: string; // Optional className prop
 }
 
 const DropdownSelect: React.FC<DropdownSelectProps> = ({
@@ -12,10 +14,14 @@ const DropdownSelect: React.FC<DropdownSelectProps> = ({
   selectedValue,
   onChange,
   placeholder,
+  className = "", // Default to an empty string if not provided
 }) => {
   return (
     <select
-      className="w-full border border-gray-300 bg-white p-2 text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+      className={twMerge(
+        "w-full border border-gray-300 bg-white p-2 text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200",
+        className,
+      )}
       value={selectedValue}
       onChange={onChange}
     >

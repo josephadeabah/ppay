@@ -1,5 +1,6 @@
 "use client";
 
+import DropdownSelect from "@/components/dropdown/DropdownSelect"; // Import the custom DropdownSelect component
 import {
   BarElement,
   CategoryScale,
@@ -11,7 +12,7 @@ import {
   Title,
   Tooltip,
 } from "chart.js";
-import { Dropdown, Table } from "flowbite-react";
+import { Table } from "flowbite-react";
 import { useState } from "react";
 import { Bar, Line } from "react-chartjs-2";
 
@@ -20,7 +21,7 @@ ChartJS.register(
   CategoryScale,
   LinearScale,
   LineElement,
-  PointElement, // Ensure PointElement is registered
+  PointElement,
   BarElement,
   Title,
   Tooltip,
@@ -61,14 +62,9 @@ const categoryData = [
 ];
 
 export default function InflationPage() {
-  const [selectedYear, setSelectedYear] = useState<string>("2023");
   const [selectedRegion, setSelectedRegion] = useState<string>("North America");
 
-  const handleYearChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedYear(e.target.value);
-  };
-
-  const handleRegionChange = (e: React.ChangeEvent<HTMLButtonElement>) => {
+  const handleRegionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedRegion(e.target.value);
   };
 
@@ -94,17 +90,20 @@ export default function InflationPage() {
         <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
           Regional Inflation Rates
         </h2>
-        <Dropdown
-          label="Select Region"
-          onChange={handleRegionChange}
-          className="mb-4"
-        >
-          <Dropdown.Item value="North America">North America</Dropdown.Item>
-          <Dropdown.Item value="Europe">Europe</Dropdown.Item>
-          <Dropdown.Item value="Asia">Asia</Dropdown.Item>
-          <Dropdown.Item value="South America">South America</Dropdown.Item>
-          <Dropdown.Item value="Africa">Africa</Dropdown.Item>
-        </Dropdown>
+        <div className="flex max-w-[300px] flex-1 flex-col">
+          <DropdownSelect
+            options={[
+              { value: "North America", label: "North America" },
+              { value: "Europe", label: "Europe" },
+              { value: "Asia", label: "Asia" },
+              { value: "South America", label: "South America" },
+              { value: "Africa", label: "Africa" },
+            ]}
+            selectedValue={selectedRegion}
+            onChange={handleRegionChange}
+            placeholder="Select Region"
+          />
+        </div>
         <Bar
           data={inflationData.regional}
           options={{ responsive: true, plugins: { legend: { display: true } } }}
