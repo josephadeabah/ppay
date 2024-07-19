@@ -1,11 +1,11 @@
 export default function ComplianceForm() {
   return (
     <section className="dark:bg-gray-900">
-      <span className="p-4 text-xs font-bold text-gray-400 dark:text-gray-100">
+      <div className="p-4 text-xs font-bold text-gray-400 dark:text-gray-100 sm:px-4">
         This data is only collected for the purposes of analytics and insight
         into global wage and salary trends and labor compliance. We do not share
         this data with anybody and you have our word.
-      </span>
+      </div>
       <div className="mx-auto max-w-2xl px-4 py-8 lg:py-16">
         <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
           Submit Compliance Data
