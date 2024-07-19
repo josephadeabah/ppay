@@ -58,13 +58,13 @@ export const DashboardNavbar: FC = function () {
           <div className="flex items-center gap-2">
             <Link
               href="/auth/login"
-              className="rounded-md bg-white px-4 py-2 text-gray-950 ring-1 ring-gray-200 hover:bg-gray-50 dark:bg-gray-900 dark:text-gray-50 dark:ring-gray-700 dark:hover:bg-gray-800"
+              className="rounded-md bg-white px-2 py-1 text-gray-950 ring-1 ring-gray-200 hover:bg-gray-50 dark:bg-gray-900 dark:text-gray-50 dark:ring-gray-700 dark:hover:bg-gray-800"
             >
               Sign In
             </Link>
             <Link
               href="/auth/register"
-              className="rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800"
+              className="rounded-md bg-blue-600 px-2 py-1 text-white hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800"
             >
               Sign Up
             </Link>
