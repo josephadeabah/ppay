@@ -92,7 +92,7 @@ export default function Register() {
         </div>
       </div>
       {/* Right container */}
-      <div className="hidden w-full items-center justify-center bg-primary-600 lg:flex lg:w-1/2">
+      <div className="hidden w-full items-center justify-center bg-primary-600 dark:bg-gray-900 lg:flex lg:w-1/2">
         <section className="bg-primary-600 text-gray-50 dark:bg-gray-950 dark:text-gray-50">
           <div className="mx-auto flex max-w-[52.5rem] flex-col items-center gap-y-16 px-6 py-32 lg:max-w-[78rem]">
             <div className="mx-auto max-w-[36.75rem] text-center">
@@ -100,9 +100,9 @@ export default function Register() {
                 Explore the world’s leading Wages and Salaries Insights Platform
               </h2>
               <p className="text-base">
-                Our platform provides comprehensive insights, tailored to
-                your needs. We provide data-driven insights to help you make
-                better decisions.
+                Our platform provides comprehensive insights, tailored to your
+                needs. We provide data-driven insights to help you make better
+                decisions.
               </p>
             </div>
             <div className="flex w-full flex-col items-center gap-12 rounded-lg bg-gray-50 px-6 py-12 *:w-full *:text-center dark:bg-gray-900 lg:flex-row lg:justify-center lg:gap-6 lg:px-12">
