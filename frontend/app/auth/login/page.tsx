@@ -111,7 +111,7 @@ export default function Login() {
                 Explore the world’s leading Wages and Salaries Insights Platform
               </h2>
               <p className="text-base">
-                Our platform provides comprehensive HR insights, tailored to
+                Our platform provides comprehensive insights, tailored to
                 your needs. We provide data-driven insights to help you make
                 better decisions.
               </p>
