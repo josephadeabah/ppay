@@ -1,13 +1,15 @@
 // LandingPage page template from uisual studio code
 "use client";
 
+import { DashboardNavbar } from "./dashboard/navbar";
+
 const LandingPage = () => {
   return (
     <>
       <header className="bg-white dark:bg-gray-950">
         <nav className="mx-auto max-w-[52.5rem] p-6 lg:max-w-[78rem]">
           <div className="relative flex items-center gap-x-4">
-            <div className="group peer flex items-center lg:hidden">
+            {/* <div className="group peer flex items-center lg:hidden">
               <input type="checkbox" id="menu" className="hidden" />
               <label
                 htmlFor="menu"
@@ -32,7 +34,6 @@ const LandingPage = () => {
               </label>
             </div>
             <div className="flex grow basis-0">
-              {/* Logo */}
               <a href="/">
                 <span className="flex items-center justify-center overflow-hidden rounded-xl">
                   <span className="flex h-7 w-auto items-center justify-center rounded-xl bg-blue-600 p-1 text-xs font-extrabold text-white">
@@ -67,9 +68,10 @@ const LandingPage = () => {
               >
                 Sign Up
               </a>
-            </div>
+            </div> */}
           </div>
         </nav>
+        <DashboardNavbar />
       </header>
       {/* HERO */}
       <section className="bg-primary-600 dark:bg-gray-950 lg:relative lg:flex lg:items-center">

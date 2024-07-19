@@ -1,12 +1,12 @@
+// app/dashboard/navbar.tsx
 import { useSidebarContext } from "@/context/SidebarContext";
 import { isSmallScreen } from "@/helpers/is-small-screen";
 import { DarkThemeToggle, Navbar } from "flowbite-react";
 import type { FC } from "react";
 import { HiMenuAlt1, HiX } from "react-icons/hi";
 
-export const DashboardNavbar: FC<Record<string, never>> = function () {
-  const { isCollapsed: isSidebarCollapsed, setCollapsed: setSidebarCollapsed } =
-    useSidebarContext();
+export const DashboardNavbar: FC = function () {
+  const { isCollapsed: isSidebarCollapsed, setCollapsed: setSidebarCollapsed } = useSidebarContext();
 
   return (
     <header>
@@ -34,7 +34,7 @@ export const DashboardNavbar: FC<Record<string, never>> = function () {
                   <span className="flex h-7 w-auto items-center justify-center rounded-xl bg-blue-600 p-1 text-xs font-extrabold text-white">
                     Pay
                   </span>
-                  <span className="inline-block py-2 text-xs font-extrabold  text-blue-600 dark:text-white">
+                  <span className="inline-block py-2 text-xs font-extrabold text-blue-600 dark:text-white">
                     Sight
                   </span>
                 </span>

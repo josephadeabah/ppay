@@ -1,9 +1,10 @@
 import { Flowbite, ThemeModeScript } from "flowbite-react";
 import { Inter } from "next/font/google";
-import { type FC, type PropsWithChildren } from "react";
+import { FC, PropsWithChildren } from "react";
 import { twMerge } from "tailwind-merge";
 import "./globals.css";
 import { flowbiteTheme } from "./theme";
+import { SidebarProvider } from "@/context/SidebarContext"; // Ensure this path is correct
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,7 +15,15 @@ const RootLayout: FC<PropsWithChildren> = function ({ children }) {
         <ThemeModeScript />
       </head>
       <body className={twMerge("bg-gray-50 dark:bg-gray-900", inter.className)}>
-        <Flowbite theme={{ theme: flowbiteTheme }}>{children}</Flowbite>
+        <Flowbite theme={{ theme: flowbiteTheme }}>
+          <SidebarProvider>
+            <div className="flex flex-col h-screen">
+              <main className="flex-1 overflow-hidden">
+                {children}
+              </main>
+            </div>
+          </SidebarProvider>
+        </Flowbite>
       </body>
     </html>
   );
