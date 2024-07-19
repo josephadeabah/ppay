@@ -133,7 +133,7 @@ export default function UsersPage() {
                 </button>
               </div>
             </div>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto h-screen ">
               <table className="w-full divide-y divide-gray-200 dark:divide-gray-600">
                 <thead className="bg-gray-100 dark:bg-gray-700">
                   <tr>
