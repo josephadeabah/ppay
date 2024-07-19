@@ -25,7 +25,7 @@ export const DashboardSidebar: FC = function () {
   const getItemClass = (href: string) =>
     twMerge(
       "text-sm rounded-none",
-      pathname === href ? "bg-gray-100" : "", // Apply bg-gray-200 if the item is active
+      pathname === href ? "bg-gray-100 dark:bg-gray-700" : "", // Apply bg-gray-200 if the item is active
     );
 
   return (

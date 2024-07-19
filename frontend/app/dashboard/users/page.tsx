@@ -1,4 +1,47 @@
+"use client";
+
+import { useState } from "react";
+
+const users = [
+  {
+    id: 1,
+    name: "**** *****",
+    role: "Software Engineer",
+    status: "Online",
+    salaryRole: "Full-time",
+    experience: "5 years",
+    country: "USA",
+    industry: "Technology",
+    category: "Employee",
+    company: "TechCorp",
+    actualSalary: "$100,000",
+    avatar:
+      "https://images.pexels.com/photos/1586996/pexels-photo-1586996.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  },
+  {
+    id: 2,
+    name: "**** *****",
+    role: "UX Designer",
+    status: "Offline",
+    salaryRole: "Part-time",
+    experience: "3 years",
+    country: "UK",
+    industry: "Design",
+    category: "Freelance",
+    company: "DesignCo",
+    actualSalary: "$70,000",
+    avatar:
+      "https://images.pexels.com/photos/3757371/pexels-photo-3757371.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  },
+];
+
 export default function UsersPage() {
+  const [expandedRow, setExpandedRow] = useState<number | null>(null);
+
+  const toggleRow = (id: number) => {
+    setExpandedRow(expandedRow === id ? null : id);
+  };
+
   return (
     <div>
       <section className="bg-gray-50 dark:bg-gray-900 sm:py-5">
@@ -68,7 +111,7 @@ export default function UsersPage() {
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
+                      d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M3 16.5V7.875A2.625 2.625 0 015.625 5.25h12.75A2.625 2.625 0 0121 7.875V16.5M3 16.5h18m-9-6v6m-6-6v6m12-6v6"
                     />
                   </svg>
                   Export
@@ -76,104 +119,180 @@ export default function UsersPage() {
               </div>
             </div>
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
-                <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+              <table className="w-full divide-y divide-gray-200 dark:divide-gray-600">
+                <thead className="bg-gray-100 dark:bg-gray-700">
                   <tr>
-                    <th scope="col" className="px-4 py-3">
-                      User
+                    <th
+                      scope="col"
+                      className="p-4 text-left text-xs font-medium uppercase text-gray-700 dark:text-gray-400"
+                    >
+                      Name
                     </th>
-                    <th scope="col" className="px-4 py-3">
-                      User Role
+                    <th
+                      scope="col"
+                      className="p-4 text-left text-xs font-medium uppercase text-gray-700 dark:text-gray-400"
+                    >
+                      Role
                     </th>
-                    <th scope="col" className="px-4 py-3">
+                    <th
+                      scope="col"
+                      className="p-4 text-left text-xs font-medium uppercase text-gray-700 dark:text-gray-400"
+                    >
                       Status
                     </th>
-                    <th scope="col" className="px-4 py-3">
+                    <th
+                      scope="col"
+                      className="p-4 text-left text-xs font-medium uppercase text-gray-700 dark:text-gray-400"
+                    >
                       Salary Role
                     </th>
-                    <th scope="col" className="px-4 py-3">
+                    <th
+                      scope="col"
+                      className="p-4 text-left text-xs font-medium uppercase text-gray-700 dark:text-gray-400"
+                    >
                       Experience
                     </th>
-                    <th scope="col" className="px-4 py-3">
+                    <th
+                      scope="col"
+                      className="p-4 text-left text-xs font-medium uppercase text-gray-700 dark:text-gray-400"
+                    >
                       Country
                     </th>
-                    <th scope="col" className="px-4 py-3">
+                    <th
+                      scope="col"
+                      className="p-4 text-left text-xs font-medium uppercase text-gray-700 dark:text-gray-400"
+                    >
                       Industry
                     </th>
-                    <th scope="col" className="px-4 py-3">
+                    <th
+                      scope="col"
+                      className="p-4 text-left text-xs font-medium uppercase text-gray-700 dark:text-gray-400"
+                    >
                       Category
                     </th>
-                    <th scope="col" className="px-4 py-3">
+                    <th
+                      scope="col"
+                      className="p-4 text-left text-xs font-medium uppercase text-gray-700 dark:text-gray-400"
+                    >
                       Company
                     </th>
-                    <th scope="col" className="px-4 py-3">
-                      Actual Salary {/* New column */}
+                    <th
+                      scope="col"
+                      className="p-4 text-left text-xs font-medium uppercase text-gray-700 dark:text-gray-400"
+                    >
+                      Actual Salary
+                    </th>
+                    <th
+                      scope="col"
+                      className="p-4 text-left text-xs font-medium uppercase text-gray-700 dark:text-gray-400"
+                    >
+                      Profile
                     </th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr className="border-b hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-700">
-                    <th
-                      scope="row"
-                      className="flex items-center whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white"
-                    >
-                      <img
-                        src="https://images.pexels.com/photos/1586996/pexels-photo-1586996.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                        alt="User Avatar"
-                        className="mr-3 h-8 w-8 rounded-full object-cover"
-                      />
-                      ***** *****
-                    </th>
-                    <td className="px-4 py-2">Software Engineer</td>
-                    <td className="px-4 py-2">
-                      <div className="flex items-center">
-                        <div className="mr-2 inline-block h-4 w-4 rounded-full bg-green-400"></div>
-                        Online
-                      </div>
-                    </td>
-                    <td className="px-4 py-2">Full-time</td>
-                    <td className="px-4 py-2">5 years</td>
-                    <td className="px-4 py-2">USA</td>
-                    <td className="px-4 py-2">Technology</td>
-                    <td className="px-4 py-2">
-                      <span className="rounded bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-300">
-                        Employee
-                      </span>
-                    </td>
-                    <td className="px-4 py-2">TechCorp</td>
-                    <td className="px-4 py-2">$100,000</td> {/* New cell */}
-                  </tr>
-                  <tr className="border-b hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-700">
-                    <th
-                      scope="row"
-                      className="flex items-center whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white"
-                    >
-                      <img
-                        src="https://images.pexels.com/photos/3757371/pexels-photo-3757371.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                        alt="User Avatar"
-                        className="mr-3 h-8 w-8 rounded-full object-cover"
-                      />
-                      ***** ****
-                    </th>
-                    <td className="px-4 py-2">UX Designer</td>
-                    <td className="px-4 py-2">
-                      <div className="flex items-center">
-                        <div className="mr-2 inline-block h-4 w-4 rounded-full bg-red-400"></div>
-                        Offline
-                      </div>
-                    </td>
-                    <td className="px-4 py-2">Part-time</td>
-                    <td className="px-4 py-2">3 years</td>
-                    <td className="px-4 py-2">UK</td>
-                    <td className="px-4 py-2">Design</td>
-                    <td className="px-4 py-2">
-                      <span className="rounded bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300">
-                        Freelance
-                      </span>
-                    </td>
-                    <td className="px-4 py-2">DesignCo</td>
-                    <td className="px-4 py-2">$70,000</td> {/* New cell */}
-                  </tr>
+                <tbody className="divide-y divide-gray-200 text-gray-600 dark:divide-gray-600 dark:text-gray-200">
+                  {users.map((user) => (
+                    <>
+                      <tr
+                        key={user.id}
+                        className="hover:bg-gray-100 dark:hover:bg-gray-700"
+                      >
+                        <td className="whitespace-nowrap p-4 text-sm font-normal text-gray-900 dark:text-white">
+                          <div className="flex items-center">
+                            <div className="h-10 w-10 flex-shrink-0">
+                              <img
+                                className="h-10 w-10 rounded-full object-cover"
+                                src={user.avatar}
+                                alt={user.name}
+                              />
+                            </div>
+                            <div className="ml-4">
+                              <div className="text-base font-semibold text-gray-900 dark:text-white">
+                                {user.name}
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="whitespace-nowrap p-4 text-sm font-normal text-gray-500 dark:text-gray-400">
+                          {user.role}
+                        </td>
+                        <td className="whitespace-nowrap p-4 text-sm font-semibold text-gray-500 dark:text-gray-100">
+                          {user.status === "Offline" ? (
+                            <div className="mr-2 inline-block h-4 w-4 rounded-full bg-red-400"></div>
+                          ) : (
+                            <div className="mr-2 inline-block h-4 w-4 rounded-full bg-green-400"></div>
+                          )}
+                          {user.status}
+                        </td>
+                        <td className="whitespace-nowrap p-4 text-sm font-normal text-gray-900 dark:text-white">
+                          {user.salaryRole}
+                        </td>
+                        <td className="whitespace-nowrap p-4 text-sm font-normal text-gray-500 dark:text-gray-400">
+                          {user.experience}
+                        </td>
+                        <td className="whitespace-nowrap p-4 text-sm font-normal text-gray-900 dark:text-white">
+                          {user.country}
+                        </td>
+                        <td className="whitespace-nowrap p-4 text-sm font-normal text-gray-500 dark:text-gray-400">
+                          {user.industry}
+                        </td>
+                        <td className="whitespace-nowrap p-4 text-sm font-normal text-gray-500 dark:text-gray-400">
+                          {user.category}
+                        </td>
+                        <td className="whitespace-nowrap p-4 text-sm font-normal text-gray-900 dark:text-white">
+                          {user.company}
+                        </td>
+                        <td className="whitespace-nowrap p-4 text-sm font-normal text-gray-900 dark:text-white">
+                          {user.actualSalary}
+                        </td>
+                        <td className="whitespace-nowrap p-4 text-sm font-normal text-gray-500 dark:text-gray-400">
+                          <button
+                            onClick={() => toggleRow(user.id)}
+                            className="text-blue-500 dark:text-blue-400"
+                          >
+                            {expandedRow === user.id ? "Close" : "View"}
+                          </button>
+                        </td>
+                      </tr>
+                      {expandedRow === user.id && (
+                        <tr
+                          key={`${user.id}-details`}
+                          className="bg-gray-100 dark:bg-gray-700"
+                        >
+                          <td colSpan={11} className="p-4">
+                            <div className="flex flex-col space-y-2">
+                              <div>
+                                <strong>Profile Details:</strong>
+                              </div>
+                              <div>
+                                <strong>Role:</strong> {user.role}
+                              </div>
+                              <div>
+                                <strong>Experience:</strong> {user.experience}
+                              </div>
+                              <div>
+                                <strong>Country:</strong> {user.country}
+                              </div>
+                              <div>
+                                <strong>Industry:</strong> {user.industry}
+                              </div>
+                              <div>
+                                <strong>Category:</strong> {user.category}
+                              </div>
+                              <div>
+                                <strong>Company:</strong> {user.company}
+                              </div>
+                              <div>
+                                <strong>Actual Salary:</strong>{" "}
+                                {user.actualSalary}
+                              </div>
+                              {/* Add more details as needed */}
+                            </div>
+                          </td>
+                        </tr>
+                      )}
+                    </>
+                  ))}
                 </tbody>
               </table>
             </div>
@@ -181,7 +300,7 @@ export default function UsersPage() {
               className="flex flex-col items-start justify-between space-y-3 p-4 md:flex-row md:items-center md:space-y-0"
               aria-label="Table navigation"
             >
-              <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
+              <span className="flew-row flex gap-0.5 text-sm font-normal text-gray-500 dark:text-gray-400">
                 Showing
                 <span className="font-semibold text-gray-900 dark:text-white">
                   1-10
