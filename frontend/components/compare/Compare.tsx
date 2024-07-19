@@ -343,12 +343,10 @@ const Compare: React.FC = () => {
             }
           />
         </div>
-        <div className="flex w-full flex-col p-6 lg:w-1/2 text-gray-900 dark:text-gray-100">
+        <div className="flex w-full flex-col p-6 text-gray-900 dark:text-gray-100 lg:w-1/2">
           {selectedItem ? (
             <div>
-              <h3 className="text-xl font-semibold ">
-                Detailed Information
-              </h3>
+              <h3 className="text-xl font-semibold ">Detailed Information</h3>
               <p className="mt-4">
                 <strong>Name:</strong> {selectedItem.name}
               </p>
@@ -376,8 +374,8 @@ const Compare: React.FC = () => {
           )}
         </div>
       </div>
-      <div className="mt-4 w-full overflow-x-auto p-6">
-        <table className="w-full divide-y divide-gray-200 dark:divide-gray-700">
+      <div className="mt-4 overflow-x-auto p-6">
+        <table className="w-full divide-x divide-gray-200 dark:divide-gray-700">
           <thead className="bg-gray-50 dark:bg-gray-800">
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">

@@ -53,7 +53,7 @@ export const DashboardSidebar: FC = function () {
             Compare
           </Sidebar.Item>
           <Sidebar.Item
-            href="/dashboard/anonymous"
+            href="/dashboard/users"
             icon={HiOutlineUser}
             className="text-sm"
           >
