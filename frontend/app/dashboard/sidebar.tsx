@@ -69,14 +69,14 @@ export const DashboardSidebar: FC = function () {
             Anonymous
           </Sidebar.Item>
           <Sidebar.Item
-            href="/dashboard/benchmarks"
+            href="/dashboard/benchmark"
             icon={HiOutlineGlobe}
             className={getItemClass("/dashboard/benchmarks")}
           >
             BenchMarks
           </Sidebar.Item>
           <Sidebar.Item
-            href="/dashboard/trends"
+            href="/dashboard/trendanalysis"
             icon={HiOutlineTrendingUp}
             className={getItemClass("/dashboard/trends")}
           >
@@ -90,9 +90,9 @@ export const DashboardSidebar: FC = function () {
             Inflation
           </Sidebar.Item>
           <Sidebar.Item
-            href="/dashboard/compliance"
+            href="/dashboard/equityanalyzer"
             icon={HiOutlineCalculator}
-            className={getItemClass("/dashboard/compliance")}
+            className={getItemClass("/dashboard/equityanalyzer")}
           >
             Pay Equity Analyzer
           </Sidebar.Item>

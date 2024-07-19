@@ -33,6 +33,21 @@ const users = [
     avatar:
       "https://images.pexels.com/photos/3757371/pexels-photo-3757371.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
+  {
+    id: 3,
+    name: "**** *****",
+    role: "Web Developer",
+    status: "Online",
+    salaryRole: "Part-time",
+    experience: "1 year",
+    country: "UK",
+    industry: "Technology",
+    category: "Internship",
+    company: "DesignCo",
+    actualSalary: "$70,000",
+    avatar:
+      "https://images.pexels.com/photos/9301463/pexels-photo-9301463.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  },
 ];
 
 export default function UsersPage() {
