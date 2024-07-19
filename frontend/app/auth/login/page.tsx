@@ -108,7 +108,7 @@ export default function Login() {
           <div className="mx-auto flex max-w-[52.5rem] flex-col items-center gap-y-16 px-6 py-32 lg:max-w-[78rem]">
             <div className="mx-auto max-w-[36.75rem] text-center">
               <h2 className="mb-3 text-3xl font-bold lg:text-4xl">
-                Explore the world’s leading HR Insights Platform
+                Explore the world’s leading Wages and Salaries Insights Platform
               </h2>
               <p className="text-base">
                 Our platform provides comprehensive HR insights, tailored to
