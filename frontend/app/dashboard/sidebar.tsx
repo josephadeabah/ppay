@@ -52,7 +52,7 @@ export const DashboardSidebar: FC = function () {
             icon={BiNotepad}
             className={getItemClass("/dashboard/reportpay")}
           >
-            Report Pay
+            Report Data
           </Sidebar.Item>
           <Sidebar.Item
             href="/dashboard/compare"
