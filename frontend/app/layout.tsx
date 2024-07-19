@@ -1,3 +1,4 @@
+// app/layout.tsx
 import { Flowbite, ThemeModeScript } from "flowbite-react";
 import { Inter } from "next/font/google";
 import { FC, PropsWithChildren } from "react";
@@ -16,11 +17,9 @@ const RootLayout: FC<PropsWithChildren> = function ({ children }) {
       </head>
       <body className={twMerge("bg-gray-50 dark:bg-gray-900", inter.className)}>
         <Flowbite theme={{ theme: flowbiteTheme }}>
-          <SidebarProvider>
+          <SidebarProvider> {/* Wrap with SidebarProvider */}
             <div className="flex flex-col h-screen">
-              <main className="flex-1 overflow-hidden">
-                {children}
-              </main>
+              <main className="flex-1">{children}</main>
             </div>
           </SidebarProvider>
         </Flowbite>

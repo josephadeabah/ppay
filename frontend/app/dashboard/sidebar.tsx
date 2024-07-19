@@ -1,3 +1,4 @@
+// dashboard/sidebar.tsx
 import { useSidebarContext } from "@/context/SidebarContext";
 import { Sidebar } from "flowbite-react";
 import { usePathname } from "next/navigation";
@@ -36,11 +37,11 @@ export const DashboardSidebar: FC = function () {
       className={twMerge(
         "fixed inset-y-0 left-0 z-20 flex h-full flex-col border-r border-gray-200 duration-300 dark:border-gray-700",
         isCollapsed ? "w-16 lg:w-16" : "w-64 lg:w-64",
-        "transition-all"
+        isCollapsed ? "sm:hidden" : "", // Hide on mobile when collapsed
+        "transition-all lg:transition-all" // Ensure smooth transition
       )}
     >
-      <Sidebar.Items>
-        <Sidebar.ItemGroup>
+ <Sidebar.ItemGroup>
           <Sidebar.Item
             href="/dashboard"
             icon={HiOutlineChartPie}
@@ -135,7 +136,6 @@ export const DashboardSidebar: FC = function () {
             Help
           </Sidebar.Item>
         </Sidebar.ItemGroup>
-      </Sidebar.Items>
     </Sidebar>
   );
 };
