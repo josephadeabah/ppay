@@ -6,10 +6,11 @@ It also includes:
 - [x] [`flowbite-react`](https://flowbite-react.com)
 - [x] [`react-icons`](https://react-icons.github.io/react-icons)
 - [x] [`tailwindcss`](https://tailwindcss.com)
+- [x] [`typescript`](https://www.typescriptlang.org/) typescript
+
 - [x] Quality of life tools, like
   - [x] [`eslint`](https://eslint.org) with some plugins
   - [x] [`prettier`](https://prettier.io) with some plugins
-  - [x] [`typescript`](https://www.typescriptlang.org/) typescript
   - [x] [`tailwind-merge`](https://github.com/dcastil/tailwind-merge)
 
 ## Getting started
