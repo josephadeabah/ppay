@@ -56,249 +56,216 @@ const LandingPage = () => {
       </section>
       {/* FEATURES */}
       <section className="bg-white dark:bg-gray-950">
-        <div className="mx-auto flex max-w-[52.5rem] flex-col items-center gap-y-16 px-6 py-32 lg:max-w-[78rem]">
+        <div className="mx-auto flex max-w-[52.5rem] flex-col items-center gap-y-16 px-6 py-32  lg:max-w-[78rem]">
           <div className="mx-auto max-w-[36.75rem] text-center *:text-gray-950 dark:*:text-gray-50">
             <h2 className="mb-3 text-3xl font-bold lg:text-4xl">
-              Why choose Paysight
+              Why Choose Paysight?
             </h2>
             <p className="text-base">
               We provide key data-driven insights that are crucial to provide
-              value to both employees and employers
+              value to both employees and employers with the listed below tools
+              and analyzers
             </p>
           </div>
-          <div className="mx-auto grid max-w-[49.5rem] gap-6 *:w-full *:rounded-lg *:border *:border-solid *:border-gray-200 *:bg-white *:p-6 *:text-left dark:*:border-gray-800 dark:*:bg-gray-950 md:grid-cols-2 lg:max-w-[62.25rem] lg:grid-cols-10">
-            <div className="col-span-1 lg:col-span-4">
-              <div className="w-fit rounded-lg border border-solid border-gray-200 bg-white p-3 dark:border-gray-800 dark:bg-gray-950">
+          <div className="flex w-full flex-col items-center gap-6 text-base *:w-full *:rounded-lg *:border *:border-solid *:border-gray-200 dark:*:border-gray-800 lg:max-w-[49.5rem]">
+            <details className="group *:text-gray-950 dark:*:text-gray-50">
+              <summary className="flex cursor-pointer list-none flex-row items-center gap-x-6 p-6 *:transition *:duration-[250ms] *:ease-in-out hover:text-blue-600 [&::-webkit-details-marker]:hidden">
+                <p className="w-full font-bold">Data Privacy and Security</p>
                 <svg
-                  width="24"
-                  height="24"
+                  width="20"
+                  height="20"
                   viewBox="0 0 256 256"
-                  className="fill-gray-950 dark:fill-white"
+                  className="fill-gray-500 group-open:rotate-180"
                 >
-                  <path d="M100 36H56a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20V56a20 20 0 0 0-20-20Zm-4 60H60V60h36Zm104-60h-44a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20V56a20 20 0 0 0-20-20Zm-4 60h-36V60h36Zm-96 40H56a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20v-44a20 20 0 0 0-20-20Zm-4 60H60v-36h36Zm104-60h-44a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20v-44a20 20 0 0 0-20-20Zm-4 60h-36v-36h36Z" />
+                  <path d="m216.49 104.49-80 80a12 12 0 0 1-17 0l-80-80a12 12 0 0 1 17-17L128 159l71.51-71.52a12 12 0 0 1 17 17Z" />
                 </svg>
-              </div>
-              <h4 className="mb-2 mt-4 text-lg font-bold text-gray-950 dark:text-gray-50 lg:text-xl">
-                Data Privacy and Security
-              </h4>
-              <p className="text-base text-gray-950 dark:text-gray-50">
+              </summary>
+              <p className="-mt-3 pb-6 pl-6 pr-[4.25rem]">
                 * We have strong data protection measures to ensure the
                 confidentiality and security of sensitive information
               </p>
-            </div>
-            <div className="col-span-1 lg:col-span-6">
-              <div className="w-fit rounded-lg border border-solid border-gray-200 bg-white p-3 dark:border-gray-800 dark:bg-gray-950">
+            </details>
+            <details className="group *:text-gray-950 dark:*:text-gray-50">
+              <summary className="flex cursor-pointer list-none flex-row items-center gap-x-6 p-6 *:transition *:duration-[250ms] *:ease-in-out hover:text-blue-600 [&::-webkit-details-marker]:hidden">
+                <p className="w-full font-bold">
+                  Salary and Compensation Reporting tools
+                </p>
                 <svg
-                  width="24"
-                  height="24"
+                  width="20"
+                  height="20"
                   viewBox="0 0 256 256"
-                  className="fill-gray-950 dark:fill-white"
+                  className="fill-gray-500 group-open:rotate-180"
                 >
-                  <path d="M100 36H56a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20V56a20 20 0 0 0-20-20Zm-4 60H60V60h36Zm104-60h-44a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20V56a20 20 0 0 0-20-20Zm-4 60h-36V60h36Zm-96 40H56a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20v-44a20 20 0 0 0-20-20Zm-4 60H60v-36h36Zm104-60h-44a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20v-44a20 20 0 0 0-20-20Zm-4 60h-36v-36h36Z" />
+                  <path d="m216.49 104.49-80 80a12 12 0 0 1-17 0l-80-80a12 12 0 0 1 17-17L128 159l71.51-71.52a12 12 0 0 1 17 17Z" />
                 </svg>
-              </div>
-              <h4 className="mb-2 mt-4 text-lg font-bold text-gray-950 dark:text-gray-50 lg:text-xl">
-                Salary and Compensation Reporting
-              </h4>
-              <p className="text-base text-gray-950 dark:text-gray-50">
-                * Employers can anonymously report aggregate salary data to
-                provide industry benchmarks
+              </summary>
+              <p className="-mt-3 pb-6 pl-6 pr-[4.25rem]">
+                <p className="text-base text-gray-950 dark:text-gray-50">
+                  * Employers can anonymously report aggregate salary data to
+                  provide industry benchmarks
+                </p>
+                <p className="text-base text-gray-950 dark:text-gray-50">
+                  * Employees can anonymously report their salary information
+                  and compare it with industry benchmarks
+                </p>
               </p>
-              <p className="text-base text-gray-950 dark:text-gray-50">
-                * Employees can anonymously report their salary information and
-                compare it with industry benchmarks
-              </p>
-            </div>
-            <div className="col-span-1 lg:col-span-6">
-              <div className="w-fit rounded-lg border border-solid border-gray-200 bg-white p-3 dark:border-gray-800 dark:bg-gray-950">
+            </details>
+            <details className="group *:text-gray-950 dark:*:text-gray-50">
+              <summary className="flex cursor-pointer list-none flex-row items-center gap-x-6 p-6 *:transition *:duration-[250ms] *:ease-in-out hover:text-blue-600 [&::-webkit-details-marker]:hidden">
+                <p className="w-full font-bold">
+                  Market Salary Benchmark Analyzers
+                </p>
                 <svg
-                  width="24"
-                  height="24"
+                  width="20"
+                  height="20"
                   viewBox="0 0 256 256"
-                  className="fill-gray-950 dark:fill-white"
+                  className="fill-gray-500 group-open:rotate-180"
                 >
-                  <path d="M100 36H56a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20V56a20 20 0 0 0-20-20Zm-4 60H60V60h36Zm104-60h-44a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20V56a20 20 0 0 0-20-20Zm-4 60h-36V60h36Zm-96 40H56a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20v-44a20 20 0 0 0-20-20Zm-4 60H60v-36h36Zm104-60h-44a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20v-44a20 20 0 0 0-20-20Zm-4 60h-36v-36h36Z" />
+                  <path d="m216.49 104.49-80 80a12 12 0 0 1-17 0l-80-80a12 12 0 0 1 17-17L128 159l71.51-71.52a12 12 0 0 1 17 17Z" />
                 </svg>
-              </div>
-              <h4 className="mb-2 mt-4 text-lg font-bold text-gray-950 dark:text-gray-50 lg:text-xl">
-                Market Salary Benchmarks
-              </h4>
-              <p className="text-base text-gray-950 dark:text-gray-50">
-                * Data on average salaries, industry benchmarks, and regional
-                variations to help employees negotiate fair wages aligned with
-                market standards.
+              </summary>
+              <p className="-mt-3 pb-6 pl-6 pr-[4.25rem]">
+                <p className="text-base text-gray-950 dark:text-gray-50">
+                  * Data on average salaries, industry benchmarks, and regional
+                  variations to help employees negotiate fair wages aligned with
+                  market standards.
+                </p>
+                <p className="text-base text-gray-950 dark:text-gray-50">
+                  * Employees can compare their current salaries against market
+                  averages to ensure they're being compensated fairly.
+                </p>
               </p>
-              <p className="text-base text-gray-950 dark:text-gray-50">
-                * Employees can compare their current salaries against market
-                averages to ensure they're being compensated fairly.
-              </p>
-            </div>
-            <div className="col-span-1 lg:col-span-4">
-              <div className="w-fit rounded-lg border border-solid border-gray-200 bg-white p-3 dark:border-gray-800 dark:bg-gray-950">
+            </details>
+            <details className="group *:text-gray-950 dark:*:text-gray-50">
+              <summary className="flex cursor-pointer list-none flex-row items-center gap-x-6 p-6 *:transition *:duration-[250ms] *:ease-in-out hover:text-blue-600 [&::-webkit-details-marker]:hidden">
+                <p className="w-full font-bold">
+                  Internal Pay Equity Analyzers
+                </p>
                 <svg
-                  width="24"
-                  height="24"
+                  width="20"
+                  height="20"
                   viewBox="0 0 256 256"
-                  className="fill-gray-950 dark:fill-white"
+                  className="fill-gray-500 group-open:rotate-180"
                 >
-                  <path d="M100 36H56a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20V56a20 20 0 0 0-20-20Zm-4 60H60V60h36Zm104-60h-44a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20V56a20 20 0 0 0-20-20Zm-4 60h-36V60h36Zm-96 40H56a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20v-44a20 20 0 0 0-20-20Zm-4 60H60v-36h36Zm104-60h-44a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20v-44a20 20 0 0 0-20-20Zm-4 60h-36v-36h36Z" />
+                  <path d="m216.49 104.49-80 80a12 12 0 0 1-17 0l-80-80a12 12 0 0 1 17-17L128 159l71.51-71.52a12 12 0 0 1 17 17Z" />
                 </svg>
-              </div>
-              <h4 className="mb-2 mt-4 text-lg font-bold text-gray-950 dark:text-gray-50 lg:text-xl">
-                Internal Pay Equity Analysis
-              </h4>
-              <p className="text-base text-gray-950 dark:text-gray-50">
-                * Analysis of pay gaps within companies based on factors like
-                role and experience
+              </summary>
+              <p className="-mt-3 pb-6 pl-6 pr-[4.25rem]">
+                <p className="text-base text-gray-950 dark:text-gray-50">
+                  * Analysis of pay gaps within companies based on factors like
+                  role and experience
+                </p>
+                <p className="text-base text-gray-950 dark:text-gray-50">
+                  * Employers can identify disparities and take corrective
+                  actions to ensure equitable pay practices
+                </p>
               </p>
-              <p className="text-base text-gray-950 dark:text-gray-50">
-                * Employers can identify disparities and take corrective actions
-                to ensure equitable pay practices
-              </p>
-            </div>
-            <div className="col-span-1 lg:col-span-4">
-              <div className="w-fit rounded-lg border border-solid border-gray-200 bg-white p-3 dark:border-gray-800 dark:bg-gray-950">
+            </details>
+            <details className="group *:text-gray-950 dark:*:text-gray-50">
+              <summary className="flex cursor-pointer list-none flex-row items-center gap-x-6 p-6 *:transition *:duration-[250ms] *:ease-in-out hover:text-blue-600 [&::-webkit-details-marker]:hidden">
+                <p className="w-full font-bold"> Trend Analyzers</p>
                 <svg
-                  width="24"
-                  height="24"
+                  width="20"
+                  height="20"
                   viewBox="0 0 256 256"
-                  className="fill-gray-950 dark:fill-white"
+                  className="fill-gray-500 group-open:rotate-180"
                 >
-                  <path d="M100 36H56a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20V56a20 20 0 0 0-20-20Zm-4 60H60V60h36Zm104-60h-44a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20V56a20 20 0 0 0-20-20Zm-4 60h-36V60h36Zm-96 40H56a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20v-44a20 20 0 0 0-20-20Zm-4 60H60v-36h36Zm104-60h-44a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20v-44a20 20 0 0 0-20-20Zm-4 60h-36v-36h36Z" />
+                  <path d="m216.49 104.49-80 80a12 12 0 0 1-17 0l-80-80a12 12 0 0 1 17-17L128 159l71.51-71.52a12 12 0 0 1 17 17Z" />
                 </svg>
-              </div>
-              <h4 className="mb-2 mt-4 text-lg font-bold text-gray-950 dark:text-gray-50 lg:text-xl">
-                Trend Analysis
-              </h4>
-              <p className="text-base text-gray-950 dark:text-gray-50">
-                * Identification of salary trends over time, considering factors
-                like inflation, industry growth, or economic conditions
+              </summary>
+              <p className="-mt-3 pb-6 pl-6 pr-[4.25rem]">
+                <p className="text-base text-gray-950 dark:text-gray-50">
+                  * Identification of salary trends over time, considering
+                  factors like inflation, industry growth, or economic
+                  conditions
+                </p>
+                <p className="text-base text-gray-950 dark:text-gray-50">
+                  * Both employees and employers can make informed decisions
+                  regarding salary adjustments or negotiations based on current
+                  trends
+                </p>
               </p>
-              <p className="text-base text-gray-950 dark:text-gray-50">
-                * Both employees and employers can make informed decisions
-                regarding salary adjustments or negotiations based on current
-                trends
-              </p>
-            </div>
-            <div className="col-span-1 lg:col-span-6">
-              <div className="w-fit rounded-lg border border-solid border-gray-200 bg-white p-3 dark:border-gray-800 dark:bg-gray-950">
+            </details>
+            <details className="group *:text-gray-950 dark:*:text-gray-50">
+              <summary className="flex cursor-pointer list-none flex-row items-center gap-x-6 p-6 *:transition *:duration-[250ms] *:ease-in-out hover:text-blue-600 [&::-webkit-details-marker]:hidden">
+                <p className="w-full font-bold">
+                  {" "}
+                  Cost of Living Adjustment Analyzers
+                </p>
                 <svg
-                  width="24"
-                  height="24"
+                  width="20"
+                  height="20"
                   viewBox="0 0 256 256"
-                  className="fill-gray-950 dark:fill-white"
+                  className="fill-gray-500 group-open:rotate-180"
                 >
-                  <path d="M100 36H56a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20V56a20 20 0 0 0-20-20Zm-4 60H60V60h36Zm104-60h-44a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20V56a20 20 0 0 0-20-20Zm-4 60h-36V60h36Zm-96 40H56a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20v-44a20 20 0 0 0-20-20Zm-4 60H60v-36h36Zm104-60h-44a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20v-44a20 20 0 0 0-20-20Zm-4 60h-36v-36h36Z" />
+                  <path d="m216.49 104.49-80 80a12 12 0 0 1-17 0l-80-80a12 12 0 0 1 17-17L128 159l71.51-71.52a12 12 0 0 1 17 17Z" />
                 </svg>
-              </div>
-              <h4 className="mb-2 mt-4 text-lg font-bold text-gray-950 dark:text-gray-50 lg:text-xl">
-                Cost of Living Adjustments
-              </h4>
-              <p className="text-base text-gray-950 dark:text-gray-50">
-                * Data on regional cost of living variations to adjust salary
-                expectations accordingly.
+              </summary>
+              <p className="-mt-3 pb-6 pl-6 pr-[4.25rem]">
+                <p className="text-base text-gray-950 dark:text-gray-50">
+                  * Data on regional cost of living variations to adjust salary
+                  expectations accordingly.
+                </p>
+                <p className="text-base text-gray-950 dark:text-gray-50">
+                  * Employers can offer competitive salaries that reflect the
+                  local cost of living, improving employee satisfaction and
+                  retention
+                </p>
               </p>
-              <p className="text-base text-gray-950 dark:text-gray-50">
-                * Employers can offer competitive salaries that reflect the
-                local cost of living, improving employee satisfaction and
-                retention
-              </p>
-            </div>
-            <div className="col-span-1 lg:col-span-6">
-              <div className="w-fit rounded-lg border border-solid border-gray-200 bg-white p-3 dark:border-gray-800 dark:bg-gray-950">
+            </details>
+            <details className="group *:text-gray-950 dark:*:text-gray-50">
+              <summary className="flex cursor-pointer list-none flex-row items-center gap-x-6 p-6 *:transition *:duration-[250ms] *:ease-in-out hover:text-blue-600 [&::-webkit-details-marker]:hidden">
+                <p className="w-full font-bold">
+                  {" "}
+                  Performance and Compensation Correlation Analyzers
+                </p>
                 <svg
-                  width="24"
-                  height="24"
+                  width="20"
+                  height="20"
                   viewBox="0 0 256 256"
-                  className="fill-gray-950 dark:fill-white"
+                  className="fill-gray-500 group-open:rotate-180"
                 >
-                  <path d="M100 36H56a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20V56a20 20 0 0 0-20-20Zm-4 60H60V60h36Zm104-60h-44a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20V56a20 20 0 0 0-20-20Zm-4 60h-36V60h36Zm-96 40H56a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20v-44a20 20 0 0 0-20-20Zm-4 60H60v-36h36Zm104-60h-44a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20v-44a20 20 0 0 0-20-20Zm-4 60h-36v-36h36Z" />
+                  <path d="m216.49 104.49-80 80a12 12 0 0 1-17 0l-80-80a12 12 0 0 1 17-17L128 159l71.51-71.52a12 12 0 0 1 17 17Z" />
                 </svg>
-              </div>
-              <h4 className="mb-2 mt-4 text-lg font-bold text-gray-950 dark:text-gray-50 lg:text-xl">
-                Performance and Compensation Correlation
-              </h4>
-              <p className="text-base text-gray-950 dark:text-gray-50">
-                * Analysis of how performance metrics correlate with
-                compensation levels within organizations
+              </summary>
+              <p className="-mt-3 pb-6 pl-6 pr-[4.25rem]">
+                <p className="text-base text-gray-950 dark:text-gray-50">
+                  * Analysis of how performance metrics correlate with
+                  compensation levels within organizations
+                </p>
+                <p className="text-base text-gray-950 dark:text-gray-50">
+                  * Employers can align performance reviews and compensation
+                  decisions more objectively, rewarding high performers
+                  appropriately
+                </p>
               </p>
-              <p className="text-base text-gray-950 dark:text-gray-50">
-                * Employers can align performance reviews and compensation
-                decisions more objectively, rewarding high performers
-                appropriately
-              </p>
-            </div>
-            <div className="col-span-1 lg:col-span-4">
-              <div className="w-fit rounded-lg border border-solid border-gray-200 bg-white p-3 dark:border-gray-800 dark:bg-gray-950">
+            </details>
+            <details className="group *:text-gray-950 dark:*:text-gray-50">
+              <summary className="flex cursor-pointer list-none flex-row items-center gap-x-6 p-6 *:transition *:duration-[250ms] *:ease-in-out hover:text-blue-600 [&::-webkit-details-marker]:hidden">
+                <p className="w-full font-bold">
+                  {" "}
+                  Benefits and Perks Analyzers
+                </p>
                 <svg
-                  width="24"
-                  height="24"
+                  width="20"
+                  height="20"
                   viewBox="0 0 256 256"
-                  className="fill-gray-950 dark:fill-white"
+                  className="fill-gray-500 group-open:rotate-180"
                 >
-                  <path d="M100 36H56a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20V56a20 20 0 0 0-20-20Zm-4 60H60V60h36Zm104-60h-44a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20V56a20 20 0 0 0-20-20Zm-4 60h-36V60h36Zm-96 40H56a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20v-44a20 20 0 0 0-20-20Zm-4 60H60v-36h36Zm104-60h-44a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20v-44a20 20 0 0 0-20-20Zm-4 60h-36v-36h36Z" />
+                  <path d="m216.49 104.49-80 80a12 12 0 0 1-17 0l-80-80a12 12 0 0 1 17-17L128 159l71.51-71.52a12 12 0 0 1 17 17Z" />
                 </svg>
-              </div>
-              <h4 className="mb-2 mt-4 text-lg font-bold text-gray-950 dark:text-gray-50 lg:text-xl">
-                Benefits and Perks Analysis
-              </h4>
-              <p className="text-base text-gray-950 dark:text-gray-50">
-                * Data on common benefits and perks offered in similar roles or
-                industries
+              </summary>
+              <p className="-mt-3 pb-6 pl-6 pr-[4.25rem]">
+                <p className="text-base text-gray-950 dark:text-gray-50">
+                  * Data on common benefits and perks offered in similar roles
+                  or industries
+                </p>
+                <p className="text-base text-gray-950 dark:text-gray-50">
+                  * Employers can enhance their compensation packages with
+                  competitive benefits, attracting and retaining top talent
+                </p>
               </p>
-              <p className="text-base text-gray-950 dark:text-gray-50">
-                * Employers can enhance their compensation packages with
-                competitive benefits, attracting and retaining top talent
-              </p>
-            </div>
-            <div className="col-span-1 lg:col-span-4">
-              <div className="w-fit rounded-lg border border-solid border-gray-200 bg-white p-3 dark:border-gray-800 dark:bg-gray-950">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 256 256"
-                  className="fill-gray-950 dark:fill-white"
-                >
-                  <path d="M100 36H56a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20V56a20 20 0 0 0-20-20Zm-4 60H60V60h36Zm104-60h-44a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20V56a20 20 0 0 0-20-20Zm-4 60h-36V60h36Zm-96 40H56a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20v-44a20 20 0 0 0-20-20Zm-4 60H60v-36h36Zm104-60h-44a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20v-44a20 20 0 0 0-20-20Zm-4 60h-36v-36h36Z" />
-                </svg>
-              </div>
-              <h4 className="mb-2 mt-4 text-lg font-bold text-gray-950 dark:text-gray-50 lg:text-xl">
-                Compliance and Regulatory Insights
-              </h4>
-              <p className="text-base text-gray-950 dark:text-gray-50">
-                * Updates on labor laws and regulations related to fair pay
-                practices
-              </p>
-              <p className="text-base text-gray-950 dark:text-gray-50">
-                * Ensuring that employers are compliant with local and national
-                laws regarding minimum wage, equal pay, and non-discrimination
-                policies
-              </p>
-            </div>
-            <div className="col-span-1 lg:col-span-6">
-              <div className="w-fit rounded-lg border border-solid border-gray-200 bg-white p-3 dark:border-gray-800 dark:bg-gray-950">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 256 256"
-                  className="fill-gray-950 dark:fill-white"
-                >
-                  <path d="M100 36H56a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20V56a20 20 0 0 0-20-20Zm-4 60H60V60h36Zm104-60h-44a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20V56a20 20 0 0 0-20-20Zm-4 60h-36V60h36Zm-96 40H56a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20v-44a20 20 0 0 0-20-20Zm-4 60H60v-36h36Zm104-60h-44a20 20 0 0 0-20 20v44a20 20 0 0 0 20 20h44a20 20 0 0 0 20-20v-44a20 20 0 0 0-20-20Zm-4 60h-36v-36h36Z" />
-                </svg>
-              </div>
-              <h4 className="mb-2 mt-4 text-lg font-bold text-gray-950 dark:text-gray-50 lg:text-xl">
-                Employee Satisfaction and Engagement
-              </h4>
-              <p className="text-base text-gray-950 dark:text-gray-50">
-                * Feedback and survey data on how satisfied employees are with
-                their compensation and benefits within countries, industries,
-                companies and organizations
-              </p>
-              <p className="text-base text-gray-950 dark:text-gray-50">
-                * Employers can use this data to improve satisfaction levels,
-                leading to higher engagement and productivity
-              </p>
-            </div>
+            </details>
           </div>
         </div>
       </section>
@@ -319,14 +286,13 @@ const LandingPage = () => {
                 <p className="text-3xl font-bold lg:text-4xl">
                   $0
                   <span className="text-sm font-normal text-gray-700 dark:text-gray-300">
-                    {" "}
                     / month
                   </span>
                 </p>
                 <p className="text-base">Free of Charge</p>
               </div>
               <a
-                href="#"
+                href="."
                 className="w-full rounded-lg bg-white px-5 py-3 text-center text-base font-medium text-gray-950 ring-1 ring-gray-200 transition duration-[250ms] ease-in-out hover:bg-gray-50 dark:bg-gray-950 dark:text-gray-50 dark:ring-gray-800 dark:hover:bg-gray-900"
               >
                 Get Started
@@ -416,7 +382,7 @@ const LandingPage = () => {
                 <p className="text-base">Basic + All the below</p>
               </div>
               <a
-                href="#"
+                href="."
                 className="w-full rounded-lg bg-blue-600 px-5 py-3 text-center text-base font-medium text-white transition duration-[250ms] ease-in-out hover:bg-blue-700"
               >
                 Get Started
@@ -496,118 +462,119 @@ const LandingPage = () => {
           </p>
         </div>
       </section>
-      {/* FAQ */}
-      <section className="bg-white dark:bg-gray-950">
-        <div className="mx-auto flex max-w-[52.5rem] flex-col items-center gap-y-16 px-6 lg:max-w-[78rem]">
-          <div className="mx-auto max-w-[36.75rem] text-center *:text-gray-950 dark:*:text-gray-50">
-            <h2 className="mb-3 text-3xl font-bold lg:text-4xl">
-              About PaySight
-            </h2>
-          </div>
-          <div className="flex w-full flex-col items-center gap-6 text-base *:w-full *:rounded-lg *:border *:border-solid *:border-gray-200 dark:*:border-gray-800 lg:max-w-[49.5rem]">
-            <details className="group *:text-gray-950 dark:*:text-gray-50">
-              <summary className="flex cursor-pointer list-none flex-row items-center gap-x-6 p-6 *:transition *:duration-[250ms] *:ease-in-out hover:text-blue-600 [&::-webkit-details-marker]:hidden">
-                <p className="w-full font-bold">Why Us?</p>
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 256 256"
-                  className="fill-gray-500 group-open:rotate-180"
-                >
-                  <path d="m216.49 104.49-80 80a12 12 0 0 1-17 0l-80-80a12 12 0 0 1 17-17L128 159l71.51-71.52a12 12 0 0 1 17 17Z" />
-                </svg>
-              </summary>
-              <p className="-mt-3 pb-6 pl-6 pr-[4.25rem]">
-                Most Professionals across the world are often compensated less
-                and most especially on the part of their counterparts in the
-                developing world, despite most times doing the same job and in
-                the same company or otherwise.
-              </p>
-            </details>
-            <details className="group *:text-gray-950 dark:*:text-gray-50">
-              <summary className="flex cursor-pointer list-none flex-row items-center gap-x-6 p-6 *:transition *:duration-[250ms] *:ease-in-out hover:text-blue-600 [&::-webkit-details-marker]:hidden">
-                <p className="w-full font-bold">The Issue</p>
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 256 256"
-                  className="fill-gray-500 group-open:rotate-180"
-                >
-                  <path d="m216.49 104.49-80 80a12 12 0 0 1-17 0l-80-80a12 12 0 0 1 17-17L128 159l71.51-71.52a12 12 0 0 1 17 17Z" />
-                </svg>
-              </summary>
-              <p className="-mt-3 pb-6 pl-6 pr-[4.25rem]">
-                This pay disparity, known as &rsquo;geographic pay
-                discrimination&rsquo; or &rsquo;pay arbitrage&rsquo;, is unfair
-                and driven by market forces exploiting employees and lower
-                living costs and weaker labor protections in developing
-                countries.
-              </p>
-            </details>
-            <details className="group *:text-gray-950 dark:*:text-gray-50">
-              <summary className="flex cursor-pointer list-none flex-row items-center gap-x-6 p-6 *:transition *:duration-[250ms] *:ease-in-out hover:text-blue-600 [&::-webkit-details-marker]:hidden">
-                <p className="w-full font-bold">The Solution</p>
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 256 256"
-                  className="fill-gray-500 group-open:rotate-180"
-                >
-                  <path d="m216.49 104.49-80 80a12 12 0 0 1-17 0l-80-80a12 12 0 0 1 17-17L128 159l71.51-71.52a12 12 0 0 1 17 17Z" />
-                </svg>
-              </summary>
-              <p className="-mt-3 pb-6 pl-6 pr-[4.25rem]">
-                PaySight is a platform where Professionals can anonymously
-                report their job data to compare pay and other data across
-                different countries. The tool compares wages across countries,
-                industries, companies and organizations, providing fair wage
-                recommendations.
-                {/* based on
-          qualifications, job responsibilities and experience, excluding cost
-          of living or geographical location.  */}
-                It also tracks inflation and other data, adjusting pay
-                accordingly and ensuring fair pay for all.
-              </p>
-            </details>
-          </div>
-          <p className="mx-auto max-w-[36.75rem] text-center text-sm text-gray-700 dark:text-gray-300">
-            Have more questions?{" "}
-            <a
-              href="#"
-              className="font-medium text-blue-600 transition duration-[250ms] ease-in-out hover:text-blue-700"
-            >
-              Send us an email
-            </a>
-            .
-          </p>
-        </div>
-      </section>
-      {/* CTA */}
-      <section className="bg-white dark:bg-gray-950">
-        <div className="mx-auto max-w-[52.5rem] px-6 py-32 lg:max-w-[78rem]">
-          <div className="mx-auto flex flex-col items-center gap-6 rounded-lg bg-gray-50 px-6 py-20 dark:bg-gray-900 lg:max-w-[49.5rem] lg:px-20">
-            <div className="w-full max-w-[36.75rem] *:text-center *:text-gray-950 dark:*:text-gray-50">
-              <h3 className="mb-3 text-2xl font-bold xl:text-3xl">
-                Ready to get started?
-              </h3>
-              <p className="text-base">
-                PaySight is free to use. Start by getting an account.
-              </p>
+      <div className="flex flex-col lg:flex-row">
+        {/* FAQ */}
+        <section className="w-full bg-white dark:bg-gray-950 lg:w-1/2">
+          <div className="mx-auto flex w-full flex-col items-center gap-y-16 px-6 py-8">
+            <div className="mx-auto max-w-[36.75rem] text-center text-gray-950 dark:text-gray-50">
+              <h2 className="mb-3 text-3xl font-bold lg:text-4xl">
+                About PaySight
+              </h2>
             </div>
-            <div className="flex w-full max-w-[36.75rem] flex-col items-center justify-center gap-4 *:w-full *:rounded-lg *:px-5 *:py-3 *:text-center *:text-base *:font-medium *:transition *:duration-[250ms] *:ease-in-out lg:max-w-fit lg:flex-row lg:*:w-auto">
-              <a href="#" className="bg-blue-600 text-white hover:bg-blue-700">
-                Get Started
-              </a>
+            <div className="flex w-full flex-col items-center gap-6 rounded-lg border border-solid border-gray-200 text-base dark:border-gray-800 lg:max-w-[49.5rem]">
+              <details className="group text-gray-950 dark:text-gray-50">
+                <summary className="flex cursor-pointer list-none flex-row items-center gap-x-6 p-6 transition duration-[250ms] ease-in-out hover:text-blue-600 [&::-webkit-details-marker]:hidden">
+                  <p className="w-full font-bold">Why Us?</p>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 256 256"
+                    className="fill-gray-500 group-open:rotate-180"
+                  >
+                    <path d="m216.49 104.49-80 80a12 12 0 0 1-17 0l-80-80a12 12 0 0 1 17-17L128 159l71.51-71.52a12 12 0 0 1 17 17Z" />
+                  </svg>
+                </summary>
+                <p className="-mt-3 pb-6 pl-6 pr-[4.25rem]">
+                  Most Professionals across the world are often compensated less
+                  and most especially on the part of their counterparts in the
+                  developing world, despite most times doing the same job and in
+                  the same company or otherwise.
+                </p>
+              </details>
+              <details className="group text-gray-950 dark:text-gray-50">
+                <summary className="flex cursor-pointer list-none flex-row items-center gap-x-6 p-6 transition duration-[250ms] ease-in-out hover:text-blue-600 [&::-webkit-details-marker]:hidden">
+                  <p className="w-full font-bold">The Issue</p>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 256 256"
+                    className="fill-gray-500 group-open:rotate-180"
+                  >
+                    <path d="m216.49 104.49-80 80a12 12 0 0 1-17 0l-80-80a12 12 0 0 1 17-17L128 159l71.51-71.52a12 12 0 0 1 17 17Z" />
+                  </svg>
+                </summary>
+                <p className="-mt-3 pb-6 pl-6 pr-[4.25rem]">
+                  This pay disparity, known as &rsquo;geographic pay
+                  discrimination&rsquo; or &rsquo;pay arbitrage&rsquo;, is
+                  unfair and driven by market forces exploiting employees and
+                  lower living costs and weaker labor protections in developing
+                  countries.
+                </p>
+              </details>
+              <details className="group text-gray-950 dark:text-gray-50">
+                <summary className="flex cursor-pointer list-none flex-row items-center gap-x-6 p-6 transition duration-[250ms] ease-in-out hover:text-blue-600 [&::-webkit-details-marker]:hidden">
+                  <p className="w-full font-bold">The Solution</p>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 256 256"
+                    className="fill-gray-500 group-open:rotate-180"
+                  >
+                    <path d="m216.49 104.49-80 80a12 12 0 0 1-17 0l-80-80a12 12 0 0 1 17-17L128 159l71.51-71.52a12 12 0 0 1 17 17Z" />
+                  </svg>
+                </summary>
+                <p className="-mt-3 pb-6 pl-6 pr-[4.25rem]">
+                  PaySight is a platform where Professionals can anonymously
+                  report their job data to compare pay and other data across
+                  different countries. The tool compares wages across countries,
+                  industries, companies and organizations, providing fair wage
+                  recommendations. It also tracks inflation and other data,
+                  adjusting pay accordingly and ensuring fair pay for all.
+                </p>
+              </details>
+            </div>
+            <p className="mx-auto max-w-[36.75rem] text-center text-sm text-gray-700 dark:text-gray-300">
+              Have more questions?{" "}
               <a
-                href="#"
-                className="bg-white text-gray-950 ring-1 ring-gray-200 hover:bg-gray-50 dark:bg-gray-950 dark:text-gray-50 dark:ring-gray-800 dark:hover:bg-gray-900"
+                href="."
+                className="font-medium text-blue-600 transition duration-[250ms] ease-in-out hover:text-blue-700"
               >
-                Learn More
+                Send us an email
               </a>
+              .
+            </p>
+          </div>
+        </section>
+        {/* CTA */}
+        <section className="w-full bg-white dark:bg-gray-950 lg:w-1/2">
+          <div className="mx-auto w-full px-6 py-32">
+            <div className="mx-auto flex flex-col items-center gap-6 rounded-lg bg-gray-50 px-6 py-20 dark:bg-gray-900 lg:px-20">
+              <div className="w-full max-w-[36.75rem] text-center text-gray-950 dark:text-gray-50">
+                <h3 className="mb-3 text-2xl font-bold xl:text-3xl">
+                  Ready to get started?
+                </h3>
+                <p className="text-base">
+                  PaySight is free to use. Start by getting an account.
+                </p>
+              </div>
+              <div className="flex w-full w-full max-w-[36.75rem] flex-col items-center justify-center gap-4 rounded-lg px-5 py-3 text-center text-base font-medium transition duration-[250ms] ease-in-out lg:w-auto lg:max-w-fit lg:flex-row">
+                <a
+                  href="."
+                  className="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+                >
+                  Get Started
+                </a>
+                <a
+                  href="."
+                  className="rounded-lg bg-white px-4 py-2 text-gray-950 ring-1 ring-gray-200 hover:bg-gray-50 dark:bg-gray-950 dark:text-gray-50 dark:ring-gray-800 dark:hover:bg-gray-900"
+                >
+                  Learn More
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
       {/* TESTIMONIALS */}
       <section className="bg-white dark:bg-gray-950">
         <div className="mx-auto px-6 py-32">
