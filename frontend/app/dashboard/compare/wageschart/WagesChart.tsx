@@ -105,7 +105,7 @@ export default function WagesChart() {
 
   return (
     <div className="w-full bg-white dark:bg-gray-800 dark:text-gray-50">
-      <div className="p-4">
+      <div className="p-5">
         <div className="w-full bg-white dark:bg-gray-800 dark:text-gray-50">
           <Chart
             options={options}
