@@ -111,7 +111,7 @@ const data = {
   },
   employeeData: [
     {
-      name: "John Doe",
+      name: "**** *****",
       role: "Engineer",
       experience: "5 years",
       salary: "$80,000",
@@ -119,7 +119,7 @@ const data = {
       location: "New York",
     },
     {
-      name: "Jane Smith",
+      name: "***** ****",
       role: "Manager",
       experience: "8 years",
       salary: "$95,000",
@@ -252,7 +252,7 @@ export default function PayEquityAnalyzer() {
         </div>
         <div className="bg-white p-5 shadow-sm dark:bg-gray-800">
           <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
-            Salary Distribution by Department
+            Department Salary Breakdown
           </h2>
           <Pie
             data={data.departmentBreakdown}
@@ -264,7 +264,7 @@ export default function PayEquityAnalyzer() {
         </div>
         <div className="bg-white p-5 shadow-sm dark:bg-gray-800">
           <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
-            Performance and Compensation Correlation
+            Performance vs Compensation
           </h2>
           <Scatter
             data={data.performanceCompensation}
@@ -276,18 +276,18 @@ export default function PayEquityAnalyzer() {
         </div>
         <div className="bg-white p-5 shadow-sm dark:bg-gray-800">
           <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
-            Benefits and Perks Analysis
+            Benefits and Perks Comparison
           </h2>
-          <Table hoverable>
+          <Table>
             <Table.Head>
               <Table.HeadCell>Benefit</Table.HeadCell>
-              <Table.HeadCell>Average Offering (%)</Table.HeadCell>
+              <Table.HeadCell>Average Score (%)</Table.HeadCell>
             </Table.Head>
             <Table.Body>
               {data.benefitsAndPerks.map((perk) => (
                 <Table.Row key={perk.benefit}>
                   <Table.Cell>{perk.benefit}</Table.Cell>
-                  <Table.Cell>{perk.average}%</Table.Cell>
+                  <Table.Cell>{perk.average}</Table.Cell>
                 </Table.Row>
               ))}
             </Table.Body>
@@ -295,7 +295,7 @@ export default function PayEquityAnalyzer() {
         </div>
         <div className="bg-white p-5 shadow-sm dark:bg-gray-800">
           <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
-            Cost of Living Adjustments
+            Cost of Living Index
           </h2>
           <Bar
             data={data.costOfLiving}
@@ -307,12 +307,12 @@ export default function PayEquityAnalyzer() {
         </div>
       </div>
 
-      {/* Pay Equity Table */}
-      <div className="bg-white p-5 shadow-sm dark:bg-gray-800">
+      {/* Employee Salary Details Table */}
+      <div className="overflow-x-auto bg-white p-5 shadow-sm dark:bg-gray-800">
         <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
           Employee Salary Details
         </h2>
-        <Table hoverable>
+        <Table>
           <Table.Head>
             <Table.HeadCell>Name</Table.HeadCell>
             <Table.HeadCell>Role</Table.HeadCell>
@@ -327,47 +327,13 @@ export default function PayEquityAnalyzer() {
                 <Table.Cell>{employee.name}</Table.Cell>
                 <Table.Cell>{employee.role}</Table.Cell>
                 <Table.Cell>{employee.experience}</Table.Cell>
-                <Table.Cell>
-                  {calculateAdjustedSalary(
-                    employee.role,
-                    parseInt(employee.experience.split(" ")[0]),
-                    employee.location,
-                  )}
-                </Table.Cell>
+                <Table.Cell>{employee.salary}</Table.Cell>
                 <Table.Cell>{employee.gender}</Table.Cell>
                 <Table.Cell>{employee.location}</Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>
         </Table>
-      </div>
-
-      {/* Insights & Recommendations */}
-      <div className="mt-6 bg-white p-5 shadow-sm dark:bg-gray-800">
-        <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
-          Insights & Recommendations
-        </h2>
-        <p className="text-gray-700 dark:text-gray-300">
-          Based on the analysis, here are some key insights and recommendations
-          to address pay disparities:
-        </p>
-        <ul className="mt-4 list-inside list-disc text-gray-700 dark:text-gray-300">
-          <li>
-            Review salary ranges for different roles to ensure competitiveness.
-          </li>
-          <li>
-            Consider performance-based adjustments for roles with significant
-            salary gaps.
-          </li>
-          <li>
-            Implement transparent salary bands and career progression paths to
-            promote fairness.
-          </li>
-          <li>
-            Adjust salaries based on regional cost of living to enhance employee
-            satisfaction.
-          </li>
-        </ul>
       </div>
     </div>
   );
