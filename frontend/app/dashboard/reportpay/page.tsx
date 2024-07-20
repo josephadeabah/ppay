@@ -1,7 +1,7 @@
 "use client";
-import ComplianceForm from "@/components/forms/ComplianceForm";
-import EmployeeForm from "@/components/forms/EmployeeForm";
-import EmployerForm from "@/components/forms/EmployerForm";
+import ComplianceForm from "@/app/dashboard/reportpay/forms/ComplianceForm";
+import EmployeeForm from "@/app/dashboard/reportpay/forms/EmployeeForm";
+import EmployerForm from "@/app/dashboard/reportpay/forms/EmployerForm";
 import { useState } from "react";
 
 export default function ReportPay() {
