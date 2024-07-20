@@ -27,7 +27,7 @@ const users = [
     experience: "3 years",
     country: "UK",
     industry: "Design",
-    category: "Freelance",
+    category: "Employee",
     company: "DesignCo",
     actualSalary: "$70,000",
     avatar:
@@ -126,12 +126,6 @@ export default function UsersPage() {
                       scope="col"
                       className="p-4 text-left text-xs font-medium uppercase text-gray-700 dark:text-gray-400"
                     >
-                      Role
-                    </th>
-                    <th
-                      scope="col"
-                      className="p-4 text-left text-xs font-medium uppercase text-gray-700 dark:text-gray-400"
-                    >
                       Status
                     </th>
                     <th
@@ -204,14 +198,8 @@ export default function UsersPage() {
                               <div className="text-base font-semibold text-gray-900 dark:text-white">
                                 {user.name}
                               </div>
-                              <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
-                                {user.role}
-                              </div>
                             </div>
                           </div>
-                        </td>
-                        <td className="whitespace-nowrap p-4 text-sm font-normal">
-                          {user.role}
                         </td>
                         <td className="whitespace-nowrap p-4 text-sm font-normal">
                           {user.status}
@@ -240,7 +228,7 @@ export default function UsersPage() {
                         <td className="whitespace-nowrap p-4 text-sm font-normal">
                           <button
                             onClick={() => toggleRow(user.id)}
-                            className="text-primary-600 hover:underline dark:text-primary-500"
+                            className="text-primary-600 dark:text-primary-500"
                           >
                             {expandedRow === user.id ? "Hide" : "Show"}
                           </button>
