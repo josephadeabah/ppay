@@ -43,13 +43,13 @@ const LandingPage = () => {
             </div>
           </div>
           <img
-            src="/paysightv1.png"
+            src="/paysightv1.jpg"
             alt="#"
             className="h-auto w-full rounded-3xl object-contain lg:hidden"
           />
         </div>
         <img
-          src="/paysightv1.png"
+          src="/paysightv1.jpg"
           alt="#"
           className="hidden bg-white lg:absolute lg:right-0 lg:block lg:h-[30rem] lg:w-1/2 lg:rounded-bl-3xl lg:rounded-tl-3xl lg:object-contain"
         />
