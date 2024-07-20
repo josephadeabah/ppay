@@ -1,34 +1,29 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-* Why This System
-Software developers of any kind in Europe and America are paid better than those of their developing world counterparts even though developers of these different worlds may be working in the same company with same role and it's a cheat
-
-This issue, sometimes called "geographic pay discrimination" or "pay arbitrage," is a real concern in the global economy. It's not fair for companies to pay workers less just because they're located in a developing country, especially if they're doing the same work as their counterparts in Europe and America.
-Unfortunately, this issue is often driven by market forces and the fact that companies can get away with paying lower wages in developing countries because of lower living costs and weaker labor protections.
-
-I want us to address it and find solution. This software could possibly provide
-
-
-A platform for global wage transparency: This could be a platform where workers from different countries can anonymously report their wages and job descriptions, so that others can compare their pay with that of their counterparts in other countries.
-A pay equity calculator: This could be a tool that compares wages across different countries and industries, and provides recommendations for fair wages based on factors like qualification and experience and job responsibilities but not cost of living or location. A platform for negotiating fair pay.
-
-
-Addressing the issue of geographic pay discrimination in the software development industry requires innovative solutions that can provide transparency, equity, and negotiation support. Here are three software solutions that could help tackle this issue and their potential impact:
-
 ### 1. **Platform for Global Wage Transparency**
 
-**Description:**
-- A web-based platform where software developers can anonymously report their wages, job descriptions, and locations.
-- Users can compare their salaries with others in similar roles across different countries.
-- The platform can aggregate data to provide insights on global wage trends, discrepancies, and pay gaps.
+This README describes the purpose of this app and all endpoints created. To get the service up and running on your local machine. Go to the individual repositories for more details.
+
+**Why This Platform:**
+Most Professionals across the world are often compensated less and most especially on the part of their counterparts in the developing world, despite most times doing the same job and in the same company or otherwise.
+
+**The Issue**
+
+This pay disparity, known as `geographic pay discrimination` or `pay arbitrage`, is unfair and driven by market forces exploiting employees and lower living costs and weaker labor protections in developing countries.
+
+**The Solution**
+
+PaySight is a platform where Professionals can anonymously report their job data to compare pay and other data across different countries. The tool compares wages across countries, industries, companies and organizations. The platform aggregate data to provide insights on global wage trends, discrepancies, and pay gaps providing fair wage recommendations. It also tracks inflation and other data, adjusting pay accordingly and ensuring fair pay for all.
 
 **Features:**
 - Anonymous wage reporting.
-- Job role and description standardization for accurate comparisons.
+- Job role and description comparisons and standardization.
+- Wages and Salaries comparison tools
 - Data visualization tools to highlight wage disparities.
+- Pay Benchmarks
+- Pay Trends
+- Inflation 
+- Pay Equity Analyzer
 - Community forums for discussion and support.
 
 **Impact:**
@@ -36,14 +31,13 @@ Addressing the issue of geographic pay discrimination in the software developmen
 - **Employer Accountability:** Companies may face pressure to address pay disparities when such information is publicly available.
 - **Policy Advocacy:** Data can be used by labor rights organizations to advocate for fair pay policies globally.
 
-### 2. **Pay Equity Calculator**
+### 1 a. **Pay Equity Calculator**
 
 **Description:**
 - A tool that compares wages across different countries and industries.
-- Provides recommendations for fair wages based on qualifications, experience, and job responsibilities, excluding cost of living as a factor.
+- Provides recommendations for fair wages based on qualifications, experience, job responsibilities, excluding cost of living and other factors.
 
 **Features:**
-- Input fields for job title, qualifications, experience, and job responsibilities.
 - Algorithms to calculate fair wage recommendations based on global standards.
 - Reports and analytics to help employees and employers understand fair pay benchmarks.
 
@@ -52,10 +46,10 @@ Addressing the issue of geographic pay discrimination in the software developmen
 - **Standardized Pay Practices:** Encourages companies to adopt standardized pay practices, reducing geographic pay discrimination.
 - **Enhanced Employer Branding:** Companies that adopt fair pay practices can attract top talent by showcasing their commitment to wage equity.
 
-### 3. **Platform for Negotiating Fair Pay**
+### 1 b. **Negotiation Tools**
 
 **Description:**
-- A platform where employees can receive support and guidance for negotiating fair pay.
+- An avenue where employees can receive support and guidance for negotiating fair pay.
 - Connects users with professional negotiators, legal advisors, and labor rights advocates.
 
 **Features:**
@@ -66,7 +60,7 @@ Addressing the issue of geographic pay discrimination in the software developmen
 
 **Impact:**
 - **Empowered Employees:** Workers can approach pay negotiations with confidence and knowledge.
-- **Reduced Exploitation:** Employees in developing countries have resources to advocate for fair compensation.
+- **Reduced Exploitation:** Employees have resources to advocate for fair compensation.
 - **Better Employee Retention:** Fair pay negotiations can lead to higher job satisfaction and reduced turnover.
 
 ### Overall Impact
@@ -81,12 +75,12 @@ Addressing the issue of geographic pay discrimination in the software developmen
 - **Employer Resistance:** Some companies may resist changes to their pay structures due to increased costs.
 - **Implementation Complexity:** Developing and maintaining these platforms requires significant resources and collaboration.
 
-By addressing these challenges and leveraging technology, these solutions can drive meaningful change towards wage equity in the globally.
+We're using this platform to address these challenges. The solutions can drive meaningful change towards wage equity globally.
 
 
 Building a software platform to address geographic pay discrimination involves multiple actors, each with specific roles and relationships. Here are the key actors and their relationships:
 
-### 1. **Users/Software Developers**
+### 1. **Users**
 - **Role:** 
   - Provide data on their wages, job descriptions, and locations.
   - Use the platform to compare wages, negotiate fair pay, and access resources.
@@ -191,7 +185,7 @@ Building a software platform to address geographic pay discrimination involves m
 - **Investors/Stakeholders** ensure the platform’s financial sustainability and growth.
 
 
-Designing the user interface (UI) for a platform addressing geographic pay discrimination involves creating a seamless and intuitive experience for all the actors involved. Here’s a conceptual overview of how each actor’s interactions might be presented in the UI:
+Designing the user interface (UI) for a platform addressing geographic pay discrimination involves creating a seamless and intuitive experience for all the actors involved. Here’s a conceptual overview of how each actor’s interactions might be presented in the UI. To see the visual representation of the UI's bigger picture visit the website or get the app up and running on your local machine by cloning the repository.
 
 ### 1. **Users/Software Developers**
 
@@ -327,7 +321,7 @@ Designing the user interface (UI) for a platform addressing geographic pay discr
 
 To position Payage as an effective intermediary between employers and employees for salary negotiations, you can incorporate several features and strategies to facilitate and mediate the negotiation process. Here are some key steps and features to consider:
 
-### Features for Payage to Mediate Salary Negotiations:
+### Features for Paysight to Mediate Salary Negotiations:
 
 1. **Employee Profile Creation**:
    - **Feature**: Allow employees to create detailed profiles that include their current role, skills, experience, performance metrics, and salary expectations.
@@ -375,26 +369,8 @@ To position Payage as an effective intermediary between employers and employees 
 4. **Scalability**:
    - Build scalable solutions to handle a growing number of users and negotiations. Use robust technology stacks and cloud services to ensure reliability and performance.
 
-By offering these features, Payage can effectively stand as an intermediary that not only provides data-driven insights but also actively supports and facilitates fair salary negotiations between employees and employers. This approach can significantly enhance the value proposition of Payage and position it as a trusted platform in the job market.
+By offering these features, Paysight can effectively stand as an intermediary that not only provides data-driven insights but also actively supports and facilitates fair salary negotiations between employees and employers. This approach can significantly enhance the value proposition of Paysight and position it as a trusted platform in the job market.
 
-Things you may want to cover:
+### Enpoints development and testing:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* Backend Development guide: https://chatgpt.com/share/bb8a82d4-f805-4e15-96af-25ee7d53c5f3 / https://chatgpt.com/share/bd8ae83b-d19a-4b81-99c9-201b0809551e
-
-* ...
+1. **User endpoint**:
