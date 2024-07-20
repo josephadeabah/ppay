@@ -35,10 +35,10 @@ const LandingPage = () => {
                 Get Started
               </a>
               <a
-                href="https://pnpmmedia.com/journal/"
+                href="/dashboard"
                 className="bg-white text-gray-950 ring-1 ring-gray-200 hover:bg-gray-50 dark:bg-gray-950 dark:text-gray-50 dark:ring-gray-800 dark:hover:bg-gray-900"
               >
-                Learn More
+                View App
               </a>
             </div>
           </div>
