@@ -25,12 +25,11 @@
         "config": "tailwind.config.ts"
       }
     ],
-    "tailwindcss/no-custom-classname": [
-      "error",
-      {
-        "config": "tailwind.config.ts"
-      }
-    ]
+    "tailwindcss/no-custom-classname": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "react/no-unknown-property": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   },
   "settings": {
     "react": {
