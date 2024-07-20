@@ -262,7 +262,7 @@ export default function EmployerForm() {
           <div className="flex items-center space-x-4">
             <button
               type="submit"
-              className="rounded-lg bg-primary-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+              className="rounded-lg bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-gray-50 hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-gray-600 dark:text-gray-50 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
             >
               Submit Data
             </button>

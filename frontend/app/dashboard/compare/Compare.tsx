@@ -257,14 +257,8 @@ const Compare: React.FC = () => {
     label: item.name,
   }));
 
-  const getColor = (value: number, comparisonValue: number): string => {
-    if (value === comparisonValue) return "bg-yellow-200";
-    if (value > comparisonValue) return "bg-red-200";
-    return "bg-green-200";
-  };
-
   return (
-    <div className="flex h-screen w-full flex-col">
+    <div className="flex w-full flex-col">
       <div className="flex w-full flex-col lg:flex-row">
         <div className="flex w-full flex-col p-6 lg:w-1/2">
           <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-gray-100">
@@ -276,7 +270,7 @@ const Compare: React.FC = () => {
                 key={category}
                 className={`rounded px-4 py-2 ${
                   selectedCategory === category
-                    ? "bg-blue-500 text-gray-400"
+                    ? "bg-blue-600 text-gray-50 dark:bg-gray-600 dark:text-gray-50"
                     : "bg-gray-200 dark:bg-gray-700 dark:text-gray-200"
                 }`}
                 onClick={() => {
@@ -315,7 +309,7 @@ const Compare: React.FC = () => {
             <div className="mb-6 flex-1">
               <DropdownSelect
                 options={dropdownOptions}
-                selectedValue={selectedItem?.name || ""}
+                selectedValue={selectedItem?.name ?? ""}
                 onChange={(e) => {
                   const selectedName = e.target.value;
                   const item = categories[selectedCategory].find(

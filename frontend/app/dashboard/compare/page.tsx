@@ -1,7 +1,7 @@
 "use client";
 
-import Compare from "@/components/compare/Compare";
 import React from "react";
+import Compare from "./Compare";
 
 const ComparisonChart: React.FC = () => {
   return (
