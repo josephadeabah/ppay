@@ -29,16 +29,16 @@ const LandingPage = () => {
             </div>
             <div className="flex w-full flex-col items-center gap-4 *:w-full *:rounded-lg *:px-5 *:py-3 *:text-center *:text-base *:font-medium *:transition *:duration-[250ms] *:ease-in-out lg:flex-row lg:justify-start lg:*:w-auto">
               <a
-                href="/auth/register"
+                href="/dashboard"
                 className="bg-black text-white hover:bg-blue-700"
               >
-                Get Started
+                View App
               </a>
               <a
-                href="/dashboard"
+                href="https://www.pnpmmedia.com/articles/paysight-global-wages-and-salary-transparency-platform"
                 className="bg-white text-gray-950 ring-1 ring-gray-200 hover:bg-gray-50 dark:bg-gray-950 dark:text-gray-50 dark:ring-gray-800 dark:hover:bg-gray-900"
               >
-                View App
+                Learn More
               </a>
             </div>
           </div>
