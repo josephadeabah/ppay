@@ -41,20 +41,6 @@ export const DashboardNavbar: FC = function () {
               </Link>
             </div>
           </div>
-          <div className="hidden items-center gap-x-4 lg:flex">
-            <Link
-              href="/dashboard"
-              className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100"
-            >
-              Features
-            </Link>
-            <Link
-              href="/pricing"
-              className="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100"
-            >
-              Pricing
-            </Link>
-          </div>
           <div className="flex items-center gap-2">
             <Link
               href="/auth/login"

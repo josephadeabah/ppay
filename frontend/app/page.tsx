@@ -11,7 +11,7 @@ const LandingPage = () => {
       </header>
       {/* HERO */}
       <section className="bg-primary-600 dark:bg-gray-950 lg:relative lg:flex lg:items-center">
-        <div className=" mx-auto flex w-full max-w-[52.5rem] flex-col items-center gap-y-20 px-6 py-32 lg:max-w-[78rem] lg:items-start lg:px-0">
+        <div className=" mx-auto flex w-full flex-col items-center gap-y-20 px-6 py-32 lg:items-start lg:px-0">
           <div className="mx-auto flex max-w-[36.75rem] flex-col gap-y-5 lg:mx-0 lg:h-[30rem] lg:w-1/2 lg:max-w-[50%] lg:pl-6 lg:pr-20">
             <img
               alt=""
@@ -610,7 +610,7 @@ const LandingPage = () => {
       </section>
       {/* TESTIMONIALS */}
       <section className="bg-white dark:bg-gray-950">
-        <div className="mx-auto max-w-[52.5rem] px-6 py-32 lg:max-w-[78rem]">
+        <div className="mx-auto px-6 py-32">
           <div className="flex flex-col gap-6 *:flex *:flex-col *:gap-y-12 *:rounded-lg *:bg-gray-50 *:p-12 dark:*:bg-gray-900 lg:flex-row">
             <figure>
               <blockquote className="text-lg text-gray-950 dark:text-gray-50 lg:text-xl">
@@ -759,7 +759,7 @@ const LandingPage = () => {
       </section>
       {/* FOOTER  */}
       <footer className="bg-white dark:bg-gray-950">
-        <div className="mx-auto flex max-w-[52.5rem] flex-col items-center px-6 *:flex *:w-full *:flex-col *:items-center lg:max-w-[78rem]">
+        <div className="mx-auto flex flex-col items-center px-6 *:flex *:w-full *:flex-col *:items-center">
           <div className="gap-6 border-b border-solid border-b-gray-200 py-12 dark:border-b-gray-800 lg:flex-row">
             <div className="lg:w-full">
               <a href="#">
@@ -769,7 +769,7 @@ const LandingPage = () => {
               </a>
             </div>
             <div className="flex flex-col items-center gap-2 *:flex *:items-center *:gap-x-1.5 *:px-2 *:py-1.5 *:text-sm *:font-medium *:text-gray-950 dark:*:text-gray-50 lg:flex-row">
-              <a href="#">
+              <a href="/dashboard">
                 Features
                 <span className="flex rounded-full bg-blue-50 px-1.5 py-0.5 text-xs font-medium text-blue-600 dark:bg-blue-900 dark:text-white">
                   NEW
