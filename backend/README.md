@@ -3,101 +3,244 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-### 1. **Create user endpoints**
-Method: POST
-URL: http://localhost:3000/api/v1/users
-Headers: Content-Type: application/json
-Body (raw JSON):
-{
-  "user": {
-    "first_name": "John",
-    "last_name": "Doe",
-    "email": "john.doe@example.com",
-    "password": "password123",
-    "password_confirmation": "password123"
-  }
-}
+# Ruby and PostgreSQL Installation Guide
 
-### 1. **Create login endpoints**
-Method: POST
-URL: http://localhost:3000/api/v1/login
-Headers: Content-Type: application/json
-Body (raw JSON):
-{
-    "email": "john.doe@example.com",
-    "password": "password123",
-}
+## Step 1: Install Ruby
 
-### 1. **Create wages endpoints**
-Method: POST/GET
-URL: http://localhost:3000/api/v1/wages
-Headers: Content-Type: application/json, Authorization: Bearer <your_token>
-Body (raw JSON):
-{
-  "user": {
-    "first_name": "John",
-    "last_name": "Doe",
-    "email": "john.doe@example.com",
-    "password": "password123",
-    "password_confirmation": "password123"
-  }
-}
+### Using `rbenv` (Recommended for Unix-based systems)
 
-### 1. **Create negotiations endpoints**
-Method: POST/GET
-URL: http://localhost:3000/api/v1/negotiations
-Headers: Content-Type: application/json, Authorization: Bearer <your_token>
-Body (raw JSON):
-{
-  "user": {
-    "first_name": "John",
-    "last_name": "Doe",
-    "email": "john.doe@example.com",
-    "password": "password123",
-    "password_confirmation": "password123"
-  }
-}
+1. **Install Dependencies**:
 
-Things you may want to cover:
+    ```sh
+    sudo apt-get update
+    sudo apt-get install -y git curl libssl-dev libreadline-dev zlib1g-dev
+    ```
 
-* Ruby version
+2. **Install `rbenv` and `ruby-build`**:
 
-* System dependencies
+    ```sh
+    git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+    echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+    exec $SHELL
 
-* Configuration
+    git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+    ```
 
-* Database creation
-rails generate model User first_name:string last_name:string email:string password_digest:string role:string
-rails generate model Wage user:references job_title:string location:string wage:decimal
-rails generate model Negotiation user:references details:text
-rails generate model Forum name:string
-rails generate model Post forum:references user:references content:text
-rails generate model Negotiator user:references details:text
-rails generate model LaborOrganization name:string details:text
-rails generate model Admin user:references details:text
-rails generate model Employer name:string details:text
+3. **Install Ruby**:
 
-rails generate controller Api::V1::Users
-rails generate controller Api::V1::Wages
-rails generate controller Api::V1::Negotiations
-rails generate controller Api::V1::Forums
-rails generate controller Api::V1::Posts
-rails generate controller Api::V1::Negotiators
-rails generate controller Api::V1::LaborOrganizations
-rails generate controller Api::V1::Admins
-rails generate controller Api::V1::Employers
-rails generate controller Api::V1::PayEquityCalculator
-rails generate controller Api::V1::DataVisualization
+    ```sh
+    rbenv install 3.3.4  # Replace with the desired Ruby version
+    rbenv global 3.3.4
+    ```
 
+4. **Verify Installation**:
 
-* Database initialization
+    ```sh
+    ruby -v
+    ```
 
-* How to run the test suite
+### Using `RVM` (Recommended for Unix-based systems)
 
-* Services (job queues, cache servers, search engines, etc.)
+1. **Install `RVM`**:
 
-* Deployment instructions
+    ```sh
+    sudo apt-get update
+    sudo apt-get install -y curl gpg
+    \curl -sSL https://get.rvm.io | bash -s stable
+    source ~/.rvm/scripts/rvm
+    ```
 
-* Backend Development guide: https://chatgpt.com/share/bb8a82d4-f805-4e15-96af-25ee7d53c5f3 / https://chatgpt.com/share/bd8ae83b-d19a-4b81-99c9-201b0809551e
+2. **Install Ruby**:
 
-* ...
+    ```sh
+    rvm install 3.3.4  # Replace with the desired Ruby version
+    rvm use 3.3.4 --default
+    ```
+
+3. **Verify Installation**:
+
+    ```sh
+    ruby -v
+    ```
+
+### Using Chocolatey (Recommended for Windows)
+
+1. **Install Chocolatey**:
+
+    Open PowerShell as Administrator and run:
+
+    ```powershell
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+    ```
+
+2. **Install Ruby**:
+
+    ```powershell
+    choco install ruby
+    ```
+
+3. **Verify Installation**:
+
+    ```powershell
+    ruby -v
+    ```
+
+## Step 2: Install PostgreSQL
+
+### Using APT (For Unix-based systems)
+
+1. **Install PostgreSQL**:
+
+    ```sh
+    sudo apt-get update
+    sudo apt-get install -y postgresql postgresql-contrib libpq-dev
+    ```
+
+2. **Start PostgreSQL Service**:
+
+    ```sh
+    sudo systemctl start postgresql
+    sudo systemctl enable postgresql
+    ```
+
+3. **Verify Installation**:
+
+    ```sh
+    psql --version
+    ```
+
+### Using Chocolatey (For Windows)
+
+1. **Install PostgreSQL**:
+
+    ```powershell
+    choco install postgresql
+    ```
+
+2. **Verify Installation**:
+
+    ```powershell
+    psql --version
+    ```
+
+## Step 3: Set Up PostgreSQL
+
+1. **Switch to PostgreSQL User** (For Unix-based systems):
+
+    ```sh
+    sudo -i -u postgres
+    ```
+
+2. **Open PostgreSQL Shell**:
+
+    ```sh
+    psql
+    ```
+
+3. **Create a New Database User**:
+
+    ```sql
+    CREATE USER yourusername WITH PASSWORD 'yourpassword';
+    ALTER ROLE yourusername SET client_encoding TO 'utf8';
+    ALTER ROLE yourusername SET default_transaction_isolation TO 'read committed';
+    ALTER ROLE yourusername SET timezone TO 'UTC';
+    GRANT ALL PRIVILEGES ON DATABASE yourdatabase TO yourusername;
+    ```
+
+4. **Create a New Database**:
+
+    ```sql
+    CREATE DATABASE yourdatabase;
+    ```
+
+5. **Grant Privileges**:
+
+    ```sql
+    GRANT ALL PRIVILEGES ON DATABASE yourdatabase TO yourusername;
+    ```
+
+6. **Exit PostgreSQL Shell**:
+
+    ```sql
+    \q
+    ```
+
+7. **Exit PostgreSQL User** (For Unix-based systems):
+
+    ```sh
+    exit
+    ```
+
+## Step 4: Connect Ruby with PostgreSQL
+
+1. **Install `pg` Gem**:
+
+    ```sh
+    gem install pg
+    ```
+
+2. **Create a Rails Application (Optional)**:
+
+    If you are planning to use Rails, you can create a new application with PostgreSQL as the default database:
+
+    ```sh
+    gem install rails
+    rails new myapp -d postgresql
+    cd myapp
+    ```
+
+3. **Configure Database**:
+
+    Edit the `config/database.yml` file in your Rails application to match your PostgreSQL setup:
+
+    ```yml
+    default: &default
+      adapter: postgresql
+      encoding: unicode
+      username: yourusername
+      password: yourpassword
+      host: localhost
+
+    development:
+      <<: *default
+      database: yourdatabase_development
+
+    test:
+      <<: *default
+      database: yourdatabase_test
+
+    production:
+      <<: *default
+      database: yourdatabase_production
+    ```
+
+4. **Create and Migrate the Database**:
+
+    ```sh
+    rails db:create
+    rails db:migrate
+    ```
+5. **For the purposes of this app**:
+
+    Just clone the repo and after following the `step 3` setup above:
+
+    ```sh
+    cd backend
+    bundle install
+    rails db:migrate
+    ```
+
+## Step 5: Verify Everything is Working
+
+1. **Start the Rails Server (Optional)**:
+
+    ```sh
+    rails server
+    ```
+
+2. **Visit Your Application**:
+
+    Open your browser and go to `http://localhost:3000` to see your Rails application running.
+
+This guide should help you get Ruby and PostgreSQL installed and configured properly on your system. Let me know if you encounter any issues or need further assistance by emailing `ansahadeabaj45@gmail.com`
