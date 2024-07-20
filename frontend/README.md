@@ -6,7 +6,7 @@ It also includes:
 - [x] [`flowbite-react`](https://flowbite-react.com)
 - [x] [`react-icons`](https://react-icons.github.io/react-icons)
 - [x] [`tailwindcss`](https://tailwindcss.com)
-- [x] [`typescript`](https://www.typescriptlang.org/) typescript
+- [x] [`typescript`](https://www.typescriptlang.org/)
 
 - [x] Quality of life tools, like
   - [x] [`eslint`](https://eslint.org) with some plugins
