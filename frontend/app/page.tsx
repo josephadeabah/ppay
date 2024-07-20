@@ -464,14 +464,14 @@ const LandingPage = () => {
       </section>
       <div className="flex flex-col lg:flex-row">
         {/* FAQ */}
-        <section className="w-full bg-white dark:bg-gray-950 lg:w-1/2">
+        <section className="w-full bg-slate-50 dark:bg-gray-800 lg:w-1/2">
           <div className="mx-auto flex w-full flex-col items-center gap-y-16 px-6 py-8">
             <div className="mx-auto max-w-[36.75rem] text-center text-gray-950 dark:text-gray-50">
               <h2 className="mb-3 text-3xl font-bold lg:text-4xl">
                 About PaySight
               </h2>
             </div>
-            <div className="flex w-full flex-col items-center gap-6 rounded-lg border border-solid border-gray-200 text-base dark:border-gray-800 lg:max-w-[49.5rem]">
+            <div className="flex w-full flex-col gap-6 rounded-lg border border-solid border-gray-200 text-base dark:border-gray-800  lg:max-w-[49.5rem]">
               <details className="group text-gray-950 dark:text-gray-50">
                 <summary className="flex cursor-pointer list-none flex-row items-center gap-x-6 p-6 transition duration-[250ms] ease-in-out hover:text-blue-600 [&::-webkit-details-marker]:hidden">
                   <p className="w-full font-bold">Why Us?</p>
@@ -547,7 +547,7 @@ const LandingPage = () => {
         </section>
         {/* CTA */}
         <section className="w-full bg-white dark:bg-gray-950 lg:w-1/2">
-          <div className="mx-auto w-full px-6 py-32">
+          <div className="mx-auto w-full bg-slate-50 px-6  py-32 dark:bg-gray-800">
             <div className="mx-auto flex flex-col items-center gap-6 rounded-lg bg-gray-50 px-6 py-20 dark:bg-gray-900 lg:px-20">
               <div className="w-full max-w-[36.75rem] text-center text-gray-950 dark:text-gray-50">
                 <h3 className="mb-3 text-2xl font-bold xl:text-3xl">
