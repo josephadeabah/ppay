@@ -31,7 +31,7 @@ const users = [
     company: "DesignCo",
     actualSalary: "$70,000",
     avatar:
-      "https://images.pexels.com/photos/3757371/pexels-photo-3757371.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.pexels.com/photos/9304678/pexels-photo-9304678.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
   {
     id: 3,
@@ -96,27 +96,6 @@ export default function UsersPage() {
                   <svg
                     className="mr-2 h-4 w-4"
                     xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
-                    />
-                  </svg>
-                  Update users
-                </button>
-                <button
-                  type="button"
-                  className="flex flex-shrink-0 items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
-                >
-                  <svg
-                    className="mr-2 h-4 w-4"
-                    xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth="2"
@@ -133,7 +112,7 @@ export default function UsersPage() {
                 </button>
               </div>
             </div>
-            <div className="h-screen overflow-x-auto ">
+            <div className="h-screen overflow-x-auto">
               <table className="w-full divide-y divide-gray-200 dark:divide-gray-600">
                 <thead className="bg-gray-100 dark:bg-gray-700">
                   <tr>
@@ -225,83 +204,141 @@ export default function UsersPage() {
                               <div className="text-base font-semibold text-gray-900 dark:text-white">
                                 {user.name}
                               </div>
+                              <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
+                                {user.role}
+                              </div>
                             </div>
                           </div>
                         </td>
-                        <td className="whitespace-nowrap p-4 text-sm font-normal text-gray-500 dark:text-gray-400">
+                        <td className="whitespace-nowrap p-4 text-sm font-normal">
                           {user.role}
                         </td>
-                        <td className="whitespace-nowrap p-4 text-sm font-semibold text-gray-500 dark:text-gray-100">
-                          {user.status === "Offline" ? (
-                            <div className="mr-2 inline-block h-4 w-4 rounded-full bg-red-400"></div>
-                          ) : (
-                            <div className="mr-2 inline-block h-4 w-4 rounded-full bg-green-400"></div>
-                          )}
+                        <td className="whitespace-nowrap p-4 text-sm font-normal">
                           {user.status}
                         </td>
-                        <td className="whitespace-nowrap p-4 text-sm font-normal text-gray-900 dark:text-white">
+                        <td className="whitespace-nowrap p-4 text-sm font-normal">
                           {user.salaryRole}
                         </td>
-                        <td className="whitespace-nowrap p-4 text-sm font-normal text-gray-500 dark:text-gray-400">
+                        <td className="whitespace-nowrap p-4 text-sm font-normal">
                           {user.experience}
                         </td>
-                        <td className="whitespace-nowrap p-4 text-sm font-normal text-gray-900 dark:text-white">
+                        <td className="whitespace-nowrap p-4 text-sm font-normal">
                           {user.country}
                         </td>
-                        <td className="whitespace-nowrap p-4 text-sm font-normal text-gray-500 dark:text-gray-400">
+                        <td className="whitespace-nowrap p-4 text-sm font-normal">
                           {user.industry}
                         </td>
-                        <td className="whitespace-nowrap p-4 text-sm font-normal text-gray-500 dark:text-gray-400">
+                        <td className="whitespace-nowrap p-4 text-sm font-normal">
                           {user.category}
                         </td>
-                        <td className="whitespace-nowrap p-4 text-sm font-normal text-gray-900 dark:text-white">
+                        <td className="whitespace-nowrap p-4 text-sm font-normal">
                           {user.company}
                         </td>
-                        <td className="whitespace-nowrap p-4 text-sm font-normal text-gray-900 dark:text-white">
+                        <td className="whitespace-nowrap p-4 text-sm font-normal">
                           {user.actualSalary}
                         </td>
-                        <td className="whitespace-nowrap p-4 text-sm font-normal text-gray-500 dark:text-gray-400">
+                        <td className="whitespace-nowrap p-4 text-sm font-normal">
                           <button
                             onClick={() => toggleRow(user.id)}
-                            className="text-blue-500 dark:text-blue-400"
+                            className="text-primary-600 hover:underline dark:text-primary-500"
                           >
-                            {expandedRow === user.id ? "Close" : "View"}
+                            {expandedRow === user.id ? "Hide" : "Show"}
                           </button>
                         </td>
                       </tr>
                       {expandedRow === user.id && (
-                        <tr
-                          key={`${user.id}-details`}
-                          className="bg-gray-100 dark:bg-gray-700"
-                        >
-                          <td colSpan={11} className="p-4">
-                            <div className="flex flex-col space-y-2">
-                              <div>
-                                <strong>Profile Details:</strong>
+                        <tr className="bg-gray-50 dark:bg-gray-800">
+                          <td
+                            colSpan={11}
+                            className="p-4 text-sm font-normal text-gray-900 dark:text-white"
+                          >
+                            <div className="flex flex-col">
+                              <div className="flex items-center space-x-4">
+                                <img
+                                  className="h-16 w-16 rounded-full object-cover"
+                                  src={user.avatar}
+                                  alt={user.name}
+                                />
+                                <div>
+                                  <div className="text-lg font-semibold text-gray-900 dark:text-white">
+                                    {user.name}
+                                  </div>
+                                  <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
+                                    {user.role}
+                                  </div>
+                                </div>
                               </div>
-                              <div>
-                                <strong>Role:</strong> {user.role}
+                              <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
+                                <div>
+                                  <div className="text-sm font-semibold text-gray-900 dark:text-white">
+                                    Status:
+                                  </div>
+                                  <div className="r flex flex-row items-center gap-2 text-sm font-normal text-gray-500 dark:text-gray-400">
+                                    {user.status}
+                                    {user.status === "Offline" ? (
+                                      <div className="mr-2 inline-block h-3 w-3 rounded-full bg-red-400"></div>
+                                    ) : (
+                                      <div className="mr-2 inline-block h-3 w-3 rounded-full bg-green-400"></div>
+                                    )}
+                                  </div>
+                                </div>
+                                <div>
+                                  <div className="text-sm font-semibold text-gray-900 dark:text-white">
+                                    Salary Role:
+                                  </div>
+                                  <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
+                                    {user.salaryRole}
+                                  </div>
+                                </div>
+                                <div>
+                                  <div className="text-sm font-semibold text-gray-900 dark:text-white">
+                                    Experience:
+                                  </div>
+                                  <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
+                                    {user.experience}
+                                  </div>
+                                </div>
+                                <div>
+                                  <div className="text-sm font-semibold text-gray-900 dark:text-white">
+                                    Country:
+                                  </div>
+                                  <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
+                                    {user.country}
+                                  </div>
+                                </div>
+                                <div>
+                                  <div className="text-sm font-semibold text-gray-900 dark:text-white">
+                                    Industry:
+                                  </div>
+                                  <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
+                                    {user.industry}
+                                  </div>
+                                </div>
+                                <div>
+                                  <div className="text-sm font-semibold text-gray-900 dark:text-white">
+                                    Category:
+                                  </div>
+                                  <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
+                                    {user.category}
+                                  </div>
+                                </div>
+                                <div>
+                                  <div className="text-sm font-semibold text-gray-900 dark:text-white">
+                                    Company:
+                                  </div>
+                                  <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
+                                    {user.company}
+                                  </div>
+                                </div>
+                                <div>
+                                  <div className="text-sm font-semibold text-gray-900 dark:text-white">
+                                    Actual Salary:
+                                  </div>
+                                  <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
+                                    {user.actualSalary}
+                                  </div>
+                                </div>
                               </div>
-                              <div>
-                                <strong>Experience:</strong> {user.experience}
-                              </div>
-                              <div>
-                                <strong>Country:</strong> {user.country}
-                              </div>
-                              <div>
-                                <strong>Industry:</strong> {user.industry}
-                              </div>
-                              <div>
-                                <strong>Category:</strong> {user.category}
-                              </div>
-                              <div>
-                                <strong>Company:</strong> {user.company}
-                              </div>
-                              <div>
-                                <strong>Actual Salary:</strong>{" "}
-                                {user.actualSalary}
-                              </div>
-                              {/* Add more details as needed */}
                             </div>
                           </td>
                         </tr>
@@ -311,106 +348,6 @@ export default function UsersPage() {
                 </tbody>
               </table>
             </div>
-            <nav
-              className="flex flex-col items-start justify-between space-y-3 p-4 md:flex-row md:items-center md:space-y-0"
-              aria-label="Table navigation"
-            >
-              <span className="flew-row flex gap-0.5 text-sm font-normal text-gray-500 dark:text-gray-400">
-                Showing
-                <span className="font-semibold text-gray-900 dark:text-white">
-                  1-10
-                </span>
-                of
-                <span className="font-semibold text-gray-900 dark:text-white">
-                  1000
-                </span>
-              </span>
-              <ul className="inline-flex items-stretch -space-x-px">
-                <li>
-                  <a
-                    href="#"
-                    className="ml-0 flex h-full items-center justify-center rounded-l-lg border border-gray-300 bg-white px-3 py-1.5 text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                  >
-                    <span className="sr-only">Previous</span>
-                    <svg
-                      className="h-5 w-5"
-                      aria-hidden="true"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="flex items-center justify-center border border-gray-300 bg-white px-3 py-2 text-sm leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                  >
-                    1
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="flex items-center justify-center border border-gray-300 bg-white px-3 py-2 text-sm leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                  >
-                    2
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    aria-current="page"
-                    className="z-10 flex items-center justify-center border border-primary-300 bg-primary-50 px-3 py-2 text-sm leading-tight text-primary-600 hover:bg-primary-100 hover:text-primary-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-                  >
-                    3
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="flex items-center justify-center border border-gray-300 bg-white px-3 py-2 text-sm leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                  >
-                    ...
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="flex items-center justify-center border border-gray-300 bg-white px-3 py-2 text-sm leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                  >
-                    100
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="flex h-full items-center justify-center rounded-r-lg border border-gray-300 bg-white px-3 py-1.5 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                  >
-                    <span className="sr-only">Next</span>
-                    <svg
-                      className="h-5 w-5"
-                      aria-hidden="true"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </a>
-                </li>
-              </ul>
-            </nav>
           </div>
         </div>
       </section>

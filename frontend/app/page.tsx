@@ -29,7 +29,7 @@ const LandingPage = () => {
             </div>
             <div className="flex w-full flex-col items-center gap-4 *:w-full *:rounded-lg *:px-5 *:py-3 *:text-center *:text-base *:font-medium *:transition *:duration-[250ms] *:ease-in-out lg:flex-row lg:justify-start lg:*:w-auto">
               <a
-                href="/signup"
+                href="/auth/register"
                 className="bg-black text-white hover:bg-blue-700"
               >
                 Get Started
