@@ -57,36 +57,6 @@ export const DashboardNavbar: FC = function () {
             <DarkThemeToggle />
           </div>
         </div>
-        {/* Mobile Menu */}
-        <div className="absolute left-0 top-0 w-full border-b border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800 lg:hidden">
-          <div className="flex flex-col gap-y-2 p-4">
-            <Link
-              href="/features"
-              className="py-2 text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100"
-            >
-              Features
-            </Link>
-            <Link
-              href="/pricing"
-              className="py-2 text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100"
-            >
-              Pricing
-            </Link>
-            <Link
-              href="/auth/login"
-              className="rounded-md bg-white px-4 py-2 text-gray-950 ring-1 ring-gray-200 hover:bg-gray-50 dark:bg-gray-900 dark:text-gray-50 dark:ring-gray-700 dark:hover:bg-gray-800"
-            >
-              Sign In
-            </Link>
-            <Link
-              href="/auth/register"
-              className="rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800"
-            >
-              Sign Up
-            </Link>
-            <DarkThemeToggle />
-          </div>
-        </div>
       </nav>
     </header>
   );
