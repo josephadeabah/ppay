@@ -97,7 +97,7 @@ export default function WagesChart() {
 
   if (loading || !options || !series) {
     return (
-      <div className="flex h-full w-full items-center justify-center">
+      <div className="flex h-full w-full text-gray-600 dark:text-gray-50 items-center justify-center">
         <div>Loading...</div>
       </div>
     );
