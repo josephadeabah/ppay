@@ -335,6 +335,33 @@ export default function PayEquityAnalyzer() {
           </Table.Body>
         </Table>
       </div>
+      {/* Insights & Recommendations */}
+      <div className="mt-6 bg-white p-5 shadow-sm dark:bg-gray-800">
+        <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
+          Insights & Recommendations
+        </h2>
+        <p className="text-gray-700 dark:text-gray-300">
+          Based on the analysis, here are some key insights and recommendations
+          to address pay disparities:
+        </p>
+        <ul className="mt-4 list-inside list-disc text-gray-700 dark:text-gray-300">
+          <li>
+            Review salary ranges for different roles to ensure competitiveness.
+          </li>
+          <li>
+            Consider performance-based adjustments for roles with significant
+            salary gaps.
+          </li>
+          <li>
+            Implement transparent salary bands and career progression paths to
+            promote fairness.
+          </li>
+          <li>
+            Adjust salaries based on regional cost of living to enhance employee
+            satisfaction.
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }
