@@ -60,7 +60,7 @@ export default function ReportPay() {
           </li>
         </ul>
       </div>
-      
+
       <div id="tabContentExample">
         <div
           className={`rounded-lg bg-gray-50 dark:bg-gray-800 ${activeTab === "profile-example" ? "block" : "hidden"}`}

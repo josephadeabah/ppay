@@ -26,7 +26,26 @@ ChartJS.register(
   Legend,
 );
 
-const trendData = {
+interface TrendData {
+  labels: string[];
+  datasets: {
+    label: string;
+    data: number[];
+    borderColor: string;
+    fill: boolean;
+  }[];
+}
+
+interface TrendDataMap {
+  inflation: TrendData;
+  industryGrowth: TrendData;
+  economicConditions: TrendData;
+  geographicalVariations: TrendData;
+  roleSpecificTrends: TrendData;
+  demographicFactors: TrendData;
+}
+
+const trendData: TrendDataMap = {
   inflation: {
     labels: ["Jan 2024", "Feb 2024", "Mar 2024", "Apr 2024", "May 2024"],
     datasets: [
@@ -96,10 +115,11 @@ const trendData = {
 };
 
 export default function TrendAnalysis() {
-  const [selectedTrend, setSelectedTrend] = useState<string>("");
+  const [selectedTrend, setSelectedTrend] =
+    useState<keyof TrendDataMap>("inflation");
 
   const handleTrendChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedTrend(event.target.value);
+    setSelectedTrend(event.target.value as keyof TrendDataMap);
   };
 
   const trendOptions = [
@@ -110,6 +130,9 @@ export default function TrendAnalysis() {
     { value: "roleSpecificTrends", label: "Role-specific Trends" },
     { value: "demographicFactors", label: "Demographic Factors" },
   ];
+
+  // Fallback data in case selectedTrend does not match any key
+  const selectedTrendData = trendData[selectedTrend] || trendData.inflation;
 
   return (
     <div className="bg-gray-50 p-6 dark:bg-gray-900">
@@ -143,22 +166,7 @@ export default function TrendAnalysis() {
         />
 
         <div className="mt-4">
-          {selectedTrend === "inflation" && <Line data={trendData.inflation} />}
-          {selectedTrend === "industryGrowth" && (
-            <Line data={trendData.industryGrowth} />
-          )}
-          {selectedTrend === "economicConditions" && (
-            <Line data={trendData.economicConditions} />
-          )}
-          {selectedTrend === "geographicalVariations" && (
-            <Line data={trendData.geographicalVariations} />
-          )}
-          {selectedTrend === "roleSpecificTrends" && (
-            <Line data={trendData.roleSpecificTrends} />
-          )}
-          {selectedTrend === "demographicFactors" && (
-            <Line data={trendData.demographicFactors} />
-          )}
+          <Line data={selectedTrendData} />
         </div>
       </div>
 
@@ -174,7 +182,7 @@ export default function TrendAnalysis() {
         </p>
 
         <Bar
-          data={trendData[selectedTrend] || trendData.inflation} // Default to inflation if no trend is selected
+          data={selectedTrendData} // Default to inflation if no trend is selected
           options={{
             responsive: true,
             plugins: { legend: { display: false } },
