@@ -4,53 +4,82 @@ interface SliderProps {
   min: number;
   max: number;
   step: number;
-  value: [number, number];
-  onChange: (value: [number, number]) => void;
+  value: number | [number, number];
+  onChange: (value: number | [number, number]) => void;
+  range?: boolean;
+  tooltip?: boolean;
 }
 
-const Slider: React.FC<SliderProps> = ({ min, max, step, value, onChange }) => {
+const Slider: React.FC<SliderProps> = ({
+  min,
+  max,
+  step,
+  value,
+  onChange,
+  range = false,
+  tooltip = false,
+}) => {
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    index: number,
+    event: React.ChangeEvent<HTMLInputElement>,
+    index?: number,
   ) => {
-    const newValue = [...value];
-    newValue[index] = parseInt(e.target.value, 10);
-    onChange(newValue as [number, number]);
+    const newValue = parseInt(event.target.value);
+
+    if (range) {
+      const values = Array.isArray(value) ? [...value] : [0, 0];
+      if (index === 0) {
+        values[0] = newValue;
+      } else {
+        values[1] = newValue;
+      }
+      onChange(values as [number, number]);
+    } else {
+      onChange(newValue);
+    }
   };
 
   return (
     <div className="relative flex items-center">
-      <input
-        type="range"
-        min={min}
-        max={max}
-        step={step}
-        value={value[0]}
-        onChange={(e) => handleChange(e, 0)}
-        className="absolute w-full appearance-none bg-transparent"
-      />
-      <input
-        type="range"
-        min={min}
-        max={max}
-        step={step}
-        value={value[1]}
-        onChange={(e) => handleChange(e, 1)}
-        className="absolute w-full appearance-none bg-transparent"
-      />
-      <div className="relative h-2 w-full rounded-md bg-gray-300">
-        <div
-          className="absolute h-2 rounded-md bg-blue-500"
-          style={{
-            left: `${((value[0] - min) / (max - min)) * 100}%`,
-            right: `${100 - ((value[1] - min) / (max - min)) * 100}%`,
-          }}
+      {/* Render single slider if range is false */}
+      {!range && (
+        <input
+          type="range"
+          min={min}
+          max={max}
+          step={step}
+          value={typeof value === "number" ? value : value[0]}
+          onChange={(e) => handleChange(e)}
+          className="slider-thumb"
         />
-      </div>
-      <div className="mt-2 flex justify-between">
-        <span>{value[0]}</span>
-        <span>{value[1]}</span>
-      </div>
+      )}
+      {/* Render range sliders if range is true */}
+      {range && (
+        <>
+          <input
+            type="range"
+            min={min}
+            max={max}
+            step={step}
+            value={Array.isArray(value) ? value[0] : min}
+            onChange={(e) => handleChange(e, 0)}
+            className="slider-thumb"
+          />
+          <input
+            type="range"
+            min={min}
+            max={max}
+            step={step}
+            value={Array.isArray(value) ? value[1] : max}
+            onChange={(e) => handleChange(e, 1)}
+            className="slider-thumb absolute top-0"
+          />
+        </>
+      )}
+      {tooltip && (
+        <div className="tooltip">
+          {Array.isArray(value) ? `${value[0]} - ${value[1]}` : value}
+        </div>
+      )}
     </div>
   );
 };

@@ -1,7 +1,6 @@
 "use client";
 
-import DropdownSelect from "@/components/dropdown/DropdownSelect"; // Import the reusable DropdownSelect component
-import Slider from "@/components/slider/Slider"; // Import the custom Slider component
+import DropdownSelect from "@/components/dropdown/DropdownSelect";
 import {
   ArcElement,
   BarElement,
@@ -16,7 +15,7 @@ import {
   Tooltip,
 } from "chart.js";
 import { Table } from "flowbite-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Bar, Line, Pie, Scatter } from "react-chartjs-2";
 
 // Register necessary Chart.js components
@@ -36,11 +35,19 @@ ChartJS.register(
 // Dummy data
 const data = {
   roleSalary: {
-    labels: ["Engineer", "Manager", "Sales", "HR", "Finance"],
+    labels: [
+      "Engineer",
+      "Manager",
+      "Sales",
+      "HR",
+      "Finance",
+      "Marketing",
+      "Other",
+    ],
     datasets: [
       {
         label: "Average Salary",
-        data: [80000, 95000, 70000, 65000, 75000],
+        data: [80000, 95000, 70000, 65000, 75000, 85000, 90000],
         backgroundColor: "rgba(54, 162, 235, 0.6)",
       },
     ],
@@ -56,18 +63,26 @@ const data = {
     datasets: [
       {
         label: "Average Salary",
-        data: [50000, 60000, 75000, 90000, 110000],
+        data: [50000, 60000, 75000, 90000, 110000, 120000, 130000],
         borderColor: "rgba(255, 99, 132, 0.6)",
         fill: false,
       },
     ],
   },
   departmentBreakdown: {
-    labels: ["Engineering", "Sales", "HR", "Finance", "Marketing"],
+    labels: [
+      "Engineering",
+      "Management",
+      "Sales",
+      "HR",
+      "Finance",
+      "Marketing",
+      "Other",
+    ],
     datasets: [
       {
         label: "Salary Distribution",
-        data: [40, 25, 15, 10, 10],
+        data: [40, 25, 15, 10, 10, 5, 5],
         backgroundColor: [
           "rgba(255, 99, 132, 0.6)",
           "rgba(54, 162, 235, 0.6)",
@@ -87,6 +102,19 @@ const data = {
           { x: 1, y: 50000 },
           { x: 2, y: 70000 },
           { x: 3, y: 90000 },
+          { x: 4, y: 110000 },
+          { x: 5, y: 130000 },
+          { x: 6, y: 150000 },
+          { x: 7, y: 170000 },
+          { x: 8, y: 190000 },
+          { x: 9, y: 210000 },
+          { x: 10, y: 230000 },
+          { x: 11, y: 250000 },
+          { x: 12, y: 270000 },
+          { x: 13, y: 290000 },
+          { x: 14, y: 310000 },
+          { x: 15, y: 330000 },
+          { x: 16, y: 350000 },
         ],
         backgroundColor: "rgba(75, 192, 192, 0.6)",
       },
@@ -100,18 +128,29 @@ const data = {
     { benefit: "Flexible Working Hours", average: 70 },
   ],
   costOfLiving: {
-    labels: ["New York", "San Francisco", "Chicago", "Austin", "Seattle"],
+    labels: [
+      "New York",
+      "San Francisco",
+      "Chicago",
+      "Austin",
+      "Seattle",
+      "Miami",
+      "Denver",
+      "Boston",
+      "Los Angeles",
+      "Portland",
+    ],
     datasets: [
       {
         label: "Cost of Living Index",
-        data: [100, 120, 85, 70, 90],
+        data: [100, 120, 85, 70, 90, 80, 95, 105, 110, 115],
         backgroundColor: "rgba(255, 159, 64, 0.6)",
       },
     ],
   },
   employeeData: [
     {
-      name: "**** *****",
+      name: "John Doe",
       role: "Engineer",
       experience: "5 years",
       salary: "$80,000",
@@ -119,7 +158,7 @@ const data = {
       location: "New York",
     },
     {
-      name: "***** ****",
+      name: "Jane Smith",
       role: "Manager",
       experience: "8 years",
       salary: "$95,000",
@@ -133,27 +172,45 @@ const data = {
 // Calculate adjusted salary
 const calculateAdjustedSalary = (
   role: string,
-  experience: number,
+  experienceRange: string,
   location: string,
+  performance: number,
 ): number => {
+  const roleIndex = data.roleSalary.labels.indexOf(role);
   const roleSalary =
-    data.roleSalary.datasets[0].data[data.roleSalary.labels.indexOf(role)];
+    roleIndex !== -1 ? data.roleSalary.datasets[0].data[roleIndex] : 0;
+
+  // Find average experience salary based on experience range
+  const experienceIndex =
+    data.salaryProgression.labels.indexOf(experienceRange);
   const experienceSalary =
-    data.salaryProgression.datasets[0].data[
-      data.salaryProgression.labels.findIndex((label) => {
-        const [min, max] = label.split("-").map(Number);
-        return experience >= min && (max === undefined || experience <= max);
-      })
-    ];
+    experienceIndex !== -1
+      ? data.salaryProgression.datasets[0].data[experienceIndex]
+      : 0;
 
   const locationIndex = data.costOfLiving.labels.indexOf(location);
   const locationIndexValue =
-    data.costOfLiving.datasets[0].data[locationIndex] || 100;
+    locationIndex !== -1
+      ? data.costOfLiving.datasets[0].data[locationIndex]
+      : 100;
 
-  // Calculate adjusted salary
+  // Calculate base adjusted salary
   const baseSalary = roleSalary || 0;
-  const adjustedSalary =
+  let adjustedSalary =
     ((baseSalary * (experienceSalary || 1)) / 100) * (locationIndexValue / 100);
+
+  // Incorporate benefits and perks
+  const averageBenefitRating =
+    data.benefitsAndPerks.reduce((total, perk) => total + perk.average, 0) /
+    data.benefitsAndPerks.length;
+  adjustedSalary *= 1 + averageBenefitRating / 100; // Assume averageBenefitRating is in percentage
+
+  // Incorporate performance compensation
+  const performanceAdjustment =
+    data.performanceCompensation.datasets[0].data.find(
+      (d) => d.x === performance,
+    )?.y || 0;
+  adjustedSalary += performanceAdjustment;
 
   return adjustedSalary;
 };
@@ -161,9 +218,24 @@ const calculateAdjustedSalary = (
 export default function PayEquityAnalyzer() {
   const [selectedRole, setSelectedRole] = useState<string>("");
   const [selectedLocation, setSelectedLocation] = useState<string>("");
-  const [experienceRange, setExperienceRange] = useState<[number, number]>([
-    1, 20,
-  ]);
+  const [experienceRange, setExperienceRange] = useState<string>("1-3 years");
+  const [performance, setPerformance] = useState<number>(1); // Default performance level
+  const [adjustedSalary, setAdjustedSalary] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (selectedRole && selectedLocation && experienceRange) {
+      setAdjustedSalary(
+        calculateAdjustedSalary(
+          selectedRole,
+          experienceRange,
+          selectedLocation,
+          performance,
+        ),
+      );
+    } else {
+      setAdjustedSalary(null); // Reset if criteria are not met
+    }
+  }, [selectedRole, selectedLocation, experienceRange, performance]);
 
   return (
     <div className="bg-gray-50 p-6 dark:bg-gray-900">
@@ -211,106 +283,88 @@ export default function PayEquityAnalyzer() {
           />
         </div>
         <div className="min-w-[200px] flex-1">
-          <label className="mb-2 block text-gray-900 dark:text-white">
-            Experience Range: {experienceRange[0]} - {experienceRange[1]} years
-          </label>
-          <Slider
-            min={1}
-            max={20}
-            step={1}
-            value={experienceRange}
-            onChange={setExperienceRange}
+          <DropdownSelect
+            options={[
+              { value: "1-3 years", label: "1-3 years" },
+              { value: "4-6 years", label: "4-6 years" },
+              { value: "7-10 years", label: "7-10 years" },
+              { value: "11-15 years", label: "11-15 years" },
+              { value: "16+ years", label: "16+ years" },
+            ]}
+            selectedValue={experienceRange}
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+              setExperienceRange(e.target.value)
+            }
+            placeholder="Select Experience Range"
+          />
+        </div>
+        <div className="min-w-[200px] flex-1">
+          <DropdownSelect
+            options={[
+              { value: "1", label: "Low" },
+              { value: "2", label: "Average" },
+              { value: "3", label: "High" },
+            ]}
+            selectedValue={performance.toString()}
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+              setPerformance(Number(e.target.value))
+            }
+            placeholder="Select Performance Level"
           />
         </div>
       </div>
 
-      {/* Charts & Graphs */}
-      <div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {/* Adjusted Salary Display */}
+      <div className="mb-6 bg-white p-5 shadow-sm dark:bg-gray-800">
+        {adjustedSalary !== null ? (
+          <p className="text-lg font-semibold text-gray-900 dark:text-white">
+            Adjusted Salary: ${adjustedSalary.toFixed(2)}
+          </p>
+        ) : (
+          <p className="text-gray-700 dark:text-gray-300">
+            Please select all filters to see the adjusted salary.
+          </p>
+        )}
+      </div>
+
+      {/* Charts Section */}
+      <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         <div className="bg-white p-5 shadow-sm dark:bg-gray-800">
-          <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
-            Average Salary by Role
+          <h2 className="mb-4 text-lg font-bold text-gray-900 dark:text-white">
+            Role Salary
           </h2>
-          <Bar
-            data={data.roleSalary}
-            options={{
-              responsive: true,
-              plugins: { legend: { display: true } },
-            }}
-          />
+          <Bar data={data.roleSalary} />
         </div>
         <div className="bg-white p-5 shadow-sm dark:bg-gray-800">
-          <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
-            Salary Progression Over Experience
+          <h2 className="mb-4 text-lg font-bold text-gray-900 dark:text-white">
+            Salary Progression
           </h2>
-          <Line
-            data={data.salaryProgression}
-            options={{
-              responsive: true,
-              plugins: { legend: { display: true } },
-            }}
-          />
+          <Line data={data.salaryProgression} />
         </div>
         <div className="bg-white p-5 shadow-sm dark:bg-gray-800">
-          <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
-            Department Salary Breakdown
+          <h2 className="mb-4 text-lg font-bold text-gray-900 dark:text-white">
+            Department Breakdown
           </h2>
-          <Pie
-            data={data.departmentBreakdown}
-            options={{
-              responsive: true,
-              plugins: { legend: { display: true } },
-            }}
-          />
+          <Pie data={data.departmentBreakdown} />
         </div>
         <div className="bg-white p-5 shadow-sm dark:bg-gray-800">
-          <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
+          <h2 className="mb-4 text-lg font-bold text-gray-900 dark:text-white">
             Performance vs Compensation
           </h2>
-          <Scatter
-            data={data.performanceCompensation}
-            options={{
-              responsive: true,
-              plugins: { legend: { display: true } },
-            }}
-          />
+          <Scatter data={data.performanceCompensation} />
         </div>
         <div className="bg-white p-5 shadow-sm dark:bg-gray-800">
-          <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
-            Benefits and Perks Comparison
+          <h2 className="mb-4 text-lg font-bold text-gray-900 dark:text-white">
+            Cost of Living
           </h2>
-          <Table>
-            <Table.Head>
-              <Table.HeadCell>Benefit</Table.HeadCell>
-              <Table.HeadCell>Average Score (%)</Table.HeadCell>
-            </Table.Head>
-            <Table.Body>
-              {data.benefitsAndPerks.map((perk) => (
-                <Table.Row key={perk.benefit}>
-                  <Table.Cell>{perk.benefit}</Table.Cell>
-                  <Table.Cell>{perk.average}</Table.Cell>
-                </Table.Row>
-              ))}
-            </Table.Body>
-          </Table>
-        </div>
-        <div className="bg-white p-5 shadow-sm dark:bg-gray-800">
-          <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
-            Cost of Living Index
-          </h2>
-          <Bar
-            data={data.costOfLiving}
-            options={{
-              responsive: true,
-              plugins: { legend: { display: true } },
-            }}
-          />
+          <Bar data={data.costOfLiving} />
         </div>
       </div>
 
-      {/* Employee Salary Details Table */}
-      <div className="overflow-x-auto bg-white p-5 shadow-sm dark:bg-gray-800">
-        <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
-          Employee Salary Details
+      {/* Table Section */}
+      <div className="mt-6 bg-white p-5 shadow-sm dark:bg-gray-800">
+        <h2 className="mb-4 text-lg font-bold text-gray-900 dark:text-white">
+          Employee Data
         </h2>
         <Table>
           <Table.Head>
@@ -322,8 +376,8 @@ export default function PayEquityAnalyzer() {
             <Table.HeadCell>Location</Table.HeadCell>
           </Table.Head>
           <Table.Body>
-            {data.employeeData.map((employee) => (
-              <Table.Row key={employee.name}>
+            {data.employeeData.map((employee, index) => (
+              <Table.Row key={index}>
                 <Table.Cell>{employee.name}</Table.Cell>
                 <Table.Cell>{employee.role}</Table.Cell>
                 <Table.Cell>{employee.experience}</Table.Cell>
