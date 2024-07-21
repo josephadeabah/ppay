@@ -23,8 +23,9 @@ const LandingPage = () => {
                 The Global Wage Transparency Platform.
               </h1>
               <p className="text-lg xl:text-xl">
-                With data-driven recommendations and insights, We build trust
-                and improve employer-employee relationships.
+                At Paysight, we offer software and services that deliver
+                data-driven recommendations and insights to build trust and
+                enhance relationships between people and employers.
               </p>
             </div>
             <div className="flex w-full flex-col items-center gap-4 *:w-full *:rounded-lg *:px-5 *:py-3 *:text-center *:text-base *:font-medium *:transition *:duration-[250ms] *:ease-in-out lg:flex-row lg:justify-start lg:*:w-auto">
