@@ -32,7 +32,7 @@ ChartJS.register(
   Filler,
 );
 
-// Dummy data
+// Expanded dummy data
 const data = {
   roleSalary: {
     labels: [
@@ -42,12 +42,36 @@ const data = {
       "HR",
       "Finance",
       "Marketing",
-      "Other",
+      "Product",
+      "Design",
+      "Customer Support",
+      "IT",
+      "Legal",
+      "Operations",
+      "Consulting",
+      "Data Science",
+      "Project Management",
     ],
     datasets: [
       {
         label: "Average Salary",
-        data: [80000, 95000, 70000, 65000, 75000, 85000, 90000],
+        data: [
+          80000, // Engineer
+          95000, // Manager
+          70000, // Sales
+          65000, // HR
+          75000, // Finance
+          85000, // Marketing
+          90000, // Product
+          72000, // Design
+          68000, // Customer Support
+          77000, // IT
+          95000, // Legal
+          74000, // Operations
+          83000, // Consulting
+          95000, // Data Science
+          85000, // Project Management
+        ],
         backgroundColor: "rgba(54, 162, 235, 0.6)",
       },
     ],
@@ -58,12 +82,20 @@ const data = {
       "4-6 years",
       "7-10 years",
       "11-15 years",
-      "16+ years",
+      "16-20 years",
+      "21+ years",
     ],
     datasets: [
       {
         label: "Average Salary",
-        data: [50000, 60000, 75000, 90000, 110000, 120000, 130000],
+        data: [
+          50000, // 1-3 years
+          60000, // 4-6 years
+          75000, // 7-10 years
+          90000, // 11-15 years
+          110000, // 16-20 years
+          130000, // 21+ years
+        ],
         borderColor: "rgba(255, 99, 132, 0.6)",
         fill: false,
       },
@@ -77,18 +109,52 @@ const data = {
       "HR",
       "Finance",
       "Marketing",
-      "Other",
+      "Product",
+      "Design",
+      "Customer Support",
+      "IT",
+      "Legal",
+      "Operations",
+      "Consulting",
+      "Data Science",
+      "Project Management",
     ],
     datasets: [
       {
         label: "Salary Distribution",
-        data: [40, 25, 15, 10, 10, 5, 5],
+        data: [
+          25, // Engineering
+          15, // Management
+          10, // Sales
+          8, // HR
+          10, // Finance
+          5, // Marketing
+          7, // Product
+          6, // Design
+          5, // Customer Support
+          6, // IT
+          4, // Legal
+          4, // Operations
+          4, // Consulting
+          5, // Data Science
+          5, // Project Management
+        ],
         backgroundColor: [
           "rgba(255, 99, 132, 0.6)",
           "rgba(54, 162, 235, 0.6)",
           "rgba(255, 206, 86, 0.6)",
           "rgba(75, 192, 192, 0.6)",
           "rgba(153, 102, 255, 0.6)",
+          "rgba(255, 159, 64, 0.6)",
+          "rgba(199, 199, 199, 0.6)",
+          "rgba(83, 102, 255, 0.6)",
+          "rgba(255, 123, 123, 0.6)",
+          "rgba(123, 255, 178, 0.6)",
+          "rgba(255, 211, 123, 0.6)",
+          "rgba(123, 255, 255, 0.6)",
+          "rgba(178, 123, 255, 0.6)",
+          "rgba(255, 178, 123, 0.6)",
+          "rgba(123, 123, 255, 0.6)",
         ],
       },
     ],
@@ -100,21 +166,21 @@ const data = {
         label: "Performance vs Compensation",
         data: [
           { x: 1, y: 50000 },
-          { x: 2, y: 70000 },
-          { x: 3, y: 90000 },
-          { x: 4, y: 110000 },
-          { x: 5, y: 130000 },
-          { x: 6, y: 150000 },
-          { x: 7, y: 170000 },
-          { x: 8, y: 190000 },
-          { x: 9, y: 210000 },
-          { x: 10, y: 230000 },
-          { x: 11, y: 250000 },
-          { x: 12, y: 270000 },
-          { x: 13, y: 290000 },
-          { x: 14, y: 310000 },
-          { x: 15, y: 330000 },
-          { x: 16, y: 350000 },
+          { x: 2, y: 60000 },
+          { x: 3, y: 70000 },
+          { x: 4, y: 80000 },
+          { x: 5, y: 90000 },
+          { x: 6, y: 100000 },
+          { x: 7, y: 110000 },
+          { x: 8, y: 120000 },
+          { x: 9, y: 130000 },
+          { x: 10, y: 140000 },
+          { x: 11, y: 150000 },
+          { x: 12, y: 160000 },
+          { x: 13, y: 170000 },
+          { x: 14, y: 180000 },
+          { x: 15, y: 190000 },
+          { x: 16, y: 200000 },
         ],
         backgroundColor: "rgba(75, 192, 192, 0.6)",
       },
@@ -126,6 +192,11 @@ const data = {
     { benefit: "Paid Time Off", average: 80 },
     { benefit: "Education Reimbursement", average: 60 },
     { benefit: "Flexible Working Hours", average: 70 },
+    { benefit: "Wellness Programs", average: 65 },
+    { benefit: "Gym Membership", average: 50 },
+    { benefit: "Remote Work Options", average: 85 },
+    { benefit: "Parental Leave", average: 55 },
+    { benefit: "Employee Discounts", average: 45 },
   ],
   costOfLiving: {
     labels: [
@@ -139,31 +210,186 @@ const data = {
       "Boston",
       "Los Angeles",
       "Portland",
+      "San Diego",
+      "Washington, D.C.",
+      "Philadelphia",
+      "Dallas",
+      "Houston",
     ],
     datasets: [
       {
         label: "Cost of Living Index",
-        data: [100, 120, 85, 70, 90, 80, 95, 105, 110, 115],
+        data: [
+          100, // New York
+          120, // San Francisco
+          85, // Chicago
+          70, // Austin
+          90, // Seattle
+          80, // Miami
+          95, // Denver
+          105, // Boston
+          110, // Los Angeles
+          115, // Portland
+          90, // San Diego
+          98, // Washington, D.C.
+          85, // Philadelphia
+          88, // Dallas
+          85, // Houston
+        ],
         backgroundColor: "rgba(255, 159, 64, 0.6)",
       },
     ],
   },
   employeeData: [
     {
-      name: "John Doe",
+      name: "**** ***",
       role: "Engineer",
       experience: "5 years",
       salary: "$80,000",
       gender: "Male",
       location: "New York",
+      education: "Bachelor's Degree",
+      department: "Engineering",
     },
     {
-      name: "Jane Smith",
+      name: "**** *****",
       role: "Manager",
       experience: "8 years",
       salary: "$95,000",
       gender: "Female",
       location: "San Francisco",
+      education: "Master's Degree",
+      department: "Management",
+    },
+    {
+      name: "******* *******",
+      role: "Sales",
+      experience: "3 years",
+      salary: "$70,000",
+      gender: "Male",
+      location: "Chicago",
+      education: "Bachelor's Degree",
+      department: "Sales",
+    },
+    {
+      name: "***** *****",
+      role: "HR",
+      experience: "6 years",
+      salary: "$65,000",
+      gender: "Female",
+      location: "Austin",
+      education: "Master's Degree",
+      department: "HR",
+    },
+    {
+      name: "****** *****",
+      role: "Finance",
+      experience: "10 years",
+      salary: "$75,000",
+      gender: "Male",
+      location: "Seattle",
+      education: "Bachelor's Degree",
+      department: "Finance",
+    },
+    {
+      name: "****** ******",
+      role: "Marketing",
+      experience: "4 years",
+      salary: "$85,000",
+      gender: "Female",
+      location: "Miami",
+      education: "Bachelor's Degree",
+      department: "Marketing",
+    },
+    {
+      name: "***** ***",
+      role: "Product",
+      experience: "7 years",
+      salary: "$90,000",
+      gender: "Male",
+      location: "Denver",
+      education: "Master's Degree",
+      department: "Product",
+    },
+    {
+      name: "****** ********",
+      role: "Design",
+      experience: "2 years",
+      salary: "$72,000",
+      gender: "Female",
+      location: "Boston",
+      education: "Bachelor's Degree",
+      department: "Design",
+    },
+    {
+      name: "***** ********",
+      role: "Customer Support",
+      experience: "5 years",
+      salary: "$68,000",
+      gender: "Male",
+      location: "Los Angeles",
+      education: "Associate Degree",
+      department: "Customer Support",
+    },
+    {
+      name: "******** ******",
+      role: "IT",
+      experience: "8 years",
+      salary: "$77,000",
+      gender: "Female",
+      location: "Portland",
+      education: "Bachelor's Degree",
+      department: "IT",
+    },
+    {
+      name: "****** *****",
+      role: "Legal",
+      experience: "12 years",
+      salary: "$95,000",
+      gender: "Male",
+      location: "San Diego",
+      education: "Juris Doctor",
+      department: "Legal",
+    },
+    {
+      name: "*** *****",
+      role: "Operations",
+      experience: "6 years",
+      salary: "$74,000",
+      gender: "Female",
+      location: "Washington, D.C.",
+      education: "Bachelor's Degree",
+      department: "Operations",
+    },
+    {
+      name: "****** *****",
+      role: "Consulting",
+      experience: "9 years",
+      salary: "$83,000",
+      gender: "Male",
+      location: "Philadelphia",
+      education: "Master's Degree",
+      department: "Consulting",
+    },
+    {
+      name: "*** *****",
+      role: "Data Science",
+      experience: "4 years",
+      salary: "$95,000",
+      gender: "Female",
+      location: "Dallas",
+      education: "Master's Degree",
+      department: "Data Science",
+    },
+    {
+      name: "***** ******",
+      role: "Project Management",
+      experience: "7 years",
+      salary: "$85,000",
+      gender: "Male",
+      location: "Houston",
+      education: "Bachelor's Degree",
+      department: "Project Management",
     },
     // Add more dummy data as needed
   ],
@@ -365,7 +591,7 @@ export default function PayEquityAnalyzer() {
       {/* Table Section */}
       <div className="mt-6 bg-white p-5 shadow-sm dark:bg-gray-800">
         <h2 className="mb-4 text-lg font-bold text-gray-900 dark:text-white">
-          Employee Data
+          Members Highlight
         </h2>
         <Table>
           <Table.Head>
