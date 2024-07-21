@@ -66,7 +66,7 @@ export const DashboardSidebar: FC = function () {
           icon={HiOutlineUser}
           className={getItemClass("/dashboard/users")}
         >
-          Anonymous
+          Members
         </Sidebar.Item>
         <Sidebar.Item
           href="/dashboard/benchmark"
@@ -80,7 +80,7 @@ export const DashboardSidebar: FC = function () {
           icon={HiOutlineTrendingUp}
           className={getItemClass("/dashboard/trends")}
         >
-          Trends
+          Pay Trends
         </Sidebar.Item>
         <Sidebar.Item
           href="/dashboard/inflation"

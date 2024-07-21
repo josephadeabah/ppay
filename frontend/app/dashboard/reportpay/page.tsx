@@ -29,7 +29,7 @@ export default function ReportPay() {
               aria-selected={activeTab === "profile-example"}
               onClick={() => handleTabClick("profile-example")}
             >
-              Employee
+              Member
             </button>
           </li>
           <li className="me-2" role="presentation">

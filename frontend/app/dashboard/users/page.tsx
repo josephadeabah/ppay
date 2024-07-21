@@ -16,7 +16,7 @@ const users = [
     company: "TechCorp",
     actualSalary: "$100,000",
     avatar:
-      "https://images.pexels.com/photos/1586996/pexels-photo-1586996.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://img.clerk.com/eyJ0eXBlIjoiZGVmYXVsdCIsImlpZCI6Imluc18yUFhCM2ZKczBEd2NDVnRleGhIVElNNmxkWG4iLCJyaWQiOiJ1c2VyXzJqWTA4empFUU5XS0oyNXVNOFU5elB3RnhOTyJ9",
   },
   {
     id: 2,
@@ -31,7 +31,7 @@ const users = [
     company: "DesignCo",
     actualSalary: "$70,000",
     avatar:
-      "https://images.pexels.com/photos/9304678/pexels-photo-9304678.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://img.clerk.com/eyJ0eXBlIjoiZGVmYXVsdCIsImlpZCI6Imluc18yUFhCM2ZKczBEd2NDVnRleGhIVElNNmxkWG4iLCJyaWQiOiJ1c2VyXzJqWTA4empFUU5XS0oyNXVNOFU5elB3RnhOTyJ9",
   },
   {
     id: 3,
@@ -46,7 +46,7 @@ const users = [
     company: "DesignCo",
     actualSalary: "$70,000",
     avatar:
-      "https://images.pexels.com/photos/9301463/pexels-photo-9301463.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://img.clerk.com/eyJ0eXBlIjoiZGVmYXVsdCIsImlpZCI6Imluc18yUFhCM2ZKczBEd2NDVnRleGhIVElNNmxkWG4iLCJyaWQiOiJ1c2VyXzJqWTA4empFUU5XS0oyNXVNOFU5elB3RnhOTyJ9",
   },
 ];
 

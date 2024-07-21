@@ -1,5 +1,6 @@
 "use client";
 
+import DropdownSelect from "@/components/dropdown/DropdownSelect";
 import {
   BarElement,
   CategoryScale,
@@ -11,7 +12,6 @@ import {
   Title,
   Tooltip,
 } from "chart.js";
-import { Dropdown } from "flowbite-react";
 import { useState } from "react";
 import { Bar, Line } from "react-chartjs-2";
 
@@ -60,14 +60,56 @@ const trendData = {
       },
     ],
   },
+  geographicalVariations: {
+    labels: ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix"],
+    datasets: [
+      {
+        label: "Average Salary",
+        data: [80000, 75000, 70000, 65000, 60000],
+        borderColor: "rgba(153, 102, 255, 0.6)",
+        fill: false,
+      },
+    ],
+  },
+  roleSpecificTrends: {
+    labels: ["Engineer", "Manager", "Analyst", "Developer", "Designer"],
+    datasets: [
+      {
+        label: "Average Salary",
+        data: [90000, 95000, 70000, 80000, 75000],
+        borderColor: "rgba(255, 159, 64, 0.6)",
+        fill: false,
+      },
+    ],
+  },
+  demographicFactors: {
+    labels: ["Male", "Female", "Non-binary", "Prefer not to say"],
+    datasets: [
+      {
+        label: "Average Salary",
+        data: [85000, 80000, 75000, 78000],
+        borderColor: "rgba(255, 206, 86, 0.6)",
+        fill: false,
+      },
+    ],
+  },
 };
 
 export default function TrendAnalysis() {
-  const [selectedTrend, setSelectedTrend] = useState<string>("inflation");
+  const [selectedTrend, setSelectedTrend] = useState<string>("");
 
-  const handleTrendChange = (value: string) => {
-    setSelectedTrend(value);
+  const handleTrendChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedTrend(event.target.value);
   };
+
+  const trendOptions = [
+    { value: "inflation", label: "Inflation Impact" },
+    { value: "industryGrowth", label: "Industry Growth" },
+    { value: "economicConditions", label: "Economic Conditions" },
+    { value: "geographicalVariations", label: "Geographical Variations" },
+    { value: "roleSpecificTrends", label: "Role-specific Trends" },
+    { value: "demographicFactors", label: "Demographic Factors" },
+  ];
 
   return (
     <div className="bg-gray-50 p-6 dark:bg-gray-900">
@@ -81,7 +123,8 @@ export default function TrendAnalysis() {
         </h2>
         <p className="text-gray-700 dark:text-gray-400">
           Analyze salary trends over time, considering factors like inflation,
-          industry growth, and economic conditions. Use this data to make
+          industry growth, economic conditions, geographical variations,
+          role-specific trends, and demographic factors. Use this data to make
           informed decisions regarding salary adjustments or negotiations.
         </p>
       </div>
@@ -91,19 +134,13 @@ export default function TrendAnalysis() {
           Trend Charts
         </h2>
 
-        <Dropdown
-          label="Select Trend"
-          onChange={(e: React.FormEvent<HTMLButtonElement>) =>
-            handleTrendChange((e.target as HTMLSelectElement).value)
-          }
+        <DropdownSelect
+          options={trendOptions}
+          selectedValue={selectedTrend}
+          onChange={handleTrendChange}
+          placeholder="Select Trend"
           className="mb-4"
-        >
-          <Dropdown.Item value="inflation">Inflation Impact</Dropdown.Item>
-          <Dropdown.Item value="industryGrowth">Industry Growth</Dropdown.Item>
-          <Dropdown.Item value="economicConditions">
-            Economic Conditions
-          </Dropdown.Item>
-        </Dropdown>
+        />
 
         <div className="mt-4">
           {selectedTrend === "inflation" && <Line data={trendData.inflation} />}
@@ -112,6 +149,15 @@ export default function TrendAnalysis() {
           )}
           {selectedTrend === "economicConditions" && (
             <Line data={trendData.economicConditions} />
+          )}
+          {selectedTrend === "geographicalVariations" && (
+            <Line data={trendData.geographicalVariations} />
+          )}
+          {selectedTrend === "roleSpecificTrends" && (
+            <Line data={trendData.roleSpecificTrends} />
+          )}
+          {selectedTrend === "demographicFactors" && (
+            <Line data={trendData.demographicFactors} />
           )}
         </div>
       </div>
@@ -128,7 +174,7 @@ export default function TrendAnalysis() {
         </p>
 
         <Bar
-          data={trendData.inflation}
+          data={trendData[selectedTrend] || trendData.inflation} // Default to inflation if no trend is selected
           options={{
             responsive: true,
             plugins: { legend: { display: false } },

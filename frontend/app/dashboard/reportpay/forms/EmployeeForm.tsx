@@ -5,6 +5,11 @@ const EmployeeForm = () => {
         This data is only collected for the purposes of analytics and insight
         into global wage and salary trends and labor compliance. We do not share
         this data with anybody and you have our word.
+        <p>
+          As a member, when you submit this data it'll be saved to your profile
+          if you have not already done that. The data will be publicly
+          available.
+        </p>
       </div>
       <div className="mx-auto max-w-2xl px-4 py-8 lg:py-16">
         <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
