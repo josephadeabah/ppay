@@ -12,7 +12,7 @@ import {
   Title,
   Tooltip,
 } from "chart.js";
-import { useEffect } from "react";
+import { useState } from "react";
 import { Bar, Line, Pie } from "react-chartjs-2";
 
 ChartJS.register(
@@ -27,7 +27,7 @@ ChartJS.register(
   Legend,
 );
 
-const barChartData = {
+const initialBarChartData = {
   labels: ["Tech", "Healthcare", "Finance", "Education", "Retail"],
   datasets: [
     {
@@ -38,7 +38,7 @@ const barChartData = {
   ],
 };
 
-const lineChartData = {
+const initialLineChartData = {
   labels: ["North America", "Europe", "Asia", "Australia", "Africa"],
   datasets: [
     {
@@ -67,9 +67,46 @@ const pieChartData = {
 };
 
 export default function MarketSalaryBenchmarks() {
-  useEffect(() => {
-    // Any additional setup can be done here
-  }, []);
+  const [yourSalary, setYourSalary] = useState<number | null>(null);
+  const [barChartData, setBarChartData] = useState(initialBarChartData);
+  const [lineChartData, setLineChartData] = useState(initialLineChartData);
+
+  const handleSalaryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setYourSalary(parseInt(e.target.value) || null);
+  };
+
+  const handleCompareClick = () => {
+    if (yourSalary !== null) {
+      // Update bar chart with user salary comparison
+      const updatedBarChartData = {
+        ...initialBarChartData,
+        datasets: [
+          ...initialBarChartData.datasets,
+          {
+            label: "Your Salary",
+            data: Array(initialBarChartData.labels.length).fill(yourSalary),
+            backgroundColor: "rgba(255, 99, 132, 0.6)",
+          },
+        ],
+      };
+      setBarChartData(updatedBarChartData);
+
+      // Update line chart with user salary comparison
+      const updatedLineChartData = {
+        ...initialLineChartData,
+        datasets: [
+          ...initialLineChartData.datasets,
+          {
+            label: "Your Salary",
+            data: Array(initialLineChartData.labels.length).fill(yourSalary),
+            borderColor: "rgba(255, 99, 132, 0.6)",
+            fill: false,
+          },
+        ],
+      };
+      setLineChartData(updatedLineChartData);
+    }
+  };
 
   return (
     <div className="bg-gray-50 p-5 dark:bg-gray-900">
@@ -122,15 +159,17 @@ export default function MarketSalaryBenchmarks() {
                 className="mb-2 block text-gray-900 dark:text-white"
                 htmlFor="your-salary"
               >
-                Your Salary
+                Your Salary {yourSalary ? `(${yourSalary})` : ""}
               </label>
               <input
                 type="number"
                 id="your-salary"
                 className="w-full border border-gray-300 p-2 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+                onChange={handleSalaryChange}
               />
               <button
-                type="submit"
+                type="button"
+                onClick={handleCompareClick}
                 className="mt-3 w-full rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-800"
               >
                 Compare
@@ -139,7 +178,7 @@ export default function MarketSalaryBenchmarks() {
           </div>
 
           {/* Industry Benchmarks */}
-          <div className="rounded-lg bg-white p-4 shadow dark:bg-gray-800">
+          <div className="bg-white p-4 shadow-sm dark:bg-gray-800">
             <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
               Industry Benchmarks
             </h3>
@@ -150,7 +189,7 @@ export default function MarketSalaryBenchmarks() {
           </div>
 
           {/* Regional Trends */}
-          <div className="rounded-lg bg-white p-4 shadow dark:bg-gray-800">
+          <div className="bg-white p-4 shadow-sm dark:bg-gray-800">
             <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
               Regional Trends
             </h3>
