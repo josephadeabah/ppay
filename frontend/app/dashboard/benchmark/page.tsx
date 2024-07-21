@@ -264,7 +264,7 @@ export default function MarketSalaryBenchmarks() {
               <button
                 type="button"
                 onClick={handleCompareClick}
-                className="mt-3 w-full rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-800"
+                className="mt-3 w-full rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-800 dark:bg-gray-700"
               >
                 Compare
               </button>

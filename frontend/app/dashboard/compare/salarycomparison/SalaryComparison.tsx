@@ -1,3 +1,4 @@
+//Shows on Dashboard - Compare - Salary Comparison
 "use client";
 
 import {

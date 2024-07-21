@@ -1,3 +1,4 @@
+//Shows on Dashboard - Compare - Wages Chart
 "use client";
 import ModalComponent from "@/components/modal/ModalComponent";
 import dynamic from "next/dynamic";
