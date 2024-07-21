@@ -66,46 +66,140 @@ const pieChartData = {
   ],
 };
 
+const initialJobRolesData = {
+  labels: [
+    "Software Engineer",
+    "Data Scientist",
+    "Product Manager",
+    "Designer",
+    "Sales",
+  ],
+  datasets: [
+    {
+      label: "Average Salary by Job Role",
+      data: [120000, 110000, 115000, 95000, 85000],
+      backgroundColor: "rgba(153, 102, 255, 0.6)",
+    },
+  ],
+};
+
+const initialCountriesData = {
+  labels: ["USA", "Germany", "India", "UK", "Canada"],
+  datasets: [
+    {
+      label: "Average Salary by Country",
+      data: [90000, 80000, 60000, 70000, 75000],
+      backgroundColor: "rgba(255, 159, 64, 0.6)",
+    },
+  ],
+};
+
+const initialCompaniesData = {
+  labels: ["Google", "Amazon", "Microsoft", "Apple", "Facebook"],
+  datasets: [
+    {
+      label: "Average Salary by Company",
+      data: [150000, 140000, 130000, 160000, 120000],
+      backgroundColor: "rgba(255, 99, 132, 0.6)",
+    },
+  ],
+};
+
 export default function MarketSalaryBenchmarks() {
   const [yourSalary, setYourSalary] = useState<number | null>(null);
   const [barChartData, setBarChartData] = useState(initialBarChartData);
   const [lineChartData, setLineChartData] = useState(initialLineChartData);
+  const [jobRolesData, setJobRolesData] = useState(initialJobRolesData);
+  const [countriesData, setCountriesData] = useState(initialCountriesData);
+  const [companiesData, setCompaniesData] = useState(initialCompaniesData);
 
   const handleSalaryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setYourSalary(parseInt(e.target.value) || null);
   };
 
   const handleCompareClick = () => {
-    if (yourSalary !== null) {
-      // Update bar chart with user salary comparison
-      const updatedBarChartData = {
-        ...initialBarChartData,
-        datasets: [
-          ...initialBarChartData.datasets,
-          {
-            label: "Your Salary",
-            data: Array(initialBarChartData.labels.length).fill(yourSalary),
-            backgroundColor: "rgba(255, 99, 132, 0.6)",
-          },
-        ],
-      };
-      setBarChartData(updatedBarChartData);
+    if (yourSalary === null) return;
 
-      // Update line chart with user salary comparison
-      const updatedLineChartData = {
-        ...initialLineChartData,
-        datasets: [
-          ...initialLineChartData.datasets,
-          {
-            label: "Your Salary",
-            data: Array(initialLineChartData.labels.length).fill(yourSalary),
-            borderColor: "rgba(255, 99, 132, 0.6)",
-            fill: false,
-          },
-        ],
-      };
-      setLineChartData(updatedLineChartData);
-    }
+    // Update bar chart with user salary comparison
+    setBarChartData((prevData) => ({
+      ...prevData,
+      datasets: [
+        {
+          ...prevData.datasets[0], // Preserve existing dataset
+          data: [...prevData.datasets[0].data], // Copy existing data
+        },
+        {
+          label: "Your Salary",
+          data: Array(prevData.labels.length).fill(yourSalary),
+          backgroundColor: "rgba(255, 99, 132, 0.6)",
+        },
+      ],
+    }));
+
+    // Update line chart with user salary comparison
+    setLineChartData((prevData) => ({
+      ...prevData,
+      datasets: [
+        {
+          ...prevData.datasets[0], // Preserve existing dataset
+          data: [...prevData.datasets[0].data], // Copy existing data
+        },
+        {
+          label: "Your Salary",
+          data: Array(prevData.labels.length).fill(yourSalary),
+          borderColor: "rgba(255, 99, 132, 0.6)",
+          fill: false,
+        },
+      ],
+    }));
+
+    // Update job roles chart with user salary comparison
+    setJobRolesData((prevData) => ({
+      ...prevData,
+      datasets: [
+        {
+          ...prevData.datasets[0], // Preserve existing dataset
+          data: [...prevData.datasets[0].data], // Copy existing data
+        },
+        {
+          label: "Your Salary",
+          data: Array(prevData.labels.length).fill(yourSalary),
+          backgroundColor: "rgba(255, 159, 64, 0.6)",
+        },
+      ],
+    }));
+
+    // Update countries chart with user salary comparison
+    setCountriesData((prevData) => ({
+      ...prevData,
+      datasets: [
+        {
+          ...prevData.datasets[0], // Preserve existing dataset
+          data: [...prevData.datasets[0].data], // Copy existing data
+        },
+        {
+          label: "Your Salary",
+          data: Array(prevData.labels.length).fill(yourSalary),
+          backgroundColor: "rgba(75, 192, 192, 0.6)",
+        },
+      ],
+    }));
+
+    // Update companies chart with user salary comparison
+    setCompaniesData((prevData) => ({
+      ...prevData,
+      datasets: [
+        {
+          ...prevData.datasets[0], // Preserve existing dataset
+          data: [...prevData.datasets[0].data], // Copy existing data
+        },
+        {
+          label: "Your Salary",
+          data: Array(prevData.labels.length).fill(yourSalary),
+          backgroundColor: "rgba(153, 102, 255, 0.6)",
+        },
+      ],
+    }));
   };
 
   return (
@@ -185,7 +279,7 @@ export default function MarketSalaryBenchmarks() {
             <p className="text-gray-700 dark:text-gray-400">
               See how salaries compare across different industries.
             </p>
-            <Bar data={barChartData} />
+            <Bar data={jobRolesData} />
           </div>
 
           {/* Regional Trends */}
@@ -196,7 +290,18 @@ export default function MarketSalaryBenchmarks() {
             <p className="text-gray-700 dark:text-gray-400">
               Understand how salaries vary by region.
             </p>
-            <Line data={lineChartData} />
+            <Line data={countriesData} />
+          </div>
+
+          {/* Company Benchmarks */}
+          <div className="bg-white p-4 shadow-sm dark:bg-gray-800">
+            <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
+              Company Benchmarks
+            </h3>
+            <p className="text-gray-700 dark:text-gray-400">
+              Compare salaries across different companies.
+            </p>
+            <Bar data={companiesData} />
           </div>
         </div>
       </div>
