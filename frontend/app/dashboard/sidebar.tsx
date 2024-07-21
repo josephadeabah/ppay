@@ -8,7 +8,7 @@ import {
   HiOutlineCalculator,
   HiOutlineCash,
   HiOutlineChartPie,
-  HiOutlineCollection,
+  HiOutlineChat,
   HiOutlineDocumentReport,
   HiOutlineDownload,
   HiOutlineFastForward,
@@ -103,15 +103,15 @@ export const DashboardSidebar: FC = function () {
         >
           Compliance
         </Sidebar.Item>
+        <Sidebar.Item
+          href="/dashboard/dialogue"
+          icon={HiOutlineChat}
+          className={getItemClass("/dashboard/dialogue")}
+        >
+          Dialogue
+        </Sidebar.Item>
       </Sidebar.ItemGroup>
       <Sidebar.ItemGroup>
-        <Sidebar.Item
-          href="/dashboard/activity"
-          icon={HiOutlineCollection}
-          className={getItemClass("/dashboard/activity")}
-        >
-          Activity
-        </Sidebar.Item>
         <Sidebar.Item
           href="/dashboard/download"
           icon={HiOutlineDownload}
