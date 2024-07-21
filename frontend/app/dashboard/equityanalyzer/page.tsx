@@ -176,36 +176,39 @@ const calculateAdjustedSalary = (
   location: string,
   performance: number,
 ): number => {
+  // Find base salary for the role
   const roleIndex = data.roleSalary.labels.indexOf(role);
-  const roleSalary =
+  const baseSalary =
     roleIndex !== -1 ? data.roleSalary.datasets[0].data[roleIndex] : 0;
 
-  // Find average experience salary based on experience range
+  // Find experience-based adjustment
   const experienceIndex =
     data.salaryProgression.labels.indexOf(experienceRange);
-  const experienceSalary =
+  const experienceAdjustment =
     experienceIndex !== -1
-      ? data.salaryProgression.datasets[0].data[experienceIndex]
-      : 0;
+      ? data.salaryProgression.datasets[0].data[experienceIndex] / 100
+      : 1;
 
+  // Find location-based cost of living adjustment
   const locationIndex = data.costOfLiving.labels.indexOf(location);
   const locationIndexValue =
     locationIndex !== -1
-      ? data.costOfLiving.datasets[0].data[locationIndex]
-      : 100;
+      ? data.costOfLiving.datasets[0].data[locationIndex] / 100
+      : 1;
 
-  // Calculate base adjusted salary
-  const baseSalary = roleSalary || 0;
+  // Basic adjusted salary calculation
   let adjustedSalary =
-    ((baseSalary * (experienceSalary || 1)) / 100) * (locationIndexValue / 100);
+    ((baseSalary * (performance || 1)) / 100) *
+    (locationIndexValue / 100) *
+    experienceAdjustment;
 
-  // Incorporate benefits and perks
+  // Incorporate benefits and perks realistically
   const averageBenefitRating =
     data.benefitsAndPerks.reduce((total, perk) => total + perk.average, 0) /
     data.benefitsAndPerks.length;
-  adjustedSalary *= 1 + averageBenefitRating / 100; // Assume averageBenefitRating is in percentage
+  adjustedSalary *= 1 + (averageBenefitRating / 100) * 0.5; // More conservative adjustment
 
-  // Incorporate performance compensation
+  // Performance adjustment
   const performanceAdjustment =
     data.performanceCompensation.datasets[0].data.find(
       (d) => d.x === performance,
@@ -251,7 +254,6 @@ export default function PayEquityAnalyzer() {
         <div className="min-w-[200px] flex-1">
           <DropdownSelect
             options={[
-              { value: "", label: "Select Role" },
               { value: "Engineer", label: "Engineer" },
               { value: "Manager", label: "Manager" },
               { value: "Sales", label: "Sales" },
@@ -268,7 +270,6 @@ export default function PayEquityAnalyzer() {
         <div className="min-w-[200px] flex-1">
           <DropdownSelect
             options={[
-              { value: "", label: "Select Location" },
               { value: "New York", label: "New York" },
               { value: "San Francisco", label: "San Francisco" },
               { value: "Chicago", label: "Chicago" },
