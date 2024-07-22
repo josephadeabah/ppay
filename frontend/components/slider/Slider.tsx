@@ -1,87 +1,57 @@
-import React from "react";
+// components/SliderComponent.tsx
 
-interface SliderProps {
-  min: number;
-  max: number;
-  step: number;
-  value: number | [number, number];
-  onChange: (value: number | [number, number]) => void;
-  range?: boolean;
-  tooltip?: boolean;
+import { Slider as NextUISlider } from "@nextui-org/slider";
+
+interface SliderComponentProps {
+  value: number | number[];
+  onChange: (value: number | number[]) => void;
+  min?: number;
+  max?: number;
+  step?: number;
+  label?: string;
+  trackColor?: string;
+  thumbColor?: string;
+  trackClasses?: string;
+  thumbClasses?: string;
 }
 
-const Slider: React.FC<SliderProps> = ({
-  min,
-  max,
-  step,
+const SliderComponent: React.FC<SliderComponentProps> = ({
   value,
   onChange,
-  range = false,
-  tooltip = false,
+  min = 0,
+  max = 100,
+  step = 1,
+  label,
+  trackColor = "bg-gray-200",
+  thumbColor = "bg-white",
+  trackClasses = "",
+  thumbClasses = "",
 }) => {
-  const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-    index?: number,
-  ) => {
-    const newValue = parseInt(event.target.value);
-
-    if (range) {
-      const values = Array.isArray(value) ? [...value] : [0, 0];
-      if (index === 0) {
-        values[0] = newValue;
-      } else {
-        values[1] = newValue;
-      }
-      onChange(values as [number, number]);
-    } else {
-      onChange(newValue);
-    }
-  };
-
   return (
-    <div className="relative flex items-center">
-      {/* Render single slider if range is false */}
-      {!range && (
-        <input
-          type="range"
-          min={min}
-          max={max}
-          step={step}
-          value={typeof value === "number" ? value : value[0]}
-          onChange={(e) => handleChange(e)}
-          className="slider-thumb"
-        />
-      )}
-      {/* Render range sliders if range is true */}
-      {range && (
-        <>
-          <input
-            type="range"
-            min={min}
-            max={max}
-            step={step}
-            value={Array.isArray(value) ? value[0] : min}
-            onChange={(e) => handleChange(e, 0)}
-            className="slider-thumb"
-          />
-          <input
-            type="range"
-            min={min}
-            max={max}
-            step={step}
-            value={Array.isArray(value) ? value[1] : max}
-            onChange={(e) => handleChange(e, 1)}
-            className="slider-thumb absolute top-0"
-          />
-        </>
-      )}
-      {tooltip && (
-        <div className="tooltip">
-          {Array.isArray(value) ? `${value[0]} - ${value[1]}` : value}
-        </div>
-      )}
+    <div className="mx-auto w-full max-w-md">
+      <NextUISlider
+        label={label}
+        size="sm"
+        value={value}
+        defaultValue={value}
+        onChange={onChange}
+        step={step}
+        classNames={{
+          base: `w-full ${trackClasses}`,
+          track: `rounded-full ${trackColor}`,
+          filler: `bg-gradient-to-r from-indigo-400 to-indigo-600 rounded-full`,
+        }}
+        renderThumb={(props) => (
+          <div
+            {...props}
+            className={`h-6 w-6 ${thumbColor} flex cursor-pointer items-center justify-center rounded-full border border-gray-300 shadow-md dark:border-gray-600 ${thumbClasses}`}
+          >
+            <span className="h-2.5 w-2.5 rounded-full bg-indigo-500" />
+          </div>
+        )}
+      />
     </div>
   );
 };
 
-export default Slider;
+export default SliderComponent;
