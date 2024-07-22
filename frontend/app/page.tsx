@@ -10,7 +10,7 @@ const LandingPage = () => {
         <DashboardNavbar />
       </header>
       {/* HERO */}
-      <section className="bg-primary-600 dark:bg-gray-950 lg:relative lg:flex lg:items-center">
+      <section className="bg-slate-100 text-gray-700 dark:bg-gray-950 dark:text-gray-50 lg:relative lg:flex lg:items-center">
         <div className=" mx-auto flex w-full flex-col items-center gap-y-20 px-6 py-32 lg:items-start lg:px-0">
           <div className="mx-auto flex max-w-[36.75rem] flex-col gap-y-5 lg:mx-0 lg:h-[30rem] lg:w-1/2 lg:max-w-[50%] lg:pl-6 lg:pr-20">
             <img
@@ -18,7 +18,7 @@ const LandingPage = () => {
               src="https://images.pexels.com/photos/9301896/pexels-photo-9301896.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               className="h-32 w-full rounded-xl object-cover"
             />
-            <div className="*:text-gray-50 dark:*:text-gray-50 lg:mt-auto">
+            <div className="lg:mt-auto">
               <h1 className="mb-4 text-4xl font-bold xl:text-5xl">
                 The Global Wage Transparency Platform.
               </h1>
@@ -31,7 +31,7 @@ const LandingPage = () => {
             <div className="flex w-full flex-col items-center gap-4 *:w-full *:rounded-lg *:px-5 *:py-3 *:text-center *:text-base *:font-medium *:transition *:duration-[250ms] *:ease-in-out lg:flex-row lg:justify-start lg:*:w-auto">
               <a
                 href="/dashboard"
-                className="bg-black text-white hover:bg-blue-700"
+                className="bg-white text-gray-800 hover:bg-blue-700 dark:bg-gray-700 dark:text-gray-50"
               >
                 View App
               </a>

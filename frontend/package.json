@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "flowbite-next-starter",
+  "name": "paysight-app",
   "version": "2.0.0",
   "description": "Basic dashboard example using Flowbite React on Next.js 14",
   "homepage": "https://github.com/tulupinc/flowbite-next-starter",

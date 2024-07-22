@@ -50,7 +50,7 @@ export const DashboardNavbar: FC = function () {
             </Link>
             <Link
               href="/auth/register"
-              className="rounded-md bg-blue-600 px-2 py-1 text-white hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800"
+              className="rounded-md bg-blue-600 px-2 py-1 text-white hover:bg-blue-700 dark:bg-gray-900 dark:hover:bg-blue-800"
             >
               Sign Up
             </Link>
