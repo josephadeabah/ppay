@@ -292,8 +292,12 @@ export default function TrendAnalysis() {
   };
 
   return (
-    <div className="flex flex-col gap-4 p-4">
-      <h1 className="mb-6 text-3xl font-bold">Pay Trend Analysis (Live)</h1>
+    <div className="mx-auto flex flex-col px-4">
+      <div className="mb-6 mt-2 flex items-center gap-2 text-xl font-bold text-gray-700 dark:text-gray-50">
+        Pay Trend Analysis (Live{" "}
+        <span className="inline-block h-3 w-3 rounded-full bg-green-400"></span>
+        )
+      </div>
       <DropdownSelect
         options={trendOptions}
         selectedValue={selectedTrend}

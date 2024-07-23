@@ -261,7 +261,7 @@ export default function UsersPage() {
                                   <div className="text-sm font-semibold text-gray-900 dark:text-white">
                                     Status:
                                   </div>
-                                  <div className="r flex flex-row items-center gap-2 text-sm font-normal text-gray-500 dark:text-gray-400">
+                                  <div className="flex flex-row items-center gap-2 text-sm font-normal text-gray-500 dark:text-gray-400">
                                     {user.status}
                                     {user.status === "Offline" ? (
                                       <div className="mr-2 inline-block h-3 w-3 rounded-full bg-red-400"></div>

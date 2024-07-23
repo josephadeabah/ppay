@@ -87,8 +87,11 @@ const InflationPage: React.FC = () => {
 
   return (
     <div className="container mx-auto px-4">
-      <h1 className="mb-6 text-3xl font-bold">Inflation Analysis (Live)</h1>
-
+      <div className="mb-6 mt-2 flex items-center gap-2 text-xl font-bold text-gray-700 dark:text-gray-50">
+        Inflation Analysis (Live{" "}
+        <span className="inline-block h-3 w-3 rounded-full bg-green-400"></span>
+        )
+      </div>
       <div className="mb-8">
         <DropdownSelect
           options={[
@@ -138,11 +141,15 @@ const InflationPage: React.FC = () => {
         </div>
       </div>
 
-      <h2 className="my-6 text-2xl font-bold">Category-wise Inflation Rates</h2>
+      <h2 className="my-6 text-2xl font-bold text-gray-700 dark:text-gray-50">
+        Category-wise Inflation Rates
+      </h2>
 
       {categoryData[selectedRegion].map((countryData) => (
         <div key={countryData.country} className="mb-6">
-          <h3 className="mb-4 text-xl font-semibold">{countryData.country}</h3>
+          <h3 className="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-50">
+            {countryData.country}
+          </h3>
           <Table hoverable={true}>
             <Table.Head>
               <Table.HeadCell>Category</Table.HeadCell>
