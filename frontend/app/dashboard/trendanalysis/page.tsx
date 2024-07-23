@@ -184,7 +184,7 @@ export default function TrendAnalysis() {
       changeTimeframe: "Yearly",
     },
     {
-      country: "USA",
+      country: "Russia",
       industry: "Education",
       company: "Company F",
       role: "Teacher",
@@ -194,7 +194,7 @@ export default function TrendAnalysis() {
       changeTimeframe: "Monthly",
     },
     {
-      country: "USA",
+      country: "Russia",
       industry: "Manufacturing",
       company: "Company G",
       role: "Engineer",
@@ -204,7 +204,7 @@ export default function TrendAnalysis() {
       changeTimeframe: "Yearly",
     },
     {
-      country: "USA",
+      country: "Russia",
       industry: "Healthcare",
       company: "Company H",
       role: "Manager",
@@ -380,19 +380,19 @@ export default function TrendAnalysis() {
               </th>
               <th
                 className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
-                title="Current salary at the company"
+                title="Current salary at the company per year"
               >
-                Current Salary by Company
+                Company Salary
               </th>
               <th
                 className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
-                title="Current salary for the role"
+                title="Current salary for the role per year"
               >
-                Current Salary by Role
+                Role Salary
               </th>
               <th
                 className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
-                title="Percentage change in salary"
+                title="Percentage change in salary over time"
               >
                 Change
               </th>
