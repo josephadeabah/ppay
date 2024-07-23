@@ -311,7 +311,7 @@ export default function TrendAnalysis() {
         <div className="flex flex-col md:flex-row md:gap-4">
           <div className="flex-1">
             <label htmlFor="growthRate" className="mb-2 block">
-              Growth Rate
+              Growth Rate {growthRate} (%)
             </label>
             <SliderComponent
               id="growthRate"
@@ -324,20 +324,20 @@ export default function TrendAnalysis() {
           </div>
           <div className="flex-1">
             <label htmlFor="salaryFilter" className="mb-2 block">
-              Minimum Salary
+              Minimum Salary ($) {salaryFilter.toLocaleString()}
             </label>
             <SliderComponent
               id="salaryFilter"
               minValue={0}
               maxValue={200000}
-              step={100}
+              step={10}
               value={salaryFilter}
               onChange={handleSalaryFilterChange}
             />
           </div>
           <div className="flex-1">
             <label htmlFor="changeFilter" className="mb-2 block">
-              Change
+              Change Filter (%) {changeFilter}
             </label>
             <SliderComponent
               id="changeFilter"
