@@ -31,7 +31,7 @@ const LandingPage = () => {
             <div className="flex w-full flex-col items-center gap-4 *:w-full *:rounded-lg *:px-5 *:py-3 *:text-center *:text-base *:font-medium *:transition *:duration-[250ms] *:ease-in-out lg:flex-row lg:justify-start lg:*:w-auto">
               <a
                 href="/dashboard"
-                className="bg-white text-gray-800 hover:bg-blue-700 dark:bg-gray-700 dark:text-gray-50"
+                className="bg-white text-gray-800 hover:bg-gray-50 dark:bg-gray-700 dark:text-gray-50"
               >
                 View App
               </a>
