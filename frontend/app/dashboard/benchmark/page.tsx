@@ -1,5 +1,5 @@
 "use client";
-
+import SliderComponent from "@/components/slider/Slider"; // Import the SliderComponent
 import {
   ArcElement,
   BarElement,
@@ -113,8 +113,8 @@ export default function MarketSalaryBenchmarks() {
   const [countriesData, setCountriesData] = useState(initialCountriesData);
   const [companiesData, setCompaniesData] = useState(initialCompaniesData);
 
-  const handleSalaryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setYourSalary(parseInt(e.target.value) || null);
+  const handleSliderChange = (value: number | number[]) => {
+    setYourSalary(Array.isArray(value) ? value[0] : value);
   };
 
   const handleCompareClick = () => {
@@ -207,7 +207,66 @@ export default function MarketSalaryBenchmarks() {
       <h1 className="mb-5 text-3xl font-bold text-gray-900 dark:text-white">
         Market Salary Benchmarks
       </h1>
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+      {/* Detailed Analysis */}
+      <div className="mt-10">
+        <h2 className="mb-5 text-2xl font-bold text-gray-900 dark:text-white">
+          Detailed Analytical Information
+        </h2>
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+          {/* Salary Comparison */}
+          <div className="bg-white p-4 shadow-sm dark:bg-gray-800">
+            <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
+              Compare Your Salary
+            </h3>
+            <p className="text-gray-700 dark:text-gray-400">
+              Compare your current salary against market averages to see if
+              you're making more.
+            </p>
+            <div className="mt-4">
+              <SliderComponent
+                value={yourSalary ?? 0}
+                onChange={handleSliderChange}
+                minValue={0}
+                maxValue={200000}
+                step={10}
+                label={`Your Salary: $`}
+              />
+              <button
+                onClick={handleCompareClick}
+                className="mt-4 w-full rounded bg-blue-700 px-4 py-2 text-white dark:bg-gray-700"
+              >
+                Compare
+              </button>
+            </div>
+          </div>
+
+          {/* Job Roles */}
+          <div className="bg-white p-4 shadow-sm dark:bg-gray-800">
+            <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
+              Average Salaries by Job Role
+            </h3>
+            <Bar data={jobRolesData} />
+          </div>
+
+          {/* Countries */}
+          <div className="bg-white p-4 shadow-sm dark:bg-gray-800">
+            <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
+              Average Salaries by Country
+            </h3>
+            <Bar data={countriesData} />
+          </div>
+
+          {/* Companies */}
+          <div className="bg-white p-4 shadow-sm dark:bg-gray-800">
+            <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
+              Average Salaries by Company
+            </h3>
+            <Bar data={companiesData} />
+          </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {/* Average Salaries */}
         <div className="bg-white p-4 shadow-sm dark:bg-gray-800">
           <h2 className="mb-3 text-xl font-semibold text-gray-900 dark:text-white">
@@ -230,79 +289,6 @@ export default function MarketSalaryBenchmarks() {
             Salary Distribution by Level
           </h2>
           <Pie data={pieChartData} />
-        </div>
-      </div>
-
-      {/* Detailed Analysis */}
-      <div className="mt-10">
-        <h2 className="mb-5 text-2xl font-bold text-gray-900 dark:text-white">
-          Detailed Analytical Information
-        </h2>
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-          {/* Salary Comparison */}
-          <div className="bg-white p-4 shadow-sm dark:bg-gray-800">
-            <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
-              Compare Your Salary
-            </h3>
-            <p className="text-gray-700 dark:text-gray-400">
-              Compare your current salary against market averages to ensure fair
-              compensation.
-            </p>
-            <form className="mt-4">
-              <label
-                className="mb-2 block text-gray-900 dark:text-white"
-                htmlFor="your-salary"
-              >
-                Your Salary {yourSalary ? `(${yourSalary})` : ""}
-              </label>
-              <input
-                type="number"
-                id="your-salary"
-                className="w-full border border-gray-300 p-2 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
-                onChange={handleSalaryChange}
-              />
-              <button
-                type="button"
-                onClick={handleCompareClick}
-                className="mt-3 w-full rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-800 dark:bg-gray-700"
-              >
-                Compare
-              </button>
-            </form>
-          </div>
-
-          {/* Industry Benchmarks */}
-          <div className="bg-white p-4 shadow-sm dark:bg-gray-800">
-            <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
-              Industry Benchmarks
-            </h3>
-            <p className="text-gray-700 dark:text-gray-400">
-              See how salaries compare across different industries.
-            </p>
-            <Bar data={jobRolesData} />
-          </div>
-
-          {/* Regional Trends */}
-          <div className="bg-white p-4 shadow-sm dark:bg-gray-800">
-            <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
-              Regional Trends
-            </h3>
-            <p className="text-gray-700 dark:text-gray-400">
-              Understand how salaries vary by region.
-            </p>
-            <Line data={countriesData} />
-          </div>
-
-          {/* Company Benchmarks */}
-          <div className="bg-white p-4 shadow-sm dark:bg-gray-800">
-            <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
-              Company Benchmarks
-            </h3>
-            <p className="text-gray-700 dark:text-gray-400">
-              Compare salaries across different companies.
-            </p>
-            <Bar data={companiesData} />
-          </div>
         </div>
       </div>
     </div>
