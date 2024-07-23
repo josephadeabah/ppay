@@ -1,6 +1,6 @@
 // components/SliderComponent.tsx
-
 import { Slider as NextUISlider } from "@nextui-org/slider";
+import { useId } from "react";
 
 interface SliderComponentProps {
   value: number | number[];
@@ -27,11 +27,15 @@ const SliderComponent: React.FC<SliderComponentProps> = ({
   thumbColor = "bg-white",
   trackClasses = "",
   thumbClasses = "",
-  id = "",
+  id,
 }) => {
+  // Generate a unique ID if not provided
+  const uniqueId = useId();
+
   return (
     <div className="mx-auto w-full max-w-md">
       <NextUISlider
+        id={id ?? uniqueId} // Use the provided ID or fallback to the generated one
         label={label}
         size="sm"
         value={value}
