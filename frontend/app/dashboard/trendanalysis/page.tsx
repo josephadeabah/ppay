@@ -1,7 +1,6 @@
 "use client";
-
 import DropdownSelect from "@/components/dropdown/DropdownSelect";
-import SliderComponent from "@/components/slider/Slider"; // Import the reusable slider component
+import SliderComponent from "@/components/slider/Slider";
 import {
   BarElement,
   CategoryScale,
@@ -38,60 +37,14 @@ interface TrendData {
 }
 
 interface TrendDataMap {
-  inflation: TrendData;
-  industryGrowth: TrendData;
-  economicConditions: TrendData;
-  geographicalVariations: TrendData;
-  roleSpecificTrends: TrendData;
-  demographicFactors: TrendData;
+  roles: TrendData;
+  companies: TrendData;
+  industries: TrendData;
+  regions: TrendData;
 }
 
 const trendData: TrendDataMap = {
-  inflation: {
-    labels: ["Jan 2024", "Feb 2024", "Mar 2024", "Apr 2024", "May 2024"],
-    datasets: [
-      {
-        label: "Inflation Rate",
-        data: [1.2, 1.3, 1.5, 1.7, 1.6],
-        borderColor: "rgba(255, 99, 132, 0.6)",
-        fill: false,
-      },
-    ],
-  },
-  industryGrowth: {
-    labels: ["Q1 2024", "Q2 2024", "Q3 2024", "Q4 2024"],
-    datasets: [
-      {
-        label: "Industry Growth",
-        data: [2.5, 3.0, 3.2, 3.5],
-        borderColor: "rgba(54, 162, 235, 0.6)",
-        fill: false,
-      },
-    ],
-  },
-  economicConditions: {
-    labels: ["2020", "2021", "2022", "2023", "2024"],
-    datasets: [
-      {
-        label: "Economic Index",
-        data: [100, 105, 110, 115, 120],
-        borderColor: "rgba(75, 192, 192, 0.6)",
-        fill: false,
-      },
-    ],
-  },
-  geographicalVariations: {
-    labels: ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix"],
-    datasets: [
-      {
-        label: "Average Salary",
-        data: [80000, 75000, 70000, 65000, 60000],
-        borderColor: "rgba(153, 102, 255, 0.6)",
-        fill: false,
-      },
-    ],
-  },
-  roleSpecificTrends: {
+  roles: {
     labels: ["Engineer", "Manager", "Analyst", "Developer", "Designer"],
     datasets: [
       {
@@ -102,13 +55,35 @@ const trendData: TrendDataMap = {
       },
     ],
   },
-  demographicFactors: {
-    labels: ["Male", "Female", "Non-binary", "Prefer not to say"],
+  companies: {
+    labels: ["Company A", "Company B", "Company C", "Company D", "Company E"],
     datasets: [
       {
         label: "Average Salary",
-        data: [85000, 80000, 75000, 78000],
-        borderColor: "rgba(255, 206, 86, 0.6)",
+        data: [80000, 85000, 90000, 75000, 95000],
+        borderColor: "rgba(54, 162, 235, 0.6)",
+        fill: false,
+      },
+    ],
+  },
+  industries: {
+    labels: ["Tech", "Healthcare", "Finance", "Education", "Manufacturing"],
+    datasets: [
+      {
+        label: "Average Salary",
+        data: [95000, 70000, 85000, 60000, 80000],
+        borderColor: "rgba(75, 192, 192, 0.6)",
+        fill: false,
+      },
+    ],
+  },
+  regions: {
+    labels: ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix"],
+    datasets: [
+      {
+        label: "Average Salary",
+        data: [90000, 85000, 80000, 75000, 70000],
+        borderColor: "rgba(153, 102, 255, 0.6)",
         fill: false,
       },
     ],
@@ -128,13 +103,15 @@ const generateScenarioComparisonData = (
 
 export default function TrendAnalysis() {
   const [selectedTrend, setSelectedTrend] =
-    useState<keyof TrendDataMap>("inflation");
+    useState<keyof TrendDataMap>("roles");
   const [growthRate, setGrowthRate] = useState<number>(60); // Default value of 60
+  const [changeFilter, setChangeFilter] = useState<number>(-100); // Default value to show all changes
 
   const selectedTrendData = useMemo(
-    () => trendData[selectedTrend] || trendData.inflation,
+    () => trendData[selectedTrend] || trendData.roles,
     [selectedTrend],
   );
+
   const scenarioData = useMemo(
     () =>
       generateScenarioComparisonData(selectedTrendData, {
@@ -148,13 +125,73 @@ export default function TrendAnalysis() {
   };
 
   const trendOptions = [
-    { value: "inflation", label: "Inflation Impact" },
-    { value: "industryGrowth", label: "Industry Growth" },
-    { value: "economicConditions", label: "Economic Conditions" },
-    { value: "geographicalVariations", label: "Geographical Variations" },
-    { value: "roleSpecificTrends", label: "Role-specific Trends" },
-    { value: "demographicFactors", label: "Demographic Factors" },
+    { value: "roles", label: "Roles" },
+    { value: "companies", label: "Companies" },
+    { value: "industries", label: "Industries" },
+    { value: "regions", label: "Regions" },
   ];
+
+  const tableData = [
+    { category: "Roles", label: "Engineer", currentSalary: 90000, change: 5 },
+    { category: "Roles", label: "Manager", currentSalary: 95000, change: -3 },
+    { category: "Roles", label: "Analyst", currentSalary: 70000, change: 0 },
+    {
+      category: "Companies",
+      label: "Company A",
+      currentSalary: 80000,
+      change: 2,
+    },
+    {
+      category: "Companies",
+      label: "Company B",
+      currentSalary: 85000,
+      change: -10,
+    },
+    {
+      category: "Companies",
+      label: "Company C",
+      currentSalary: 90000,
+      change: 4,
+    },
+    { category: "Industries", label: "Tech", currentSalary: 95000, change: 4 },
+    {
+      category: "Industries",
+      label: "Healthcare",
+      currentSalary: 70000,
+      change: -20,
+    },
+    {
+      category: "Industries",
+      label: "Finance",
+      currentSalary: 85000,
+      change: 0,
+    },
+    { category: "Regions", label: "New York", currentSalary: 90000, change: 1 },
+    {
+      category: "Regions",
+      label: "Los Angeles",
+      currentSalary: 85000,
+      change: -1,
+    },
+    { category: "Regions", label: "Chicago", currentSalary: 80000, change: 2 },
+  ];
+
+  const adjustedTableData = useMemo(
+    () =>
+      tableData.map((data) => ({
+        ...data,
+        currentSalary: data.currentSalary * (1 + growthRate / 100),
+      })),
+    [growthRate],
+  );
+
+  const getChangeColor = (change: number) => {
+    if (change > 0)
+      return "bg-green-100 text-green-800 dark:bg-green-700 dark:text-green-100";
+    if (change < 0)
+      return "bg-red-100 text-red-800 dark:bg-red-700 dark:text-red-100";
+    return "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-100";
+  };
 
   return (
     <div className="bg-gray-50 p-6 dark:bg-gray-900">
@@ -186,14 +223,48 @@ export default function TrendAnalysis() {
           placeholder="Select a trend"
         />
 
+        <div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              Bar Chart
+            </h3>
+            <Bar
+              data={scenarioData}
+              options={{
+                responsive: true,
+                plugins: { legend: { display: false } },
+              }}
+            />
+          </div>
+
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+              Line Chart
+            </h3>
+            <Line
+              data={scenarioData}
+              options={{
+                responsive: true,
+                plugins: { legend: { display: false } },
+              }}
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className="mb-6 rounded-lg bg-white p-5 shadow-sm dark:bg-gray-800">
+        <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
+          Filter and View Adjusted Data
+        </h2>
+
         <div className="mb-4 text-gray-700 dark:text-gray-100">
           <SliderComponent
-            value={growthRate}
+            value={changeFilter}
             onChange={(value: number | number[]) =>
-              setGrowthRate(Array.isArray(value) ? value[0] : value)
-            } // Handle single value
-            label="Select Growth Rate"
-            min={0}
+              setChangeFilter(Array.isArray(value) ? value[0] : value)
+            }
+            label="Minimum Change Percentage"
+            min={-100}
             max={100}
             step={1}
             trackColor="bg-gray-200"
@@ -202,34 +273,42 @@ export default function TrendAnalysis() {
             thumbClasses="shadow-md"
           />
           <p className="text-gray-700 dark:text-gray-100">
-            Growth Rate: {growthRate}%
+            Minimum Change: {changeFilter}%
           </p>
         </div>
 
-        <div className="mb-4">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-            Bar Chart
-          </h3>
-          <Bar
-            data={scenarioData}
-            options={{
-              responsive: true,
-              plugins: { legend: { display: false } },
-            }}
-          />
-        </div>
-
-        <div>
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-            Line Chart
-          </h3>
-          <Line
-            data={scenarioData}
-            options={{
-              responsive: true,
-              plugins: { legend: { display: false } },
-            }}
-          />
+        <div className="overflow-x-auto">
+          <table className="w-full table-auto border-separate border-spacing-2">
+            <thead className="bg-gray-100 dark:bg-gray-700">
+              <tr>
+                <th className="p-2 text-left">Category</th>
+                <th className="p-2 text-left">Label</th>
+                <th className="p-2 text-left">Current Salary</th>
+                <th className="p-2 text-left">Change (%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {adjustedTableData
+                .filter((row) => row.change >= changeFilter)
+                .map((row, index) => (
+                  <tr
+                    key={index}
+                    className={`border-b ${
+                      index % 2 === 0
+                        ? "bg-gray-50 dark:bg-gray-800"
+                        : "bg-gray-100 dark:bg-gray-900"
+                    }`}
+                  >
+                    <td className="p-2">{row.category}</td>
+                    <td className="p-2">{row.label}</td>
+                    <td className="p-2">${row.currentSalary.toFixed(2)}</td>
+                    <td className={`p-2 ${getChangeColor(row.change)}`}>
+                      {row.change.toFixed(2)}%
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
