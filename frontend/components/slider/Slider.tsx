@@ -5,27 +5,29 @@ import { Slider as NextUISlider } from "@nextui-org/slider";
 interface SliderComponentProps {
   value: number | number[];
   onChange: (value: number | number[]) => void;
-  min?: number;
-  max?: number;
+  minValue?: number;
+  maxValue?: number;
   step?: number;
   label?: string;
   trackColor?: string;
   thumbColor?: string;
   trackClasses?: string;
   thumbClasses?: string;
+  id?: string;
 }
 
 const SliderComponent: React.FC<SliderComponentProps> = ({
   value,
   onChange,
-  min = 0,
-  max = 100,
+  minValue = -100,
+  maxValue = 100,
   step = 1,
   label,
   trackColor = "bg-gray-200",
   thumbColor = "bg-white",
   trackClasses = "",
   thumbClasses = "",
+  id = "",
 }) => {
   return (
     <div className="mx-auto w-full max-w-md">
@@ -33,6 +35,8 @@ const SliderComponent: React.FC<SliderComponentProps> = ({
         label={label}
         size="sm"
         value={value}
+        minValue={minValue}
+        maxValue={maxValue}
         defaultValue={value}
         onChange={onChange}
         step={step}

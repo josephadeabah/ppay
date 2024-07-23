@@ -264,7 +264,6 @@ export default function TrendAnalysis() {
         .slice(0, 8), // Limit rows to 8
     [growthRate, salaryFilter, changeFilter],
   );
-  
 
   const getChangeColor = (change: number) => {
     if (change > 0)
@@ -293,171 +292,124 @@ export default function TrendAnalysis() {
   };
 
   return (
-    <div className="bg-gray-50 p-6 dark:bg-gray-900">
-      <h1 className="mb-6 text-3xl font-bold text-gray-900 dark:text-white">
-        Trend Analysis Dashboard
-      </h1>
-
-      <div className="mb-6 rounded-lg bg-white p-5 shadow-sm dark:bg-gray-800">
-        <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
-          Overview
-        </h2>
-        <div className="mb-4">
-          <label
-            htmlFor="trend"
-            className="block text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Select Trend
-          </label>
-          <DropdownSelect
-            id="trend"
-            options={trendOptions}
-            selectedValue={selectedTrend}
-            onChange={handleTrendChange}
-            placeholder="Select a trend"
-          />
+    <div className="flex flex-col gap-4 p-4">
+      <DropdownSelect
+        options={trendOptions}
+        selectedValue={selectedTrend}
+        onChange={handleTrendChange}
+        placeholder="Select Trend"
+      />
+      <div className="flex flex-col md:flex-row md:gap-4">
+        <div className="flex-1">
+          <Line data={scenarioData} options={{ responsive: true }} />
+        </div>
+        <div className="flex-1">
+          <Bar data={scenarioData} options={{ responsive: true }} />
         </div>
       </div>
-
-      <div className="mb-6 flex flex-col md:flex-row">
-        <div className="md:w-1/2 md:pr-2">
-          <div className="rounded-lg bg-white p-5 shadow-sm dark:bg-gray-800">
-            <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
-              Line Chart
-            </h2>
-            <Line
-              data={scenarioData}
-              options={{
-                responsive: true,
-                plugins: {
-                  legend: { position: "top" },
-                  tooltip: {
-                    callbacks: { label: (context) => `$${context.raw}` },
-                  },
-                },
-                scales: {
-                  x: { title: { display: true, text: "Categories" } },
-                  y: { title: { display: true, text: "Salary ($)" } },
-                },
-              }}
-            />
-          </div>
-        </div>
-        <div className="md:w-1/2 md:pl-2">
-          <div className="rounded-lg bg-white p-5 shadow-sm dark:bg-gray-800">
-            <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
-              Bar Chart
-            </h2>
-            <Bar
-              data={scenarioData}
-              options={{
-                responsive: true,
-                plugins: {
-                  legend: { position: "top" },
-                  tooltip: {
-                    callbacks: { label: (context) => `$${context.raw}` },
-                  },
-                },
-                scales: {
-                  x: { title: { display: true, text: "Categories" } },
-                  y: { title: { display: true, text: "Salary ($)" } },
-                },
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-3">
-          <div className="flex flex-col gap-2">
-            <label
-              htmlFor="growthRate"
-              className="block text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Growth Rate (%)
+      <div className="my-4">
+        <div className="flex flex-col md:flex-row md:gap-4">
+          <div className="flex-1">
+            <label htmlFor="growthRate" className="mb-2 block">
+              Growth Rate
             </label>
             <SliderComponent
-              min={-100}
-              max={100}
+              id="growthRate"
+              minValue={-100}
+              maxValue={100}
+              step={1}
               value={growthRate}
               onChange={handleGrowthRateChange}
-              step={1}
             />
-            <div className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-              {growthRate}%
-            </div>
           </div>
-          <div className="flex flex-col gap-2">
-            <label
-              htmlFor="salaryFilter"
-              className="block text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Minimum Salary Filter
+          <div className="flex-1">
+            <label htmlFor="salaryFilter" className="mb-2 block">
+              Minimum Salary
             </label>
             <SliderComponent
-              min={0}
-              max={100000}
+              id="salaryFilter"
+              minValue={0}
+              maxValue={200000}
+              step={100}
               value={salaryFilter}
               onChange={handleSalaryFilterChange}
-              step={1000}
             />
-            <div className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-              ${salaryFilter}
-            </div>
           </div>
-          <div className="flex flex-col gap-2">
-            <label
-              htmlFor="changeFilter"
-              className="block text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Change Filter
+          <div className="flex-1">
+            <label htmlFor="changeFilter" className="mb-2 block">
+              Change
             </label>
             <SliderComponent
-              min={-50}
-              max={50}
+              id="changeFilter"
+              minValue={-100}
+              maxValue={100}
+              step={1}
               value={changeFilter}
               onChange={handleChangeFilterChange}
-              step={1}
             />
-            <div className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-              {changeFilter}%
-            </div>
           </div>
         </div>
-
+      </div>
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
           <thead className="bg-gray-50 dark:bg-gray-800">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+              <th
+                className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+                title="Country where the job is located"
+              >
                 Country
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+              <th
+                className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+                title="Industry in which the job is categorized"
+              >
                 Industry
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+              <th
+                className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+                title="Company offering the job"
+              >
                 Company
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+              <th
+                className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+                title="Job role or position"
+              >
                 Role
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+              <th
+                className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+                title="Current salary at the company"
+              >
                 Current Salary by Company
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+              <th
+                className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+                title="Current salary for the role"
+              >
                 Current Salary by Role
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                Change (%)
+              <th
+                className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+                title="Percentage change in salary"
+              >
+                Change
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+              <th
+                className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+                title="Timeframe of the salary change"
+              >
                 Change Timeframe
               </th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200 bg-white dark:divide-gray-700 dark:bg-gray-900">
             {adjustedTableData.map((data, index) => (
-              <tr key={index}>
+              <tr
+                key={index}
+                className="hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
                 <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">
                   {data.country}
                 </td>
@@ -471,10 +423,10 @@ export default function TrendAnalysis() {
                   {data.role}
                 </td>
                 <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
-                  ${data.currentSalaryByCompany}
+                  ${data.currentSalaryByCompany.toLocaleString()}
                 </td>
                 <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
-                  ${data.currentSalaryByRole}
+                  ${data.currentSalaryByRole.toLocaleString()}
                 </td>
                 <td
                   className={`whitespace-nowrap px-6 py-4 text-sm ${getChangeColor(data.change)}`}
