@@ -24,6 +24,7 @@
     "npm": ">= 8"
   },
   "dependencies": {
+    "@nextui-org/react": "^2.4.6",
     "@nextui-org/slider": "^2.2.15",
     "apexcharts": "^3.50.0",
     "chart.js": "^4.4.3",

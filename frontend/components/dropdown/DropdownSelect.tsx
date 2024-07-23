@@ -6,6 +6,7 @@ interface DropdownSelectProps {
   selectedValue: string;
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   placeholder: string;
+  id?: string;
   className?: string; // Optional className prop
 }
 
@@ -14,6 +15,7 @@ const DropdownSelect: React.FC<DropdownSelectProps> = ({
   selectedValue,
   onChange,
   placeholder,
+  id = "",
   className = "", // Default to an empty string if not provided
 }) => {
   return (
@@ -24,6 +26,7 @@ const DropdownSelect: React.FC<DropdownSelectProps> = ({
       )}
       value={selectedValue}
       onChange={onChange}
+      id={id}
     >
       <option value="" disabled>
         {placeholder}

@@ -105,7 +105,8 @@ export default function TrendAnalysis() {
   const [selectedTrend, setSelectedTrend] =
     useState<keyof TrendDataMap>("roles");
   const [growthRate, setGrowthRate] = useState<number>(60); // Default value of 60
-  const [changeFilter, setChangeFilter] = useState<number>(-100); // Default value to show all changes
+  const [salaryFilter, setSalaryFilter] = useState<number>(50000); // Default minimum salary filter
+  const [changeFilter, setChangeFilter] = useState<number>(0); // Default change filter
 
   const selectedTrendData = useMemo(
     () => trendData[selectedTrend] || trendData.roles,
@@ -132,57 +133,136 @@ export default function TrendAnalysis() {
   ];
 
   const tableData = [
-    { category: "Roles", label: "Engineer", currentSalary: 90000, change: 5 },
-    { category: "Roles", label: "Manager", currentSalary: 95000, change: -3 },
-    { category: "Roles", label: "Analyst", currentSalary: 70000, change: 0 },
     {
-      category: "Companies",
-      label: "Company A",
-      currentSalary: 80000,
-      change: 2,
+      country: "USA",
+      industry: "Tech",
+      company: "Company A",
+      role: "Engineer",
+      currentSalaryByCompany: 90000,
+      currentSalaryByRole: 95000,
+      change: 5,
+      changeTimeframe: "Monthly",
     },
     {
-      category: "Companies",
-      label: "Company B",
-      currentSalary: 85000,
-      change: -10,
+      country: "USA",
+      industry: "Tech",
+      company: "Company B",
+      role: "Manager",
+      currentSalaryByCompany: 95000,
+      currentSalaryByRole: 95000,
+      change: -3,
+      changeTimeframe: "Monthly",
     },
     {
-      category: "Companies",
-      label: "Company C",
-      currentSalary: 90000,
-      change: 4,
-    },
-    { category: "Industries", label: "Tech", currentSalary: 95000, change: 4 },
-    {
-      category: "Industries",
-      label: "Healthcare",
-      currentSalary: 70000,
-      change: -20,
-    },
-    {
-      category: "Industries",
-      label: "Finance",
-      currentSalary: 85000,
+      country: "USA",
+      industry: "Healthcare",
+      company: "Company C",
+      role: "Analyst",
+      currentSalaryByCompany: 70000,
+      currentSalaryByRole: 70000,
       change: 0,
+      changeTimeframe: "Weekly",
     },
-    { category: "Regions", label: "New York", currentSalary: 90000, change: 1 },
     {
-      category: "Regions",
-      label: "Los Angeles",
-      currentSalary: 85000,
-      change: -1,
+      country: "USA",
+      industry: "Finance",
+      company: "Company D",
+      role: "Developer",
+      currentSalaryByCompany: 80000,
+      currentSalaryByRole: 80000,
+      change: 2,
+      changeTimeframe: "Yearly",
     },
-    { category: "Regions", label: "Chicago", currentSalary: 80000, change: 2 },
+    {
+      country: "USA",
+      industry: "Manufacturing",
+      company: "Company E",
+      role: "Designer",
+      currentSalaryByCompany: 75000,
+      currentSalaryByRole: 75000,
+      change: -10,
+      changeTimeframe: "Yearly",
+    },
+    {
+      country: "USA",
+      industry: "Education",
+      company: "Company F",
+      role: "Teacher",
+      currentSalaryByCompany: 60000,
+      currentSalaryByRole: 60000,
+      change: 8,
+      changeTimeframe: "Monthly",
+    },
+    {
+      country: "USA",
+      industry: "Manufacturing",
+      company: "Company G",
+      role: "Engineer",
+      currentSalaryByCompany: 80000,
+      currentSalaryByRole: 80000,
+      change: 0,
+      changeTimeframe: "Yearly",
+    },
+    {
+      country: "USA",
+      industry: "Healthcare",
+      company: "Company H",
+      role: "Manager",
+      currentSalaryByCompany: 85000,
+      currentSalaryByRole: 85000,
+      change: 5,
+      changeTimeframe: "Monthly",
+    },
+    {
+      country: "Canada",
+      industry: "Tech",
+      company: "Company I",
+      role: "Designer",
+      currentSalaryByCompany: 70000,
+      currentSalaryByRole: 70000,
+      change: 0,
+      changeTimeframe: "Yearly",
+    },
+    {
+      country: "Japan",
+      industry: "Finance",
+      company: "Company J",
+      role: "Developer",
+      currentSalaryByCompany: 80000,
+      currentSalaryByRole: 80000,
+      change: 2,
+      changeTimeframe: "Yearly",
+    },
+    {
+      country: "Japan",
+      industry: "Education",
+      company: "Company K",
+      role: "Teacher",
+      currentSalaryByCompany: 60000,
+      currentSalaryByRole: 60000,
+      change: 8,
+      changeTimeframe: "Monthly",
+    },
+    // Add more data as needed
   ];
 
   const adjustedTableData = useMemo(
     () =>
-      tableData.map((data) => ({
-        ...data,
-        currentSalary: data.currentSalary * (1 + growthRate / 100),
-      })),
-    [growthRate],
+      tableData
+        .map((data) => ({
+          ...data,
+          currentSalaryByCompany:
+            data.currentSalaryByCompany * (1 + growthRate / 100),
+          currentSalaryByRole:
+            data.currentSalaryByRole * (1 + growthRate / 100),
+        }))
+        .filter(
+          (data) =>
+            data.currentSalaryByCompany >= salaryFilter &&
+            data.change >= changeFilter,
+        )
+        .slice(0, 8), // Limit rows to 8
+    [growthRate, salaryFilter, changeFilter],
   );
 
   const getChangeColor = (change: number) => {
@@ -191,6 +271,24 @@ export default function TrendAnalysis() {
     if (change < 0)
       return "bg-red-100 text-red-800 dark:bg-red-700 dark:text-red-100";
     return "bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-100";
+  };
+
+  const handleGrowthRateChange = (value: number | number[]) => {
+    if (typeof value === "number") {
+      setGrowthRate(value);
+    }
+  };
+
+  const handleSalaryFilterChange = (value: number | number[]) => {
+    if (typeof value === "number") {
+      setSalaryFilter(value);
+    }
+  };
+
+  const handleChangeFilterChange = (value: number | number[]) => {
+    if (typeof value === "number") {
+      setChangeFilter(value);
+    }
   };
 
   return (
@@ -203,113 +301,192 @@ export default function TrendAnalysis() {
         <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
           Overview
         </h2>
-        <p className="text-gray-700 dark:text-gray-400">
-          Use this dashboard to analyze and visualize salary trends over time.
-          Explore factors like inflation, industry growth, economic conditions,
-          geographical variations, role-specific trends, and demographic factors
-          to make informed decisions about salary adjustments and negotiations.
-        </p>
+        <div className="mb-4">
+          <label
+            htmlFor="trend"
+            className="block text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Select Trend
+          </label>
+          <DropdownSelect
+            id="trend"
+            options={trendOptions}
+            selectedValue={selectedTrend}
+            onChange={handleTrendChange}
+            placeholder="Select a trend"
+          />
+        </div>
       </div>
 
-      <div className="mb-6 rounded-lg bg-white p-5 shadow-sm dark:bg-gray-800">
-        <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
-          Trend Visualization
-        </h2>
-
-        <DropdownSelect
-          options={trendOptions}
-          selectedValue={selectedTrend}
-          onChange={handleTrendChange}
-          placeholder="Select a trend"
-        />
-
-        <div className="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-              Bar Chart
-            </h3>
-            <Bar
-              data={scenarioData}
-              options={{
-                responsive: true,
-                plugins: { legend: { display: false } },
-              }}
-            />
-          </div>
-
-          <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+      <div className="mb-6 flex flex-col md:flex-row">
+        <div className="md:w-1/2 md:pr-2">
+          <div className="rounded-lg bg-white p-5 shadow-sm dark:bg-gray-800">
+            <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
               Line Chart
-            </h3>
+            </h2>
             <Line
               data={scenarioData}
               options={{
                 responsive: true,
-                plugins: { legend: { display: false } },
+                plugins: {
+                  legend: { position: "top" },
+                  tooltip: {
+                    callbacks: { label: (context) => `$${context.raw}` },
+                  },
+                },
+                scales: {
+                  x: { title: { display: true, text: "Categories" } },
+                  y: { title: { display: true, text: "Salary ($)" } },
+                },
+              }}
+            />
+          </div>
+        </div>
+        <div className="md:w-1/2 md:pl-2">
+          <div className="rounded-lg bg-white p-5 shadow-sm dark:bg-gray-800">
+            <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
+              Bar Chart
+            </h2>
+            <Bar
+              data={scenarioData}
+              options={{
+                responsive: true,
+                plugins: {
+                  legend: { position: "top" },
+                  tooltip: {
+                    callbacks: { label: (context) => `$${context.raw}` },
+                  },
+                },
+                scales: {
+                  x: { title: { display: true, text: "Categories" } },
+                  y: { title: { display: true, text: "Salary ($)" } },
+                },
               }}
             />
           </div>
         </div>
       </div>
 
-      <div className="mb-6 rounded-lg bg-white p-5 shadow-sm dark:bg-gray-800">
-        <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
-          Filter and View Adjusted Data
-        </h2>
-
-        <div className="mb-4 text-gray-700 dark:text-gray-100">
-          <SliderComponent
-            value={changeFilter}
-            onChange={(value: number | number[]) =>
-              setChangeFilter(Array.isArray(value) ? value[0] : value)
-            }
-            label="Minimum Change Percentage"
-            min={-100}
-            max={100}
-            step={1}
-            trackColor="bg-gray-200"
-            thumbColor="bg-white"
-            trackClasses="rounded-full"
-            thumbClasses="shadow-md"
-          />
-          <p className="text-gray-700 dark:text-gray-100">
-            Minimum Change: {changeFilter}%
-          </p>
+      <div className="overflow-x-auto">
+        <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-3">
+          <div className="flex flex-col gap-2">
+            <label
+              htmlFor="growthRate"
+              className="block text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Growth Rate (%)
+            </label>
+            <SliderComponent
+              min={-100}
+              max={100}
+              value={growthRate}
+              onChange={handleGrowthRateChange}
+              step={1}
+            />
+            <div className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+              {growthRate}%
+            </div>
+          </div>
+          <div className="flex flex-col gap-2">
+            <label
+              htmlFor="salaryFilter"
+              className="block text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Minimum Salary Filter
+            </label>
+            <SliderComponent
+              min={0}
+              max={100000}
+              value={salaryFilter}
+              onChange={handleSalaryFilterChange}
+              step={1000}
+            />
+            <div className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+              ${salaryFilter}
+            </div>
+          </div>
+          <div className="flex flex-col gap-2">
+            <label
+              htmlFor="changeFilter"
+              className="block text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Change Filter
+            </label>
+            <SliderComponent
+              min={-50}
+              max={50}
+              value={changeFilter}
+              onChange={handleChangeFilterChange}
+              step={1}
+            />
+            <div className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+              {changeFilter}%
+            </div>
+          </div>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full table-auto border-separate border-spacing-2">
-            <thead className="bg-gray-100 dark:bg-gray-700">
-              <tr>
-                <th className="p-2 text-left">Category</th>
-                <th className="p-2 text-left">Label</th>
-                <th className="p-2 text-left">Current Salary</th>
-                <th className="p-2 text-left">Change (%)</th>
+        <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+          <thead className="bg-gray-50 dark:bg-gray-800">
+            <tr>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                Country
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                Industry
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                Company
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                Role
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                Current Salary by Company
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                Current Salary by Role
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                Change (%)
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                Change Timeframe
+              </th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-200 bg-white dark:divide-gray-700 dark:bg-gray-900">
+            {adjustedTableData.map((data, index) => (
+              <tr key={index}>
+                <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">
+                  {data.country}
+                </td>
+                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
+                  {data.industry}
+                </td>
+                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
+                  {data.company}
+                </td>
+                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
+                  {data.role}
+                </td>
+                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
+                  ${data.currentSalaryByCompany}
+                </td>
+                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
+                  ${data.currentSalaryByRole}
+                </td>
+                <td
+                  className={`whitespace-nowrap px-6 py-4 text-sm ${getChangeColor(data.change)}`}
+                >
+                  {data.change}%
+                </td>
+                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
+                  {data.changeTimeframe}
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {adjustedTableData
-                .filter((row) => row.change >= changeFilter)
-                .map((row, index) => (
-                  <tr
-                    key={index}
-                    className={`border-b ${
-                      index % 2 === 0
-                        ? "bg-gray-50 dark:bg-gray-800"
-                        : "bg-gray-100 dark:bg-gray-900"
-                    }`}
-                  >
-                    <td className="p-2">{row.category}</td>
-                    <td className="p-2">{row.label}</td>
-                    <td className="p-2">${row.currentSalary.toFixed(2)}</td>
-                    <td className={`p-2 ${getChangeColor(row.change)}`}>
-                      {row.change.toFixed(2)}%
-                    </td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
