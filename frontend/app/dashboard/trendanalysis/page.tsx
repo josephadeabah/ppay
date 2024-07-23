@@ -259,11 +259,12 @@ export default function TrendAnalysis() {
         .filter(
           (data) =>
             data.currentSalaryByCompany >= salaryFilter &&
-            data.change >= changeFilter,
+            (data.change >= changeFilter || changeFilter <= 0), // Ensure negative values are considered
         )
         .slice(0, 8), // Limit rows to 8
     [growthRate, salaryFilter, changeFilter],
   );
+  
 
   const getChangeColor = (change: number) => {
     if (change > 0)
