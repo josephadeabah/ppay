@@ -47,13 +47,14 @@ const data: DataStructure = {
               salaryRange: "70,000 - 100,000",
               careerPath: "Senior Software Engineer",
               growthOpportunities: "Leadership training, certifications",
+              yearsOfExperience: 5,
             },
           ],
         },
       },
       Manufacturing: {
         companies: {
-          Amazon: [
+          "General Electric": [
             {
               role: "Software Engineer",
               jobLevel: "Mid Level",
@@ -67,6 +68,7 @@ const data: DataStructure = {
               salaryRange: "50,000 - 70,000",
               careerPath: "Senior Software Engineer",
               growthOpportunities: "Leadership training, certifications",
+              yearsOfExperience: 4,
             },
           ],
         },
@@ -91,6 +93,7 @@ const data: DataStructure = {
               salaryRange: "50,000 - 70,000",
               careerPath: "Senior Software Engineer",
               growthOpportunities: "Leadership training, certifications",
+              yearsOfExperience: 4,
             },
           ],
         },
@@ -111,6 +114,7 @@ const data: DataStructure = {
               salaryRange: "50,000 - 70,000",
               careerPath: "Senior Software Engineer",
               growthOpportunities: "Leadership training, certifications",
+              yearsOfExperience: 4,
             },
           ],
         },
@@ -129,6 +133,7 @@ type Role = {
   salaryRange: string;
   careerPath: string;
   growthOpportunities: string;
+  yearsOfExperience: number;
 };
 
 type DataStructure = {
@@ -173,17 +178,49 @@ export default function MarketSalaryBenchmarks() {
   // Memoize filteredRoles to optimize performance
   const filteredRoles: Role[] = useMemo(() => {
     if (selectedCountry && selectedIndustry && selectedCompany) {
-      return (
+      const roles =
         data[selectedCountry]?.industries[selectedIndustry]?.companies[
           selectedCompany
-        ] || []
-      );
+        ] || [];
+
+      return roles.filter((role) => {
+        // Filter by experience range
+        const isExperienceInRange =
+          experienceRange[0] <= role.yearsOfExperience &&
+          role.yearsOfExperience <= experienceRange[1];
+
+        // Filter by salary range
+        const isSalaryInRange =
+          role.currentSalary >= salaryRange[0] &&
+          role.currentSalary <= salaryRange[1];
+
+        return isExperienceInRange && isSalaryInRange;
+      });
     }
     return [];
-  }, [selectedCountry, selectedIndustry, selectedCompany, data]);
+  }, [
+    selectedCountry,
+    selectedIndustry,
+    selectedCompany,
+    experienceRange,
+    salaryRange,
+    data,
+  ]);
+
+  const handleExperienceRangeChange = (newValue: number | number[]) => {
+    if (Array.isArray(newValue)) {
+      setExperienceRange(newValue);
+    }
+  };
+
+  const handleSalaryRangeChange = (newValue: number | number[]) => {
+    if (Array.isArray(newValue)) {
+      setSalaryRange(newValue);
+    }
+  };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="mx-auto px-4">
       <h1 className="mb-4 text-3xl font-bold text-gray-800 dark:text-gray-200">
         Market Salary Benchmarks
       </h1>
@@ -203,43 +240,38 @@ export default function MarketSalaryBenchmarks() {
       </div>
 
       <div className="my-4">
-        <h2 className="mb-2 text-xl font-semibold text-gray-800 dark:text-gray-200">
-          Filter by Experience Range
-        </h2>
-        <SliderComponent
-          value={experienceRange}
-          onChange={(newValue: number | number[]) => {
-            if (Array.isArray(newValue)) {
-              setExperienceRange(newValue);
-            }
-          }}
-          minValue={0}
-          maxValue={30}
-          step={1}
-          label="Experience (Years)"
-          trackColor="bg-gray-200 dark:bg-gray-800"
-          thumbColor="bg-white dark:bg-gray-600"
-        />
-      </div>
-
-      <div className="my-4">
-        <h2 className="mb-2 text-xl font-semibold text-gray-800 dark:text-gray-200">
-          Filter by Salary Range
-        </h2>
-        <SliderComponent
-          value={salaryRange}
-          onChange={(newValue: number | number[]) => {
-            if (Array.isArray(newValue)) {
-              setSalaryRange(newValue);
-            }
-          }}
-          minValue={30000}
-          maxValue={300000}
-          step={1000}
-          label="Salary ($)"
-          trackColor="bg-gray-200 dark:bg-gray-800"
-          thumbColor="bg-white dark:bg-gray-600"
-        />
+        <div className="flex flex-col md:flex-row md:gap-4">
+          <div className="flex-1">
+            <h2 className="mb-2 text-xl font-semibold text-gray-800 dark:text-gray-200">
+              Filter by Experience Range
+            </h2>
+            <SliderComponent
+              value={experienceRange}
+              onChange={handleExperienceRangeChange}
+              minValue={0}
+              maxValue={30}
+              step={1}
+              label="Experience (Years)"
+              trackColor="bg-gray-200 dark:bg-gray-800"
+              thumbColor="bg-white dark:bg-gray-600"
+            />
+          </div>
+          <div className="flex-1">
+            <h2 className="mb-2 text-xl font-semibold text-gray-800 dark:text-gray-200">
+              Filter by Salary Range
+            </h2>
+            <SliderComponent
+              value={salaryRange}
+              onChange={handleSalaryRangeChange}
+              minValue={30000}
+              maxValue={300000}
+              step={1000}
+              label="Salary ($)"
+              trackColor="bg-gray-200 dark:bg-gray-800"
+              thumbColor="bg-white dark:bg-gray-600"
+            />
+          </div>
+        </div>
       </div>
 
       <div className="my-4 flex flex-col gap-4 md:flex-row">
@@ -252,7 +284,7 @@ export default function MarketSalaryBenchmarks() {
               value: country,
               label: country,
             }))}
-            selectedValue={selectedCountry?.toString() || ""}
+            selectedValue={selectedCountry?.toString() ?? ""}
             onChange={(e) => {
               setSelectedCountry(e.target.value as Country);
               // Reset other filters
@@ -275,11 +307,10 @@ export default function MarketSalaryBenchmarks() {
                   )
                 : []
             }
-            selectedValue={selectedIndustry?.toString() || ""}
+            selectedValue={selectedIndustry?.toString() ?? ""}
             onChange={(e) => {
               setSelectedIndustry(e.target.value as Industry);
-              // Reset company filter
-              setSelectedCompany(null);
+              setSelectedCompany(null); // Reset company when industry changes
             }}
             placeholder="Select Industry"
           />
@@ -291,93 +322,75 @@ export default function MarketSalaryBenchmarks() {
           </h2>
           <DropdownSelect
             options={
-              selectedIndustry
+              selectedCountry && selectedIndustry
                 ? Object.keys(
-                    data[selectedCountry as Country]?.industries[
-                      selectedIndustry
-                    ]?.companies || {},
+                    data[selectedCountry]?.industries[selectedIndustry]
+                      ?.companies || {},
                   ).map((company) => ({ value: company, label: company }))
                 : []
             }
-            selectedValue={selectedCompany?.toString() || ""}
-            onChange={(e) => {
-              setSelectedCompany(e.target.value as Company);
-            }}
+            selectedValue={selectedCompany?.toString() ?? ""}
+            onChange={(e) => setSelectedCompany(e.target.value as Company)}
             placeholder="Select Company"
           />
         </div>
       </div>
 
-      <div className="mt-4 overflow-x-auto">
-        <table className="min-w-full table-auto border border-gray-300 bg-white dark:border-gray-700 dark:bg-gray-900">
-          <thead>
-            <tr className="border-b bg-gray-100 dark:border-gray-600 dark:bg-gray-800">
-              <th className="px-4 py-2 text-left text-gray-800 dark:text-gray-200">
-                Role
-              </th>
-              <th className="px-4 py-2 text-left text-gray-800 dark:text-gray-200">
-                Job Level
-              </th>
-              <th className="px-4 py-2 text-left text-gray-800 dark:text-gray-200">
-                Skills
-              </th>
-              <th className="px-4 py-2 text-left text-gray-800 dark:text-gray-200">
-                Responsibilities
-              </th>
-              <th className="px-4 py-2 text-left text-gray-800 dark:text-gray-200">
-                Current Salary
-              </th>
-              <th className="px-4 py-2 text-left text-gray-800 dark:text-gray-200">
-                Benchmark Salary
-              </th>
-              <th className="px-4 py-2 text-left text-gray-800 dark:text-gray-200">
-                Salary Range
-              </th>
-              <th className="px-4 py-2 text-left text-gray-800 dark:text-gray-200">
-                Career Path
-              </th>
-              <th className="px-4 py-2 text-left text-gray-800 dark:text-gray-200">
-                Growth Opportunities
-              </th>
+      <div className="my-4">
+        <h2 className="mb-2 text-xl font-semibold text-gray-800 dark:text-gray-200">
+          Filtered Roles
+        </h2>
+        <table className="w-full bg-white dark:bg-gray-800">
+          <thead className="text-gray-800 dark:text-gray-200">
+            <tr>
+              <th className="border-b p-2">Role</th>
+              <th className="border-b p-2">Job Level</th>
+              <th className="border-b p-2">Current Salary</th>
+              <th className="border-b p-2">Benchmark Salary</th>
+              <th className="border-b p-2">Salary Range</th>
+              <th className="border-b p-2">Career Path</th>
+              <th className="border-b p-2">Growth Opportunities</th>
+              <th className="border-b p-2">Skills</th>
+              <th className="border-b p-2">Responsibilities</th>
+              <th className="border-b p-2">Years of Experience</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="text-gray-700 dark:text-gray-300">
             {filteredRoles.length > 0 ? (
               filteredRoles.map((role, index) => (
-                <tr key={index} className="border-b dark:border-gray-700">
-                  <td className="px-4 py-2 text-gray-800 dark:text-gray-200">
-                    {role.role}
+                <tr key={index}>
+                  <td className="border-b p-2">{role.role}</td>
+                  <td className="border-b p-2">{role.jobLevel}</td>
+                  <td className="border-b p-2">
+                    ${role.currentSalary.toLocaleString()}
                   </td>
-                  <td className="px-4 py-2 text-gray-800 dark:text-gray-200">
-                    {role.jobLevel}
+                  <td className="border-b p-2">
+                    ${role.benchmarkSalary.toLocaleString()}
                   </td>
-                  <td className="px-4 py-2 text-gray-800 dark:text-gray-200">
-                    {role.skills.join(", ")}
+                  <td className="border-b p-2">{role.salaryRange}</td>
+                  <td className="border-b p-2">{role.careerPath}</td>
+                  <td className="border-b p-2">{role.growthOpportunities}</td>
+                  <td className="border-b p-2">
+                    <ul>
+                      {role.skills.map((skill, idx) => (
+                        <li key={idx}>{skill}</li>
+                      ))}
+                    </ul>
                   </td>
-                  <td className="px-4 py-2 text-gray-800 dark:text-gray-200">
-                    {role.responsibilities.join(", ")}
+                  <td className="border-b p-2">
+                    <ul>
+                      {role.responsibilities.map((responsibility, idx) => (
+                        <li key={idx}>{responsibility}</li>
+                      ))}
+                    </ul>
                   </td>
-                  <td className="px-4 py-2 text-gray-800 dark:text-gray-200">
-                    {role.currentSalary}
-                  </td>
-                  <td className="px-4 py-2 text-gray-800 dark:text-gray-200">
-                    {role.benchmarkSalary}
-                  </td>
-                  <td className="px-4 py-2 text-gray-800 dark:text-gray-200">
-                    {role.salaryRange}
-                  </td>
-                  <td className="px-4 py-2 text-gray-800 dark:text-gray-200">
-                    {role.careerPath}
-                  </td>
-                  <td className="px-4 py-2 text-gray-800 dark:text-gray-200">
-                    {role.growthOpportunities}
-                  </td>
+                  <td className="border-b p-2">{role.yearsOfExperience}</td>
                 </tr>
               ))
             ) : (
               <tr>
-                <td colSpan={9} className="px-4 py-2 text-center">
-                  No data available
+                <td colSpan={10} className="p-4 text-center">
+                  No roles found for the selected filters.
                 </td>
               </tr>
             )}
