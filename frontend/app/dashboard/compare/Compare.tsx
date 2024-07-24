@@ -450,6 +450,62 @@ const Compare: React.FC = () => {
     label: (item as any).name,
   }));
 
+  const calculateDifferences = (
+    item: Country | Industry | Company | null,
+  ): any[] => {
+    if (!item) return [];
+
+    // Dummy data for differences; replace with real calculation logic
+    return [
+      {
+        name: "Next Day",
+        value: (item as any)[selectedComparison] * 1.001, // Assuming 0.1% increase
+      },
+      {
+        name: "Next Week",
+        value: (item as any)[selectedComparison] * 1.005, // Assuming 0.5% increase
+      },
+      {
+        name: "Next Month",
+        value: (item as any)[selectedComparison] * 1.01, // Assuming 1% increase
+      },
+      {
+        name: "Next 3 Months",
+        value: (item as any)[selectedComparison] * 1.03, // Assuming 3% increase
+      },
+      {
+        name: "Next 6 Months",
+        value: (item as any)[selectedComparison] * 1.06, // Assuming 6% increase
+      },
+      {
+        name: "Next Year",
+        value: (item as any)[selectedComparison] * 1.1, // Assuming 10% increase
+      },
+      {
+        name: "Next 2 Years",
+        value: (item as any)[selectedComparison] * 1.25, // Assuming 25% increase
+      },
+      {
+        name: "Next 3 Years",
+        value: (item as any)[selectedComparison] * 1.4, // Assuming 40% increase
+      },
+      {
+        name: "Next 5 Years",
+        value: (item as any)[selectedComparison] * 1.6, // Assuming 60% increase
+      },
+      {
+        name: "Next 7 Years",
+        value: (item as any)[selectedComparison] * 1.8, // Assuming 80% increase
+      },
+      {
+        name: "Next 10 Years",
+        value: (item as any)[selectedComparison] * 2.0, // Assuming 100% increase
+      },
+    ];
+  };
+
+  const differences = calculateDifferences(selectedItem);
+
   return (
     <div className="flex w-full flex-col">
       <div className="flex w-full flex-col lg:flex-row">
@@ -532,6 +588,59 @@ const Compare: React.FC = () => {
               } as unknown as ChartOptions<"bar">
             }
           />
+          {/* Changes that are meant to occur over a specified period */}
+          {highlightedItem && (
+            <div className="mt-6">
+              <h2 className="text-2xl font-bold text-gray-700 dark:text-gray-50">
+                Expected Changes for {highlightedItem.name}
+              </h2>
+              <span className="text-sm text-gray-700 dark:text-gray-50">
+                These values are bound to change based on current economic
+                trends
+              </span>
+              <table className="mt-4 w-full border-collapse border border-gray-200 dark:border-gray-700">
+                <thead className="text-sm">
+                  <tr className="bg-gray-100 dark:bg-gray-800">
+                    <th className="border border-gray-200 p-2 text-left text-sm font-semibold text-gray-700 dark:border-gray-700 dark:text-gray-50">
+                      Timeframe
+                    </th>
+                    <th className="border border-gray-200 p-2 text-left text-sm font-semibold text-gray-700 dark:border-gray-700 dark:text-gray-50">
+                      Expected Value
+                    </th>
+                    <th className="border border-gray-200 p-2 text-left text-sm font-semibold text-gray-700 dark:border-gray-700 dark:text-gray-50">
+                      Explanation
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="text-sm">
+                  {differences.map((diff) => (
+                    <tr
+                      key={diff.name}
+                      className="bg-white hover:bg-gray-50 dark:bg-gray-900 dark:hover:bg-gray-800"
+                    >
+                      <td className="border border-gray-200 p-2 text-sm text-gray-700 dark:border-gray-700 dark:text-gray-50">
+                        {diff.name}
+                      </td>
+                      <td className="border border-gray-200 p-2 text-sm text-gray-700 dark:border-gray-700 dark:text-gray-50">
+                        {diff.value.toLocaleString()}
+                      </td>
+                      <td className="border border-gray-200 p-2 text-sm text-gray-700 dark:border-gray-700 dark:text-gray-50">
+                        {`Represents a ${
+                          ((diff.value -
+                            (highlightedItem as any)[selectedComparison]) /
+                            (highlightedItem as any)[selectedComparison]) *
+                          100
+                        }% change compared to the current ${selectedComparison.replace(
+                          "_",
+                          " ",
+                        )}.`}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
         <div className="flex w-full flex-col p-6 text-gray-900 dark:text-gray-100 lg:w-1/2">
           {selectedItem ? (
@@ -610,6 +719,8 @@ const Compare: React.FC = () => {
           ) : (
             <p>Select an item from the chart to view details.</p>
           )}
+
+          {/* table here */}
           <div className="mt-6 overflow-x-auto">
             <table className="w-full text-left">
               <thead className="text-sm">
