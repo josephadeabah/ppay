@@ -97,9 +97,11 @@ export default function MarketSalaryBenchmarks() {
 
   return (
     <div className="mx-auto px-4">
-      <h1 className="mb-4 text-3xl font-bold text-gray-800 dark:text-gray-200">
-        Market Salary Benchmarks
-      </h1>
+      <div className="mb-6 mt-2 flex items-center gap-2 text-xl font-bold text-gray-700 dark:text-gray-50">
+        Market Salary Benchmarks (Live{" "}
+        <span className="inline-block h-3 w-3 rounded-full bg-green-400"></span>
+        )
+      </div>
 
       <div className="my-4">
         <div className="flex flex-col md:flex-row md:gap-4">
