@@ -1,5 +1,6 @@
 "use client";
-import SliderComponent from "@/components/slider/Slider"; // Import the SliderComponent
+import DropdownSelect from "@/components/dropdown/DropdownSelect";
+import SliderComponent from "@/components/slider/Slider";
 import {
   ArcElement,
   BarElement,
@@ -12,284 +13,376 @@ import {
   Title,
   Tooltip,
 } from "chart.js";
-import { useState } from "react";
-import { Bar, Line, Pie } from "react-chartjs-2";
+import { useMemo, useState } from "react";
+import { Bar, Line } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale,
   LinearScale,
   BarElement,
-  PointElement,
-  LineElement,
-  ArcElement,
   Title,
   Tooltip,
   Legend,
+  LineElement,
+  PointElement,
+  ArcElement,
 );
 
-const initialBarChartData = {
-  labels: ["Tech", "Healthcare", "Finance", "Education", "Retail"],
-  datasets: [
-    {
-      label: "Average Salary",
-      data: [85000, 75000, 90000, 60000, 50000],
-      backgroundColor: "rgba(75, 192, 192, 0.6)",
+const data: DataStructure = {
+  USA: {
+    industries: {
+      Tech: {
+        companies: {
+          Google: [
+            {
+              role: "Software Engineer",
+              jobLevel: "Mid Level",
+              skills: ["JavaScript", "React"],
+              responsibilities: [
+                "Develop and maintain web applications",
+                "Collaborate with cross-functional teams",
+              ],
+              currentSalary: 80000,
+              benchmarkSalary: 85000,
+              salaryRange: "70,000 - 100,000",
+              careerPath: "Senior Software Engineer",
+              growthOpportunities: "Leadership training, certifications",
+            },
+          ],
+        },
+      },
+      Manufacturing: {
+        companies: {
+          Amazon: [
+            {
+              role: "Software Engineer",
+              jobLevel: "Mid Level",
+              skills: ["Python", "Django"],
+              responsibilities: [
+                "Develop and maintain web applications",
+                "Collaborate with cross-functional teams and managers",
+              ],
+              currentSalary: 60000,
+              benchmarkSalary: 65000,
+              salaryRange: "50,000 - 70,000",
+              careerPath: "Senior Software Engineer",
+              growthOpportunities: "Leadership training, certifications",
+            },
+          ],
+        },
+      },
     },
-  ],
+  },
+  Russia: {
+    industries: {
+      Tech: {
+        companies: {
+          Yandex: [
+            {
+              role: "Software Engineer",
+              jobLevel: "Mid Level",
+              skills: ["Python", "Django"],
+              responsibilities: [
+                "Develop and maintain web applications",
+                "Collaborate with cross-functional teams and managers",
+              ],
+              currentSalary: 60000,
+              benchmarkSalary: 65000,
+              salaryRange: "50,000 - 70,000",
+              careerPath: "Senior Software Engineer",
+              growthOpportunities: "Leadership training, certifications",
+            },
+          ],
+        },
+      },
+      Manufacturing: {
+        companies: {
+          Kazantiles: [
+            {
+              role: "Lead Engineer",
+              jobLevel: "Mid Level",
+              skills: ["Python", "Django"],
+              responsibilities: [
+                "Develop and maintain web applications",
+                "Collaborate with cross-functional teams and managers",
+              ],
+              currentSalary: 60000,
+              benchmarkSalary: 65000,
+              salaryRange: "50,000 - 70,000",
+              careerPath: "Senior Software Engineer",
+              growthOpportunities: "Leadership training, certifications",
+            },
+          ],
+        },
+      },
+    },
+  },
 };
 
-const initialLineChartData = {
-  labels: ["North America", "Europe", "Asia", "Australia", "Africa"],
-  datasets: [
-    {
-      label: "Regional Salary Trends",
-      data: [95000, 80000, 70000, 75000, 60000],
-      borderColor: "rgba(75, 192, 192, 0.6)",
-      fill: false,
-    },
-  ],
+type Role = {
+  role: string;
+  jobLevel: string;
+  skills: string[];
+  responsibilities: string[];
+  currentSalary: number;
+  benchmarkSalary: number;
+  salaryRange: string;
+  careerPath: string;
+  growthOpportunities: string;
 };
 
-const pieChartData = {
-  labels: ["Entry Level", "Mid Level", "Senior Level", "Executive Level"],
-  datasets: [
-    {
-      label: "Salary Distribution",
-      data: [20000, 30000, 40000, 10000],
-      backgroundColor: [
-        "rgba(255, 99, 132, 0.6)",
-        "rgba(54, 162, 235, 0.6)",
-        "rgba(255, 206, 86, 0.6)",
-        "rgba(75, 192, 192, 0.6)",
-      ],
-    },
-  ],
+type DataStructure = {
+  [country: string]: {
+    industries: {
+      [industry: string]: {
+        companies: {
+          [company: string]: Role[];
+        };
+      };
+    };
+  };
 };
 
-const initialJobRolesData = {
-  labels: [
-    "Software Engineer",
-    "Data Scientist",
-    "Product Manager",
-    "Designer",
-    "Sales",
-  ],
-  datasets: [
-    {
-      label: "Average Salary by Job Role",
-      data: [120000, 110000, 115000, 95000, 85000],
-      backgroundColor: "rgba(153, 102, 255, 0.6)",
-    },
-  ],
-};
-
-const initialCountriesData = {
-  labels: ["USA", "Germany", "India", "UK", "Canada"],
-  datasets: [
-    {
-      label: "Average Salary by Country",
-      data: [90000, 80000, 60000, 70000, 75000],
-      backgroundColor: "rgba(255, 159, 64, 0.6)",
-    },
-  ],
-};
-
-const initialCompaniesData = {
-  labels: ["Google", "Amazon", "Microsoft", "Apple", "Facebook"],
-  datasets: [
-    {
-      label: "Average Salary by Company",
-      data: [150000, 140000, 130000, 160000, 120000],
-      backgroundColor: "rgba(255, 99, 132, 0.6)",
-    },
-  ],
-};
+type Country = keyof DataStructure;
+type Industry = keyof DataStructure[Country]["industries"];
+type Company =
+  keyof DataStructure[Country]["industries"][Industry]["companies"];
 
 export default function MarketSalaryBenchmarks() {
-  const [yourSalary, setYourSalary] = useState<number | null>(null);
-  const [barChartData, setBarChartData] = useState(initialBarChartData);
-  const [lineChartData, setLineChartData] = useState(initialLineChartData);
-  const [jobRolesData, setJobRolesData] = useState(initialJobRolesData);
-  const [countriesData, setCountriesData] = useState(initialCountriesData);
-  const [companiesData, setCompaniesData] = useState(initialCompaniesData);
+  const [experienceRange, setExperienceRange] = useState<number[]>([0, 20]);
+  const [salaryRange, setSalaryRange] = useState<number[]>([50000, 200000]);
+  const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
+  const [selectedIndustry, setSelectedIndustry] = useState<Industry | null>(
+    null,
+  );
+  const [selectedCompany, setSelectedCompany] = useState<Company | null>(null);
 
-  const handleSliderChange = (value: number | number[]) => {
-    setYourSalary(Array.isArray(value) ? value[0] : value);
+  const exampleData = {
+    labels: ["Entry Level", "Mid Level", "Senior Level"],
+    datasets: [
+      {
+        label: "Average Salary",
+        data: [50000, 75000, 120000],
+        backgroundColor: "rgba(75,192,192,0.4)",
+        borderColor: "rgba(75,192,192,1)",
+        borderWidth: 1,
+      },
+    ],
   };
 
-  const handleCompareClick = () => {
-    if (yourSalary === null) return;
-
-    // Update bar chart with user salary comparison
-    setBarChartData((prevData) => ({
-      ...prevData,
-      datasets: [
-        {
-          ...prevData.datasets[0], // Preserve existing dataset
-          data: [...prevData.datasets[0].data], // Copy existing data
-        },
-        {
-          label: "Your Salary",
-          data: Array(prevData.labels.length).fill(yourSalary),
-          backgroundColor: "rgba(255, 99, 132, 0.6)",
-        },
-      ],
-    }));
-
-    // Update line chart with user salary comparison
-    setLineChartData((prevData) => ({
-      ...prevData,
-      datasets: [
-        {
-          ...prevData.datasets[0], // Preserve existing dataset
-          data: [...prevData.datasets[0].data], // Copy existing data
-        },
-        {
-          label: "Your Salary",
-          data: Array(prevData.labels.length).fill(yourSalary),
-          borderColor: "rgba(255, 99, 132, 0.6)",
-          fill: false,
-        },
-      ],
-    }));
-
-    // Update job roles chart with user salary comparison
-    setJobRolesData((prevData) => ({
-      ...prevData,
-      datasets: [
-        {
-          ...prevData.datasets[0], // Preserve existing dataset
-          data: [...prevData.datasets[0].data], // Copy existing data
-        },
-        {
-          label: "Your Salary",
-          data: Array(prevData.labels.length).fill(yourSalary),
-          backgroundColor: "rgba(255, 159, 64, 0.6)",
-        },
-      ],
-    }));
-
-    // Update countries chart with user salary comparison
-    setCountriesData((prevData) => ({
-      ...prevData,
-      datasets: [
-        {
-          ...prevData.datasets[0], // Preserve existing dataset
-          data: [...prevData.datasets[0].data], // Copy existing data
-        },
-        {
-          label: "Your Salary",
-          data: Array(prevData.labels.length).fill(yourSalary),
-          backgroundColor: "rgba(75, 192, 192, 0.6)",
-        },
-      ],
-    }));
-
-    // Update companies chart with user salary comparison
-    setCompaniesData((prevData) => ({
-      ...prevData,
-      datasets: [
-        {
-          ...prevData.datasets[0], // Preserve existing dataset
-          data: [...prevData.datasets[0].data], // Copy existing data
-        },
-        {
-          label: "Your Salary",
-          data: Array(prevData.labels.length).fill(yourSalary),
-          backgroundColor: "rgba(153, 102, 255, 0.6)",
-        },
-      ],
-    }));
-  };
+  // Memoize filteredRoles to optimize performance
+  const filteredRoles: Role[] = useMemo(() => {
+    if (selectedCountry && selectedIndustry && selectedCompany) {
+      return (
+        data[selectedCountry]?.industries[selectedIndustry]?.companies[
+          selectedCompany
+        ] || []
+      );
+    }
+    return [];
+  }, [selectedCountry, selectedIndustry, selectedCompany, data]);
 
   return (
-    <div className="bg-gray-50 p-5 dark:bg-gray-900">
-      <h1 className="mb-5 text-3xl font-bold text-gray-900 dark:text-white">
+    <div className="container mx-auto p-4">
+      <h1 className="mb-4 text-3xl font-bold text-gray-800 dark:text-gray-200">
         Market Salary Benchmarks
       </h1>
-      {/* Detailed Analysis */}
-      <div className="mt-10">
-        <h2 className="mb-5 text-2xl font-bold text-gray-900 dark:text-white">
-          Detailed Analytical Information
-        </h2>
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-          {/* Salary Comparison */}
-          <div className="bg-white p-4 shadow-sm dark:bg-gray-800">
-            <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
-              Compare Your Salary
-            </h3>
-            <p className="text-gray-700 dark:text-gray-400">
-              Compare your current salary against market averages to see if
-              you're making more.
-            </p>
-            <div className="mt-4">
-              <SliderComponent
-                value={yourSalary ?? 0}
-                onChange={handleSliderChange}
-                minValue={0}
-                maxValue={200000}
-                step={10}
-                label={`Your Salary: $`}
-              />
-              <button
-                onClick={handleCompareClick}
-                className="mt-4 w-full rounded bg-blue-700 px-4 py-2 text-white dark:bg-gray-700"
-              >
-                Compare
-              </button>
-            </div>
-          </div>
-
-          {/* Job Roles */}
-          <div className="bg-white p-4 shadow-sm dark:bg-gray-800">
-            <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
-              Average Salaries by Job Role
-            </h3>
-            <Bar data={jobRolesData} />
-          </div>
-
-          {/* Countries */}
-          <div className="bg-white p-4 shadow-sm dark:bg-gray-800">
-            <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
-              Average Salaries by Country
-            </h3>
-            <Bar data={countriesData} />
-          </div>
-
-          {/* Companies */}
-          <div className="bg-white p-4 shadow-sm dark:bg-gray-800">
-            <h3 className="mb-3 text-lg font-semibold text-gray-900 dark:text-white">
-              Average Salaries by Company
-            </h3>
-            <Bar data={companiesData} />
-          </div>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="col-span-1">
+          <h2 className="mb-2 text-xl font-semibold text-gray-800 dark:text-gray-200">
+            Salary Benchmarks
+          </h2>
+          <Bar data={exampleData} />
+        </div>
+        <div className="col-span-1">
+          <h2 className="mb-2 text-xl font-semibold text-gray-800 dark:text-gray-200">
+            Salary Trends Over Time
+          </h2>
+          <Line data={exampleData} />
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-        {/* Average Salaries */}
-        <div className="bg-white p-4 shadow-sm dark:bg-gray-800">
-          <h2 className="mb-3 text-xl font-semibold text-gray-900 dark:text-white">
-            Average Salaries by Industry
+      <div className="my-4">
+        <h2 className="mb-2 text-xl font-semibold text-gray-800 dark:text-gray-200">
+          Filter by Experience Range
+        </h2>
+        <SliderComponent
+          value={experienceRange}
+          onChange={(newValue: number | number[]) => {
+            if (Array.isArray(newValue)) {
+              setExperienceRange(newValue);
+            }
+          }}
+          minValue={0}
+          maxValue={30}
+          step={1}
+          label="Experience (Years)"
+          trackColor="bg-gray-200 dark:bg-gray-800"
+          thumbColor="bg-white dark:bg-gray-600"
+        />
+      </div>
+
+      <div className="my-4">
+        <h2 className="mb-2 text-xl font-semibold text-gray-800 dark:text-gray-200">
+          Filter by Salary Range
+        </h2>
+        <SliderComponent
+          value={salaryRange}
+          onChange={(newValue: number | number[]) => {
+            if (Array.isArray(newValue)) {
+              setSalaryRange(newValue);
+            }
+          }}
+          minValue={30000}
+          maxValue={300000}
+          step={1000}
+          label="Salary ($)"
+          trackColor="bg-gray-200 dark:bg-gray-800"
+          thumbColor="bg-white dark:bg-gray-600"
+        />
+      </div>
+
+      <div className="my-4 flex flex-col gap-4 md:flex-row">
+        <div className="flex-1">
+          <h2 className="mb-2 text-xl font-semibold text-gray-800 dark:text-gray-200">
+            Select Country
           </h2>
-          <Bar data={barChartData} />
+          <DropdownSelect
+            options={Object.keys(data).map((country) => ({
+              value: country,
+              label: country,
+            }))}
+            selectedValue={selectedCountry?.toString() || ""}
+            onChange={(e) => {
+              setSelectedCountry(e.target.value as Country);
+              // Reset other filters
+              setSelectedIndustry(null);
+              setSelectedCompany(null);
+            }}
+            placeholder="Select Country"
+          />
         </div>
 
-        {/* Regional Variations */}
-        <div className="bg-white p-4 shadow-sm dark:bg-gray-800">
-          <h2 className="mb-3 text-xl font-semibold text-gray-900 dark:text-white">
-            Regional Salary Variations
+        <div className="flex-1">
+          <h2 className="mb-2 text-xl font-semibold text-gray-800 dark:text-gray-200">
+            Select Industry
           </h2>
-          <Line data={lineChartData} />
+          <DropdownSelect
+            options={
+              selectedCountry
+                ? Object.keys(data[selectedCountry]?.industries || {}).map(
+                    (industry) => ({ value: industry, label: industry }),
+                  )
+                : []
+            }
+            selectedValue={selectedIndustry?.toString() || ""}
+            onChange={(e) => {
+              setSelectedIndustry(e.target.value as Industry);
+              // Reset company filter
+              setSelectedCompany(null);
+            }}
+            placeholder="Select Industry"
+          />
         </div>
 
-        {/* Salary Distribution */}
-        <div className="bg-white p-4 shadow-sm dark:bg-gray-800">
-          <h2 className="mb-3 text-xl font-semibold text-gray-900 dark:text-white">
-            Salary Distribution by Level
+        <div className="flex-1">
+          <h2 className="mb-2 text-xl font-semibold text-gray-800 dark:text-gray-200">
+            Select Company
           </h2>
-          <Pie data={pieChartData} />
+          <DropdownSelect
+            options={
+              selectedIndustry
+                ? Object.keys(
+                    data[selectedCountry as Country]?.industries[
+                      selectedIndustry
+                    ]?.companies || {},
+                  ).map((company) => ({ value: company, label: company }))
+                : []
+            }
+            selectedValue={selectedCompany?.toString() || ""}
+            onChange={(e) => {
+              setSelectedCompany(e.target.value as Company);
+            }}
+            placeholder="Select Company"
+          />
         </div>
+      </div>
+
+      <div className="mt-4 overflow-x-auto">
+        <table className="min-w-full table-auto border border-gray-300 bg-white dark:border-gray-700 dark:bg-gray-900">
+          <thead>
+            <tr className="border-b bg-gray-100 dark:border-gray-600 dark:bg-gray-800">
+              <th className="px-4 py-2 text-left text-gray-800 dark:text-gray-200">
+                Role
+              </th>
+              <th className="px-4 py-2 text-left text-gray-800 dark:text-gray-200">
+                Job Level
+              </th>
+              <th className="px-4 py-2 text-left text-gray-800 dark:text-gray-200">
+                Skills
+              </th>
+              <th className="px-4 py-2 text-left text-gray-800 dark:text-gray-200">
+                Responsibilities
+              </th>
+              <th className="px-4 py-2 text-left text-gray-800 dark:text-gray-200">
+                Current Salary
+              </th>
+              <th className="px-4 py-2 text-left text-gray-800 dark:text-gray-200">
+                Benchmark Salary
+              </th>
+              <th className="px-4 py-2 text-left text-gray-800 dark:text-gray-200">
+                Salary Range
+              </th>
+              <th className="px-4 py-2 text-left text-gray-800 dark:text-gray-200">
+                Career Path
+              </th>
+              <th className="px-4 py-2 text-left text-gray-800 dark:text-gray-200">
+                Growth Opportunities
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredRoles.length > 0 ? (
+              filteredRoles.map((role, index) => (
+                <tr key={index} className="border-b dark:border-gray-700">
+                  <td className="px-4 py-2 text-gray-800 dark:text-gray-200">
+                    {role.role}
+                  </td>
+                  <td className="px-4 py-2 text-gray-800 dark:text-gray-200">
+                    {role.jobLevel}
+                  </td>
+                  <td className="px-4 py-2 text-gray-800 dark:text-gray-200">
+                    {role.skills.join(", ")}
+                  </td>
+                  <td className="px-4 py-2 text-gray-800 dark:text-gray-200">
+                    {role.responsibilities.join(", ")}
+                  </td>
+                  <td className="px-4 py-2 text-gray-800 dark:text-gray-200">
+                    {role.currentSalary}
+                  </td>
+                  <td className="px-4 py-2 text-gray-800 dark:text-gray-200">
+                    {role.benchmarkSalary}
+                  </td>
+                  <td className="px-4 py-2 text-gray-800 dark:text-gray-200">
+                    {role.salaryRange}
+                  </td>
+                  <td className="px-4 py-2 text-gray-800 dark:text-gray-200">
+                    {role.careerPath}
+                  </td>
+                  <td className="px-4 py-2 text-gray-800 dark:text-gray-200">
+                    {role.growthOpportunities}
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan={9} className="px-4 py-2 text-center">
+                  No data available
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
       </div>
     </div>
   );
