@@ -458,47 +458,47 @@ const Compare: React.FC = () => {
     // Dummy data for differences; replace with real calculation logic
     return [
       {
-        name: "Next Day",
+        name: "Day",
         value: (item as any)[selectedComparison] * 1.001, // Assuming 0.1% increase
       },
       {
-        name: "Next Week",
+        name: "Week",
         value: (item as any)[selectedComparison] * 1.005, // Assuming 0.5% increase
       },
       {
-        name: "Next Month",
+        name: "Month",
         value: (item as any)[selectedComparison] * 1.01, // Assuming 1% increase
       },
       {
-        name: "Next 3 Months",
+        name: "3 Months",
         value: (item as any)[selectedComparison] * 1.03, // Assuming 3% increase
       },
       {
-        name: "Next 6 Months",
+        name: "6 Months",
         value: (item as any)[selectedComparison] * 1.06, // Assuming 6% increase
       },
       {
-        name: "Next Year",
+        name: "Year",
         value: (item as any)[selectedComparison] * 1.1, // Assuming 10% increase
       },
       {
-        name: "Next 2 Years",
+        name: "2 Years",
         value: (item as any)[selectedComparison] * 1.25, // Assuming 25% increase
       },
       {
-        name: "Next 3 Years",
+        name: "3 Years",
         value: (item as any)[selectedComparison] * 1.4, // Assuming 40% increase
       },
       {
-        name: "Next 5 Years",
+        name: "5 Years",
         value: (item as any)[selectedComparison] * 1.6, // Assuming 60% increase
       },
       {
-        name: "Next 7 Years",
+        name: "7 Years",
         value: (item as any)[selectedComparison] * 1.8, // Assuming 80% increase
       },
       {
-        name: "Next 10 Years",
+        name: "10 Years",
         value: (item as any)[selectedComparison] * 2.0, // Assuming 100% increase
       },
     ];
@@ -602,12 +602,18 @@ const Compare: React.FC = () => {
                 <thead className="text-sm">
                   <tr className="bg-gray-100 dark:bg-gray-800">
                     <th className="border border-gray-200 p-2 text-left text-sm font-semibold text-gray-700 dark:border-gray-700 dark:text-gray-50">
-                      Timeframe
+                      Timeframe (Next)
                     </th>
                     <th className="border border-gray-200 p-2 text-left text-sm font-semibold text-gray-700 dark:border-gray-700 dark:text-gray-50">
                       Expected Value
                     </th>
-                    <th className="border border-gray-200 p-2 text-left text-sm font-semibold text-gray-700 dark:border-gray-700 dark:text-gray-50">
+                    <th
+                      className="border border-gray-200 p-2 text-left text-sm font-semibold text-gray-700 dark:border-gray-700 dark:text-gray-50"
+                      title={`change compared to the current ${selectedComparison.replace(
+                        "_",
+                        " ",
+                      )}.`}
+                    >
                       Explanation
                     </th>
                   </tr>
@@ -625,15 +631,12 @@ const Compare: React.FC = () => {
                         {diff.value.toLocaleString()}
                       </td>
                       <td className="border border-gray-200 p-2 text-sm text-gray-700 dark:border-gray-700 dark:text-gray-50">
-                        {`Represents a ${
+                        {` ${
                           ((diff.value -
                             (highlightedItem as any)[selectedComparison]) /
                             (highlightedItem as any)[selectedComparison]) *
                           100
-                        }% change compared to the current ${selectedComparison.replace(
-                          "_",
-                          " ",
-                        )}.`}
+                        }%`}
                       </td>
                     </tr>
                   ))}
