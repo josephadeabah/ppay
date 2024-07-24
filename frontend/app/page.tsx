@@ -282,7 +282,7 @@ const LandingPage = () => {
             <div className="flex w-full flex-col gap-6 rounded-lg border border-solid border-gray-200 text-base dark:border-gray-800  lg:max-w-[49.5rem]">
               <details className="group text-gray-950 dark:text-gray-50">
                 <summary className="flex cursor-pointer list-none flex-row items-center gap-x-6 p-6 transition duration-[250ms] ease-in-out hover:text-blue-600 [&::-webkit-details-marker]:hidden">
-                  <p className="w-full font-bold">Why Us?</p>
+                  <p className="w-full font-bold">Mission</p>
                   <svg
                     width="20"
                     height="20"
@@ -293,15 +293,20 @@ const LandingPage = () => {
                   </svg>
                 </summary>
                 <p className="-mt-3 pb-6 pl-6 pr-[4.25rem]">
-                  Most Professionals across the world are often compensated less
-                  and most especially on the part of their counterparts in the
-                  developing world, despite most times doing the same job and in
-                  the same company or otherwise.
+                  At PaySight, our mission is to promote fair and equitable
+                  compensation for professionals worldwide. We are committed to
+                  addressing the injustice of geographic pay discrimination by
+                  providing a transparent platform where professionals can
+                  anonymously report their job data. Through our advanced
+                  comparison tools, we aim to highlight disparities in wages
+                  across different countries, industries, and organizations. By
+                  doing so, we strive to ensure that every individual receives
+                  fair pay, regardless of their location or market conditions.
                 </p>
               </details>
               <details className="group text-gray-950 dark:text-gray-50">
                 <summary className="flex cursor-pointer list-none flex-row items-center gap-x-6 p-6 transition duration-[250ms] ease-in-out hover:text-blue-600 [&::-webkit-details-marker]:hidden">
-                  <p className="w-full font-bold">The Issue</p>
+                  <p className="w-full font-bold">About Us</p>
                   <svg
                     width="20"
                     height="20"
@@ -312,32 +317,27 @@ const LandingPage = () => {
                   </svg>
                 </summary>
                 <p className="-mt-3 pb-6 pl-6 pr-[4.25rem]">
-                  This pay disparity, known as &rsquo;geographic pay
-                  discrimination&rsquo; or &rsquo;pay arbitrage&rsquo;, is
-                  unfair and driven by market forces exploiting employees and
-                  lower living costs and weaker labor protections in developing
-                  countries.
-                </p>
-              </details>
-              <details className="group text-gray-950 dark:text-gray-50">
-                <summary className="flex cursor-pointer list-none flex-row items-center gap-x-6 p-6 transition duration-[250ms] ease-in-out hover:text-blue-600 [&::-webkit-details-marker]:hidden">
-                  <p className="w-full font-bold">The Solution</p>
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 256 256"
-                    className="fill-gray-500 group-open:rotate-180"
-                  >
-                    <path d="m216.49 104.49-80 80a12 12 0 0 1-17 0l-80-80a12 12 0 0 1 17-17L128 159l71.51-71.52a12 12 0 0 1 17 17Z" />
-                  </svg>
-                </summary>
-                <p className="-mt-3 pb-6 pl-6 pr-[4.25rem]">
-                  PaySight is a platform where Professionals can anonymously
-                  report their job data to compare pay and other data across
-                  different countries. The tool compares wages across countries,
-                  industries, companies and organizations, providing fair wage
-                  recommendations. It also tracks inflation and other data,
-                  adjusting pay accordingly and ensuring fair pay for all.
+                  PaySight was founded with a clear vision: to bridge the gap in
+                  compensation fairness for professionals globally. We recognize
+                  that many individuals, especially in developing countries, are
+                  often paid less than their counterparts in other regions,
+                  despite performing similar roles in the same companies or
+                  industries. This unfair practice, driven by market forces and
+                  lower living costs in developing regions, perpetuates
+                  inequality and undermines labor protections. Our platform
+                  offers a comprehensive solution to this problem. PaySight
+                  enables professionals to anonymously report their job data,
+                  providing them with valuable insights into wage disparities.
+                  Our tool compares salaries across various countries,
+                  industries, and organizations, offering fair wage
+                  recommendations based on real-world data. Additionally, we
+                  track inflation and other relevant economic factors, adjusting
+                  pay recommendations to reflect current market conditions. By
+                  empowering professionals with data and insights, PaySight
+                  seeks to challenge unfair pay practices and foster a more
+                  equitable global labor market. Join us in our mission to
+                  ensure that every professional is valued and compensated
+                  fairly, no matter where they are in the world.
                 </p>
               </details>
             </div>
