@@ -612,7 +612,7 @@ const Compare: React.FC = () => {
           )}
           <div className="mt-6 overflow-x-auto">
             <table className="w-full text-left">
-              <thead>
+              <thead className="text-sm">
                 <tr>
                   {columnHeaders[selectedCategory].map((header) => (
                     <th key={header} className="border-b px-4 py-2">
@@ -621,7 +621,7 @@ const Compare: React.FC = () => {
                   ))}
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="text-sm">
                 {categories[selectedCategory].map((item, index) => (
                   <tr
                     key={index}
