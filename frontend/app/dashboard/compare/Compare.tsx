@@ -655,16 +655,16 @@ const Compare: React.FC = () => {
                     {selectedCategory === "industries" && (
                       <>
                         <td className="border-b px-4 py-2">
-                          {(item as Industry)?.job_prospects}
+                          {(item as Industry)?.job_prospects}%
                         </td>
                         <td className="border-b px-4 py-2">
-                          {(item as Industry)?.growth_prospects}
+                          {(item as Industry)?.growth_prospects}%
                         </td>
                         <td className="border-b px-4 py-2">
-                          {(item as Industry)?.salary_prospects}
+                          {(item as Industry)?.salary_prospects}%
                         </td>
                         <td className="border-b px-4 py-2">
-                          {(item as Industry)?.job_security}
+                          {(item as Industry)?.job_security}%
                         </td>
                       </>
                     )}
@@ -674,13 +674,13 @@ const Compare: React.FC = () => {
                           {(item as Company)?.average_salary.toLocaleString()}
                         </td>
                         <td className="border-b px-4 py-2">
-                          {(item as Company)?.innovation}
+                          {(item as Company)?.innovation}%
                         </td>
                         <td className="border-b px-4 py-2">
-                          {(item as Company)?.work_environment}
+                          {(item as Company)?.work_environment}%
                         </td>
                         <td className="border-b px-4 py-2">
-                          {(item as Company)?.employee_retention}
+                          {(item as Company)?.employee_retention}%
                         </td>
                       </>
                     )}
