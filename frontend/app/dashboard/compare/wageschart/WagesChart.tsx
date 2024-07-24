@@ -1,32 +1,25 @@
 //Shows on Dashboard - Compare - Wages Chart
 "use client";
 import ModalComponent from "@/components/modal/ModalComponent";
-import dynamic from "next/dynamic";
+import {
+  BarElement,
+  CategoryScale,
+  Chart,
+  Legend,
+  LinearScale,
+  Title,
+  Tooltip,
+} from "chart.js";
 import { useEffect, useState } from "react";
+import { Bar } from "react-chartjs-2";
 
-const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
+Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export default function WagesChart() {
-  const [options, setOptions] = useState<{
-    chart: {
-      id: string;
-      toolbar: { show: boolean };
-      events?: {
-        dataPointSelection: (
-          event: any,
-          chartContext: any,
-          config: any,
-        ) => void;
-      };
-    };
-    xaxis: { categories: string[] };
-    plotOptions: {
-      bar: { horizontal: boolean; dataLabels: { position: string } };
-    };
-  } | null>(null);
-  const [series, setSeries] = useState<
-    { name: string; data: number[] }[] | null
-  >(null);
+  const [chartData, setChartData] = useState<any>({
+    labels: [],
+    datasets: [],
+  });
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedData, setSelectedData] = useState<{
@@ -45,47 +38,20 @@ export default function WagesChart() {
         const categories = data.hourly.time.slice(0, 24);
         const temperatures = data.hourly.temperature_2m.slice(0, 24);
 
-        const newSeries = [
-          {
-            name: "Temperature (°C)",
-            data: temperatures,
-          },
-        ];
-
-        const newOptions = {
-          chart: {
-            id: "basic-bar",
-            toolbar: {
-              show: false,
+        const newChartData = {
+          labels: categories,
+          datasets: [
+            {
+              label: "Temperature (°C)",
+              data: temperatures,
+              backgroundColor: "rgba(75, 192, 192, 0.6)",
+              borderColor: "rgba(75, 192, 192, 1)",
+              borderWidth: 1,
             },
-            events: {
-              dataPointSelection: (
-                event: any,
-                chartContext: any,
-                config: any,
-              ) => {
-                const date = categories[config.dataPointIndex] || "";
-                const temperature = temperatures[config.dataPointIndex] || 0;
-                setSelectedData({ date, temperature });
-                setModalOpen(true);
-              },
-            },
-          },
-          xaxis: {
-            categories,
-          },
-          plotOptions: {
-            bar: {
-              horizontal: false,
-              dataLabels: {
-                position: "top",
-              },
-            },
-          },
+          ],
         };
 
-        setOptions(newOptions);
-        setSeries(newSeries);
+        setChartData(newChartData);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching weather data:", error);
@@ -96,7 +62,7 @@ export default function WagesChart() {
     fetchData();
   }, []);
 
-  if (loading || !options || !series) {
+  if (loading) {
     return (
       <div className="flex h-full w-full items-center justify-center text-gray-600 dark:text-gray-50">
         <div>Loading...</div>
@@ -104,18 +70,32 @@ export default function WagesChart() {
     );
   }
 
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "top" as const,
+      },
+      title: {
+        display: true,
+        text: "Wages Chart",
+      },
+    },
+    onClick: (event: any, elements: any) => {
+      if (elements.length > 0) {
+        const { index } = elements[0];
+        const date = chartData.labels[index] || "";
+        const temperature = chartData.datasets[0].data[index] || 0;
+        setSelectedData({ date, temperature });
+        setModalOpen(true);
+      }
+    },
+  };
+
   return (
     <div className="w-full bg-white dark:bg-gray-800 dark:text-gray-50">
-      <div className="p-5">
-        <div className="w-full bg-white dark:bg-gray-800 dark:text-gray-50">
-          <Chart
-            options={options}
-            series={series}
-            type="bar"
-            height="300px" // Ensures height adapts to container
-            width="100%" // Ensures width adapts to container
-          />
-        </div>
+      <div className="w-full bg-white dark:bg-gray-800 dark:text-gray-50">
+        <Bar data={chartData} options={options} />
       </div>
 
       <ModalComponent
