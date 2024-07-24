@@ -100,20 +100,6 @@ export default function MarketSalaryBenchmarks() {
       <h1 className="mb-4 text-3xl font-bold text-gray-800 dark:text-gray-200">
         Market Salary Benchmarks
       </h1>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <div className="col-span-1">
-          <h2 className="mb-2 text-xl font-semibold text-gray-800 dark:text-gray-200">
-            Salary Benchmarks
-          </h2>
-          <Bar data={exampleData} />
-        </div>
-        <div className="col-span-1">
-          <h2 className="mb-2 text-xl font-semibold text-gray-800 dark:text-gray-200">
-            Salary Trends Over Time
-          </h2>
-          <Line data={exampleData} />
-        </div>
-      </div>
 
       <div className="my-4">
         <div className="flex flex-col md:flex-row md:gap-4">
@@ -216,62 +202,78 @@ export default function MarketSalaryBenchmarks() {
         <h2 className="mb-2 text-xl font-semibold text-gray-800 dark:text-gray-200">
           Filtered Roles
         </h2>
-        <table className="w-full bg-white dark:bg-gray-800">
-          <thead className="text-gray-800 dark:text-gray-200">
-            <tr>
-              <th className="border-b p-2">Role</th>
-              <th className="border-b p-2">Job Level</th>
-              <th className="border-b p-2">Current Salary</th>
-              <th className="border-b p-2">Benchmark Salary</th>
-              <th className="border-b p-2">Salary Range</th>
-              <th className="border-b p-2">Career Path</th>
-              <th className="border-b p-2">Growth Opportunities</th>
-              <th className="border-b p-2">Skills</th>
-              <th className="border-b p-2">Responsibilities</th>
-              <th className="border-b p-2">Years of Experience</th>
-            </tr>
-          </thead>
-          <tbody className="text-gray-700 dark:text-gray-300">
-            {filteredRoles.length > 0 ? (
-              filteredRoles.map((role, index) => (
-                <tr key={index}>
-                  <td className="border-b p-2">{role.role}</td>
-                  <td className="border-b p-2">{role.jobLevel}</td>
-                  <td className="border-b p-2">
-                    ${role.currentSalary.toLocaleString()}
-                  </td>
-                  <td className="border-b p-2">
-                    ${role.benchmarkSalary.toLocaleString()}
-                  </td>
-                  <td className="border-b p-2">{role.salaryRange}</td>
-                  <td className="border-b p-2">{role.careerPath}</td>
-                  <td className="border-b p-2">{role.growthOpportunities}</td>
-                  <td className="border-b p-2">
-                    <ul>
-                      {role.skills.map((skill, idx) => (
-                        <li key={idx}>{skill}</li>
-                      ))}
-                    </ul>
-                  </td>
-                  <td className="border-b p-2">
-                    <ul>
-                      {role.responsibilities.map((responsibility, idx) => (
-                        <li key={idx}>{responsibility}</li>
-                      ))}
-                    </ul>
-                  </td>
-                  <td className="border-b p-2">{role.yearsOfExperience}</td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan={10} className="p-4 text-center">
-                  No roles found for the selected filters.
-                </td>
+        <div className="overflow-x-auto">
+          <table className="w-full bg-white dark:bg-gray-800">
+            <thead className="text-left text-gray-800 dark:text-gray-200">
+              <tr className="text-sm">
+                <th className="border-b p-2">Role</th>
+                <th className="border-b p-2">Job Level</th>
+                <th className="border-b p-2">Current Salary</th>
+                <th className="border-b p-2">Benchmark Salary</th>
+                <th className="border-b p-2">Salary Range</th>
+                <th className="border-b p-2">Career Path</th>
+                <th className="border-b p-2">Growth Opportunities</th>
+                <th className="border-b p-2">Skills</th>
+                <th className="border-b p-2">Responsibilities</th>
+                <th className="border-b p-2">Years of Experience</th>
               </tr>
-            )}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="text-sm text-gray-700 dark:text-gray-300">
+              {filteredRoles.length > 0 ? (
+                filteredRoles.map((role, index) => (
+                  <tr key={index}>
+                    <td className="border-b p-2">{role.role}</td>
+                    <td className="border-b p-2">{role.jobLevel}</td>
+                    <td className="border-b p-2">
+                      ${role.currentSalary.toLocaleString()}
+                    </td>
+                    <td className="border-b p-2">
+                      ${role.benchmarkSalary.toLocaleString()}
+                    </td>
+                    <td className="border-b p-2">{role.salaryRange}</td>
+                    <td className="border-b p-2">{role.careerPath}</td>
+                    <td className="border-b p-2">{role.growthOpportunities}</td>
+                    <td className="border-b p-2">
+                      <ul>
+                        {role.skills.map((skill) => (
+                          <li key={skill}>{skill}</li>
+                        ))}
+                      </ul>
+                    </td>
+                    <td className="border-b p-2">
+                      <ul>
+                        {role.responsibilities.map((responsibility) => (
+                          <li key={responsibility}>{responsibility}</li>
+                        ))}
+                      </ul>
+                    </td>
+                    <td className="border-b p-2">{role.yearsOfExperience}</td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={10} className="p-4 text-center">
+                    No roles match the selected criteria.
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="col-span-1">
+          <h2 className="mb-2 text-xl font-semibold text-gray-800 dark:text-gray-200">
+            Salary Benchmarks
+          </h2>
+          <Bar data={exampleData} />
+        </div>
+        <div className="col-span-1">
+          <h2 className="mb-2 text-xl font-semibold text-gray-800 dark:text-gray-200">
+            Salary Trends Over Time
+          </h2>
+          <Line data={exampleData} />
+        </div>
       </div>
     </div>
   );
