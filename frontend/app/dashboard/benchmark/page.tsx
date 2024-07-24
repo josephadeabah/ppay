@@ -15,6 +15,7 @@ import {
 } from "chart.js";
 import { useMemo, useState } from "react";
 import { Bar, Line } from "react-chartjs-2";
+import { Company, Country, data, Industry, Role } from "./data";
 
 ChartJS.register(
   CategoryScale,
@@ -27,131 +28,6 @@ ChartJS.register(
   PointElement,
   ArcElement,
 );
-
-const data: DataStructure = {
-  USA: {
-    industries: {
-      Tech: {
-        companies: {
-          Google: [
-            {
-              role: "Software Engineer",
-              jobLevel: "Mid Level",
-              skills: ["JavaScript", "React"],
-              responsibilities: [
-                "Develop and maintain web applications",
-                "Collaborate with cross-functional teams",
-              ],
-              currentSalary: 80000,
-              benchmarkSalary: 85000,
-              salaryRange: "70,000 - 100,000",
-              careerPath: "Senior Software Engineer",
-              growthOpportunities: "Leadership training, certifications",
-              yearsOfExperience: 5,
-            },
-          ],
-        },
-      },
-      Manufacturing: {
-        companies: {
-          "General Electric": [
-            {
-              role: "Software Engineer",
-              jobLevel: "Mid Level",
-              skills: ["Python", "Django"],
-              responsibilities: [
-                "Develop and maintain web applications",
-                "Collaborate with cross-functional teams and managers",
-              ],
-              currentSalary: 60000,
-              benchmarkSalary: 65000,
-              salaryRange: "50,000 - 70,000",
-              careerPath: "Senior Software Engineer",
-              growthOpportunities: "Leadership training, certifications",
-              yearsOfExperience: 4,
-            },
-          ],
-        },
-      },
-    },
-  },
-  Russia: {
-    industries: {
-      Tech: {
-        companies: {
-          Yandex: [
-            {
-              role: "Software Engineer",
-              jobLevel: "Mid Level",
-              skills: ["Python", "Django"],
-              responsibilities: [
-                "Develop and maintain web applications",
-                "Collaborate with cross-functional teams and managers",
-              ],
-              currentSalary: 60000,
-              benchmarkSalary: 65000,
-              salaryRange: "50,000 - 70,000",
-              careerPath: "Senior Software Engineer",
-              growthOpportunities: "Leadership training, certifications",
-              yearsOfExperience: 4,
-            },
-          ],
-        },
-      },
-      Manufacturing: {
-        companies: {
-          Kazantiles: [
-            {
-              role: "Lead Engineer",
-              jobLevel: "Mid Level",
-              skills: ["Python", "Django"],
-              responsibilities: [
-                "Develop and maintain web applications",
-                "Collaborate with cross-functional teams and managers",
-              ],
-              currentSalary: 60000,
-              benchmarkSalary: 65000,
-              salaryRange: "50,000 - 70,000",
-              careerPath: "Senior Software Engineer",
-              growthOpportunities: "Leadership training, certifications",
-              yearsOfExperience: 4,
-            },
-          ],
-        },
-      },
-    },
-  },
-};
-
-type Role = {
-  role: string;
-  jobLevel: string;
-  skills: string[];
-  responsibilities: string[];
-  currentSalary: number;
-  benchmarkSalary: number;
-  salaryRange: string;
-  careerPath: string;
-  growthOpportunities: string;
-  yearsOfExperience: number;
-};
-
-type DataStructure = {
-  [country: string]: {
-    industries: {
-      [industry: string]: {
-        companies: {
-          [company: string]: Role[];
-        };
-      };
-    };
-  };
-};
-
-type Country = keyof DataStructure;
-type Industry = keyof DataStructure[Country]["industries"];
-type Company =
-  keyof DataStructure[Country]["industries"][Industry]["companies"];
 
 export default function MarketSalaryBenchmarks() {
   const [experienceRange, setExperienceRange] = useState<number[]>([0, 20]);
