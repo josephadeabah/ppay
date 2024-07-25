@@ -89,7 +89,7 @@ export const payEquityData = {
     "No Role": {
       points: 0,
       responsibilities: {
-        "N/A": 0,
+        Non: 0,
         "Non-specified": 0,
         "Not Applicable": 0,
       },
@@ -191,7 +191,7 @@ export const payEquityData = {
     AboveMarket: 40,
     AtMarket: 20,
     BelowMarket: 10,
-    "N/A": 0,
+    Non: 0,
   },
 
   industryPoints: <IndustryPoints>{
@@ -213,7 +213,7 @@ export const payEquityData = {
     LargeEnterprise: 40,
     MediumSizedCompany: 30,
     SmallBusiness: 20,
-    "N/A": 0,
+    Non: 0,
   },
 
   seniorityLevels: <SeniorityLevels>{
@@ -254,7 +254,7 @@ export const payEquityData = {
     FullyCompliant: 40,
     PartiallyCompliant: 20,
     NonCompliant: 10,
-    "N/A": 0,
+    Non: 0,
   },
 
   jobEvaluationSystems: <JobEvaluationSystems>{

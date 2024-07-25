@@ -116,6 +116,8 @@ function calculateAdjustedSalary(
   const benefitsPerksPoints =
     payEquityData.benefitsAndPerks[benefitsAndPerks] || 0;
 
+  console.log("experiencePoints", experiencePoints);
+
   // Sum all points
   const totalPoints =
     roleData.points +
@@ -161,9 +163,9 @@ export default function PayEquityAnalyzer() {
   const [education, setEducation] = useState<string>("Bachelor's Degree");
   const [skillsAndQualifications, setSkillsAndQualifications] =
     useState<string>("No Skill");
-  const [marketRates, setMarketRates] = useState<string>("N/A");
+  const [marketRates, setMarketRates] = useState<string>("Non");
   const [industryPoints, setIndustryPoints] = useState<string>("Tech");
-  const [companySizeRevenue, setCompanySizeRevenue] = useState<string>("N/A");
+  const [companySizeRevenue, setCompanySizeRevenue] = useState<string>("Non");
   const [seniorityLevels, setSeniorityLevels] = useState<string>("FreshGrad");
   const [unionAgreements, setUnionAgreements] =
     useState<string>("NoUnionAgreement");
@@ -203,10 +205,10 @@ export default function PayEquityAnalyzer() {
         location,
         industry, // Updated from department to industry
         performance,
-        department,
         gender,
         education,
-        role,
+        department,
+        gender,
         skillsAndQualifications,
         marketRates,
         industryPoints,
@@ -355,6 +357,12 @@ export default function PayEquityAnalyzer() {
 
   return (
     <div className="p-4">
+      <div className="mb-6 mt-2 flex items-center gap-2 text-xl font-bold text-gray-700 dark:text-gray-50">
+        Pay Equity Analyzer
+      </div>
+      <div className="mb-3 text-xs text-gray-700 dark:text-gray-50">
+        Find and Compare Pay Equity Data
+      </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
         {/* Existing dropdowns and sliders */}
         <DropdownSelect
