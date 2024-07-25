@@ -61,7 +61,7 @@ const BarChart: React.FC<{ data: BarChartData }> = ({ data }) => {
   return (
     <Bar
       data={data}
-      options={{ responsive: true, maintainAspectRatio: false }}
+      options={{ responsive: true, maintainAspectRatio: true }}
     />
   );
 };
@@ -152,25 +152,23 @@ function calculateAdjustedSalary(
 }
 
 export default function PayEquityAnalyzer() {
-  const [role, setRole] = useState<string>("SoftwareEngineer");
+  const [role, setRole] = useState<string>("No Role");
   const [experienceRange, setExperienceRange] = useState<string>("0-2 years");
-  const [location, setLocation] = useState<string>("High Cost of Living Area");
-  const [performance, setPerformance] = useState<string>("MeetsExpectations");
+  const [location, setLocation] = useState<string>("No Cost of Living Area");
+  const [performance, setPerformance] = useState<string>("Unsatisfactory");
   const [department, setDepartment] = useState<string>("Engineering");
   const [gender, setGender] = useState<string>("Male");
   const [education, setEducation] = useState<string>("Bachelor's Degree");
   const [skillsAndQualifications, setSkillsAndQualifications] =
-    useState<string>("JavaScript");
-  const [marketRates, setMarketRates] = useState<string>("AtMarket");
+    useState<string>("No Skill");
+  const [marketRates, setMarketRates] = useState<string>("N/A");
   const [industryPoints, setIndustryPoints] = useState<string>("Tech");
-  const [companySizeRevenue, setCompanySizeRevenue] =
-    useState<string>("MediumSizedCompany");
-  const [seniorityLevels, setSeniorityLevels] = useState<string>("MidLevel");
+  const [companySizeRevenue, setCompanySizeRevenue] = useState<string>("N/A");
+  const [seniorityLevels, setSeniorityLevels] = useState<string>("FreshGrad");
   const [unionAgreements, setUnionAgreements] =
-    useState<string>("StandardAgreement");
-  const [benefitsAndPerks, setBenefitsAndPerks] = useState<string>(
-    "ComprehensiveBenefitsPackage",
-  );
+    useState<string>("NoUnionAgreement");
+  const [benefitsAndPerks, setBenefitsAndPerks] =
+    useState<string>("NoBenefits");
   const [adjustedSalary, setAdjustedSalary] = useState<number>(0);
   const [industry, setIndustry] = useState<string>("Tech"); // Updated from department to industry
 
