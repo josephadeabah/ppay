@@ -89,6 +89,7 @@ function calculateAdjustedSalary(
   skillsAndQualifications: string,
   marketRates: string,
   industryPoints: string,
+  industry: string,  // Change from department to industry
   companySizeRevenue: string,
   seniorityLevels: string,
   unionAgreements: string,
@@ -97,10 +98,12 @@ function calculateAdjustedSalary(
   const roleData = payEquityData.rolesAndResponsibilities[role] || {
     points: 0,
   };
+  const educationPoints = payEquityData.educationPoints[education] || 0; // Added education points
   const experiencePoints = payEquityData.experiencePoints[experienceRange] || 0;
   const locationPoints = payEquityData.locationPoints[location] || 0;
+  const industryPointsValue = payEquityData.industryPoints[industry] || 0; // Updated to industry
   const performancePoints = payEquityData.performancePoints[performance] || 0;
-  const departmentPoints = payEquityData.industryPoints[department] || 0; // Assuming department maps to industry
+  const departmentPoints = payEquityData.departmentPoints[department] || 0; // Assuming department maps to industry
   const skillsPoints =
     payEquityData.skillsAndQualifications[skillsAndQualifications] || 0;
   const marketRatePoints = payEquityData.marketRates[marketRates] || 0;
@@ -119,13 +122,17 @@ function calculateAdjustedSalary(
     experiencePoints +
     locationPoints +
     performancePoints +
+    industryPointsValue + // Updated to industry points
+    educationPoints +
     departmentPoints +
     skillsPoints +
     marketRatePoints +
     companySizePoints +
     seniorityLevelPoints +
     unionAgreementPoints +
-    benefitsPerksPoints;
+    benefitsPerksPoints + 
+    industryPointsValue +  
+    locationPoints;
 
   // Base salary, market rate adjustment, company size, and compliance factors
   const baseSalary = 50000; // Example base salary
@@ -149,7 +156,7 @@ export default function PayEquityAnalyzer() {
   const [experienceRange, setExperienceRange] = useState<string>("0-2 years");
   const [location, setLocation] = useState<string>("High Cost of Living Area");
   const [performance, setPerformance] = useState<string>("MeetsExpectations");
-  const [department, setDepartment] = useState<string>("Tech");
+  const [department, setDepartment] = useState<string>("Engineering");
   const [gender, setGender] = useState<string>("Male");
   const [education, setEducation] = useState<string>("Bachelor's Degree");
   const [skillsAndQualifications, setSkillsAndQualifications] =
@@ -165,6 +172,7 @@ export default function PayEquityAnalyzer() {
     "ComprehensiveBenefitsPackage",
   );
   const [adjustedSalary, setAdjustedSalary] = useState<number>(0);
+  const [industry, setIndustry] = useState<string>("Tech"); // Updated from department to industry
 
   const [barChartData, setBarChartData] = useState<BarChartData>({
     labels: [],
@@ -194,6 +202,7 @@ export default function PayEquityAnalyzer() {
       calculateAdjustedSalary(
         role,
         experienceRange,
+        industry, // Updated from department to industry
         location,
         performance,
         department,
@@ -212,7 +221,7 @@ export default function PayEquityAnalyzer() {
 
     // Generate dummy data for the charts
     setBarChartData({
-      labels: ["Role", "Experience", "Location", "Performance", "Department"],
+      labels: ["Role", "Experience", "Location", "Performance", "Department", "Industry", "Education"],
       datasets: [
         {
           label: "Adjusted Salary Factors",
@@ -221,7 +230,9 @@ export default function PayEquityAnalyzer() {
             payEquityData.experiencePoints[experienceRange] || 0,
             payEquityData.locationPoints[location] || 0,
             payEquityData.performancePoints[performance] || 0,
-            payEquityData.industryPoints[department] || 0,
+            payEquityData.departmentPoints[department] || 0,
+            payEquityData.industryPoints[industry] || 0, // Updated to Industry
+            payEquityData.educationPoints[education] || 0,
           ],
           backgroundColor: [
             "rgba(75, 192, 192, 0.2)",
@@ -252,6 +263,7 @@ export default function PayEquityAnalyzer() {
     performance,
     department,
     gender,
+    industry,
     education,
     skillsAndQualifications,
     marketRates,
@@ -274,12 +286,16 @@ export default function PayEquityAnalyzer() {
     },
     { label: "Location", value: payEquityData.locationPoints[location] || 0 },
     {
+      label: "Industry", // Updated from Department to Industry
+      value: payEquityData.industryPoints[industry] || 0,
+    },
+    {
       label: "Performance",
       value: payEquityData.performancePoints[performance] || 0,
     },
     {
       label: "Department",
-      value: payEquityData.industryPoints[department] || 0,
+      value: payEquityData.departmentPoints[department] || 0,
     },
     {
       label: "Skills & Qualifications",
@@ -305,6 +321,10 @@ export default function PayEquityAnalyzer() {
     {
       label: "Benefits & Perks",
       value: payEquityData.benefitsAndPerks[benefitsAndPerks] || 0,
+    },
+    {
+      label: "Education",
+      value: payEquityData.educationPoints[education] || 0,
     },
   ];
 
@@ -347,7 +367,7 @@ export default function PayEquityAnalyzer() {
           placeholder="Select Performance"
         />
         <DropdownSelect
-          options={Object.keys(payEquityData.industryPoints).map((key) => ({
+          options={Object.keys(payEquityData.departmentPoints).map((key) => ({
             value: key,
             label: key,
           }))}
@@ -408,6 +428,28 @@ export default function PayEquityAnalyzer() {
           onChange={(e) => setBenefitsAndPerks(e.target.value)}
           placeholder="Select Benefits & Perks"
         />
+        <div>
+        <DropdownSelect
+          options={Object.keys(payEquityData.educationPoints).map((key) => ({
+            value: key,
+            label: key,
+          }))}
+          selectedValue={education}
+          onChange={(e) => setEducation(e.target.value)}
+          placeholder="Select Education"
+        />
+      </div>
+      <div>
+        <DropdownSelect
+          options={Object.keys(payEquityData.industryPoints).map((key) => ({
+            value: key,
+            label: key,
+          }))}
+          selectedValue={industry}
+          onChange={(e) => setIndustry(e.target.value)}
+          placeholder="Select Industry"
+        />
+      </div>
       </div>
 
       <div className="mt-4">
@@ -416,7 +458,7 @@ export default function PayEquityAnalyzer() {
         </h2>
       </div>
 
-      <div className="h-full w-full p-4">
+      <div className="h-full w-full">
         <div className="grid h-full w-full grid-cols-1 gap-4 md:grid-cols-2">
           <div className="h-full w-full">
             <BarChart data={barChartData} />

@@ -33,6 +33,10 @@ export interface IndustryPoints {
   [industry: string]: number;
 }
 
+export interface DepartmentPoints {
+    [department: string]: number;
+}
+
 export interface CompanySizeRevenue {
   [size: string]: number;
 }
@@ -64,6 +68,10 @@ export interface Compliance {
 export interface JobEvaluationSystems {
   [system: string]: number;
 }
+
+export interface EducationPoints {
+    [education: string]: number;
+  }
 
 export interface SalaryDataRow {
   country: string;
@@ -146,6 +154,13 @@ export const payEquityData = {
     Finance: 50,
   },
 
+  departmentPoints: <DepartmentPoints>{
+    Engineering: 40,
+    Legal: 30,
+    Sales: 20,
+    Marketing: 50,
+  },
+
   companySizeRevenue: <CompanySizeRevenue>{
     LargeEnterprise: 40,
     MediumSizedCompany: 30,
@@ -217,4 +232,11 @@ export const payEquityData = {
     },
     // Add more rows as needed
   ],
+  educationPoints: <EducationPoints>{
+    "High School Diploma": 10,
+    "Associate's Degree": 20,
+    "Bachelor's Degree": 30,
+    "Master's Degree": 40,
+    "PhD": 50,
+  },
 };
