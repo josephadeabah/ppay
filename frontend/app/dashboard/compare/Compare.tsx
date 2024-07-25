@@ -62,6 +62,8 @@ const Compare: React.FC = () => {
         backgroundColor: "rgba(75, 192, 192, 0.5)",
         borderColor: "rgba(75, 192, 192, 1)",
         borderWidth: 1,
+        hoverBackgroundColor: "rgba(255, 182, 193, 0.7)", // Light Pink
+        hoverBorderColor: "rgba(255, 182, 193, 0.7)",
       },
     ],
   };
