@@ -202,8 +202,8 @@ export default function PayEquityAnalyzer() {
       calculateAdjustedSalary(
         role,
         experienceRange,
-        industry, // Updated from department to industry
         location,
+        industry, // Updated from department to industry
         performance,
         department,
         gender,
@@ -229,6 +229,12 @@ export default function PayEquityAnalyzer() {
         "Department",
         "Industry",
         "Education",
+        "Compliance",
+        "Market Rate",
+        "Company Size",
+        "Seniority Level",
+        "Union Agreement",
+        "Benefits and Perks",
       ],
       datasets: [
         {
@@ -241,6 +247,12 @@ export default function PayEquityAnalyzer() {
             payEquityData.departmentPoints[department] || 0,
             payEquityData.industryPoints[industry] || 0, // Updated to Industry
             payEquityData.educationPoints[education] || 0,
+            payEquityData.compliance["FullyCompliant"] || 0,
+            payEquityData.marketRates[marketRates] || 0,
+            payEquityData.companySizeRevenue[companySizeRevenue] || 0,
+            payEquityData.seniorityLevels[seniorityLevels] || 0,
+            payEquityData.unionAgreements[unionAgreements] || 0,
+            payEquityData.benefitsAndPerks[benefitsAndPerks] || 0,
           ],
           backgroundColor: [
             "rgba(75, 192, 192, 0.2)",
@@ -248,6 +260,13 @@ export default function PayEquityAnalyzer() {
             "rgba(255, 159, 64, 0.2)",
             "rgba(255, 99, 132, 0.2)",
             "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 206, 86, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
+            "rgba(153, 102, 255, 0.2)",
+            "rgba(255, 159, 64, 0.2)",
+            "rgba(255, 99, 132, 0.2)",
+            "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 206, 86, 0.2)",
           ],
         },
       ],
