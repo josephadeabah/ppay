@@ -144,7 +144,7 @@ const Compare: React.FC = () => {
         <div className="flex w-full flex-col p-3 lg:w-1/2">
           <div className="mb-6 mt-2 flex items-center gap-2 text-xl font-bold text-gray-700 dark:text-gray-50">
             Compare {new Date().getFullYear()} (Live{" "}
-            <span className="inline-block h-3 w-3 rounded-full bg-green-400"></span>
+            <div className="inline-block h-3 w-3 rounded-full bg-green-400"></div>
             )
           </div>
           <div className="mb-6 flex gap-1">
