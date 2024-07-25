@@ -34,7 +34,7 @@ export interface IndustryPoints {
 }
 
 export interface DepartmentPoints {
-    [department: string]: number;
+  [department: string]: number;
 }
 
 export interface CompanySizeRevenue {
@@ -70,8 +70,8 @@ export interface JobEvaluationSystems {
 }
 
 export interface EducationPoints {
-    [education: string]: number;
-  }
+  [education: string]: number;
+}
 
 export interface SalaryDataRow {
   country: string;
@@ -237,6 +237,6 @@ export const payEquityData = {
     "Associate's Degree": 20,
     "Bachelor's Degree": 30,
     "Master's Degree": 40,
-    "PhD": 50,
+    PhD: 50,
   },
 };

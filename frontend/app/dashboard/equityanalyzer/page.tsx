@@ -89,7 +89,7 @@ function calculateAdjustedSalary(
   skillsAndQualifications: string,
   marketRates: string,
   industryPoints: string,
-  industry: string,  // Change from department to industry
+  industry: string, // Change from department to industry
   companySizeRevenue: string,
   seniorityLevels: string,
   unionAgreements: string,
@@ -130,8 +130,8 @@ function calculateAdjustedSalary(
     companySizePoints +
     seniorityLevelPoints +
     unionAgreementPoints +
-    benefitsPerksPoints + 
-    industryPointsValue +  
+    benefitsPerksPoints +
+    industryPointsValue +
     locationPoints;
 
   // Base salary, market rate adjustment, company size, and compliance factors
@@ -221,7 +221,15 @@ export default function PayEquityAnalyzer() {
 
     // Generate dummy data for the charts
     setBarChartData({
-      labels: ["Role", "Experience", "Location", "Performance", "Department", "Industry", "Education"],
+      labels: [
+        "Role",
+        "Experience",
+        "Location",
+        "Performance",
+        "Department",
+        "Industry",
+        "Education",
+      ],
       datasets: [
         {
           label: "Adjusted Salary Factors",
@@ -429,27 +437,27 @@ export default function PayEquityAnalyzer() {
           placeholder="Select Benefits & Perks"
         />
         <div>
-        <DropdownSelect
-          options={Object.keys(payEquityData.educationPoints).map((key) => ({
-            value: key,
-            label: key,
-          }))}
-          selectedValue={education}
-          onChange={(e) => setEducation(e.target.value)}
-          placeholder="Select Education"
-        />
-      </div>
-      <div>
-        <DropdownSelect
-          options={Object.keys(payEquityData.industryPoints).map((key) => ({
-            value: key,
-            label: key,
-          }))}
-          selectedValue={industry}
-          onChange={(e) => setIndustry(e.target.value)}
-          placeholder="Select Industry"
-        />
-      </div>
+          <DropdownSelect
+            options={Object.keys(payEquityData.educationPoints).map((key) => ({
+              value: key,
+              label: key,
+            }))}
+            selectedValue={education}
+            onChange={(e) => setEducation(e.target.value)}
+            placeholder="Select Education"
+          />
+        </div>
+        <div>
+          <DropdownSelect
+            options={Object.keys(payEquityData.industryPoints).map((key) => ({
+              value: key,
+              label: key,
+            }))}
+            selectedValue={industry}
+            onChange={(e) => setIndustry(e.target.value)}
+            placeholder="Select Industry"
+          />
+        </div>
       </div>
 
       <div className="mt-4">
