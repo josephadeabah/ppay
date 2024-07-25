@@ -191,33 +191,6 @@ const LandingPage = () => {
               <summary className="flex cursor-pointer list-none flex-row items-center gap-x-6 p-6 *:transition *:duration-[250ms] *:ease-in-out hover:text-blue-600 [&::-webkit-details-marker]:hidden">
                 <p className="w-full font-bold">
                   {" "}
-                  Cost of Living Adjustment Analyzers
-                </p>
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 256 256"
-                  className="fill-gray-500 group-open:rotate-180"
-                >
-                  <path d="m216.49 104.49-80 80a12 12 0 0 1-17 0l-80-80a12 12 0 0 1 17-17L128 159l71.51-71.52a12 12 0 0 1 17 17Z" />
-                </svg>
-              </summary>
-              <p className="-mt-3 pb-6 pl-6 pr-[4.25rem]">
-                <p className="text-base text-gray-950 dark:text-gray-50">
-                  * Data on regional cost of living variations to adjust salary
-                  expectations accordingly.
-                </p>
-                <p className="text-base text-gray-950 dark:text-gray-50">
-                  * Employers can offer competitive salaries that reflect the
-                  local cost of living, improving employee satisfaction and
-                  retention
-                </p>
-              </p>
-            </details>
-            <details className="group *:text-gray-950 dark:*:text-gray-50">
-              <summary className="flex cursor-pointer list-none flex-row items-center gap-x-6 p-6 *:transition *:duration-[250ms] *:ease-in-out hover:text-blue-600 [&::-webkit-details-marker]:hidden">
-                <p className="w-full font-bold">
-                  {" "}
                   Performance and Compensation Correlation Analyzers
                 </p>
                 <svg
