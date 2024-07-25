@@ -285,7 +285,7 @@ export default function PayEquityAnalyzer() {
   // Prepare data for the table
   const tableData = [
     {
-      label: "Role",
+      label: "Role and Responsibilities",
       value: payEquityData.rolesAndResponsibilities[role]?.points || 0,
     },
     {
