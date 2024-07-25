@@ -85,10 +85,8 @@ function calculateAdjustedSalary(
   department: string,
   gender: string,
   education: string,
-  rolesAndResponsibilities: string,
   skillsAndQualifications: string,
   marketRates: string,
-  industryPoints: string,
   industry: string, // Change from department to industry
   companySizeRevenue: string,
   seniorityLevels: string,
@@ -115,8 +113,6 @@ function calculateAdjustedSalary(
     payEquityData.unionAgreements[unionAgreements] || 0;
   const benefitsPerksPoints =
     payEquityData.benefitsAndPerks[benefitsAndPerks] || 0;
-
-  console.log("experiencePoints", experiencePoints);
 
   // Sum all points
   const totalPoints =
@@ -164,7 +160,6 @@ export default function PayEquityAnalyzer() {
   const [skillsAndQualifications, setSkillsAndQualifications] =
     useState<string>("No Skill");
   const [marketRates, setMarketRates] = useState<string>("Non");
-  const [industryPoints, setIndustryPoints] = useState<string>("Tech");
   const [companySizeRevenue, setCompanySizeRevenue] = useState<string>("Non");
   const [seniorityLevels, setSeniorityLevels] = useState<string>("FreshGrad");
   const [unionAgreements, setUnionAgreements] =
@@ -203,15 +198,13 @@ export default function PayEquityAnalyzer() {
         role,
         experienceRange,
         location,
-        industry, // Updated from department to industry
         performance,
-        gender,
-        education,
         department,
         gender,
+        education,
         skillsAndQualifications,
         marketRates,
-        industryPoints,
+        industry,
         companySizeRevenue,
         seniorityLevels,
         unionAgreements,
@@ -294,7 +287,6 @@ export default function PayEquityAnalyzer() {
     education,
     skillsAndQualifications,
     marketRates,
-    industryPoints,
     companySizeRevenue,
     seniorityLevels,
     unionAgreements,
