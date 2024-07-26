@@ -9,6 +9,7 @@ import {
   HiOutlineCash,
   HiOutlineChartPie,
   HiOutlineChat,
+  HiOutlineDocumentAdd,
   HiOutlineDocumentReport,
   HiOutlineDownload,
   HiOutlineFastForward,
@@ -125,6 +126,13 @@ export const DashboardSidebar: FC = function () {
           className={getItemClass("/dashboard/upgrade")}
         >
           Upgrade to Pro
+        </Sidebar.Item>
+        <Sidebar.Item
+          href="/dashboard/admin"
+          icon={HiOutlineDocumentAdd}
+          className={getItemClass("/dashboard/admin")}
+        >
+          Administration
         </Sidebar.Item>
         <Sidebar.Item
           href="https://pnpmmedia.com/journal"
