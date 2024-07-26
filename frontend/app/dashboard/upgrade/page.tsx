@@ -33,16 +33,15 @@ const UpgradePage: React.FC = () => {
             </p>
             <ul className="mb-4 ml-5 list-disc text-gray-700 dark:text-gray-300">
               <li>Access to Pay Trend Analysis (Live)</li>
-              <li>Performance and Compensation Correlation Analysis (Live)</li>
               <li>Market Salary Benchmark Analysis (Live)</li>
-              <li>Salary and Compensation Reporting tools</li>
+              <li>Salary & Compensation Reporting tools</li>
             </ul>
             <div className="mb-4 text-gray-900 dark:text-gray-100">
-              <span className="text-2xl font-bold">$5</span> per month
+              <span className="text-2xl font-bold">$3</span> per month
             </div>
             <button
               onClick={() => setSelectedPlan("Basic")}
-              className="w-full rounded-lg bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:outline-none dark:bg-gray-700"
+              className="w-full rounded-lg bg-gray-400 px-4 py-2 text-white hover:bg-blue-600 focus:outline-none dark:bg-gray-700"
             >
               Upgrade to Basic
             </button>
@@ -57,8 +56,8 @@ const UpgradePage: React.FC = () => {
             </p>
             <ul className="mb-4 ml-5 list-disc text-gray-700 dark:text-gray-300">
               <li>Internal Pay Equity Analysis tools</li>
-              <li>Access to reports download</li>
-              <li>Advanced analytics and Insights</li>
+              <li>Access to metrics & reports download</li>
+              <li>Advanced analytics & Insights</li>
             </ul>
             <div className="mb-4 text-gray-900 dark:text-gray-100">
               <span className="text-2xl font-bold">$30</span> per month
