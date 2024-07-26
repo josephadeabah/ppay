@@ -1,4 +1,3 @@
-//For Dashboard Benchmarks
 "use client";
 
 import {
@@ -9,7 +8,6 @@ import {
   Legend,
   PolarAreaController,
   RadialLinearScale,
-  RadialTickOptions,
   Tooltip,
 } from "chart.js";
 import React, { useEffect, useRef } from "react";
@@ -24,6 +22,7 @@ Chart.register(
 
 const BenchMarkChart: React.FC = () => {
   const chartRef = useRef<HTMLCanvasElement | null>(null);
+  const myChartRef = useRef<Chart<"polarArea"> | null>(null);
 
   useEffect(() => {
     if (!chartRef.current) return;
@@ -115,18 +114,37 @@ const BenchMarkChart: React.FC = () => {
         },
         scales: {
           r: {
-            ticks: {
-              beginAtZero: true,
-            } as unknown as RadialTickOptions,
+            // Adjusting ticks is optional and can include 'beginAtZero' if necessary
           },
         },
       },
     };
 
-    const myChart = new Chart(ctx, config);
+    // Initialize chart
+    myChartRef.current = new Chart(ctx, config);
 
+    // Function to simulate new data
+    const fetchNewData = () => {
+      return data.labels!.map(() => Math.floor(Math.random() * 30000) + 10000);
+    };
+
+    // Function to update chart data
+    const updateChartData = () => {
+      if (myChartRef.current) {
+        myChartRef.current.data.datasets[0].data = fetchNewData();
+        myChartRef.current.update();
+      }
+    };
+
+    // Update chart every 2 seconds
+    const intervalId = setInterval(updateChartData, 5000);
+
+    // Cleanup on component unmount
     return () => {
-      myChart.destroy();
+      clearInterval(intervalId);
+      if (myChartRef.current) {
+        myChartRef.current.destroy();
+      }
     };
   }, []);
 

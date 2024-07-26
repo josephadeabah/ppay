@@ -1,4 +1,3 @@
-//Shows on Dashboard - Compare - Wages Chart
 "use client";
 import ModalComponent from "@/components/modal/ModalComponent";
 import {
@@ -17,49 +16,49 @@ Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export default function WagesChart() {
   const [chartData, setChartData] = useState<any>({
-    labels: [],
+    labels: ["USA", "Germany", "India", "Brazil", "China"],
     datasets: [],
   });
   const [loading, setLoading] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedData, setSelectedData] = useState<{
-    date: string;
-    temperature: number;
+    country: string;
+    salary: number;
   } | null>(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          "https://api.open-meteo.com/v1/forecast?latitude=51.5074&longitude=-0.1278&hourly=temperature_2m",
-        );
-        const data = await response.json();
+    const generateRandomSalaries = () => {
+      return Array(5)
+        .fill(0)
+        .map(() => Math.floor(Math.random() * (120000 - 50000 + 1)) + 50000);
+    };
 
-        const categories = data.hourly.time.slice(0, 24);
-        const temperatures = data.hourly.temperature_2m.slice(0, 24);
+    const fetchData = () => {
+      const newSalaries = generateRandomSalaries();
 
-        const newChartData = {
-          labels: categories,
-          datasets: [
-            {
-              label: "Temperature (°C)",
-              data: temperatures,
-              backgroundColor: "rgba(75, 192, 192, 0.6)",
-              borderColor: "rgba(75, 192, 192, 1)",
-              borderWidth: 1,
-            },
-          ],
-        };
+      const newChartData = {
+        labels: chartData.labels,
+        datasets: [
+          {
+            label: "Average Salary (USD)",
+            data: newSalaries,
+            backgroundColor: "rgba(75, 192, 192, 0.6)",
+            borderColor: "rgba(75, 192, 192, 1)",
+            borderWidth: 1,
+          },
+        ],
+      };
 
-        setChartData(newChartData);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching weather data:", error);
-        setLoading(false);
-      }
+      setChartData(newChartData);
+      setLoading(false);
     };
 
     fetchData();
+    const intervalId = setInterval(fetchData, 4000); // Fetch new data every 4 seconds
+
+    return () => {
+      clearInterval(intervalId); // Clear interval on component unmount
+    };
   }, []);
 
   if (loading) {
@@ -78,15 +77,15 @@ export default function WagesChart() {
       },
       title: {
         display: true,
-        text: "Wages Chart",
+        text: "Global Salary Trends",
       },
     },
     onClick: (event: any, elements: any) => {
       if (elements.length > 0) {
         const { index } = elements[0];
-        const date = chartData.labels[index] || "";
-        const temperature = chartData.datasets[0].data[index] || 0;
-        setSelectedData({ date, temperature });
+        const country = chartData.labels[index] || "";
+        const salary = chartData.datasets[0].data[index] || 0;
+        setSelectedData({ country, salary });
         setModalOpen(true);
       }
     },
@@ -94,7 +93,7 @@ export default function WagesChart() {
 
   return (
     <div className="w-full bg-white dark:bg-gray-800 dark:text-gray-50">
-      <div className="w-full bg-white dark:bg-gray-800 dark:text-gray-50">
+      <div className="mt-4">
         <Bar data={chartData} options={options} />
       </div>
 
@@ -105,8 +104,7 @@ export default function WagesChart() {
       >
         {selectedData ? (
           <p>
-            Date: {selectedData.date}, Temperature: {selectedData.temperature}{" "}
-            °C
+            Country: {selectedData.country}, Salary: {selectedData.salary} USD
           </p>
         ) : (
           <p>No data selected</p>

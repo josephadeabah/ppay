@@ -120,7 +120,7 @@ export const DashboardSidebar: FC = function () {
           Download
         </Sidebar.Item>
         <Sidebar.Item
-          href="#"
+          href="/dashboard/upgrade"
           icon={HiOutlineCash}
           className={getItemClass("/dashboard/upgrade")}
         >

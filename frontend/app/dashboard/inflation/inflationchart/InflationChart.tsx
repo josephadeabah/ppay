@@ -1,4 +1,3 @@
-//For Dashboard Inflation
 "use client";
 
 import {
@@ -12,7 +11,7 @@ import {
   RadialLinearScale,
   Tooltip,
 } from "chart.js";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 Chart.register(
   RadarController,
@@ -25,6 +24,15 @@ Chart.register(
 
 const InflationChart: React.FC = () => {
   const chartRef = useRef<HTMLCanvasElement | null>(null);
+  const [chartInstance, setChartInstance] = useState<Chart<"radar"> | null>(
+    null,
+  );
+
+  const generateRandomInflationData = () => {
+    return Array(11)
+      .fill(0)
+      .map(() => parseFloat((Math.random() * (6 - 2) + 2).toFixed(1)));
+  };
 
   useEffect(() => {
     if (!chartRef.current) return;
@@ -32,7 +40,7 @@ const InflationChart: React.FC = () => {
     const ctx = chartRef.current.getContext("2d");
     if (!ctx) return;
 
-    const data: ChartData<"radar"> = {
+    const initialData: ChartData<"radar"> = {
       labels: [
         "Region A",
         "Region B",
@@ -49,14 +57,14 @@ const InflationChart: React.FC = () => {
       datasets: [
         {
           label: "2022 Inflation Rate",
-          data: [5.2, 6.1, 4.8, 2.9, 3.5, 4.2, 3.8, 2.7, 3.3, 4.5, 3.1],
+          data: generateRandomInflationData(),
           backgroundColor: "rgba(255, 99, 132, 0.2)",
           borderColor: "rgba(255, 99, 132, 1)",
           borderWidth: 1,
         },
         {
           label: "2023 Inflation Rate",
-          data: [5.5, 6.4, 5.0, 3.2, 3.8, 4.5, 4.0, 3.0, 3.6, 4.8, 3.4],
+          data: generateRandomInflationData(),
           backgroundColor: "rgba(54, 162, 235, 0.2)",
           borderColor: "rgba(54, 162, 235, 1)",
           borderWidth: 1,
@@ -66,7 +74,7 @@ const InflationChart: React.FC = () => {
 
     const config: ChartConfiguration<"radar"> = {
       type: "radar",
-      data: data,
+      data: initialData,
       options: {
         responsive: true,
         plugins: {
@@ -94,11 +102,25 @@ const InflationChart: React.FC = () => {
     };
 
     const myChart = new Chart(ctx, config);
+    setChartInstance(myChart);
 
     return () => {
       myChart.destroy();
     };
   }, []);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (chartInstance) {
+        chartInstance.data.datasets.forEach((dataset) => {
+          dataset.data = generateRandomInflationData();
+        });
+        chartInstance.update();
+      }
+    }, 6000); // Update data every 5 seconds
+
+    return () => clearInterval(intervalId);
+  }, [chartInstance]);
 
   return (
     <div className="flex w-full justify-center bg-white dark:bg-gray-800 dark:text-gray-50">

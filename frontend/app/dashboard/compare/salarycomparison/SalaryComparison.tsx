@@ -1,4 +1,3 @@
-//Shows on Dashboard - Compare - Salary Comparison
 "use client";
 
 import {
@@ -25,6 +24,7 @@ Chart.register(
 
 const SalaryComparison: React.FC = () => {
   const chartRef = useRef<HTMLCanvasElement | null>(null);
+  const myChartRef = useRef<Chart<"scatter"> | null>(null);
 
   useEffect(() => {
     if (!chartRef.current) return;
@@ -121,10 +121,39 @@ const SalaryComparison: React.FC = () => {
       },
     };
 
-    const myChart = new Chart(ctx, config);
+    // Initialize the chart
+    myChartRef.current = new Chart(ctx, config);
 
+    // Function to simulate new data
+    const fetchNewData = () => {
+      return [
+        { x: 1, y: Math.random() * 50000 + 50000 },
+        { x: 2, y: Math.random() * 50000 + 50000 },
+        { x: 3, y: Math.random() * 50000 + 50000 },
+        { x: 4, y: Math.random() * 50000 + 50000 },
+        { x: 5, y: Math.random() * 50000 + 50000 },
+      ];
+    };
+
+    // Function to update chart data
+    const updateChartData = () => {
+      if (myChartRef.current) {
+        myChartRef.current.data.datasets.forEach((dataset) => {
+          dataset.data = fetchNewData();
+        });
+        myChartRef.current.update();
+      }
+    };
+
+    // Update chart every 3 seconds
+    const intervalId = setInterval(updateChartData, 3000);
+
+    // Cleanup on component unmount
     return () => {
-      myChart.destroy();
+      clearInterval(intervalId);
+      if (myChartRef.current) {
+        myChartRef.current.destroy();
+      }
     };
   }, []);
 
