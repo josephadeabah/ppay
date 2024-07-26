@@ -1,14 +1,23 @@
 "use client";
 import ComplianceForm from "@/app/dashboard/reportpay/forms/ComplianceForm";
-import EmployeeForm from "@/app/dashboard/reportpay/forms/EmployeeForm";
-import EmployerForm from "@/app/dashboard/reportpay/forms/EmployerForm";
 import { useState } from "react";
+import BenchmarkManager from "./benchmarkManager/BenchMarkManager";
+import ManageCompanies from "./compareManager/ManageCompanies";
+import ManageCountries from "./compareManager/ManageCountries";
+import ManageIndustries from "./compareManager/ManageIndustries";
 
 export default function Administration() {
   const [activeTab, setActiveTab] = useState("profile-example");
 
   const handleTabClick = (tabId: string) => {
     setActiveTab(tabId);
+  };
+
+  const handleFormSubmit = (formData: any) => {
+    console.log("Form Data Submitted:", formData);
+
+    // You can perform additional actions with formData here
+    // For example, you might send it to an API or update local state
   };
 
   return (
@@ -76,13 +85,15 @@ export default function Administration() {
 
       <div id="tabContentExample">
         <div
-          className={`rounded-lg bg-gray-50 dark:bg-gray-800 ${activeTab === "profile-example" ? "block" : "hidden"}`}
-          id="profile-example"
+          className={`grid grid-cols-1 rounded-lg bg-gray-50 dark:bg-gray-800 sm:grid-cols-3 lg:grid-cols-3 ${activeTab === "profile-example" ? "block" : "hidden"}`}
+          id="dashboard-example"
           role="tabpanel"
           aria-labelledby="profile-tab-example"
         >
-          {/* Employee form */}
-          <EmployeeForm />
+          {/* Compare manager form */}
+          <ManageCountries />
+          <ManageIndustries />
+          <ManageCompanies />
         </div>
         <div
           className={`rounded-lg bg-gray-50 dark:bg-gray-800 ${activeTab === "dashboard-example" ? "block" : "hidden"}`}
@@ -91,7 +102,7 @@ export default function Administration() {
           aria-labelledby="dashboard-tab-example"
         >
           {/* Employer form */}
-          <EmployerForm />
+          <BenchmarkManager onSubmit={handleFormSubmit} />
         </div>
         <div
           className={`rounded-lg bg-gray-50 dark:bg-gray-800 ${activeTab === "Inflation-example" ? "block" : "hidden"}`}

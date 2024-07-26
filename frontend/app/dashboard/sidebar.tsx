@@ -9,7 +9,7 @@ import {
   HiOutlineCash,
   HiOutlineChartPie,
   HiOutlineChat,
-  HiOutlineDocumentAdd,
+  // HiOutlineDocumentAdd,
   HiOutlineDocumentReport,
   HiOutlineDownload,
   HiOutlineFastForward,
@@ -127,13 +127,13 @@ export const DashboardSidebar: FC = function () {
         >
           Upgrade to Pro
         </Sidebar.Item>
-        <Sidebar.Item
+        {/* <Sidebar.Item
           href="/dashboard/admin"
           icon={HiOutlineDocumentAdd}
           className={getItemClass("/dashboard/admin")}
         >
           Administration
-        </Sidebar.Item>
+        </Sidebar.Item> */}
         <Sidebar.Item
           href="https://pnpmmedia.com/journal"
           icon={BiBuoy}
