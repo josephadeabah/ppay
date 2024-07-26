@@ -523,8 +523,8 @@ const LandingPage = () => {
                   NEW
                 </span>
               </a>
-              <a href="#">Pricing</a>
-              <a href="#">Contact</a>
+              <a href="/dashboard/upgrade">Pricing</a>
+              <a href="https://www.linkedin.com/in/joseph-835977a5/">Contact</a>
             </div>
             <div className="flex items-center gap-x-1 *:p-2 lg:w-full lg:justify-end lg:gap-x-6 lg:*:px-0">
               <a href="#">
