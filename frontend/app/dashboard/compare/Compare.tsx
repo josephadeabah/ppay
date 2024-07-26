@@ -1,6 +1,7 @@
 "use client";
 
 import DropdownSelect from "@/components/dropdown/DropdownSelect";
+import { Tooltip } from "@nextui-org/react";
 import { ActiveElement, ChartData, ChartEvent, ChartOptions } from "chart.js";
 import "chart.js/auto";
 import React, { useState } from "react";
@@ -239,14 +240,17 @@ const Compare: React.FC = () => {
                     <th className="border border-gray-200 p-2 text-left text-sm font-semibold text-gray-700 dark:border-gray-700 dark:text-gray-50">
                       Expected Value
                     </th>
-                    <th
-                      className="border border-gray-200 p-2 text-left text-sm font-semibold text-gray-700 dark:border-gray-700 dark:text-gray-50"
-                      title={`change compared to the current ${selectedComparison.replace(
-                        "_",
-                        " ",
-                      )}.`}
-                    >
-                      Explanation
+                    <th className="border border-gray-200 p-2 text-left text-sm font-semibold text-gray-700 dark:border-gray-700 dark:text-gray-50">
+                      <Tooltip
+                        placement="top"
+                        content={`change compared to the current ${selectedComparison.replace(
+                          "_",
+                          " ",
+                        )}.`}
+                        className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                      >
+                        Explanation
+                      </Tooltip>
                     </th>
                   </tr>
                 </thead>

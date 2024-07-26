@@ -1,5 +1,6 @@
 // dashboard/sidebar.tsx
 import { useSidebarContext } from "@/context/SidebarContext";
+import { Tooltip } from "@nextui-org/react";
 import { Sidebar } from "flowbite-react";
 import { usePathname } from "next/navigation";
 import type { FC } from "react";
@@ -8,8 +9,7 @@ import {
   HiOutlineCalculator,
   HiOutlineCash,
   HiOutlineChartPie,
-  HiOutlineChat,
-  // HiOutlineDocumentAdd,
+  HiOutlineDocumentAdd,
   HiOutlineDocumentReport,
   HiOutlineDownload,
   HiOutlineFastForward,
@@ -105,21 +105,14 @@ export const DashboardSidebar: FC = function () {
           Compliance
         </Sidebar.Item>
         <Sidebar.Item
-          href="/dashboard/dialogue"
-          icon={HiOutlineChat}
-          className={getItemClass("/dashboard/dialogue")}
-        >
-          Dialogue
-        </Sidebar.Item>
-      </Sidebar.ItemGroup>
-      <Sidebar.ItemGroup>
-        <Sidebar.Item
           href="/dashboard/download"
           icon={HiOutlineDownload}
           className={getItemClass("/dashboard/download")}
         >
           Download
         </Sidebar.Item>
+      </Sidebar.ItemGroup>
+      <Sidebar.ItemGroup>
         <Sidebar.Item
           href="/dashboard/upgrade"
           icon={HiOutlineCash}
@@ -127,13 +120,20 @@ export const DashboardSidebar: FC = function () {
         >
           Upgrade to Pro
         </Sidebar.Item>
-        {/* <Sidebar.Item
-          href="/dashboard/admin"
-          icon={HiOutlineDocumentAdd}
-          className={getItemClass("/dashboard/admin")}
+        <Tooltip
+          color="primary"
+          placement="bottom-end"
+          content="You're seeing me because I'm unauthenticated for now!"
+          className="bg-gray-950 text-sm text-white"
         >
-          Administration
-        </Sidebar.Item> */}
+          <Sidebar.Item
+            href="/dashboard/admin"
+            icon={HiOutlineDocumentAdd}
+            className={getItemClass("/dashboard/admin")}
+          >
+            Administration
+          </Sidebar.Item>
+        </Tooltip>
         <Sidebar.Item
           href="https://pnpmmedia.com/journal"
           icon={BiBuoy}

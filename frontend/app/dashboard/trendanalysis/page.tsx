@@ -1,6 +1,7 @@
 "use client";
 import DropdownSelect from "@/components/dropdown/DropdownSelect";
 import SliderComponent from "@/components/slider/Slider";
+import { Tooltip as Tooltp } from "@nextui-org/react";
 import {
   BarElement,
   CategoryScale,
@@ -358,53 +359,77 @@ export default function TrendAnalysis() {
         <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
           <thead className="bg-gray-50 dark:bg-gray-800">
             <tr>
-              <th
-                className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
-                title="Country where the job is located"
-              >
-                Country
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                <Tooltp
+                  placement="top"
+                  content="Country where the job is located"
+                  className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                >
+                  Country
+                </Tooltp>
               </th>
-              <th
-                className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
-                title="Industry in which the job is categorized"
-              >
-                Industry
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                <Tooltp
+                  placement="top"
+                  content="Industry in which the job is categorized"
+                  className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                >
+                  Industry
+                </Tooltp>
               </th>
-              <th
-                className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
-                title="Company offering the job"
-              >
-                Company
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                <Tooltp
+                  placement="top"
+                  content="Company offering the job"
+                  className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                >
+                  Company
+                </Tooltp>
               </th>
-              <th
-                className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
-                title="Job role or position"
-              >
-                Role
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                <Tooltp
+                  placement="top"
+                  content="Job role or position"
+                  className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                >
+                  Role
+                </Tooltp>
               </th>
-              <th
-                className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
-                title="Current salary at the company per year"
-              >
-                Company Salary
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                <Tooltp
+                  placement="top"
+                  content="Current salary at the company per year"
+                  className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                >
+                  Company Salary
+                </Tooltp>
               </th>
-              <th
-                className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
-                title="Current salary for the role per year"
-              >
-                Role Salary
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                <Tooltp
+                  placement="top"
+                  content="Current salary for the role per year"
+                  className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                >
+                  Role Salary
+                </Tooltp>
               </th>
-              <th
-                className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
-                title="Percentage change in salary over time"
-              >
-                Change
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                <Tooltp
+                  placement="top"
+                  content="Percentage change in salary over time"
+                  className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                >
+                  Change
+                </Tooltp>
               </th>
-              <th
-                className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
-                title="Timeframe of the salary change"
-              >
-                Change Timeframe
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                <Tooltp
+                  placement="top"
+                  content="Timeframe of the salary change"
+                  className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                >
+                  Change Timeframe
+                </Tooltp>
               </th>
             </tr>
           </thead>
