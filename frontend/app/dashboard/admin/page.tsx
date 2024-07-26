@@ -1,7 +1,7 @@
 "use client";
 import ComplianceForm from "@/app/dashboard/reportpay/forms/ComplianceForm";
 import { useState } from "react";
-import BenchmarkManager from "./benchmarkManager/BenchMarkManager";
+import BenchmarkManager from "./benchmarkManager/BenchmarkManager";
 import ManageCompanies from "./compareManager/ManageCompanies";
 import ManageCountries from "./compareManager/ManageCountries";
 import ManageIndustries from "./compareManager/ManageIndustries";
