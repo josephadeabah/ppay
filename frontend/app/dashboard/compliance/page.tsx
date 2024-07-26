@@ -11,6 +11,7 @@ import {
   Tooltip,
 } from "chart.js";
 import { Button, Table } from "flowbite-react";
+import { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 
 // Register necessary Chart.js components
@@ -23,6 +24,20 @@ ChartJS.register(
   Tooltip,
   Legend,
 );
+
+// Initial data for compliance trends
+const initialComplianceTrendsData = {
+  labels: ["Jan 2024", "Feb 2024", "Mar 2024", "Apr 2024", "May 2024"],
+  datasets: [
+    {
+      label: "Compliance Rate",
+      data: [78, 82, 85, 88, 90],
+      borderColor: "rgba(75, 192, 192, 1)",
+      backgroundColor: "rgba(75, 192, 192, 0.2)",
+      fill: true,
+    },
+  ],
+};
 
 const complianceUpdates = [
   {
@@ -48,20 +63,44 @@ const complianceData = {
   complianceRates: [85, 90, 88], // Example data
 };
 
-const complianceTrendsData = {
-  labels: ["Jan 2024", "Feb 2024", "Mar 2024", "Apr 2024", "May 2024"],
-  datasets: [
-    {
-      label: "Compliance Rate",
-      data: [78, 82, 85, 88, 90],
-      borderColor: "rgba(75, 192, 192, 1)",
-      backgroundColor: "rgba(75, 192, 192, 0.2)",
-      fill: true,
-    },
-  ],
-};
-
 export default function CompliancePage() {
+  const [complianceTrendsData, setComplianceTrendsData] = useState(
+    initialComplianceTrendsData,
+  );
+
+  useEffect(() => {
+    // Function to generate random data for simulation
+    const generateRandomData = () => {
+      const newData = complianceTrendsData.datasets[0].data.map((value) =>
+        Math.max(0, Math.min(100, value + (Math.random() - 0.5) * 5)),
+      );
+      setComplianceTrendsData({
+        ...complianceTrendsData,
+        datasets: [
+          {
+            ...complianceTrendsData.datasets[0],
+            data: newData,
+          },
+        ],
+      });
+    };
+
+    // Update data every 5 seconds
+    const intervalId = setInterval(generateRandomData, 5000);
+
+    // Clean up interval on component unmount
+    return () => clearInterval(intervalId);
+  }, [complianceTrendsData]);
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: true,
+      },
+    },
+  };
+
   return (
     <div className="bg-gray-50 p-6 dark:bg-gray-900">
       <h1 className="mb-6 text-3xl font-bold text-gray-900 dark:text-white">
@@ -130,13 +169,7 @@ export default function CompliancePage() {
           <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
             Compliance Trends Over Time
           </h3>
-          <Line
-            data={complianceTrendsData}
-            options={{
-              responsive: true,
-              plugins: { legend: { display: true } },
-            }}
-          />
+          <Line data={complianceTrendsData} options={options} />
         </div>
       </div>
 
