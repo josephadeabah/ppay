@@ -3,7 +3,7 @@ export default function Login() {
     <section className="flex h-screen bg-white dark:bg-gray-900">
       {/* Left container */}
       <div className="flex w-full items-center justify-center lg:w-1/2">
-        <div className="mx-auto flex w-full max-w-md flex-col items-center justify-center px-6 py-8 lg:py-0">
+        <div className="mx-auto w-full max-w-md px-6 py-8 lg:py-0">
           <a
             href="/"
             className="mb-6 flex items-center text-2xl font-semibold text-gray-900 dark:text-white"
@@ -12,7 +12,7 @@ export default function Login() {
               <span className="flex h-7 w-auto items-center justify-center rounded-xl bg-blue-600 p-1 text-xs font-extrabold text-white">
                 Pay
               </span>
-              <span className="inline-block py-2 text-xs font-extrabold  text-blue-600 dark:text-white">
+              <span className="inline-block py-2 text-xs font-extrabold text-blue-600 dark:text-white">
                 Sight
               </span>
             </span>
@@ -63,7 +63,6 @@ export default function Login() {
                         aria-describedby="remember"
                         type="checkbox"
                         className="focus:ring-3 h-4 w-4 rounded border border-gray-300 bg-gray-50 focus:ring-primary-300 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600"
-                        required
                       />
                     </div>
                     <div className="ml-3 text-sm">
@@ -103,7 +102,7 @@ export default function Login() {
         </div>
       </div>
       {/* Right container */}
-      <div className="hidden w-full items-center justify-center bg-primary-600 dark:bg-gray-900 lg:flex lg:w-1/2">
+      <div className="hidden w-full items-center justify-center bg-primary-600 dark:bg-gray-950  lg:flex lg:w-1/2">
         <section className="bg-primary-600 text-gray-50 dark:bg-gray-950 dark:text-gray-50">
           <div className="mx-auto flex max-w-[52.5rem] flex-col items-center gap-y-16 px-6 py-32 lg:max-w-[78rem]">
             <div className="mx-auto max-w-[36.75rem] text-center">
@@ -116,7 +115,7 @@ export default function Login() {
                 decisions.
               </p>
             </div>
-            <div className="flex w-full flex-col items-center gap-12 rounded-lg bg-gray-50 px-6 py-12 *:w-full *:text-center dark:bg-gray-900 lg:flex-row lg:justify-center lg:gap-6 lg:px-12">
+            <div className="flex w-full flex-col items-center gap-12 rounded-lg bg-gray-50 px-6 py-12 dark:bg-gray-900 lg:flex-row lg:justify-center lg:gap-6 lg:px-12">
               <div>
                 <h4 className="mb-2 text-2xl font-bold text-blue-600 lg:text-3xl">
                   500k+

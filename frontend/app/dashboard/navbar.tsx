@@ -52,13 +52,13 @@ export const DashboardNavbar: FC = function () {
             <Popover>
               <PopoverTrigger>
                 <button
-                  className="rounded-full p-2 text-black hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  className="rounded-full p-2 text-gray-600 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                   aria-label="Help"
                 >
                   <HiOutlineInformationCircle className="h-6 w-6" />
                 </button>
               </PopoverTrigger>
-              <PopoverContent className="bg-white dark:bg-gray-800">
+              <PopoverContent>
                 <div className="bg-gray-800 p-4 text-gray-50 dark:bg-gray-700 dark:text-gray-200 ">
                   <div className="mb-2">
                     <HiOutlineChatAlt2 className="mr-2 inline-block h-5 w-5" />

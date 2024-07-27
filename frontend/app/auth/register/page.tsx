@@ -92,7 +92,7 @@ export default function Register() {
         </div>
       </div>
       {/* Right container */}
-      <div className="hidden w-full items-center justify-center bg-primary-600 dark:bg-gray-900 lg:flex lg:w-1/2">
+      <div className="hidden w-full items-center justify-center bg-primary-600 dark:bg-gray-950  lg:flex lg:w-1/2">
         <section className="bg-primary-600 text-gray-50 dark:bg-gray-950 dark:text-gray-50">
           <div className="mx-auto flex max-w-[52.5rem] flex-col items-center gap-y-16 px-6 py-32 lg:max-w-[78rem]">
             <div className="mx-auto max-w-[36.75rem] text-center">
@@ -105,7 +105,7 @@ export default function Register() {
                 decisions.
               </p>
             </div>
-            <div className="flex w-full flex-col items-center gap-12 rounded-lg bg-gray-50 px-6 py-12 *:w-full *:text-center dark:bg-gray-900 lg:flex-row lg:justify-center lg:gap-6 lg:px-12">
+            <div className="flex w-full flex-col items-center gap-12 rounded-lg bg-gray-50 px-6 py-12 dark:bg-gray-900 lg:flex-row lg:justify-center lg:gap-6 lg:px-12">
               <div>
                 <h4 className="mb-2 text-2xl font-bold text-blue-600 lg:text-3xl">
                   500k+
