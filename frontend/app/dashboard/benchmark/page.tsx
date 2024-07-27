@@ -205,18 +205,38 @@ export default function MarketSalaryBenchmarks() {
         </h2>
         <div className="overflow-x-auto">
           <table className="w-full bg-white dark:bg-gray-800">
-            <thead className="text-left text-gray-800 dark:text-gray-200">
+            <thead className="bg-gray-50 dark:bg-gray-800">
               <tr className="text-sm">
-                <th className="border-b p-2">Role</th>
-                <th className="border-b p-2">Job Level</th>
-                <th className="border-b p-2">Current Salary</th>
-                <th className="border-b p-2">Benchmark Salary</th>
-                <th className="border-b p-2">Salary Range</th>
-                <th className="border-b p-2">Career Path</th>
-                <th className="border-b p-2">Growth Opportunities</th>
-                <th className="border-b p-2">Skills</th>
-                <th className="border-b p-2">Responsibilities</th>
-                <th className="border-b p-2">Years of Experience</th>
+                <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                  Role
+                </th>
+                <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                  Job Level
+                </th>
+                <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                  Current Salary
+                </th>
+                <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                  Benchmark Salary
+                </th>
+                <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                  Salary Range
+                </th>
+                <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                  Career Path
+                </th>
+                <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                  Growth Opportunities
+                </th>
+                <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                  Skills
+                </th>
+                <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                  Responsibilities
+                </th>
+                <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                  Years of Experience
+                </th>
               </tr>
             </thead>
             <tbody className="text-sm text-gray-700 dark:text-gray-300">

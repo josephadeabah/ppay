@@ -4,17 +4,15 @@ import { Tooltip } from "@nextui-org/react";
 import { Sidebar } from "flowbite-react";
 import { usePathname } from "next/navigation";
 import type { FC } from "react";
-import { BiNotepad } from "react-icons/bi";
+import { BiNotepad, BiStats, BiWrench } from "react-icons/bi";
 import {
   HiOutlineCalculator,
   HiOutlineCash,
   HiOutlineChartPie,
-  HiOutlineDocumentAdd,
   HiOutlineDocumentReport,
   HiOutlineDownload,
   HiOutlineFastForward,
   HiOutlineGlobe,
-  HiOutlineTrendingDown,
   HiOutlineTrendingUp,
   HiOutlineUser,
 } from "react-icons/hi";
@@ -89,7 +87,7 @@ export const DashboardSidebar: FC = function () {
         <Sidebar.Item
           href="/dashboard/trendanalysis"
           icon={() => (
-            <HiOutlineTrendingUp className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+            <BiStats className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
           )}
           className={getItemClass("/dashboard/trendanalysis")}
         >
@@ -98,7 +96,7 @@ export const DashboardSidebar: FC = function () {
         <Sidebar.Item
           href="/dashboard/inflation"
           icon={() => (
-            <HiOutlineTrendingDown className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+            <HiOutlineTrendingUp className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
           )}
           className={getItemClass("/dashboard/inflation")}
         >
@@ -151,7 +149,7 @@ export const DashboardSidebar: FC = function () {
           <Sidebar.Item
             href="/dashboard/admin"
             icon={() => (
-              <HiOutlineDocumentAdd className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+              <BiWrench className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
             )}
             className={getItemClass("/dashboard/admin")}
           >
