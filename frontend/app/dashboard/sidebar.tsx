@@ -44,7 +44,7 @@ export const DashboardSidebar: FC = function () {
         <Sidebar.Item
           href="/dashboard"
           icon={() => (
-            <HiOutlineChartPie className="my-1 h-6 w-6 text-gray-950" />
+            <HiOutlineChartPie className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
           )}
           className={getItemClass("/dashboard")}
         >
@@ -52,7 +52,9 @@ export const DashboardSidebar: FC = function () {
         </Sidebar.Item>
         <Sidebar.Item
           href="/dashboard/reportpay"
-          icon={() => <BiNotepad className="my-1 h-6 w-6 text-gray-950" />}
+          icon={() => (
+            <BiNotepad className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+          )}
           className={getItemClass("/dashboard/reportpay")}
         >
           Report Data
@@ -60,7 +62,7 @@ export const DashboardSidebar: FC = function () {
         <Sidebar.Item
           href="/dashboard/compare"
           icon={() => (
-            <HiOutlineFastForward className="my-1 h-6 w-6 text-gray-950" />
+            <HiOutlineFastForward className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
           )}
           className={getItemClass("/dashboard/compare")}
         >
@@ -68,14 +70,18 @@ export const DashboardSidebar: FC = function () {
         </Sidebar.Item>
         <Sidebar.Item
           href="/dashboard/users"
-          icon={() => <HiOutlineUser className="my-1 h-6 w-6 text-gray-950" />}
+          icon={() => (
+            <HiOutlineUser className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+          )}
           className={getItemClass("/dashboard/users")}
         >
           Members
         </Sidebar.Item>
         <Sidebar.Item
           href="/dashboard/benchmark"
-          icon={() => <HiOutlineGlobe className="my-1 h-6 w-6 text-gray-950" />}
+          icon={() => (
+            <HiOutlineGlobe className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+          )}
           className={getItemClass("/dashboard/benchmark")}
         >
           BenchMarks
@@ -83,7 +89,7 @@ export const DashboardSidebar: FC = function () {
         <Sidebar.Item
           href="/dashboard/trendanalysis"
           icon={() => (
-            <HiOutlineTrendingUp className="my-1 h-6 w-6 text-gray-950" />
+            <HiOutlineTrendingUp className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
           )}
           className={getItemClass("/dashboard/trendanalysis")}
         >
@@ -92,7 +98,7 @@ export const DashboardSidebar: FC = function () {
         <Sidebar.Item
           href="/dashboard/inflation"
           icon={() => (
-            <HiOutlineTrendingDown className="my-1 h-6 w-6 text-gray-950" />
+            <HiOutlineTrendingDown className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
           )}
           className={getItemClass("/dashboard/inflation")}
         >
@@ -101,7 +107,7 @@ export const DashboardSidebar: FC = function () {
         <Sidebar.Item
           href="/dashboard/equityanalyzer"
           icon={() => (
-            <HiOutlineCalculator className="my-1 h-6 w-6 text-gray-950" />
+            <HiOutlineCalculator className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
           )}
           className={getItemClass("/dashboard/equityanalyzer")}
         >
@@ -110,7 +116,7 @@ export const DashboardSidebar: FC = function () {
         <Sidebar.Item
           href="/dashboard/compliance"
           icon={() => (
-            <HiOutlineDocumentReport className="my-1 h-6 w-6 text-gray-950" />
+            <HiOutlineDocumentReport className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
           )}
           className={getItemClass("/dashboard/compliance")}
         >
@@ -119,7 +125,7 @@ export const DashboardSidebar: FC = function () {
         <Sidebar.Item
           href="/dashboard/download"
           icon={() => (
-            <HiOutlineDownload className="my-1 h-6 w-6 text-gray-950" />
+            <HiOutlineDownload className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
           )}
           className={getItemClass("/dashboard/download")}
         >
@@ -129,7 +135,9 @@ export const DashboardSidebar: FC = function () {
       <Sidebar.ItemGroup className="border-none">
         <Sidebar.Item
           href="/dashboard/upgrade"
-          icon={() => <HiOutlineCash className="my-1 h-6 w-6 text-gray-950" />}
+          icon={() => (
+            <HiOutlineCash className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+          )}
           className={getItemClass("/dashboard/upgrade")}
         >
           Upgrade to Pro
@@ -143,7 +151,7 @@ export const DashboardSidebar: FC = function () {
           <Sidebar.Item
             href="/dashboard/admin"
             icon={() => (
-              <HiOutlineDocumentAdd className="my-1 h-6 w-6 text-gray-950" />
+              <HiOutlineDocumentAdd className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
             )}
             className={getItemClass("/dashboard/admin")}
           >
