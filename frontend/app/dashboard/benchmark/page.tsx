@@ -1,6 +1,7 @@
 "use client";
 import DropdownSelect from "@/components/dropdown/DropdownSelect";
 import SliderComponent from "@/components/slider/Slider";
+import { Tooltip as Tooltp } from "@nextui-org/react";
 import {
   ArcElement,
   BarElement,
@@ -213,40 +214,100 @@ export default function MarketSalaryBenchmarks() {
             <thead className="bg-gray-50 dark:bg-gray-800">
               <tr className="text-sm">
                 <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                  Role
+                  <Tooltp
+                    content="The job title or position"
+                    className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                  >
+                    Role
+                  </Tooltp>
                 </th>
                 <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                  Job Level
+                  <Tooltp
+                    content="The level of the job, e.g., Entry, Mid, Senior"
+                    className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                  >
+                    Job Level
+                  </Tooltp>
                 </th>
                 <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                  Current Salary
+                  <Tooltp
+                    content="The current salary for the role"
+                    className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                  >
+                    Current Salary
+                  </Tooltp>
                 </th>
                 <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                  Benchmark Salary
+                  <Tooltp
+                    content="The industry benchmark salary for the role"
+                    className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                  >
+                    Benchmark Salary
+                  </Tooltp>
                 </th>
                 <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                  Salary Range
+                  <Tooltp
+                    content="The typical salary range for the role"
+                    className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                  >
+                    Salary Range
+                  </Tooltp>
                 </th>
                 <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                  Career Path
+                  <Tooltp
+                    content="Potential career advancements from this role"
+                    className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                  >
+                    Career Path
+                  </Tooltp>
                 </th>
                 <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                  Growth Opportunities
+                  <Tooltp
+                    content="Opportunities for professional growth"
+                    className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                  >
+                    Growth Opportunities
+                  </Tooltp>
                 </th>
                 <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                  Skills
+                  <Tooltp
+                    content="Skills required for the role"
+                    className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                  >
+                    Skills
+                  </Tooltp>
                 </th>
                 <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                  Responsibilities
+                  <Tooltp
+                    content="Main responsibilities of the role"
+                    className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                  >
+                    Responsibilities
+                  </Tooltp>
                 </th>
                 <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                  Years of Experience
+                  <Tooltp
+                    content="Years of experience required for the role"
+                    className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                  >
+                    Years of Experience
+                  </Tooltp>
                 </th>
                 <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                  Adjusted Salary
+                  <Tooltp
+                    content="Salary adjusted for inflation"
+                    className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                  >
+                    Adjusted Salary
+                  </Tooltp>
                 </th>
                 <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                  Inflation Rate
+                  <Tooltp
+                    content="The current inflation rate in the selected country"
+                    className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                  >
+                    Inflation Rate
+                  </Tooltp>
                 </th>
               </tr>
             </thead>

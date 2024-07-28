@@ -267,12 +267,12 @@ const Compare: React.FC = () => {
                         {diff.value.toLocaleString()}
                       </td>
                       <td className="border border-gray-200 p-2 text-sm text-gray-700 dark:border-gray-700 dark:text-gray-50">
-                        {` ${
+                        {` ${(
                           ((diff.value -
                             (highlightedItem as any)[selectedComparison]) /
                             (highlightedItem as any)[selectedComparison]) *
                           100
-                        }%`}
+                        ).toPrecision(3)}%`}
                       </td>
                     </tr>
                   ))}
