@@ -140,7 +140,7 @@ const InflationPage: React.FC = () => {
         />
       </div>
 
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         <div>
           <Line
             data={inflationData.current[selectedRegion]}
@@ -165,7 +165,7 @@ const InflationPage: React.FC = () => {
             }}
           />
         </div>
-        <div className="md:col-span-2">
+        <div>
           <Line
             data={overallInflationData}
             options={getChartOptions("Overall Inflation Rates by Country")}

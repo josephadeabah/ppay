@@ -495,6 +495,24 @@ export const categoryData: {
         { category: "Transportation", inflationRate: "3.2" },
       ],
     },
+    {
+      country: "Colombia",
+      overallInflationRate: "3.7%",
+      categories: [
+        { category: "Food", inflationRate: "3.9" },
+        { category: "Housing", inflationRate: "4.5" },
+        { category: "Transportation", inflationRate: "3.1" },
+      ],
+    },
+    {
+      country: "Peru",
+      overallInflationRate: "3.6%",
+      categories: [
+        { category: "Food", inflationRate: "3.8" },
+        { category: "Housing", inflationRate: "4.4" },
+        { category: "Transportation", inflationRate: "3.0" },
+      ],
+    },
   ],
   Australia: [
     {
@@ -506,15 +524,51 @@ export const categoryData: {
         { category: "Transportation", inflationRate: "1.7" },
       ],
     },
+    {
+      country: "New Zealand",
+      overallInflationRate: "2.5%",
+      categories: [
+        { category: "Food", inflationRate: "2.3" },
+        { category: "Housing", inflationRate: "2.9" },
+        { category: "Transportation", inflationRate: "1.6" },
+      ],
+    },
+    {
+      country: "Fiji",
+      overallInflationRate: "5.4%",
+      categories: [
+        { category: "Food", inflationRate: "2.2" },
+        { category: "Housing", inflationRate: "2.8" },
+        { category: "Transportation", inflationRate: "1.5" },
+      ],
+    },
   ],
   Antarctica: [
     {
       country: "Paraguay",
-      overallInflationRate: "3.5%",
+      overallInflationRate: "-3.5%",
       categories: [
         { category: "Food", inflationRate: "1.0" },
         { category: "Housing", inflationRate: "1.5" },
         { category: "Transportation", inflationRate: "0.8" },
+      ],
+    },
+    {
+      country: "Chile",
+      overallInflationRate: "1.4%",
+      categories: [
+        { category: "Food", inflationRate: "0.9" },
+        { category: "Housing", inflationRate: "1.4" },
+        { category: "Transportation", inflationRate: "0.7" },
+      ],
+    },
+    {
+      country: "Uruguay",
+      overallInflationRate: "-2.3%",
+      categories: [
+        { category: "Food", inflationRate: "0.8" },
+        { category: "Housing", inflationRate: "1.3" },
+        { category: "Transportation", inflationRate: "0.6" },
       ],
     },
   ],
