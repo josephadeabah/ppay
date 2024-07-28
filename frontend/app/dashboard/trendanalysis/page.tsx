@@ -276,7 +276,21 @@ export default function TrendAnalysis() {
         <div className="flex-1">
           <Bar
             data={selectedTimeframeTrendData}
-            options={{ responsive: true }}
+            options={{
+              responsive: true,
+              plugins: {
+                tooltip: {
+                  callbacks: {
+                    label: function (context) {
+                      const companyName =
+                        adjustedTableData[context.dataIndex].company;
+                      const value = context.raw;
+                      return `${companyName}: ${value}% change`;
+                    },
+                  },
+                },
+              },
+            }}
           />
         </div>
       </div>
