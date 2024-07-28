@@ -99,6 +99,22 @@ const InflationPage: React.FC = () => {
     }
   };
 
+  // Data preparation for the new line chart (Overall Inflation Rates by Country)
+  const overallInflationData = {
+    labels: categoryData[selectedRegion].map((data) => data.country),
+    datasets: [
+      {
+        label: "Overall Inflation Rate",
+        data: categoryData[selectedRegion].map((data) =>
+          parseFloat(data.overallInflationRate),
+        ),
+        borderColor: "rgba(75, 192, 192, 1)",
+        backgroundColor: "rgba(75, 192, 192, 0.2)",
+        fill: false,
+      },
+    ],
+  };
+
   return (
     <div className="mx-auto px-4">
       <div className="mb-6 mt-2 flex items-center gap-2 text-xl font-bold text-gray-700 dark:text-gray-50">
@@ -147,6 +163,12 @@ const InflationPage: React.FC = () => {
               onClick: (event, elements) =>
                 handleBarClick(elements, event, chartInstance),
             }}
+          />
+        </div>
+        <div className="md:col-span-2">
+          <Line
+            data={overallInflationData}
+            options={getChartOptions("Overall Inflation Rates by Country")}
           />
         </div>
       </div>
