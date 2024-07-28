@@ -297,7 +297,9 @@ export default function MarketSalaryBenchmarks() {
                       <td className="border-b p-2">
                         ${adjustedSalary.toLocaleString()}
                       </td>
-                      <td className={`border-b p-2 ${inflationColor}`}>
+                      <td
+                        className={`p-2 dark:bg-gray-800 dark:text-gray-50 ${inflationColor}`}
+                      >
                         {inflationRate.toFixed(2)}%
                       </td>
                     </tr>
