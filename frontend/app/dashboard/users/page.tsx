@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { HiOutlineBriefcase } from "react-icons/hi"; // Import the icon
 
 const users = [
   {
@@ -12,9 +13,10 @@ const users = [
     experience: "5 years",
     country: "USA",
     industry: "Technology",
-    category: "Employee",
+    category: "Employer",
     company: "TechCorp",
     actualSalary: "$100,000",
+    jobWebsite: "https://techcorp.jobs", // Job website URL
     avatar:
       "https://img.clerk.com/eyJ0eXBlIjoiZGVmYXVsdCIsImlpZCI6Imluc18yUFhCM2ZKczBEd2NDVnRleGhIVElNNmxkWG4iLCJyaWQiOiJ1c2VyXzJqWTA4empFUU5XS0oyNXVNOFU5elB3RnhOTyJ9",
   },
@@ -30,6 +32,7 @@ const users = [
     category: "Employee",
     company: "DesignCo",
     actualSalary: "$70,000",
+    jobWebsite: "https://designco.jobs",
     avatar:
       "https://img.clerk.com/eyJ0eXBlIjoiZGVmYXVsdCIsImlpZCI6Imluc18yUFhCM2ZKczBEd2NDVnRleGhIVElNNmxkWG4iLCJyaWQiOiJ1c2VyXzJqWTA4empFUU5XS0oyNXVNOFU5elB3RnhOTyJ9",
   },
@@ -45,6 +48,7 @@ const users = [
     category: "Internship",
     company: "DesignCo",
     actualSalary: "$70,000",
+    jobWebsite: "https://designco.jobs",
     avatar:
       "https://img.clerk.com/eyJ0eXBlIjoiZGVmYXVsdCIsImlpZCI6Imluc18yUFhCM2ZKczBEd2NDVnRleGhIVElNNmxkWG4iLCJyaWQiOiJ1c2VyXzJqWTA4empFUU5XS0oyNXVNOFU5elB3RnhOTyJ9",
   },
@@ -326,6 +330,23 @@ export default function UsersPage() {
                                     {user.actualSalary}
                                   </div>
                                 </div>
+                                {user.category === "Employer" &&
+                                  user.jobWebsite && (
+                                    <div>
+                                      <div className="text-sm font-semibold text-gray-900 dark:text-white">
+                                        Job Website:
+                                      </div>
+                                      <a
+                                        href={user.jobWebsite}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center text-gray-600 dark:text-gray-50"
+                                      >
+                                        <HiOutlineBriefcase className="mr-1 h-5 w-5" />
+                                        {user.jobWebsite}
+                                      </a>
+                                    </div>
+                                  )}
                               </div>
                             </div>
                           </td>

@@ -234,7 +234,7 @@ export default function MarketSalaryBenchmarks() {
         <h2 className="mb-2 text-xl font-semibold text-gray-800 dark:text-gray-200">
           Filtered Roles
         </h2>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto [&::-moz-scrollbar-thumb]:rounded-full [&::-moz-scrollbar-thumb]:bg-gray-200 [&::-moz-scrollbar-track]:m-1 [&::-moz-scrollbar]:w-2 [&::-ms-scrollbar-thumb]:rounded-full [&::-ms-scrollbar-thumb]:bg-gray-200 [&::-ms-scrollbar-track]:m-1 [&::-ms-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-track]:m-1 [&::-webkit-scrollbar]:w-2">
           <table className="w-full bg-white dark:bg-gray-800">
             <thead className="bg-gray-50 dark:bg-gray-800">
               <tr className="text-xs">

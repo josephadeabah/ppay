@@ -62,6 +62,7 @@ export default function TrendAnalysis() {
       currentSalaryByRole: 95000,
       change: 5,
       changeTimeframe: "Monthly",
+      benefits: "Health Insurance, 401(k), Paid Leave",
     },
     {
       country: "USA",
@@ -72,6 +73,7 @@ export default function TrendAnalysis() {
       currentSalaryByRole: 95000,
       change: -3,
       changeTimeframe: "Monthly",
+      benefits: "Stock Options, Health Insurance, Work from Home",
     },
     {
       country: "USA",
@@ -82,6 +84,7 @@ export default function TrendAnalysis() {
       currentSalaryByRole: 70000,
       change: 0,
       changeTimeframe: "Weekly",
+      benefits: "Health Insurance, Paid Leave",
     },
     {
       country: "USA",
@@ -92,6 +95,7 @@ export default function TrendAnalysis() {
       currentSalaryByRole: 80000,
       change: 2,
       changeTimeframe: "Yearly",
+      benefits: "Bonuses, Health Insurance, Paid Leave",
     },
     {
       country: "USA",
@@ -102,6 +106,7 @@ export default function TrendAnalysis() {
       currentSalaryByRole: 75000,
       change: -10,
       changeTimeframe: "Yearly",
+      benefits: "Health Insurance, Retirement Plan",
     },
     {
       country: "Russia",
@@ -112,6 +117,7 @@ export default function TrendAnalysis() {
       currentSalaryByRole: 60000,
       change: 8,
       changeTimeframe: "Monthly",
+      benefits: "Paid Leave, Health Insurance",
     },
     {
       country: "Russia",
@@ -122,6 +128,7 @@ export default function TrendAnalysis() {
       currentSalaryByRole: 80000,
       change: 0,
       changeTimeframe: "Yearly",
+      benefits: "Housing Assistance, Health Insurance",
     },
     {
       country: "Russia",
@@ -132,6 +139,7 @@ export default function TrendAnalysis() {
       currentSalaryByRole: 85000,
       change: 5,
       changeTimeframe: "Monthly",
+      benefits: "Stock Options, Health Insurance",
     },
     {
       country: "Canada",
@@ -142,6 +150,7 @@ export default function TrendAnalysis() {
       currentSalaryByRole: 70000,
       change: 0,
       changeTimeframe: "Yearly",
+      benefits: "Work from Home, Health Insurance",
     },
     {
       country: "Japan",
@@ -152,6 +161,7 @@ export default function TrendAnalysis() {
       currentSalaryByRole: 80000,
       change: 2,
       changeTimeframe: "Yearly",
+      benefits: "Paid Leave, Health Insurance",
     },
     {
       country: "Japan",
@@ -162,6 +172,7 @@ export default function TrendAnalysis() {
       currentSalaryByRole: 60000,
       change: 8,
       changeTimeframe: "Monthly",
+      benefits: "Housing Assistance, Health Insurance",
     },
     // Add more data as needed
   ];
@@ -385,11 +396,11 @@ export default function TrendAnalysis() {
           </div>
         </div>
       </div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto [&::-moz-scrollbar-thumb]:rounded-full [&::-moz-scrollbar-thumb]:bg-gray-200 [&::-moz-scrollbar-track]:m-1 [&::-moz-scrollbar]:w-2 [&::-ms-scrollbar-thumb]:rounded-full [&::-ms-scrollbar-thumb]:bg-gray-200 [&::-ms-scrollbar-track]:m-1 [&::-ms-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-track]:m-1 [&::-webkit-scrollbar]:w-2">
         <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
           <thead className="bg-white dark:bg-gray-800">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+              <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
                 <Tooltp
                   placement="top"
                   content="Country where the job is located"
@@ -398,7 +409,7 @@ export default function TrendAnalysis() {
                   Country
                 </Tooltp>
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+              <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
                 <Tooltp
                   placement="top"
                   content="Industry in which the job is categorized"
@@ -407,7 +418,7 @@ export default function TrendAnalysis() {
                   Industry
                 </Tooltp>
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+              <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
                 <Tooltp
                   placement="top"
                   content="Company offering the job"
@@ -416,7 +427,7 @@ export default function TrendAnalysis() {
                   Company
                 </Tooltp>
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+              <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
                 <Tooltp
                   placement="top"
                   content="Job role or position"
@@ -425,7 +436,7 @@ export default function TrendAnalysis() {
                   Role
                 </Tooltp>
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+              <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
                 <Tooltp
                   placement="top"
                   content="Current salary at the company per year"
@@ -434,7 +445,7 @@ export default function TrendAnalysis() {
                   Company Salary
                 </Tooltp>
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+              <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
                 <Tooltp
                   placement="top"
                   content="Current salary for the role per year"
@@ -443,7 +454,7 @@ export default function TrendAnalysis() {
                   Role Salary
                 </Tooltp>
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+              <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
                 <Tooltp
                   placement="top"
                   content="Timeframe for the salary change"
@@ -452,7 +463,7 @@ export default function TrendAnalysis() {
                   Timeframe
                 </Tooltp>
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+              <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
                 <Tooltp
                   placement="top"
                   content="Percentage change in salary over the specified timeframe"
@@ -461,33 +472,42 @@ export default function TrendAnalysis() {
                   Change
                 </Tooltp>
               </th>
+              <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
+                <Tooltp
+                  placement="top"
+                  content="Additional benefits offered by the company"
+                  className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
+                >
+                  Benefits
+                </Tooltp>
+              </th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
             {filteredTableData.map((data, index) => (
               <tr key={index}>
-                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-900 dark:text-gray-200">
+                <td className="whitespace-nowrap px-4 py-2 text-sm text-gray-900 dark:text-gray-200 md:px-6 md:py-4">
                   {data.country}
                 </td>
-                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-900 dark:text-gray-200">
+                <td className="whitespace-nowrap px-4 py-2 text-sm text-gray-900 dark:text-gray-200 md:px-6 md:py-4">
                   {data.industry}
                 </td>
-                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-900 dark:text-gray-200">
+                <td className="whitespace-nowrap px-4 py-2 text-sm text-gray-900 dark:text-gray-200 md:px-6 md:py-4">
                   {data.company}
                 </td>
-                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-900 dark:text-gray-200">
+                <td className="whitespace-nowrap px-4 py-2 text-sm text-gray-900 dark:text-gray-200 md:px-6 md:py-4">
                   {data.role}
                 </td>
-                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-900 dark:text-gray-200">
+                <td className="whitespace-nowrap px-4 py-2 text-sm text-gray-900 dark:text-gray-200 md:px-6 md:py-4">
                   ${data.currentSalaryByCompany.toLocaleString()}
                 </td>
-                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-900 dark:text-gray-200">
+                <td className="whitespace-nowrap px-4 py-2 text-sm text-gray-900 dark:text-gray-200 md:px-6 md:py-4">
                   ${data.currentSalaryByRole.toLocaleString()}
                 </td>
-                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-900 dark:text-gray-200">
+                <td className="whitespace-nowrap px-4 py-2 text-sm text-gray-900 dark:text-gray-200 md:px-6 md:py-4">
                   {data.changeTimeframe}
                 </td>
-                <td className="whitespace-nowrap px-6 py-4">
+                <td className="whitespace-nowrap px-4 py-2">
                   <span
                     className={`inline-flex rounded-full px-2 text-xs font-semibold leading-5 ${getChangeColor(
                       data.change,
@@ -496,6 +516,9 @@ export default function TrendAnalysis() {
                     {data.change > 0 ? "+" : ""}
                     {data.change.toFixed(2)}%
                   </span>
+                </td>
+                <td className="whitespace-nowrap px-4 py-2 text-sm text-gray-900 dark:text-gray-200 md:px-6 md:py-4">
+                  {data.benefits}
                 </td>
               </tr>
             ))}
