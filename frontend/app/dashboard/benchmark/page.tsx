@@ -212,99 +212,99 @@ export default function MarketSalaryBenchmarks() {
         <div className="overflow-x-auto">
           <table className="w-full bg-white dark:bg-gray-800">
             <thead className="bg-gray-50 dark:bg-gray-800">
-              <tr className="text-sm">
-                <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+              <tr className="text-xs">
+                <th className="p-2 text-left font-medium uppercase tracking-wider text-gray-500">
                   <Tooltp
                     content="The job title or position"
-                    className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                    className="bg-gray-200 text-gray-400 dark:bg-gray-950 dark:text-gray-50"
                   >
                     Role
                   </Tooltp>
                 </th>
-                <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                <th className="p-2 text-left font-medium uppercase tracking-wider text-gray-500">
                   <Tooltp
                     content="The level of the job, e.g., Entry, Mid, Senior"
-                    className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                    className="bg-gray-200 text-gray-400 dark:bg-gray-950 dark:text-gray-50"
                   >
                     Job Level
                   </Tooltp>
                 </th>
-                <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                <th className="p-2 text-left font-medium uppercase tracking-wider text-gray-500">
                   <Tooltp
                     content="The current salary for the role"
-                    className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                    className="bg-gray-200 text-gray-400 dark:bg-gray-950 dark:text-gray-50"
                   >
                     Current Salary
                   </Tooltp>
                 </th>
-                <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                <th className="p-2 text-left font-medium uppercase tracking-wider text-gray-500">
                   <Tooltp
                     content="The industry benchmark salary for the role"
-                    className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                    className="bg-gray-200 text-gray-400 dark:bg-gray-950 dark:text-gray-50"
                   >
                     Benchmark Salary
                   </Tooltp>
                 </th>
-                <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                <th className="p-2 text-left font-medium uppercase tracking-wider text-gray-500">
                   <Tooltp
                     content="The typical salary range for the role"
-                    className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                    className="bg-gray-200 text-gray-400 dark:bg-gray-950 dark:text-gray-50"
                   >
                     Salary Range
                   </Tooltp>
                 </th>
-                <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                <th className="p-2 text-left font-medium uppercase tracking-wider text-gray-500">
                   <Tooltp
                     content="Potential career advancements from this role"
-                    className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                    className="bg-gray-200 text-gray-400 dark:bg-gray-950 dark:text-gray-50"
                   >
                     Career Path
                   </Tooltp>
                 </th>
-                <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                <th className="p-2 text-left font-medium uppercase tracking-wider text-gray-500">
                   <Tooltp
                     content="Opportunities for professional growth"
-                    className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                    className="bg-gray-200 text-gray-400 dark:bg-gray-950 dark:text-gray-50"
                   >
                     Growth Opportunities
                   </Tooltp>
                 </th>
-                <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                <th className="p-2 text-left font-medium uppercase tracking-wider text-gray-500">
                   <Tooltp
                     content="Skills required for the role"
-                    className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                    className="bg-gray-200 text-gray-400 dark:bg-gray-950 dark:text-gray-50"
                   >
                     Skills
                   </Tooltp>
                 </th>
-                <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                <th className="p-2 text-left font-medium uppercase tracking-wider text-gray-500">
                   <Tooltp
                     content="Main responsibilities of the role"
-                    className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                    className="bg-gray-200 text-gray-400 dark:bg-gray-950 dark:text-gray-50"
                   >
                     Responsibilities
                   </Tooltp>
                 </th>
-                <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                <th className="p-2 text-left font-medium uppercase tracking-wider text-gray-500">
                   <Tooltp
                     content="Years of experience required for the role"
-                    className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                    className="bg-gray-200 text-gray-400 dark:bg-gray-950 dark:text-gray-50"
                   >
                     Years of Experience
                   </Tooltp>
                 </th>
-                <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                <th className="p-2 text-left font-medium uppercase tracking-wider text-gray-500">
                   <Tooltp
                     content="Salary adjusted for inflation"
-                    className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                    className="bg-gray-200 text-gray-400 dark:bg-gray-950 dark:text-gray-50"
                   >
                     Adjusted Salary
                   </Tooltp>
                 </th>
-                <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                <th className="p-2 text-left font-medium uppercase tracking-wider text-gray-500">
                   <Tooltp
                     content="The current inflation rate in the selected country"
-                    className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                    className="bg-gray-200 text-gray-400 dark:bg-gray-950 dark:text-gray-50"
                   >
                     Inflation Rate
                   </Tooltp>
@@ -326,7 +326,7 @@ export default function MarketSalaryBenchmarks() {
                   else if (inflationRate < 0) inflationColor = "bg-green-100";
 
                   return (
-                    <tr key={index}>
+                    <tr key={index} className="text-sm">
                       <td className="border-b p-2">{role.role}</td>
                       <td className="border-b p-2">{role.jobLevel}</td>
                       <td className="border-b p-2">
@@ -359,7 +359,7 @@ export default function MarketSalaryBenchmarks() {
                         ${adjustedSalary.toLocaleString()}
                       </td>
                       <td
-                        className={`p-2 dark:bg-gray-800 dark:text-gray-50 ${inflationColor}`}
+                        className={`border-b p-2 dark:bg-gray-800 dark:text-gray-50 ${inflationColor}`}
                       >
                         {inflationRate.toFixed(2)}%
                       </td>
