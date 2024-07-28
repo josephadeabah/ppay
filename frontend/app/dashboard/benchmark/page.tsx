@@ -39,19 +39,6 @@ export default function MarketSalaryBenchmarks() {
   );
   const [selectedCompany, setSelectedCompany] = useState<Company | null>(null);
 
-  const exampleData = {
-    labels: ["Entry Level", "Mid Level", "Senior Level"],
-    datasets: [
-      {
-        label: "Average Salary",
-        data: [50000, 75000, 120000],
-        backgroundColor: "rgba(75,192,192,0.4)",
-        borderColor: "rgba(75,192,192,1)",
-        borderWidth: 1,
-      },
-    ],
-  };
-
   // Calculate adjusted salary based on inflation rate
   const calculateAdjustedSalary = (salary: number, inflationRate: number) => {
     return salary * (1 + inflationRate / 100);
@@ -100,6 +87,44 @@ export default function MarketSalaryBenchmarks() {
       setSalaryRange(newValue);
     }
   };
+
+  // Create data for line chart
+  const lineChartData = useMemo(() => {
+    const rolesData = filteredRoles.map((role) => role.currentSalary);
+    const rolesLabels = filteredRoles.map((role) => role.role);
+
+    return {
+      labels: rolesLabels,
+      datasets: [
+        {
+          label: `Current Salary @ ${selectedCompany ?? "N/A"}`,
+          data: rolesData,
+          borderColor: "rgba(75,192,192,1)",
+          backgroundColor: "rgba(75,192,192,0.4)",
+          fill: false,
+        },
+      ],
+    };
+  }, [filteredRoles]);
+
+  // Create data for bar chart
+  const barChartData = useMemo(() => {
+    const rolesData = filteredRoles.map((role) => role.currentSalary);
+    const rolesLabels = filteredRoles.map((role) => role.jobLevel);
+
+    return {
+      labels: rolesLabels,
+      datasets: [
+        {
+          label: `Current Salary @ ${selectedCompany ?? "N/A"}`,
+          data: rolesData,
+          borderColor: "rgba(75,192,192,1)",
+          backgroundColor: "rgba(75,192,192,0.4)",
+          fill: false,
+        },
+      ],
+    };
+  }, [filteredRoles]);
 
   return (
     <div className="mx-auto px-4">
@@ -385,15 +410,15 @@ export default function MarketSalaryBenchmarks() {
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <div className="col-span-1">
           <h2 className="mb-2 text-xl font-semibold text-gray-800 dark:text-gray-200">
-            Salary Benchmarks
+            Current Salary by Level at {selectedCompany ?? "N/A"}
           </h2>
-          <Bar data={exampleData} />
+          <Bar data={barChartData} />
         </div>
         <div className="col-span-1">
           <h2 className="mb-2 text-xl font-semibold text-gray-800 dark:text-gray-200">
-            Salary Trends Over Time
+            Current Salary by Role at {selectedCompany ?? "N/A"}
           </h2>
-          <Line data={exampleData} />
+          <Line data={lineChartData} />
         </div>
       </div>
     </div>
