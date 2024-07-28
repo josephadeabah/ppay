@@ -1,5 +1,7 @@
 "use client";
 
+import { FiDownload } from "react-icons/fi"; // Import the download icon from react-icons
+
 const DownloadPage = () => {
   const dataCategories = [
     {
@@ -7,47 +9,38 @@ const DownloadPage = () => {
       links: [
         {
           name: "Q1 2023 Report",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/financial-reports/q1-2023.pdf",
         },
         {
           name: "Q2 2023 Report",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/financial-reports/q2-2023.pdf",
         },
         {
           name: "Q3 2023 Report",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/financial-reports/q3-2023.pdf",
         },
         {
           name: "Q4 2023 Report",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/financial-reports/q4-2023.pdf",
         },
         {
           name: "Annual Report",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/financial-reports/annual-report.pdf",
         },
         {
           name: "Financial Statements",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/financial-reports/financial-statements.xlsx",
         },
         {
           name: "Balance Sheet",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/financial-reports/balance-sheet.xlsx",
         },
         {
           name: "Income Statement",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/financial-reports/income-statement.xlsx",
         },
         {
           name: "Cash Flow Statement",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/financial-reports/cash-flow-statement.xlsx",
         },
         // More financial reports
@@ -58,47 +51,38 @@ const DownloadPage = () => {
       links: [
         {
           name: "Employee List",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/employee-data/employee-list.csv",
         },
         {
           name: "Salary Breakdown",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/employee-data/salary-breakdown.xlsx",
         },
         {
           name: "Job Description",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/employee-data/job-description.docx",
         },
         {
           name: "Job Applications",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/employee-data/job-applications.xlsx",
         },
         {
           name: "Employee Retention",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/employee-data/employee-retention.xlsx",
         },
         {
           name: "Employee Performance",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/employee-data/employee-performance.xlsx",
         },
         {
           name: "Employee Health",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/employee-data/employee-health.xlsx",
         },
         {
           name: "Employee Tenure",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/employee-data/employee-tenure.xlsx",
         },
         {
           name: "Employee Diversity",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/employee-data/employee-diversity.xlsx",
         },
         // More employee data
@@ -109,49 +93,35 @@ const DownloadPage = () => {
       links: [
         {
           name: "Industry Trends",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/market-research/industry-trends.pdf",
         },
         {
           name: "Consumer Insights",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/market-research/consumer-insights.pdf",
         },
         {
           name: "Employer Insights",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/market-research/employer-insights.pdf",
         },
         {
           name: "Market Insights",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/market-research/market-insights.pdf",
         },
         {
           name: "Market Research Report",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/market-research/market-research-report.pdf",
         },
         {
           name: "Market Research Data",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/market-research/market-research-data.xlsx",
         },
         {
           name: "Market Research Reports",
-          color: "bg-gray-50",
           downloadUrl:
             "/downloads/market-research/market-research-reports.xlsx",
         },
         {
           name: "Market Research Analysis",
-          color: "bg-gray-50",
-          downloadUrl:
-            "/downloads/market-research/market-research-analysis.xlsx",
-        },
-        {
-          name: "Market Research Analysis",
-          color: "bg-gray-50",
           downloadUrl:
             "/downloads/market-research/market-research-analysis.xlsx",
         },
@@ -163,47 +133,38 @@ const DownloadPage = () => {
       links: [
         {
           name: "Labor Law Compliance",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/compliance/labor-law-compliance.pdf",
         },
         {
           name: "Environmental Standards",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/compliance/environmental-standards.pdf",
         },
         {
           name: "Healthcare Compliance",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/compliance/healthcare-compliance.pdf",
         },
         {
           name: "Compliance Report",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/compliance/compliance-report.pdf",
         },
         {
           name: "Compliance Data",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/compliance/compliance-data.xlsx",
         },
         {
           name: "Compliance Reports",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/compliance/compliance-reports.xlsx",
         },
         {
           name: "Compliance Analysis",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/compliance/compliance-analysis.xlsx",
         },
         {
           name: "Compliance Documents",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/compliance/compliance-documents.xlsx",
         },
         {
           name: "Compliance Checklist",
-          color: "bg-gray-50",
           downloadUrl: "/downloads/compliance/compliance-checklist.xlsx",
         },
         // More compliance documents
@@ -213,34 +174,42 @@ const DownloadPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
-      <div className="mx-auto px-2 py-8">
-        <h1 className="mb-2 text-center text-3xl font-bold">Download Data</h1>
-        <span className="mb-8 flex items-center justify-center text-xs font-bold">
-          All reports contains no sensitive data
-        </span>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="min-h-screen bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <h1 className="mb-8 text-center text-5xl font-bold tracking-tight">
+          Download Data
+        </h1>
+        <p className="mb-12 text-center text-lg text-gray-600 dark:text-gray-400">
+          Access our comprehensive data collection, free from sensitive
+          information.
+        </p>
+        <div className="flex flex-col gap-8 lg:flex-row">
           {dataCategories.map((category) => (
             <div
               key={category.title}
-              className="border border-gray-200 p-2 dark:border-gray-700"
+              className="flex-1 rounded-lg bg-white shadow-sm dark:bg-gray-800 dark:shadow-gray-700"
             >
-              <h2 className="mb-4 text-xl font-semibold">{category.title}</h2>
-              <ul className="space-y-3">
-                {category.links.map((link) => (
-                  <li
-                    key={link.name}
-                    className={`rounded-lg p-4 ${link.color} dark:bg-opacity-20`}
-                  >
-                    <a
-                      href={link.downloadUrl}
-                      className="block text-sm font-medium text-gray-800 dark:text-gray-200"
+              <div className="p-6">
+                <h2 className="mb-4 text-2xl font-semibold text-gray-900 dark:text-gray-200">
+                  {category.title}
+                </h2>
+                <ul className="space-y-2">
+                  {category.links.map((link) => (
+                    <li
+                      key={link.name}
+                      className="flex transform items-center transition duration-200 ease-in-out hover:scale-105"
                     >
-                      {link.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+                      <a
+                        href={link.downloadUrl}
+                        className="block flex-grow rounded-md p-4 hover:bg-gray-50 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
+                      >
+                        {link.name}
+                      </a>
+                      <FiDownload className="ml-2 text-black" />
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           ))}
         </div>
