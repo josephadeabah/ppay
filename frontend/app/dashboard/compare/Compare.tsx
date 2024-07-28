@@ -15,9 +15,9 @@ const Compare: React.FC = () => {
   const [selectedComparison, setSelectedComparison] = useState<
     keyof Country | keyof Industry | keyof Company
   >("average_salary");
-  const [selectedItem, setSelectedItem] = useState<
-    Country | Industry | Company | null
-  >(null);
+  type SelectedItem = Country | Industry | Company | null;
+
+  const [selectedItem, setSelectedItem] = useState<SelectedItem>(null);
   const [highlightedItem, setHighlightedItem] = useState<
     Country | Industry | Company | null
   >(null);
