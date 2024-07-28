@@ -129,8 +129,6 @@ export const DashboardSidebar: FC = function () {
         >
           Download
         </Sidebar.Item>
-      </Sidebar.ItemGroup>
-      <Sidebar.ItemGroup className="border-none">
         <Sidebar.Item
           href="/dashboard/upgrade"
           icon={() => (
