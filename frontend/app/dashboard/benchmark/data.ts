@@ -1,5 +1,5 @@
 // data.ts
-export type Role = {
+export type BenchmarkDataType = {
   role: string;
   jobLevel: string;
   skills: string[];
@@ -10,6 +10,7 @@ export type Role = {
   careerPath: string;
   growthOpportunities: string;
   yearsOfExperience: number;
+  country?: string;
 };
 
 export type DataStructure = {
@@ -18,7 +19,7 @@ export type DataStructure = {
     industries: {
       [industry: string]: {
         companies: {
-          [company: string]: Role[];
+          [company: string]: BenchmarkDataType[];
         };
       };
     };
@@ -51,6 +52,7 @@ export const data: DataStructure = {
               careerPath: "Senior Software Engineer",
               growthOpportunities: "Global mobility, certifications",
               yearsOfExperience: 5,
+              country: "Germany",
             },
           ],
           Siemens: [
@@ -68,6 +70,7 @@ export const data: DataStructure = {
               careerPath: "Lead Data Scientist",
               growthOpportunities: "Advanced certifications, conferences",
               yearsOfExperience: 7,
+              country: "Germany",
             },
           ],
         },
@@ -89,6 +92,7 @@ export const data: DataStructure = {
               careerPath: "Senior Mechanical Engineer",
               growthOpportunities: "Technical training, leadership development",
               yearsOfExperience: 6,
+              country: "Germany",
             },
           ],
           Bosch: [
@@ -106,6 +110,7 @@ export const data: DataStructure = {
               careerPath: "Senior Product Manager",
               growthOpportunities: "Leadership training, certifications",
               yearsOfExperience: 5,
+              country: "Germany",
             },
           ],
         },
@@ -127,6 +132,7 @@ export const data: DataStructure = {
               careerPath: "Senior Data Analyst",
               growthOpportunities: "Data analytics certifications, training",
               yearsOfExperience: 4,
+              country: "Germany",
             },
           ],
           "University Hospital Heidelberg": [
@@ -144,6 +150,7 @@ export const data: DataStructure = {
               careerPath: "Chief Operating Officer",
               growthOpportunities: "Executive training, advanced degrees",
               yearsOfExperience: 12,
+              country: "Germany",
             },
           ],
         },
@@ -170,6 +177,7 @@ export const data: DataStructure = {
               careerPath: "Senior Software Engineer",
               growthOpportunities: "Leadership training, certifications",
               yearsOfExperience: 5,
+              country: "USA",
             },
             {
               role: "Data Scientist",
@@ -185,6 +193,7 @@ export const data: DataStructure = {
               careerPath: "Lead Data Scientist",
               growthOpportunities: "Advanced certifications, conferences",
               yearsOfExperience: 7,
+              country: "USA",
             },
             {
               role: "Software Developer",
@@ -200,6 +209,7 @@ export const data: DataStructure = {
               careerPath: "Entry Software Developer",
               growthOpportunities: "Internship opportunities",
               yearsOfExperience: 3,
+              country: "USA",
             },
             {
               role: "Product Manager",
@@ -215,6 +225,7 @@ export const data: DataStructure = {
               careerPath: "Mid Product Manager",
               growthOpportunities: "Leadership training, certifications",
               yearsOfExperience: 5,
+              country: "USA",
             },
           ],
           Facebook: [
@@ -232,6 +243,7 @@ export const data: DataStructure = {
               careerPath: "Senior Software Engineer",
               growthOpportunities: "Leadership training, certifications",
               yearsOfExperience: 5,
+              country: "USA",
             },
           ],
           Amazon: [
@@ -249,6 +261,7 @@ export const data: DataStructure = {
               careerPath: "Lead Data Scientist",
               growthOpportunities: "Advanced certifications, conferences",
               yearsOfExperience: 7,
+              country: "USA",
             },
           ],
         },
@@ -270,6 +283,7 @@ export const data: DataStructure = {
               careerPath: "Senior Software Engineer",
               growthOpportunities: "Leadership training, certifications",
               yearsOfExperience: 4,
+              country: "USA",
             },
           ],
           "Ford Motor Company": [
@@ -287,6 +301,7 @@ export const data: DataStructure = {
               careerPath: "Senior Mechanical Engineer",
               growthOpportunities: "Technical training, project leadership",
               yearsOfExperience: 2,
+              country: "USA",
             },
           ],
         },
@@ -308,6 +323,7 @@ export const data: DataStructure = {
               careerPath: "Senior Software Engineer",
               growthOpportunities: "Leadership training, certifications",
               yearsOfExperience: 4,
+              country: "USA",
             },
           ],
           "Johns Hopkins Hospital": [
@@ -325,6 +341,7 @@ export const data: DataStructure = {
               careerPath: "Senior Data Analyst",
               growthOpportunities: "Data analytics certifications, conferences",
               yearsOfExperience: 5,
+              country: "USA",
             },
           ],
         },
@@ -351,6 +368,7 @@ export const data: DataStructure = {
               careerPath: "Senior Software Developer",
               growthOpportunities: "Leadership training, certifications",
               yearsOfExperience: 5,
+              country: "India",
             },
           ],
           Wipro: [
@@ -368,6 +386,7 @@ export const data: DataStructure = {
               careerPath: "Senior Data Analyst",
               growthOpportunities: "Data science certifications, training",
               yearsOfExperience: 2,
+              country: "India",
             },
           ],
           TCS: [
@@ -385,6 +404,7 @@ export const data: DataStructure = {
               careerPath: "Lead Tester",
               growthOpportunities: "Quality assurance certifications",
               yearsOfExperience: 4,
+              country: "India",
             },
           ],
         },
@@ -406,6 +426,7 @@ export const data: DataStructure = {
               careerPath: "Senior Mechanical Engineer",
               growthOpportunities: "Technical training, project leadership",
               yearsOfExperience: 6,
+              country: "India",
             },
           ],
           Mahindra: [
@@ -423,6 +444,7 @@ export const data: DataStructure = {
               careerPath: "Senior Automotive Engineer",
               growthOpportunities: "Technical courses, certifications",
               yearsOfExperience: 3,
+              country: "India",
             },
           ],
         },
@@ -444,6 +466,7 @@ export const data: DataStructure = {
               careerPath: "Senior Data Analyst",
               growthOpportunities: "Data science training, conferences",
               yearsOfExperience: 5,
+              country: "India",
             },
           ],
           "Fortis Healthcare": [
@@ -461,6 +484,7 @@ export const data: DataStructure = {
               careerPath: "Executive Director",
               growthOpportunities: "Leadership programs, advanced degrees",
               yearsOfExperience: 10,
+              country: "India",
             },
           ],
         },
@@ -487,6 +511,7 @@ export const data: DataStructure = {
               careerPath: "Senior Software Engineer",
               growthOpportunities: "Leadership training, certifications",
               yearsOfExperience: 4,
+              country: "Russia",
             },
           ],
           "Arm Robotics": [
@@ -504,6 +529,7 @@ export const data: DataStructure = {
               careerPath: "Senior Software Engineer",
               growthOpportunities: "Leadership training, certifications",
               yearsOfExperience: 4,
+              country: "Russia",
             },
           ],
           "Kaspersky Lab": [
@@ -521,6 +547,7 @@ export const data: DataStructure = {
               careerPath: "Cybersecurity Manager",
               growthOpportunities: "Advanced security certifications",
               yearsOfExperience: 8,
+              country: "Russia",
             },
           ],
         },
@@ -542,6 +569,7 @@ export const data: DataStructure = {
               careerPath: "Senior Software Engineer",
               growthOpportunities: "Leadership training, certifications",
               yearsOfExperience: 4,
+              country: "Russia",
             },
           ],
           Lukoil: [
@@ -560,6 +588,7 @@ export const data: DataStructure = {
               growthOpportunities:
                 "Management training, advanced technical courses",
               yearsOfExperience: 10,
+              country: "Russia",
             },
           ],
         },
@@ -581,6 +610,7 @@ export const data: DataStructure = {
               careerPath: "Senior Data Analyst",
               growthOpportunities: "Data analytics certifications, conferences",
               yearsOfExperience: 5,
+              country: "Russia",
             },
           ],
           "Moscow Healthcare": [
@@ -598,6 +628,7 @@ export const data: DataStructure = {
               careerPath: "Senior Administrator",
               growthOpportunities: "Advanced healthcare management training",
               yearsOfExperience: 6,
+              country: "Russia",
             },
           ],
         },

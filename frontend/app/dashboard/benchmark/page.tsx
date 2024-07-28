@@ -16,7 +16,7 @@ import {
 } from "chart.js";
 import { useMemo, useState } from "react";
 import { Bar, Line } from "react-chartjs-2";
-import { Company, Country, data, Industry, Role } from "./data";
+import { BenchmarkDataType, Company, Country, data, Industry } from "./data";
 
 ChartJS.register(
   CategoryScale,
@@ -58,7 +58,7 @@ export default function MarketSalaryBenchmarks() {
   };
 
   // Memoize filteredRoles to optimize performance
-  const filteredRoles: Role[] = useMemo(() => {
+  const filteredRoles: BenchmarkDataType[] = useMemo(() => {
     if (selectedCountry && selectedIndustry && selectedCompany) {
       const roles =
         data[selectedCountry]?.industries[selectedIndustry]?.companies[
@@ -313,7 +313,7 @@ export default function MarketSalaryBenchmarks() {
             </thead>
             <tbody className="text-sm text-gray-700 dark:text-gray-300">
               {filteredRoles.length > 0 ? (
-                filteredRoles.map((role, index) => {
+                filteredRoles.map((role) => {
                   const inflationRate =
                     data[selectedCountry!].inflationRate || 0;
                   const adjustedSalary = calculateAdjustedSalary(
@@ -326,7 +326,7 @@ export default function MarketSalaryBenchmarks() {
                   else if (inflationRate < 0) inflationColor = "bg-green-100";
 
                   return (
-                    <tr key={index} className="text-sm">
+                    <tr key={role.country} className="text-sm">
                       <td className="border-b p-2">{role.role}</td>
                       <td className="border-b p-2">{role.jobLevel}</td>
                       <td className="border-b p-2">
