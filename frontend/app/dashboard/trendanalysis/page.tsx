@@ -32,105 +32,59 @@ interface TrendData {
   datasets: {
     label: string;
     data: number[];
-    borderColor: string;
-    fill: boolean;
+    borderColor?: string;
+    backgroundColor?: string;
+    fill?: boolean;
   }[];
 }
 
 interface TrendDataMap {
-  roles: TrendData;
   companies: TrendData;
-  industries: TrendData;
-  regions: TrendData;
+  timeframes: TrendData;
 }
 
 const trendData: TrendDataMap = {
-  roles: {
-    labels: ["Engineer", "Manager", "Analyst", "Developer", "Designer"],
-    datasets: [
-      {
-        label: "Average Salary",
-        data: [90000, 95000, 70000, 80000, 75000],
-        borderColor: "rgba(255, 159, 64, 0.6)",
-        fill: false,
-      },
-    ],
-  },
   companies: {
     labels: ["Company A", "Company B", "Company C", "Company D", "Company E"],
     datasets: [
       {
-        label: "Average Salary",
-        data: [80000, 85000, 90000, 75000, 95000],
+        label: "Change",
+        data: [5, -3, 0, 2, -10],
         borderColor: "rgba(54, 162, 235, 0.6)",
         fill: false,
       },
     ],
   },
-  industries: {
-    labels: ["Tech", "Healthcare", "Finance", "Education", "Manufacturing"],
+  timeframes: {
+    labels: ["Monthly", "Monthly", "Weekly", "Yearly", "Yearly"],
     datasets: [
       {
-        label: "Average Salary",
-        data: [95000, 70000, 85000, 60000, 80000],
-        borderColor: "rgba(75, 192, 192, 0.6)",
-        fill: false,
+        label: "Change",
+        data: [5, -3, 0, 2, -10],
+        backgroundColor: "rgba(75, 192, 192, 0.6)",
       },
     ],
   },
-  regions: {
-    labels: ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix"],
-    datasets: [
-      {
-        label: "Average Salary",
-        data: [90000, 85000, 80000, 75000, 70000],
-        borderColor: "rgba(153, 102, 255, 0.6)",
-        fill: false,
-      },
-    ],
-  },
-};
-
-const generateScenarioComparisonData = (
-  baseData: TrendData,
-  adjustments: { [key: string]: number },
-): TrendData => {
-  const adjustedData = { ...baseData };
-  adjustedData.datasets[0].data = adjustedData.datasets[0].data.map(
-    (value) => value * (1 + (adjustments["growthRate"] || 0)),
-  );
-  return adjustedData;
 };
 
 export default function TrendAnalysis() {
   const [selectedTrend, setSelectedTrend] =
-    useState<keyof TrendDataMap>("roles");
+    useState<keyof TrendDataMap>("companies");
   const [growthRate, setGrowthRate] = useState<number>(60); // Default value of 60
   const [salaryFilter, setSalaryFilter] = useState<number>(50000); // Default minimum salary filter
   const [changeFilter, setChangeFilter] = useState<number>(0); // Default change filter
 
-  const selectedTrendData = useMemo(
-    () => trendData[selectedTrend] || trendData.roles,
-    [selectedTrend],
-  );
+  const selectedCompanyTrendData = useMemo(() => trendData.companies, []);
 
-  const scenarioData = useMemo(
-    () =>
-      generateScenarioComparisonData(selectedTrendData, {
-        growthRate: growthRate / 100,
-      }), // Convert to decimal for calculation
-    [selectedTrendData, growthRate],
-  );
+  const selectedTimeframeTrendData = useMemo(() => trendData.timeframes, []);
 
   const handleTrendChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedTrend(event.target.value as keyof TrendDataMap);
   };
 
   const trendOptions = [
-    { value: "roles", label: "Roles" },
     { value: "companies", label: "Companies" },
-    { value: "industries", label: "Industries" },
-    { value: "regions", label: "Regions" },
+    { value: "timeframes", label: "Timeframes" },
   ];
 
   const tableData = [
@@ -306,10 +260,16 @@ export default function TrendAnalysis() {
       />
       <div className="flex flex-col md:flex-row md:gap-4">
         <div className="flex-1">
-          <Line data={scenarioData} options={{ responsive: true }} />
+          <Line
+            data={selectedCompanyTrendData}
+            options={{ responsive: true }}
+          />
         </div>
         <div className="flex-1">
-          <Bar data={scenarioData} options={{ responsive: true }} />
+          <Bar
+            data={selectedTimeframeTrendData}
+            options={{ responsive: true }}
+          />
         </div>
       </div>
       <div className="my-4">
@@ -357,7 +317,7 @@ export default function TrendAnalysis() {
       </div>
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-          <thead className="bg-gray-50 dark:bg-gray-800">
+          <thead className="bg-white dark:bg-gray-800">
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
                 <Tooltp
@@ -416,54 +376,56 @@ export default function TrendAnalysis() {
               <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
                 <Tooltp
                   placement="top"
-                  content="Percentage change in salary over time"
+                  content="Timeframe for the salary change"
                   className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
                 >
-                  Change
+                  Timeframe
                 </Tooltp>
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
                 <Tooltp
                   placement="top"
-                  content="Timeframe of the salary change"
+                  content="Percentage change in salary over the specified timeframe"
                   className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
                 >
-                  Change Timeframe
+                  Change
                 </Tooltp>
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200 bg-white dark:divide-gray-700 dark:bg-gray-900">
-            {adjustedTableData.map((data) => (
-              <tr
-                key={data.country}
-                className="hover:bg-gray-100 dark:hover:bg-gray-700"
-              >
-                <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">
+          <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+            {adjustedTableData.map((data, index) => (
+              <tr key={index}>
+                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-900 dark:text-gray-200">
                   {data.country}
                 </td>
-                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
+                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-900 dark:text-gray-200">
                   {data.industry}
                 </td>
-                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
+                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-900 dark:text-gray-200">
                   {data.company}
                 </td>
-                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
+                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-900 dark:text-gray-200">
                   {data.role}
                 </td>
-                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
+                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-900 dark:text-gray-200">
                   ${data.currentSalaryByCompany.toLocaleString()}
                 </td>
-                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
+                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-900 dark:text-gray-200">
                   ${data.currentSalaryByRole.toLocaleString()}
                 </td>
-                <td
-                  className={`whitespace-nowrap px-6 py-4 text-sm ${getChangeColor(data.change)}`}
-                >
-                  {data.change}%
-                </td>
-                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
+                <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-900 dark:text-gray-200">
                   {data.changeTimeframe}
+                </td>
+                <td className="whitespace-nowrap px-6 py-4">
+                  <span
+                    className={`inline-flex rounded-full px-2 text-xs font-semibold leading-5 ${getChangeColor(
+                      data.change,
+                    )}`}
+                  >
+                    {data.change > 0 ? "+" : ""}
+                    {data.change.toFixed(2)}%
+                  </span>
                 </td>
               </tr>
             ))}
