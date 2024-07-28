@@ -290,7 +290,7 @@ export default function MarketSalaryBenchmarks() {
                     content="Years of experience required for the role"
                     className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
                   >
-                    Years of Experience
+                    YEARS
                   </Tooltp>
                 </th>
                 <th className="p-2 text-left font-medium uppercase tracking-wider text-gray-500">
