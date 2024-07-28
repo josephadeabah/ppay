@@ -43,49 +43,12 @@ interface TrendDataMap {
   timeframes: TrendData;
 }
 
-const trendData: TrendDataMap = {
-  companies: {
-    labels: ["Company A", "Company B", "Company C", "Company D", "Company E"],
-    datasets: [
-      {
-        label: "Change",
-        data: [5, -3, 0, 2, -10],
-        borderColor: "rgba(54, 162, 235, 0.6)",
-        fill: false,
-      },
-    ],
-  },
-  timeframes: {
-    labels: ["Monthly", "Monthly", "Weekly", "Yearly", "Yearly"],
-    datasets: [
-      {
-        label: "Change",
-        data: [5, -3, 0, 2, -10],
-        backgroundColor: "rgba(75, 192, 192, 0.6)",
-      },
-    ],
-  },
-};
-
 export default function TrendAnalysis() {
   const [selectedTrend, setSelectedTrend] =
     useState<keyof TrendDataMap>("companies");
   const [growthRate, setGrowthRate] = useState<number>(60); // Default value of 60
   const [salaryFilter, setSalaryFilter] = useState<number>(50000); // Default minimum salary filter
   const [changeFilter, setChangeFilter] = useState<number>(0); // Default change filter
-
-  const selectedCompanyTrendData = useMemo(() => trendData.companies, []);
-
-  const selectedTimeframeTrendData = useMemo(() => trendData.timeframes, []);
-
-  const handleTrendChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedTrend(event.target.value as keyof TrendDataMap);
-  };
-
-  const trendOptions = [
-    { value: "companies", label: "Companies" },
-    { value: "timeframes", label: "Timeframes" },
-  ];
 
   const tableData = [
     {
@@ -219,6 +182,51 @@ export default function TrendAnalysis() {
         .slice(0, 8), // Limit rows to 8
     [growthRate, salaryFilter, changeFilter],
   );
+
+  const trendData: TrendDataMap = useMemo(() => {
+    const companyLabels = adjustedTableData.map((data) => data.company);
+    const companyChanges = adjustedTableData.map((data) => data.change);
+    const timeframeLabels = adjustedTableData.map(
+      (data) => data.changeTimeframe,
+    );
+    const timeframeChanges = adjustedTableData.map((data) => data.change);
+
+    return {
+      companies: {
+        labels: companyLabels,
+        datasets: [
+          {
+            label: "% Change in salary in company",
+            data: companyChanges,
+            borderColor: "rgba(54, 162, 235, 0.6)",
+            fill: false,
+          },
+        ],
+      },
+      timeframes: {
+        labels: timeframeLabels,
+        datasets: [
+          {
+            label: "% Change in salary in timeframe",
+            data: timeframeChanges,
+            backgroundColor: "rgba(75, 192, 192, 0.6)",
+          },
+        ],
+      },
+    };
+  }, [adjustedTableData]);
+
+  const selectedCompanyTrendData = trendData.companies;
+  const selectedTimeframeTrendData = trendData.timeframes;
+
+  const handleTrendChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedTrend(event.target.value as keyof TrendDataMap);
+  };
+
+  const trendOptions = [
+    { value: "companies", label: "Companies" },
+    { value: "timeframes", label: "Timeframes" },
+  ];
 
   const getChangeColor = (change: number) => {
     if (change > 0)
