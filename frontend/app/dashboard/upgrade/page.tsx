@@ -35,6 +35,7 @@ const UpgradePage: React.FC = () => {
               <li>Access to Pay Trend Analysis (Live)</li>
               <li>Market Salary Benchmark Analysis (Live)</li>
               <li>Salary & Compensation Reporting tools</li>
+              <li>Access to free salary negotiation template</li>
             </ul>
             <div className="mb-4 text-gray-900 dark:text-gray-100">
               <span className="text-2xl font-bold">$3</span> per month
@@ -58,6 +59,7 @@ const UpgradePage: React.FC = () => {
               <li>Internal Pay Equity Analysis tools</li>
               <li>Access to metrics & reports download</li>
               <li>Advanced analytics & Insights</li>
+              <li>Access to professional salary negotiation writing support</li>
             </ul>
             <div className="mb-4 text-gray-900 dark:text-gray-100">
               <span className="text-2xl font-bold">$30</span> per month
