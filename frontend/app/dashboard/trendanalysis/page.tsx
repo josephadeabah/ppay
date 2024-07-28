@@ -49,8 +49,10 @@ export default function TrendAnalysis() {
   const [growthRate, setGrowthRate] = useState<number>(60); // Default value of 60
   const [salaryFilter, setSalaryFilter] = useState<number>(50000); // Default minimum salary filter
   const [changeFilter, setChangeFilter] = useState<number>(0); // Default change filter
+  const [selectedCountry, setSelectedCountry] = useState<string>(""); // Empty string for "All Countries"
 
   const tableData = [
+    // Data entries here...
     {
       country: "USA",
       industry: "Tech",
@@ -164,9 +166,10 @@ export default function TrendAnalysis() {
     // Add more data as needed
   ];
 
-  const adjustedTableData = useMemo(
+  const filteredTableData = useMemo(
     () =>
       tableData
+        .filter((data) => !selectedCountry || data.country === selectedCountry)
         .map((data) => ({
           ...data,
           currentSalaryByCompany:
@@ -180,16 +183,16 @@ export default function TrendAnalysis() {
             (data.change >= changeFilter || changeFilter <= 0), // Ensure negative values are considered
         )
         .slice(0, 8), // Limit rows to 8
-    [growthRate, salaryFilter, changeFilter],
+    [growthRate, salaryFilter, changeFilter, selectedCountry],
   );
 
   const trendData: TrendDataMap = useMemo(() => {
-    const companyLabels = adjustedTableData.map((data) => data.company);
-    const companyChanges = adjustedTableData.map((data) => data.change);
-    const timeframeLabels = adjustedTableData.map(
+    const companyLabels = filteredTableData.map((data) => data.company);
+    const companyChanges = filteredTableData.map((data) => data.change);
+    const timeframeLabels = filteredTableData.map(
       (data) => data.changeTimeframe,
     );
-    const timeframeChanges = adjustedTableData.map((data) => data.change);
+    const timeframeChanges = filteredTableData.map((data) => data.change);
 
     return {
       companies: {
@@ -214,18 +217,30 @@ export default function TrendAnalysis() {
         ],
       },
     };
-  }, [adjustedTableData]);
+  }, [filteredTableData]);
 
-  const selectedCompanyTrendData = trendData.companies;
-  const selectedTimeframeTrendData = trendData.timeframes;
+  const selectedTrendData = trendData[selectedTrend];
 
   const handleTrendChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedTrend(event.target.value as keyof TrendDataMap);
   };
 
+  const handleCountryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedCountry(event.target.value);
+  };
+
   const trendOptions = [
     { value: "companies", label: "Companies" },
     { value: "timeframes", label: "Timeframes" },
+  ];
+
+  const countryOptions = [
+    { value: "", label: "All Countries" }, // Use an empty string as placeholder
+    { value: "USA", label: "USA" },
+    { value: "Russia", label: "Russia" },
+    { value: "Canada", label: "Canada" },
+    { value: "Japan", label: "Japan" },
+    // Add more countries as needed
   ];
 
   const getChangeColor = (change: number) => {
@@ -256,35 +271,68 @@ export default function TrendAnalysis() {
 
   return (
     <div className="mx-auto flex flex-col px-4">
-      <div className="mb-6 mt-2 flex items-center gap-2 text-xl font-bold text-gray-700 dark:text-gray-50">
-        Pay Trend Analysis (Live{" "}
-        <div className="inline-block h-3 w-3 rounded-full bg-green-400"></div>)
+      <div className="mb-6 mt-2 flex items-center gap-2 text-xl font-bold text-gray-700 dark:text-gray-200">
+        <span>Trend Analysis</span>
       </div>
-      <DropdownSelect
-        options={trendOptions}
-        selectedValue={selectedTrend}
-        onChange={handleTrendChange}
-        placeholder="Select Trend"
-      />
-      <div className="flex flex-col md:flex-row md:gap-4">
+      <div className="mb-4 flex flex-col gap-2 md:flex-row md:gap-4">
+        <div className="flex-1">
+          <label htmlFor="trendSelect" className="mb-2 block">
+            Select Trend
+          </label>
+          <DropdownSelect
+            id="trendSelect"
+            options={trendOptions}
+            selectedValue={selectedTrend}
+            onChange={handleTrendChange}
+            placeholder="Select Trend"
+          />
+        </div>
+        <div className="flex-1">
+          <label htmlFor="countrySelect" className="mb-2 block">
+            Select Country
+          </label>
+          <DropdownSelect
+            id="countrySelect"
+            options={countryOptions}
+            selectedValue={selectedCountry}
+            onChange={handleCountryChange}
+            placeholder="Select Country"
+          />
+        </div>
+      </div>
+      <div className="flex flex-col gap-4 md:flex-row md:gap-8">
         <div className="flex-1">
           <Line
-            data={selectedCompanyTrendData}
-            options={{ responsive: true }}
+            data={selectedTrendData}
+            options={{
+              responsive: true,
+              plugins: {
+                legend: { position: "top" },
+                tooltip: {
+                  callbacks: {
+                    label: function (tooltipItem) {
+                      const companyName = tooltipItem.label;
+                      const value = tooltipItem.raw;
+                      return `${companyName}: ${value}% change`;
+                    },
+                  },
+                },
+              },
+            }}
           />
         </div>
         <div className="flex-1">
           <Bar
-            data={selectedTimeframeTrendData}
+            data={selectedTrendData}
             options={{
               responsive: true,
               plugins: {
+                legend: { position: "top" },
                 tooltip: {
                   callbacks: {
-                    label: function (context) {
-                      const companyName =
-                        adjustedTableData[context.dataIndex].company;
-                      const value = context.raw;
+                    label: function (tooltipItem) {
+                      const companyName = tooltipItem.label;
+                      const value = tooltipItem.raw;
                       return `${companyName}: ${value}% change`;
                     },
                   },
@@ -416,7 +464,7 @@ export default function TrendAnalysis() {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-            {adjustedTableData.map((data, index) => (
+            {filteredTableData.map((data, index) => (
               <tr key={index}>
                 <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-900 dark:text-gray-200">
                   {data.country}
