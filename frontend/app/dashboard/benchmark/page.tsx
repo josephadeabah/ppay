@@ -216,7 +216,7 @@ export default function MarketSalaryBenchmarks() {
                 <th className="p-2 text-left font-medium uppercase tracking-wider text-gray-500">
                   <Tooltp
                     content="The job title or position"
-                    className="bg-gray-200 text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                    className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
                   >
                     Role
                   </Tooltp>
@@ -224,7 +224,7 @@ export default function MarketSalaryBenchmarks() {
                 <th className="p-2 text-left font-medium uppercase tracking-wider text-gray-500">
                   <Tooltp
                     content="The level of the job, e.g., Entry, Mid, Senior"
-                    className="bg-gray-200 text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                    className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
                   >
                     Job Level
                   </Tooltp>
@@ -232,7 +232,7 @@ export default function MarketSalaryBenchmarks() {
                 <th className="p-2 text-left font-medium uppercase tracking-wider text-gray-500">
                   <Tooltp
                     content="The current salary for the role"
-                    className="bg-gray-200 text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                    className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
                   >
                     Current Salary
                   </Tooltp>
@@ -240,7 +240,7 @@ export default function MarketSalaryBenchmarks() {
                 <th className="p-2 text-left font-medium uppercase tracking-wider text-gray-500">
                   <Tooltp
                     content="The industry benchmark salary for the role"
-                    className="bg-gray-200 text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                    className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
                   >
                     Benchmark Salary
                   </Tooltp>
@@ -248,7 +248,7 @@ export default function MarketSalaryBenchmarks() {
                 <th className="p-2 text-left font-medium uppercase tracking-wider text-gray-500">
                   <Tooltp
                     content="The typical salary range for the role"
-                    className="bg-gray-200 text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                    className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
                   >
                     Salary Range
                   </Tooltp>
@@ -256,7 +256,7 @@ export default function MarketSalaryBenchmarks() {
                 <th className="p-2 text-left font-medium uppercase tracking-wider text-gray-500">
                   <Tooltp
                     content="Potential career advancements from this role"
-                    className="bg-gray-200 text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                    className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
                   >
                     Career Path
                   </Tooltp>
@@ -264,7 +264,7 @@ export default function MarketSalaryBenchmarks() {
                 <th className="p-2 text-left font-medium uppercase tracking-wider text-gray-500">
                   <Tooltp
                     content="Opportunities for professional growth"
-                    className="bg-gray-200 text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                    className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
                   >
                     Growth Opportunities
                   </Tooltp>
@@ -272,7 +272,7 @@ export default function MarketSalaryBenchmarks() {
                 <th className="p-2 text-left font-medium uppercase tracking-wider text-gray-500">
                   <Tooltp
                     content="Skills required for the role"
-                    className="bg-gray-200 text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                    className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
                   >
                     Skills
                   </Tooltp>
@@ -280,7 +280,7 @@ export default function MarketSalaryBenchmarks() {
                 <th className="p-2 text-left font-medium uppercase tracking-wider text-gray-500">
                   <Tooltp
                     content="Main responsibilities of the role"
-                    className="bg-gray-200 text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                    className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
                   >
                     Responsibilities
                   </Tooltp>
@@ -288,7 +288,7 @@ export default function MarketSalaryBenchmarks() {
                 <th className="p-2 text-left font-medium uppercase tracking-wider text-gray-500">
                   <Tooltp
                     content="Years of experience required for the role"
-                    className="bg-gray-200 text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                    className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
                   >
                     Years of Experience
                   </Tooltp>
@@ -296,7 +296,7 @@ export default function MarketSalaryBenchmarks() {
                 <th className="p-2 text-left font-medium uppercase tracking-wider text-gray-500">
                   <Tooltp
                     content="Salary adjusted for inflation"
-                    className="bg-gray-200 text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                    className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
                   >
                     Adjusted Salary
                   </Tooltp>
@@ -304,7 +304,7 @@ export default function MarketSalaryBenchmarks() {
                 <th className="p-2 text-left font-medium uppercase tracking-wider text-gray-500">
                   <Tooltp
                     content="The current inflation rate in the selected country"
-                    className="bg-gray-200 text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                    className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
                   >
                     Inflation Rate
                   </Tooltp>

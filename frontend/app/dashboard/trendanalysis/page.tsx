@@ -363,7 +363,7 @@ export default function TrendAnalysis() {
                 <Tooltp
                   placement="top"
                   content="Country where the job is located"
-                  className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                  className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
                 >
                   Country
                 </Tooltp>
@@ -372,7 +372,7 @@ export default function TrendAnalysis() {
                 <Tooltp
                   placement="top"
                   content="Industry in which the job is categorized"
-                  className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                  className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
                 >
                   Industry
                 </Tooltp>
@@ -381,7 +381,7 @@ export default function TrendAnalysis() {
                 <Tooltp
                   placement="top"
                   content="Company offering the job"
-                  className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                  className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
                 >
                   Company
                 </Tooltp>
@@ -390,7 +390,7 @@ export default function TrendAnalysis() {
                 <Tooltp
                   placement="top"
                   content="Job role or position"
-                  className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                  className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
                 >
                   Role
                 </Tooltp>
@@ -399,7 +399,7 @@ export default function TrendAnalysis() {
                 <Tooltp
                   placement="top"
                   content="Current salary at the company per year"
-                  className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                  className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
                 >
                   Company Salary
                 </Tooltp>
@@ -408,7 +408,7 @@ export default function TrendAnalysis() {
                 <Tooltp
                   placement="top"
                   content="Current salary for the role per year"
-                  className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                  className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
                 >
                   Role Salary
                 </Tooltp>
@@ -417,7 +417,7 @@ export default function TrendAnalysis() {
                 <Tooltp
                   placement="top"
                   content="Percentage change in salary over time"
-                  className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                  className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
                 >
                   Change
                 </Tooltp>
@@ -426,7 +426,7 @@ export default function TrendAnalysis() {
                 <Tooltp
                   placement="top"
                   content="Timeframe of the salary change"
-                  className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                  className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
                 >
                   Change Timeframe
                 </Tooltp>
@@ -434,9 +434,9 @@ export default function TrendAnalysis() {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200 bg-white dark:divide-gray-700 dark:bg-gray-900">
-            {adjustedTableData.map((data, index) => (
+            {adjustedTableData.map((data) => (
               <tr
-                key={index}
+                key={data.country}
                 className="hover:bg-gray-100 dark:hover:bg-gray-700"
               >
                 <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900 dark:text-white">

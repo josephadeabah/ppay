@@ -247,7 +247,7 @@ const Compare: React.FC = () => {
                           "_",
                           " ",
                         )}.`}
-                        className="bg-gray-200 text-sm text-gray-400 dark:bg-gray-950 dark:text-gray-50"
+                        className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
                       >
                         Explanation
                       </Tooltip>

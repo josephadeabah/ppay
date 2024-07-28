@@ -1,9 +1,9 @@
 import {
+  BenchmarkDataType,
   Company,
   Country,
-  Industry,
-  Role,
   data,
+  Industry,
 } from "@/app/dashboard/benchmark/data";
 import { useEffect, useState } from "react";
 
@@ -13,13 +13,15 @@ const UpdateBenchmarkData = () => {
   );
   const [industries, setIndustries] = useState<Industry[]>([]);
   const [companies, setCompanies] = useState<Company[]>([]);
-  const [roles, setRoles] = useState<Role[]>([]);
+  const [roles, setRoles] = useState<BenchmarkDataType[]>([]);
   const [selectedCountry, setSelectedCountry] = useState<Country | "">("");
   const [selectedIndustry, setSelectedIndustry] = useState<Industry | "">("");
   const [selectedCompany, setSelectedCompany] = useState<Company | "">("");
-  const [selectedRole, setSelectedRole] = useState<Role | null>(null);
+  const [selectedRole, setSelectedRole] = useState<BenchmarkDataType | null>(
+    null,
+  );
 
-  const [formData, setFormData] = useState<Role>({
+  const [formData, setFormData] = useState<BenchmarkDataType>({
     role: "",
     jobLevel: "",
     skills: [],
@@ -55,12 +57,12 @@ const UpdateBenchmarkData = () => {
   ) => {
     const { name, value } = e.target;
     if (name === "skills" || name === "responsibilities") {
-      setFormData((prev: Role) => ({
+      setFormData((prev: BenchmarkDataType) => ({
         ...prev,
         [name]: value.split(",").map((item) => item.trim()),
       }));
     } else {
-      setFormData((prev: Role) => ({
+      setFormData((prev: BenchmarkDataType) => ({
         ...prev,
         [name]: value,
       }));
