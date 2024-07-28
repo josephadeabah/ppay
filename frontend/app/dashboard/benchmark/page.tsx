@@ -51,6 +51,11 @@ export default function MarketSalaryBenchmarks() {
     ],
   };
 
+  // Calculate adjusted salary based on inflation rate
+  const calculateAdjustedSalary = (salary: number, inflationRate: number) => {
+    return salary * (1 + inflationRate / 100);
+  };
+
   // Memoize filteredRoles to optimize performance
   const filteredRoles: Role[] = useMemo(() => {
     if (selectedCountry && selectedIndustry && selectedCompany) {
@@ -237,43 +242,70 @@ export default function MarketSalaryBenchmarks() {
                 <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
                   Years of Experience
                 </th>
+                <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                  Adjusted Salary
+                </th>
+                <th className="p-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                  Inflation Rate
+                </th>
               </tr>
             </thead>
             <tbody className="text-sm text-gray-700 dark:text-gray-300">
               {filteredRoles.length > 0 ? (
-                filteredRoles.map((role, index) => (
-                  <tr key={index}>
-                    <td className="border-b p-2">{role.role}</td>
-                    <td className="border-b p-2">{role.jobLevel}</td>
-                    <td className="border-b p-2">
-                      ${role.currentSalary.toLocaleString()}
-                    </td>
-                    <td className="border-b p-2">
-                      ${role.benchmarkSalary.toLocaleString()}
-                    </td>
-                    <td className="border-b p-2">{role.salaryRange}</td>
-                    <td className="border-b p-2">{role.careerPath}</td>
-                    <td className="border-b p-2">{role.growthOpportunities}</td>
-                    <td className="border-b p-2">
-                      <ul>
-                        {role.skills.map((skill) => (
-                          <li key={skill}>{skill}</li>
-                        ))}
-                      </ul>
-                    </td>
-                    <td className="border-b p-2">
-                      <ul>
-                        {role.responsibilities.map((responsibility) => (
-                          <li key={responsibility}>{responsibility}</li>
-                        ))}
-                      </ul>
-                    </td>
-                    <td className="border-b p-2">{role.yearsOfExperience}</td>
-                  </tr>
-                ))
+                filteredRoles.map((role, index) => {
+                  const inflationRate =
+                    data[selectedCountry!].inflationRate || 0;
+                  const adjustedSalary = calculateAdjustedSalary(
+                    role.currentSalary,
+                    inflationRate,
+                  );
+
+                  let inflationColor = "bg-gray-100";
+                  if (inflationRate > 2) inflationColor = "bg-red-100";
+                  else if (inflationRate < 0) inflationColor = "bg-green-100";
+
+                  return (
+                    <tr key={index}>
+                      <td className="border-b p-2">{role.role}</td>
+                      <td className="border-b p-2">{role.jobLevel}</td>
+                      <td className="border-b p-2">
+                        ${role.currentSalary.toLocaleString()}
+                      </td>
+                      <td className="border-b p-2">
+                        ${role.benchmarkSalary.toLocaleString()}
+                      </td>
+                      <td className="border-b p-2">{role.salaryRange}</td>
+                      <td className="border-b p-2">{role.careerPath}</td>
+                      <td className="border-b p-2">
+                        {role.growthOpportunities}
+                      </td>
+                      <td className="border-b p-2">
+                        <ul>
+                          {role.skills.map((skill) => (
+                            <li key={skill}>{skill}</li>
+                          ))}
+                        </ul>
+                      </td>
+                      <td className="border-b p-2">
+                        <ul>
+                          {role.responsibilities.map((responsibility) => (
+                            <li key={responsibility}>{responsibility}</li>
+                          ))}
+                        </ul>
+                      </td>
+                      <td className="border-b p-2">{role.yearsOfExperience}</td>
+                      <td className="border-b p-2">
+                        ${adjustedSalary.toLocaleString()}
+                      </td>
+                      <td className={`border-b p-2 ${inflationColor}`}>
+                        {inflationRate.toFixed(2)}%
+                      </td>
+                    </tr>
+                  );
+                })
               ) : (
                 <tr>
-                  <td colSpan={10} className="p-4 text-center">
+                  <td colSpan={12} className="p-4 text-center">
                     No roles match the selected criteria.
                   </td>
                 </tr>
