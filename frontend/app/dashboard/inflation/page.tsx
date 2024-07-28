@@ -30,20 +30,27 @@ ChartJS.register(
   Legend,
 );
 
-// Define your data types
 interface CategoryData {
   country: string;
-  categories: { category: string; inflationRate: number }[];
+  overallInflationRate: string;
+  categories: { category: string; inflationRate: string }[];
 }
 
 interface InflationData {
-  historical: Record<string, any>; // Use correct type if known
-  current: Record<string, any>; // Use correct type if known
-  regional: any; // Use correct type if known
+  historical: Record<string, any>;
+  current: Record<string, any>;
+  regional: any;
 }
 
 const InflationPage: React.FC = () => {
-  type Region = "Europe" | "Asia" | "Africa" | "NorthAmerica";
+  type Region =
+    | "Europe"
+    | "Asia"
+    | "Africa"
+    | "NorthAmerica"
+    | "SouthAmerica"
+    | "Australia"
+    | "Antarctica";
 
   const [selectedRegion, setSelectedRegion] = useState<Region>("NorthAmerica");
 
@@ -79,7 +86,14 @@ const InflationPage: React.FC = () => {
 
       if (region) {
         setSelectedRegion(
-          region as "Europe" | "Asia" | "Africa" | "NorthAmerica",
+          region as
+            | "Europe"
+            | "Asia"
+            | "Africa"
+            | "NorthAmerica"
+            | "SouthAmerica"
+            | "Australia"
+            | "Antarctica",
         );
       }
     }
@@ -98,16 +112,13 @@ const InflationPage: React.FC = () => {
             { value: "Europe", label: "Europe" },
             { value: "Asia", label: "Asia" },
             { value: "Africa", label: "Africa" },
+            { value: "SouthAmerica", label: "South America" },
+            { value: "Australia", label: "Australia" },
+            { value: "Antarctica", label: "Antarctica" },
           ]}
           selectedValue={selectedRegion}
           onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
-            setSelectedRegion(
-              event.target.value as
-                | "Europe"
-                | "Asia"
-                | "Africa"
-                | "NorthAmerica",
-            );
+            setSelectedRegion(event.target.value as Region);
           }}
           placeholder="Select a region"
         />
@@ -147,7 +158,8 @@ const InflationPage: React.FC = () => {
       {categoryData[selectedRegion].map((countryData) => (
         <div key={countryData.country} className="mb-6">
           <h3 className="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-50">
-            {countryData.country}
+            {countryData.country} - Overall Inflation Rate:{" "}
+            {countryData.overallInflationRate}
           </h3>
           <Table hoverable={true}>
             <Table.Head>
