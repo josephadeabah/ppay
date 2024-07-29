@@ -69,6 +69,10 @@ export interface EducationPoints {
   [education: string]: number;
 }
 
+export interface GenderPoints {
+  [gender: string]: number;
+}
+
 export interface SalaryDataRow {
   country: string;
   industry: string;
@@ -156,6 +160,13 @@ export const payEquityData = {
     DataAnalysis: 20,
     ProjectManagement: 25,
     AdvancedDegree: 30,
+  },
+
+  genderCategories: <GenderPoints>{
+    "No Gender": 0,
+    Male: 25,
+    Female: 30,
+    Other: 10,
   },
 
   performancePoints: <PerformancePoints>{

@@ -103,6 +103,7 @@ function calculateAdjustedSalary(
   const locationPoints = payEquityData.locationPoints[location] || 0;
   const industryPointsValue = payEquityData.industryPoints[industry] || 0; // Updated to industry
   const performancePoints = payEquityData.performancePoints[performance] || 0;
+  const genderPoints = payEquityData.genderCategories[gender] || 0;
   const departmentPoints = payEquityData.departmentPoints[department] || 0; // Assuming department maps to industry
   const skillsPoints =
     payEquityData.skillsAndQualifications[skillsAndQualifications] || 0;
@@ -128,6 +129,7 @@ function calculateAdjustedSalary(
     locationPoints +
     performancePoints +
     industryPointsValue + // Updated to industry points
+    genderPoints +
     educationPoints +
     departmentPoints +
     skillsPoints +
@@ -166,7 +168,7 @@ export default function PayEquityAnalyzer() {
   const [location, setLocation] = useState<string>("No Cost of Living Area");
   const [performance, setPerformance] = useState<string>("Unsatisfactory");
   const [department, setDepartment] = useState<string>("Non-specified");
-  const [gender, setGender] = useState<string>("Male");
+  const [gender, setGender] = useState<string>("No Gender");
   const [education, setEducation] = useState<string>("No Degree");
   const [skillsAndQualifications, setSkillsAndQualifications] =
     useState<string>("No Skill");
@@ -239,6 +241,7 @@ export default function PayEquityAnalyzer() {
         "Location",
         "Performance",
         "Department",
+        "gender",
         "Industry",
         "Education",
         "Compliance",
@@ -261,6 +264,7 @@ export default function PayEquityAnalyzer() {
             payEquityData.locationPoints[location] || 0,
             payEquityData.performancePoints[performance] || 0,
             payEquityData.departmentPoints[department] || 0,
+            payEquityData.genderCategories[gender] || 0,
             payEquityData.industryPoints[industry] || 0, // Updated to Industry
             payEquityData.educationPoints[education] || 0,
             payEquityData.compliance["Non"] || 0,
@@ -280,6 +284,7 @@ export default function PayEquityAnalyzer() {
             "rgba(255, 159, 64, 0.2)",
             "rgba(255, 99, 132, 0.2)",
             "rgba(54, 162, 235, 0.2)",
+            "rgba(255, 206, 86, 0.2)",
             "rgba(255, 206, 86, 0.2)",
             "rgba(75, 192, 192, 0.2)",
             "rgba(153, 102, 255, 0.2)",
@@ -302,6 +307,7 @@ export default function PayEquityAnalyzer() {
       "Location",
       "Performance",
       "Department",
+      "gender",
       "Industry",
       "Education",
       "Compliance",
@@ -322,6 +328,7 @@ export default function PayEquityAnalyzer() {
       payEquityData.locationPoints[location] || 0,
       payEquityData.performancePoints[performance] || 0,
       payEquityData.departmentPoints[department] || 0,
+      payEquityData.genderCategories[gender] || 0,
       payEquityData.industryPoints[industry] || 0, // Updated to Industry
       payEquityData.educationPoints[education] || 0,
       payEquityData.compliance["Non"] || 0,
@@ -385,6 +392,10 @@ export default function PayEquityAnalyzer() {
     {
       label: "Performance",
       value: payEquityData.performancePoints[performance] || 0,
+    },
+    {
+      label: "Gender",
+      value: payEquityData.genderCategories[gender] || 0,
     },
     {
       label: "Department",
@@ -548,6 +559,15 @@ export default function PayEquityAnalyzer() {
           selectedValue={benefitsAndPerks}
           onChange={(e) => setBenefitsAndPerks(e.target.value)}
           placeholder="Select Benefits & Perks"
+        />
+        <DropdownSelect
+          options={["Male", "Female", "Other"].map((key) => ({
+            value: key,
+            label: key,
+          }))}
+          onChange={(e) => setGender(e.target.value)}
+          selectedValue={gender}
+          placeholder="Select Gender"
         />
         <div>
           <DropdownSelect
