@@ -145,7 +145,7 @@ function calculateAdjustedSalary(
     jobEvaluationSystemsPoints;
 
   // Base salary, market rate adjustment, company size, and compliance factors
-  const baseSalary = 500; // Example base salary
+  const baseSalary = 100; // Example base salary
   const marketRate = payEquityData.marketRates["Non"]; // Example value
   const companySize = payEquityData.companySizeRevenue["Non"]; // Example value
   const compliance = payEquityData.compliance["Non"]; // Example value
