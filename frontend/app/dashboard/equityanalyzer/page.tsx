@@ -478,7 +478,7 @@ export default function PayEquityAnalyzer() {
           minValue={0}
           maxValue={40}
           step={1}
-          label="Experience Range (years)"
+          label={`Experience (${experienceRange})`}
         />
         <DropdownSelect
           options={Object.keys(payEquityData.locationPoints).map((key) => ({
