@@ -85,73 +85,6 @@ export interface SalaryDataRow {
 }
 
 export const payEquityData = {
-  rolesAndResponsibilities: <RoleResponsibilities>{
-    "No Role": {
-      points: 0,
-      responsibilities: {
-        Non: 0,
-        "Non-specified": 0,
-        "Not Applicable": 0,
-      },
-    },
-    SoftwareEngineer: {
-      points: 80,
-      responsibilities: {
-        "Develop and maintain web applications": 40,
-        "Collaborate with cross-functional teams": 30,
-        "Design system architecture": 10,
-      },
-    },
-    DataScientist: {
-      points: 90,
-      responsibilities: {
-        "Analyze large datasets": 40,
-        "Build predictive models": 30,
-        "Present findings to stakeholders": 20,
-      },
-    },
-    ProductManager: {
-      points: 85,
-      responsibilities: {
-        "Manage product development lifecycle": 40,
-        "Define product vision and strategy": 30,
-        "Coordinate with engineering and design teams": 15,
-      },
-    },
-    "Business Analyst": {
-      points: 75,
-      responsibilities: {
-        "Analyze business data": 40,
-        "Identify business opportunities": 30,
-        "Develop business plan": 15,
-      },
-    },
-    "Product Designer": {
-      points: 70,
-      responsibilities: {
-        "Design user interfaces": 40,
-        "Develop wireframes": 30,
-        "Create mockups": 15,
-      },
-    },
-    "Data Analyst": {
-      points: 60,
-      responsibilities: {
-        "Analyze large datasets": 40,
-        "Build predictive models": 30,
-        "Present findings to stakeholders": 15,
-      },
-    },
-    "Software Developer": {
-      points: 50,
-      responsibilities: {
-        "Develop and maintain software applications": 40,
-        "Collaborate with cross-functional teams": 30,
-        "Design and test software": 15,
-      },
-    },
-  },
-
   skillsAndQualifications: <SkillsQualifications>{
     "No Skill": 0,
     JavaScript: 20,
@@ -267,6 +200,15 @@ export const payEquityData = {
     NoEvaluationSystem: 10,
     Non: 0,
   },
+
+  educationPoints: <EducationPoints>{
+    "No Degree": 0,
+    "High School Diploma": 10,
+    "Associate's Degree": 20,
+    "Bachelor's Degree": 30,
+    "Master's Degree": 40,
+    PhD: 50,
+  },
   // Example table data
   tableData: <SalaryDataRow[]>[
     {
@@ -291,12 +233,70 @@ export const payEquityData = {
     },
     // Add more rows as needed
   ],
-  educationPoints: <EducationPoints>{
-    "No Degree": 0,
-    "High School Diploma": 10,
-    "Associate's Degree": 20,
-    "Bachelor's Degree": 30,
-    "Master's Degree": 40,
-    PhD: 50,
+  rolesAndResponsibilities: <RoleResponsibilities>{
+    "No Role": {
+      points: 0,
+      responsibilities: {
+        Non: 0,
+        "Non-specified": 0,
+        "Not Applicable": 0,
+      },
+    },
+    SoftwareEngineer: {
+      points: 80,
+      responsibilities: {
+        "Develop and maintain web applications": 40,
+        "Collaborate with cross-functional teams": 30,
+        "Design system architecture": 10,
+      },
+    },
+    DataScientist: {
+      points: 90,
+      responsibilities: {
+        "Analyze large datasets": 40,
+        "Build predictive models": 30,
+        "Present findings to stakeholders": 20,
+      },
+    },
+    ProductManager: {
+      points: 85,
+      responsibilities: {
+        "Manage product development lifecycle": 40,
+        "Define product vision and strategy": 30,
+        "Coordinate with engineering and design teams": 15,
+      },
+    },
+    "Business Analyst": {
+      points: 75,
+      responsibilities: {
+        "Analyze business data": 40,
+        "Identify business opportunities": 30,
+        "Develop business plan": 15,
+      },
+    },
+    "Product Designer": {
+      points: 70,
+      responsibilities: {
+        "Design user interfaces": 40,
+        "Develop wireframes": 30,
+        "Create mockups": 15,
+      },
+    },
+    "Data Analyst": {
+      points: 60,
+      responsibilities: {
+        "Analyze large datasets": 40,
+        "Build predictive models": 30,
+        "Present findings to stakeholders": 15,
+      },
+    },
+    "Software Developer": {
+      points: 50,
+      responsibilities: {
+        "Develop and maintain software applications": 40,
+        "Collaborate with cross-functional teams": 30,
+        "Design and test software": 15,
+      },
+    },
   },
 };
