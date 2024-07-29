@@ -457,7 +457,7 @@ export default function PayEquityAnalyzer() {
         Assess and analyze the fairness and equity of compensation within your
         organization
       </div>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-5">
         {/* Existing dropdowns and sliders */}
         <DropdownSelect
           options={Object.keys(payEquityData.rolesAndResponsibilities).map(
