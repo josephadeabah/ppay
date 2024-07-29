@@ -1,2 +1,0 @@
-class Negotiator < ApplicationRecord
-end

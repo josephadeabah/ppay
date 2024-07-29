@@ -1,2 +1,0 @@
-class LaborOrganization < ApplicationRecord
-end

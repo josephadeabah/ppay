@@ -10,89 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_15_114204) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_29_175332) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "admins", force: :cascade do |t|
+  create_table "categories", force: :cascade do |t|
     t.string "name"
-    t.string "email"
-    t.string "role"
+    t.float "inflation_rate"
+    t.bigint "country_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_categories_on_country_id"
   end
 
-  create_table "employers", force: :cascade do |t|
+  create_table "countries", force: :cascade do |t|
     t.string "name"
-    t.string "email"
-    t.string "company"
+    t.bigint "region_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["region_id"], name: "index_countries_on_region_id"
   end
 
-  create_table "forums", force: :cascade do |t|
+  create_table "regions", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  create_table "labor_organizations", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "negotiations", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.text "details"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_negotiations_on_user_id"
-  end
-
-  create_table "negotiators", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "role"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "posts", force: :cascade do |t|
-    t.text "content"
-    t.bigint "forum_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["forum_id"], name: "index_posts_on_forum_id"
-    t.index ["user_id"], name: "index_posts_on_user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.string "password_digest"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.decimal "balance", default: "0.0", null: false
-    t.string "currency", default: "USD", null: false
-    t.boolean "admin"
-  end
-
-  create_table "wages", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.string "job_title"
-    t.string "location"
-    t.decimal "wage"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_wages_on_user_id"
-  end
-
-  add_foreign_key "negotiations", "users"
-  add_foreign_key "posts", "forums"
-  add_foreign_key "posts", "users"
-  add_foreign_key "wages", "users"
-end
