@@ -233,12 +233,14 @@ export const payEquityData = {
     TransparentAndFair: 40,
     StandardPolicy: 20,
     OpaquePolicy: 10,
+    NoPolicy: 0,
   },
 
   discriminationFactors: <DiscriminationFactors>{
     NoDiscrimination: 40,
     MinorDiscrepancies: 20,
     SignificantDiscrepancies: 10,
+    Non: 0,
   },
 
   compliance: <Compliance>{
@@ -252,6 +254,7 @@ export const payEquityData = {
     StructuredEvaluationSystem: 40,
     BasicEvaluationSystem: 20,
     NoEvaluationSystem: 10,
+    Non: 0,
   },
   // Example table data
   tableData: <SalaryDataRow[]>[

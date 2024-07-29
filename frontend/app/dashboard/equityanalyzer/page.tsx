@@ -92,6 +92,9 @@ function calculateAdjustedSalary(
   seniorityLevels: string,
   unionAgreements: string,
   benefitsAndPerks: string,
+  payPolicies: string,
+  discriminationFactors: string,
+  jobEvaluationSystems: string,
 ): number {
   const roleData = payEquityData.rolesAndResponsibilities[role] || {
     points: 0,
@@ -112,6 +115,11 @@ function calculateAdjustedSalary(
     payEquityData.unionAgreements[unionAgreements] || 0;
   const benefitsPerksPoints =
     payEquityData.benefitsAndPerks[benefitsAndPerks] || 0;
+  const payPoliciesPoints = payEquityData.payPolicies[payPolicies] || 0;
+  const discriminationFactorsPoints =
+    payEquityData.discriminationFactors[discriminationFactors] || 0;
+  const jobEvaluationSystemsPoints =
+    payEquityData.jobEvaluationSystems[jobEvaluationSystems] || 0;
 
   // Sum all points
   const totalPoints =
@@ -129,7 +137,10 @@ function calculateAdjustedSalary(
     unionAgreementPoints +
     benefitsPerksPoints +
     industryPointsValue +
-    locationPoints;
+    locationPoints +
+    payPoliciesPoints +
+    discriminationFactorsPoints +
+    jobEvaluationSystemsPoints;
 
   // Base salary, market rate adjustment, company size, and compliance factors
   const baseSalary = 500; // Example base salary
@@ -168,6 +179,11 @@ export default function PayEquityAnalyzer() {
     useState<string>("NoBenefits");
   const [adjustedSalary, setAdjustedSalary] = useState<number>(0);
   const [industry, setIndustry] = useState<string>("Non-specified"); // Updated from department to industry
+  const [payPolicies, setPayPolicies] = useState<string>("NoPolicy");
+  const [discriminationFactors, setDiscriminationFactors] =
+    useState<string>("Non");
+  const [jobEvaluationSystems, setJobEvaluationSystems] =
+    useState<string>("Non");
 
   const [barChartData, setBarChartData] = useState<BarChartData>({
     labels: [],
@@ -209,6 +225,9 @@ export default function PayEquityAnalyzer() {
         seniorityLevels,
         unionAgreements,
         benefitsAndPerks,
+        payPolicies,
+        discriminationFactors,
+        jobEvaluationSystems,
       ),
     );
 
@@ -229,6 +248,9 @@ export default function PayEquityAnalyzer() {
         "Union Agreement",
         "Benefits and Perks",
         "Skills and Qualifications",
+        "Pay Policies",
+        "Discrimination Factors",
+        "Job Evaluation Systems",
       ],
       datasets: [
         {
@@ -248,6 +270,9 @@ export default function PayEquityAnalyzer() {
             payEquityData.unionAgreements[unionAgreements] || 0,
             payEquityData.benefitsAndPerks[benefitsAndPerks] || 0,
             payEquityData.skillsAndQualifications[skillsAndQualifications] || 0,
+            payEquityData.payPolicies[payPolicies] || 0,
+            payEquityData.discriminationFactors[discriminationFactors] || 0,
+            payEquityData.jobEvaluationSystems[jobEvaluationSystems] || 0,
           ],
           backgroundColor: [
             "rgba(75, 192, 192, 0.2)",
@@ -263,6 +288,9 @@ export default function PayEquityAnalyzer() {
             "rgba(54, 162, 235, 0.2)",
             "rgba(255, 206, 86, 0.2)",
             "rgba(75, 192, 192, 0.2)",
+            "rgba(153, 102, 255, 0.2)",
+            "rgba(255, 159, 64, 0.2)",
+            "rgba(255, 99, 132, 0.2)",
           ],
         },
       ],
@@ -283,6 +311,9 @@ export default function PayEquityAnalyzer() {
       "Union Agreement",
       "Benefits and Perks",
       "Skills and Qualifications",
+      "Pay Policies",
+      "Discrimination Factors",
+      "Job Evaluation Systems",
     ];
 
     const factorPoints = [
@@ -300,6 +331,9 @@ export default function PayEquityAnalyzer() {
       payEquityData.unionAgreements[unionAgreements] || 0,
       payEquityData.benefitsAndPerks[benefitsAndPerks] || 0,
       payEquityData.skillsAndQualifications[skillsAndQualifications] || 0,
+      payEquityData.payPolicies[payPolicies] || 0,
+      payEquityData.discriminationFactors[discriminationFactors] || 0,
+      payEquityData.jobEvaluationSystems[jobEvaluationSystems] || 0,
     ];
 
     setLineChartData({
@@ -328,6 +362,9 @@ export default function PayEquityAnalyzer() {
     seniorityLevels,
     unionAgreements,
     benefitsAndPerks,
+    payPolicies,
+    discriminationFactors,
+    jobEvaluationSystems,
   ]);
 
   // Prepare data for the table
@@ -381,6 +418,22 @@ export default function PayEquityAnalyzer() {
     {
       label: "Education",
       value: payEquityData.educationPoints[education] || 0,
+    },
+    {
+      label: "Compliance",
+      value: payEquityData.compliance["Non"] || 0,
+    },
+    {
+      label: "Pay Policies",
+      value: payEquityData.payPolicies[payPolicies] || 0,
+    },
+    {
+      label: "Discrimination Factors",
+      value: payEquityData.discriminationFactors[discriminationFactors] || 0,
+    },
+    {
+      label: "Job Evaluation Systems",
+      value: payEquityData.jobEvaluationSystems[jobEvaluationSystems] || 0,
     },
   ];
 
@@ -515,6 +568,46 @@ export default function PayEquityAnalyzer() {
             selectedValue={industry}
             onChange={(e) => setIndustry(e.target.value)}
             placeholder="Select Industry"
+          />
+        </div>
+
+        <div>
+          <DropdownSelect
+            options={Object.keys(payEquityData.payPolicies).map((key) => ({
+              value: key,
+              label: key,
+            }))}
+            onChange={(e) => setPayPolicies(e.target.value)}
+            selectedValue={payPolicies}
+            placeholder="Select Pay Policies"
+          />
+        </div>
+
+        <div>
+          <DropdownSelect
+            options={Object.keys(payEquityData.discriminationFactors).map(
+              (key) => ({
+                value: key,
+                label: key,
+              }),
+            )}
+            onChange={(e) => setDiscriminationFactors(e.target.value)}
+            selectedValue={discriminationFactors}
+            placeholder="Select Discrimination Factors"
+          />
+        </div>
+
+        <div>
+          <DropdownSelect
+            options={Object.keys(payEquityData.jobEvaluationSystems).map(
+              (key) => ({
+                value: key,
+                label: key,
+              }),
+            )}
+            onChange={(e) => setJobEvaluationSystems(e.target.value)}
+            selectedValue={jobEvaluationSystems}
+            placeholder="Select Job Evaluation Systems"
           />
         </div>
       </div>
