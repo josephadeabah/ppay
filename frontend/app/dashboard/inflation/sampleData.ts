@@ -250,6 +250,12 @@ export const inflationData = {
   },
 };
 
+// Function to generate a random inflation rate between min and max
+function generateRandomInflationRate(min: number, max: number) {
+  return (Math.random() * (max - min) + min).toFixed(1) + "%";
+}
+
+// Updated categoryData with random inflation rates
 export const categoryData: {
   [key: string]: {
     country: string;
@@ -260,315 +266,697 @@ export const categoryData: {
   NorthAmerica: [
     {
       country: "USA",
-      overallInflationRate: "2.5%", // Added this line
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
       categories: [
-        { category: "Food", inflationRate: "2.4%" },
-        { category: "Housing", inflationRate: "3.1%" },
-        { category: "Transportation", inflationRate: "2.8%" },
-        { category: "Healthcare", inflationRate: "3.3%" },
-        { category: "Education", inflationRate: "2.7%" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
       ],
     },
     {
       country: "Canada",
-      overallInflationRate: "2.4%", // Added this line
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
       categories: [
-        { category: "Food", inflationRate: "2.1%" },
-        { category: "Housing", inflationRate: "2.8%" },
-        { category: "Transportation", inflationRate: "2.5%" },
-        { category: "Healthcare", inflationRate: "3.0%" },
-        { category: "Education", inflationRate: "2.6%" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
       ],
     },
     {
       country: "Mexico",
-      overallInflationRate: "2.2%", // Added this line
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
       categories: [
-        { category: "Food", inflationRate: "1.9%" },
-        { category: "Housing", inflationRate: "2.6%" },
-        { category: "Transportation", inflationRate: "2.3%" },
-        { category: "Healthcare", inflationRate: "2.8%" },
-        { category: "Education", inflationRate: "2.4%" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
       ],
     },
     {
       country: "Brazil",
-      overallInflationRate: "2.1%", // Added this line
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
       categories: [
-        { category: "Food", inflationRate: "1.7%" },
-        { category: "Housing", inflationRate: "2.4%" },
-        { category: "Transportation", inflationRate: "2.1%" },
-        { category: "Healthcare", inflationRate: "2.6%" },
-        { category: "Education", inflationRate: "2.2%" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
       ],
     },
     {
       country: "Argentina",
-      overallInflationRate: "2.0%", // Added this line
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
       categories: [
-        { category: "Food", inflationRate: "1.6%" },
-        { category: "Housing", inflationRate: "2.3%" },
-        { category: "Transportation", inflationRate: "2.0%" },
-        { category: "Healthcare", inflationRate: "2.5%" },
-        { category: "Education", inflationRate: "2.1%" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
       ],
     },
   ],
   Europe: [
     {
       country: "Germany",
-      overallInflationRate: "2.3%", // Added this line
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
       categories: [
-        { category: "Food", inflationRate: "2.2%" },
-        { category: "Housing", inflationRate: "2.7%" },
-        { category: "Transportation", inflationRate: "2.5%" },
-        { category: "Healthcare", inflationRate: "2.8%" },
-        { category: "Education", inflationRate: "2.4%" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
       ],
     },
     {
       country: "France",
-      overallInflationRate: "2.2%", // Added this line
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
       categories: [
-        { category: "Food", inflationRate: "2.0%" },
-        { category: "Housing", inflationRate: "2.5%" },
-        { category: "Transportation", inflationRate: "2.3%" },
-        { category: "Healthcare", inflationRate: "2.7%" },
-        { category: "Education", inflationRate: "2.3%" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
       ],
     },
     {
       country: "UK",
-      overallInflationRate: "2.1%", // Added this line
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
       categories: [
-        { category: "Food", inflationRate: "1.9%" },
-        { category: "Housing", inflationRate: "2.4%" },
-        { category: "Transportation", inflationRate: "2.2%" },
-        { category: "Healthcare", inflationRate: "2.6%" },
-        { category: "Education", inflationRate: "2.2%" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
       ],
     },
     {
       country: "Italy",
-      overallInflationRate: "2.0%", // Added this line
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
       categories: [
-        { category: "Food", inflationRate: "1.8%" },
-        { category: "Housing", inflationRate: "2.3%" },
-        { category: "Transportation", inflationRate: "2.1%" },
-        { category: "Healthcare", inflationRate: "2.5%" },
-        { category: "Education", inflationRate: "2.1%" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
       ],
     },
     {
       country: "Spain",
-      overallInflationRate: "1.9%", // Added this line
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
       categories: [
-        { category: "Food", inflationRate: "1.7%" },
-        { category: "Housing", inflationRate: "2.2%" },
-        { category: "Transportation", inflationRate: "2.0%" },
-        { category: "Healthcare", inflationRate: "2.4%" },
-        { category: "Education", inflationRate: "2.0%" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
       ],
     },
   ],
   Asia: [
     {
       country: "China",
-      overallInflationRate: "3.5%", // Added this line
+      overallInflationRate: generateRandomInflationRate(3.0, 4.0),
       categories: [
-        { category: "Food", inflationRate: "3.4%" },
-        { category: "Housing", inflationRate: "3.7%" },
-        { category: "Transportation", inflationRate: "3.6%" },
-        { category: "Healthcare", inflationRate: "3.8%" },
-        { category: "Education", inflationRate: "3.5%" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(3.0, 4.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(3.0, 4.0),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(3.0, 4.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(3.0, 4.0),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(3.0, 4.0),
+        },
       ],
     },
     {
       country: "India",
-      overallInflationRate: "3.2%", // Added this line
+      overallInflationRate: generateRandomInflationRate(3.0, 4.0),
       categories: [
-        { category: "Food", inflationRate: "3.1%" },
-        { category: "Housing", inflationRate: "3.4%" },
-        { category: "Transportation", inflationRate: "3.3%" },
-        { category: "Healthcare", inflationRate: "3.5%" },
-        { category: "Education", inflationRate: "3.2%" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(3.0, 4.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(3.0, 4.0),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(3.0, 4.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(3.0, 4.0),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(3.0, 4.0),
+        },
       ],
     },
     {
       country: "Japan",
-      overallInflationRate: "3.0%", // Added this line
+      overallInflationRate: generateRandomInflationRate(2.5, 3.5),
       categories: [
-        { category: "Food", inflationRate: "2.9%" },
-        { category: "Housing", inflationRate: "3.2%" },
-        { category: "Transportation", inflationRate: "3.1%" },
-        { category: "Healthcare", inflationRate: "3.3%" },
-        { category: "Education", inflationRate: "3.0%" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
       ],
     },
     {
       country: "South Korea",
-      overallInflationRate: "2.9%", // Added this line
+      overallInflationRate: generateRandomInflationRate(2.5, 3.5),
       categories: [
-        { category: "Food", inflationRate: "2.8%" },
-        { category: "Housing", inflationRate: "3.1%" },
-        { category: "Transportation", inflationRate: "3.0%" },
-        { category: "Healthcare", inflationRate: "3.2%" },
-        { category: "Education", inflationRate: "2.9%" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
       ],
     },
     {
       country: "Indonesia",
-      overallInflationRate: "2.8%", // Added this line
+      overallInflationRate: generateRandomInflationRate(2.5, 3.5),
       categories: [
-        { category: "Food", inflationRate: "2.7%" },
-        { category: "Housing", inflationRate: "3.0%" },
-        { category: "Transportation", inflationRate: "2.9%" },
-        { category: "Healthcare", inflationRate: "3.1%" },
-        { category: "Education", inflationRate: "2.8%" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
       ],
     },
   ],
   Africa: [
     {
       country: "Nigeria",
-      overallInflationRate: "4.5%", // Added this line
+      overallInflationRate: generateRandomInflationRate(4.0, 5.0),
       categories: [
-        { category: "Food", inflationRate: "4.4%" },
-        { category: "Housing", inflationRate: "4.7%" },
-        { category: "Transportation", inflationRate: "4.6%" },
-        { category: "Healthcare", inflationRate: "4.8%" },
-        { category: "Education", inflationRate: "4.5%" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(4.0, 5.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(4.0, 5.0),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(4.0, 5.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(4.0, 5.0),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(4.0, 5.0),
+        },
       ],
     },
     {
       country: "South Africa",
-      overallInflationRate: "4.3%", // Added this line
+      overallInflationRate: generateRandomInflationRate(4.0, 5.0),
       categories: [
-        { category: "Food", inflationRate: "4.2%" },
-        { category: "Housing", inflationRate: "4.5%" },
-        { category: "Transportation", inflationRate: "4.4%" },
-        { category: "Healthcare", inflationRate: "4.6%" },
-        { category: "Education", inflationRate: "4.3%" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(4.0, 5.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(4.0, 5.0),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(4.0, 5.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(4.0, 5.0),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(4.0, 5.0),
+        },
       ],
     },
     {
       country: "Kenya",
-      overallInflationRate: "4.2%", // Added this line
+      overallInflationRate: generateRandomInflationRate(4.0, 5.0),
       categories: [
-        { category: "Food", inflationRate: "4.1%" },
-        { category: "Housing", inflationRate: "4.4%" },
-        { category: "Transportation", inflationRate: "4.3%" },
-        { category: "Healthcare", inflationRate: "4.5%" },
-        { category: "Education", inflationRate: "4.2%" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(4.0, 5.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(4.0, 5.0),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(4.0, 5.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(4.0, 5.0),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(4.0, 5.0),
+        },
       ],
     },
     {
       country: "Egypt",
-      overallInflationRate: "4.1%", // Added this line
+      overallInflationRate: generateRandomInflationRate(4.0, 5.0),
       categories: [
-        { category: "Food", inflationRate: "4.0%" },
-        { category: "Housing", inflationRate: "4.3%" },
-        { category: "Transportation", inflationRate: "4.2%" },
-        { category: "Healthcare", inflationRate: "4.4%" },
-        { category: "Education", inflationRate: "4.1%" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(4.0, 5.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(4.0, 5.0),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(4.0, 5.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(4.0, 5.0),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(4.0, 5.0),
+        },
       ],
     },
     {
       country: "Ethiopia",
-      overallInflationRate: "4.0%", // Added this line
+      overallInflationRate: generateRandomInflationRate(4.0, 5.0),
       categories: [
-        { category: "Food", inflationRate: "3.9%" },
-        { category: "Housing", inflationRate: "4.2%" },
-        { category: "Transportation", inflationRate: "4.1%" },
-        { category: "Healthcare", inflationRate: "4.3%" },
-        { category: "Education", inflationRate: "4.0%" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(4.0, 5.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(4.0, 5.0),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(4.0, 5.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(4.0, 5.0),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(4.0, 5.0),
+        },
       ],
     },
   ],
   SouthAmerica: [
     {
       country: "Brazil",
-      overallInflationRate: "3.8%",
+      overallInflationRate: generateRandomInflationRate(3.0, 4.0),
       categories: [
-        { category: "Food", inflationRate: "4.0" },
-        { category: "Housing", inflationRate: "4.6" },
-        { category: "Transportation", inflationRate: "3.2" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(3.0, 4.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(3.0, 4.0),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(3.0, 4.0),
+        },
       ],
     },
     {
       country: "Colombia",
-      overallInflationRate: "3.7%",
+      overallInflationRate: generateRandomInflationRate(3.0, 4.0),
       categories: [
-        { category: "Food", inflationRate: "3.9" },
-        { category: "Housing", inflationRate: "4.5" },
-        { category: "Transportation", inflationRate: "3.1" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(3.0, 4.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(3.0, 4.0),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(3.0, 4.0),
+        },
       ],
     },
     {
       country: "Peru",
-      overallInflationRate: "3.6%",
+      overallInflationRate: generateRandomInflationRate(3.0, 4.0),
       categories: [
-        { category: "Food", inflationRate: "3.8" },
-        { category: "Housing", inflationRate: "4.4" },
-        { category: "Transportation", inflationRate: "3.0" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(3.0, 4.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(3.0, 4.0),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(3.0, 4.0),
+        },
       ],
     },
   ],
   Australia: [
     {
       country: "Australia",
-      overallInflationRate: "3.6%",
+      overallInflationRate: generateRandomInflationRate(3.0, 4.0),
       categories: [
-        { category: "Food", inflationRate: "2.4" },
-        { category: "Housing", inflationRate: "3.0" },
-        { category: "Transportation", inflationRate: "1.7" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(3.0, 4.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(3.0, 4.0),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(3.0, 4.0),
+        },
       ],
     },
     {
       country: "New Zealand",
-      overallInflationRate: "2.5%",
+      overallInflationRate: generateRandomInflationRate(2.5, 3.5),
       categories: [
-        { category: "Food", inflationRate: "2.3" },
-        { category: "Housing", inflationRate: "2.9" },
-        { category: "Transportation", inflationRate: "1.6" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
       ],
     },
     {
       country: "Fiji",
-      overallInflationRate: "5.4%",
+      overallInflationRate: generateRandomInflationRate(5.0, 6.2),
       categories: [
-        { category: "Food", inflationRate: "2.2" },
-        { category: "Housing", inflationRate: "2.8" },
-        { category: "Transportation", inflationRate: "1.5" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(5.2, 6.4),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.0, -3.0),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(1.0, 4.0),
+        },
       ],
     },
   ],
+
   Antarctica: [
     {
       country: "Paraguay",
-      overallInflationRate: "-3.5%",
+      overallInflationRate: generateRandomInflationRate(-1.0, 2.0),
       categories: [
-        { category: "Food", inflationRate: "1.0" },
-        { category: "Housing", inflationRate: "1.5" },
-        { category: "Transportation", inflationRate: "0.8" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(1.2, 2.1),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(1.0, 3.0),
+        },
       ],
     },
     {
       country: "Chile",
-      overallInflationRate: "1.4%",
+      overallInflationRate: generateRandomInflationRate(-1.0, 2.0),
       categories: [
-        { category: "Food", inflationRate: "0.9" },
-        { category: "Housing", inflationRate: "1.4" },
-        { category: "Transportation", inflationRate: "0.7" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(1.3, 2.1),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(1.0, 3.0),
+        },
       ],
     },
     {
       country: "Uruguay",
-      overallInflationRate: "-2.3%",
+      overallInflationRate: generateRandomInflationRate(-1.0, 5.0),
       categories: [
-        { category: "Food", inflationRate: "0.8" },
-        { category: "Housing", inflationRate: "1.3" },
-        { category: "Transportation", inflationRate: "0.6" },
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(3.3, 2.1),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(7.0, 3.0),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(1.2, 3.0),
+        },
       ],
     },
   ],
