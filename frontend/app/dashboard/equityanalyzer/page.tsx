@@ -132,10 +132,10 @@ function calculateAdjustedSalary(
     locationPoints;
 
   // Base salary, market rate adjustment, company size, and compliance factors
-  const baseSalary = 50000; // Example base salary
-  const marketRate = payEquityData.marketRates["AtMarket"]; // Example value
-  const companySize = payEquityData.companySizeRevenue["MediumSizedCompany"]; // Example value
-  const compliance = payEquityData.compliance["FullyCompliant"]; // Example value
+  const baseSalary = 500; // Example base salary
+  const marketRate = payEquityData.marketRates["Non"]; // Example value
+  const companySize = payEquityData.companySizeRevenue["Non"]; // Example value
+  const compliance = payEquityData.compliance["Non"]; // Example value
 
   // Adjust salary based on points and additional factors
   const adjustedSalary =
@@ -154,9 +154,9 @@ export default function PayEquityAnalyzer() {
   const [experiencePoints, setExperiencePoints] = useState<number>(0);
   const [location, setLocation] = useState<string>("No Cost of Living Area");
   const [performance, setPerformance] = useState<string>("Unsatisfactory");
-  const [department, setDepartment] = useState<string>("Engineering");
+  const [department, setDepartment] = useState<string>("Non-specified");
   const [gender, setGender] = useState<string>("Male");
-  const [education, setEducation] = useState<string>("Bachelor's Degree");
+  const [education, setEducation] = useState<string>("No Degree");
   const [skillsAndQualifications, setSkillsAndQualifications] =
     useState<string>("No Skill");
   const [marketRates, setMarketRates] = useState<string>("Non");
@@ -167,7 +167,7 @@ export default function PayEquityAnalyzer() {
   const [benefitsAndPerks, setBenefitsAndPerks] =
     useState<string>("NoBenefits");
   const [adjustedSalary, setAdjustedSalary] = useState<number>(0);
-  const [industry, setIndustry] = useState<string>("Tech"); // Updated from department to industry
+  const [industry, setIndustry] = useState<string>("Non-specified"); // Updated from department to industry
 
   const [barChartData, setBarChartData] = useState<BarChartData>({
     labels: [],
@@ -241,7 +241,7 @@ export default function PayEquityAnalyzer() {
             payEquityData.departmentPoints[department] || 0,
             payEquityData.industryPoints[industry] || 0, // Updated to Industry
             payEquityData.educationPoints[education] || 0,
-            payEquityData.compliance["FullyCompliant"] || 0,
+            payEquityData.compliance["Non"] || 0,
             payEquityData.marketRates[marketRates] || 0,
             payEquityData.companySizeRevenue[companySizeRevenue] || 0,
             payEquityData.seniorityLevels[seniorityLevels] || 0,
@@ -293,7 +293,7 @@ export default function PayEquityAnalyzer() {
       payEquityData.departmentPoints[department] || 0,
       payEquityData.industryPoints[industry] || 0, // Updated to Industry
       payEquityData.educationPoints[education] || 0,
-      payEquityData.compliance["FullyCompliant"] || 0,
+      payEquityData.compliance["Non"] || 0,
       payEquityData.marketRates[marketRates] || 0,
       payEquityData.companySizeRevenue[companySizeRevenue] || 0,
       payEquityData.seniorityLevels[seniorityLevels] || 0,

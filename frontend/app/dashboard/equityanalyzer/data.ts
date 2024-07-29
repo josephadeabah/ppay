@@ -184,6 +184,7 @@ export const payEquityData = {
   },
 
   industryPoints: <IndustryPoints>{
+    "Non-specified": 0,
     Retail: 24,
     Tech: 40,
     Healthcare: 30,
@@ -192,6 +193,7 @@ export const payEquityData = {
   },
 
   departmentPoints: <DepartmentPoints>{
+    "Non-specified": 0,
     Engineering: 40,
     Legal: 30,
     Sales: 20,
@@ -276,6 +278,7 @@ export const payEquityData = {
     // Add more rows as needed
   ],
   educationPoints: <EducationPoints>{
+    "No Degree": 0,
     "High School Diploma": 10,
     "Associate's Degree": 20,
     "Bachelor's Degree": 30,
