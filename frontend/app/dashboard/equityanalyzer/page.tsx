@@ -228,6 +228,7 @@ export default function PayEquityAnalyzer() {
         "Seniority Level",
         "Union Agreement",
         "Benefits and Perks",
+        "Skills and Qualifications",
       ],
       datasets: [
         {
@@ -246,6 +247,7 @@ export default function PayEquityAnalyzer() {
             payEquityData.seniorityLevels[seniorityLevels] || 0,
             payEquityData.unionAgreements[unionAgreements] || 0,
             payEquityData.benefitsAndPerks[benefitsAndPerks] || 0,
+            payEquityData.skillsAndQualifications[skillsAndQualifications] || 0,
           ],
           backgroundColor: [
             "rgba(75, 192, 192, 0.2)",
@@ -260,17 +262,52 @@ export default function PayEquityAnalyzer() {
             "rgba(255, 99, 132, 0.2)",
             "rgba(54, 162, 235, 0.2)",
             "rgba(255, 206, 86, 0.2)",
+            "rgba(75, 192, 192, 0.2)",
           ],
         },
       ],
     });
 
+    const factorLabels = [
+      "Role",
+      "Experience",
+      "Location",
+      "Performance",
+      "Department",
+      "Industry",
+      "Education",
+      "Compliance",
+      "Market Rate",
+      "Company Size",
+      "Seniority Level",
+      "Union Agreement",
+      "Benefits and Perks",
+      "Skills and Qualifications",
+    ];
+
+    const factorPoints = [
+      payEquityData.rolesAndResponsibilities[role]?.points || 0,
+      experiencePoints || 0,
+      payEquityData.locationPoints[location] || 0,
+      payEquityData.performancePoints[performance] || 0,
+      payEquityData.departmentPoints[department] || 0,
+      payEquityData.industryPoints[industry] || 0, // Updated to Industry
+      payEquityData.educationPoints[education] || 0,
+      payEquityData.compliance["FullyCompliant"] || 0,
+      payEquityData.marketRates[marketRates] || 0,
+      payEquityData.companySizeRevenue[companySizeRevenue] || 0,
+      payEquityData.seniorityLevels[seniorityLevels] || 0,
+      payEquityData.unionAgreements[unionAgreements] || 0,
+      payEquityData.benefitsAndPerks[benefitsAndPerks] || 0,
+      payEquityData.skillsAndQualifications[skillsAndQualifications] || 0,
+    ];
+
     setLineChartData({
-      labels: ["Jan", "Feb", "Mar", "Apr", "May"],
+      labels: factorLabels,
       datasets: [
         {
-          label: "Salary Trend Over Time",
-          data: [50000, 52000, 51000, 53000, 55000],
+          label: "Points against Factor",
+          data: factorPoints,
           borderColor: "rgba(75, 192, 192, 1)",
           backgroundColor: "rgba(75, 192, 192, 0.2)",
         },
