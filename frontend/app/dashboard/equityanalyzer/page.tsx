@@ -79,7 +79,7 @@ const LineChart: React.FC<{ data: LineChartData }> = ({ data }) => {
 // Calculate adjusted salary
 function calculateAdjustedSalary(
   role: string,
-  experienceRange: string,
+  experiencePointNumber: number,
   location: string,
   performance: string,
   department: string,
@@ -97,7 +97,6 @@ function calculateAdjustedSalary(
     points: 0,
   };
   const educationPoints = payEquityData.educationPoints[education] || 0; // Added education points
-  const experiencePoints = payEquityData.experiencePoints[experienceRange] || 0;
   const locationPoints = payEquityData.locationPoints[location] || 0;
   const industryPointsValue = payEquityData.industryPoints[industry] || 0; // Updated to industry
   const performancePoints = payEquityData.performancePoints[performance] || 0;
@@ -117,7 +116,7 @@ function calculateAdjustedSalary(
   // Sum all points
   const totalPoints =
     roleData.points +
-    experiencePoints +
+    experiencePointNumber +
     locationPoints +
     performancePoints +
     industryPointsValue + // Updated to industry points
@@ -152,6 +151,7 @@ function calculateAdjustedSalary(
 export default function PayEquityAnalyzer() {
   const [role, setRole] = useState<string>("No Role");
   const [experienceRange, setExperienceRange] = useState<string>("0-2 years");
+  const [experiencePoints, setExperiencePoints] = useState<number>(0);
   const [location, setLocation] = useState<string>("No Cost of Living Area");
   const [performance, setPerformance] = useState<string>("Unsatisfactory");
   const [department, setDepartment] = useState<string>("Engineering");
@@ -196,7 +196,7 @@ export default function PayEquityAnalyzer() {
     setAdjustedSalary(
       calculateAdjustedSalary(
         role,
-        experienceRange,
+        experiencePoints,
         location,
         performance,
         department,
@@ -234,7 +234,7 @@ export default function PayEquityAnalyzer() {
           label: "Adjusted Salary Factors",
           data: [
             payEquityData.rolesAndResponsibilities[role]?.points || 0,
-            payEquityData.experiencePoints[experienceRange] || 0,
+            experiencePoints || 0,
             payEquityData.locationPoints[location] || 0,
             payEquityData.performancePoints[performance] || 0,
             payEquityData.departmentPoints[department] || 0,
@@ -301,7 +301,7 @@ export default function PayEquityAnalyzer() {
     },
     {
       label: "Experience",
-      value: payEquityData.experiencePoints[experienceRange] || 0,
+      value: experiencePoints,
     },
     { label: "Location", value: payEquityData.locationPoints[location] || 0 },
     {
@@ -367,9 +367,14 @@ export default function PayEquityAnalyzer() {
         />
         <SliderComponent
           value={parseInt(experienceRange.split("-")[0], 10)}
-          onChange={(value) => setExperienceRange(`${value}-years`)}
+          onChange={(value) => {
+            setExperiencePoints(parseInt(value.toString()));
+            setExperienceRange(
+              `${value.toString()}-${parseInt(value.toString()) + 2} years`,
+            );
+          }}
           minValue={0}
-          maxValue={20}
+          maxValue={40}
           step={1}
           label="Experience Range (years)"
         />

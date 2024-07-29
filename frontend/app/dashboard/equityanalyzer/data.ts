@@ -13,10 +13,6 @@ export interface SkillsQualifications {
   [skill: string]: number;
 }
 
-export interface ExperiencePoints {
-  [experienceRange: string]: number;
-}
-
 export interface PerformancePoints {
   [performance: string]: number;
 }
@@ -160,13 +156,6 @@ export const payEquityData = {
     DataAnalysis: 20,
     ProjectManagement: 25,
     AdvancedDegree: 30,
-  },
-
-  experiencePoints: <ExperiencePoints>{
-    "0-2 years": 20,
-    "3-5 years": 40,
-    "6-10 years": 60,
-    "10+ years": 80,
   },
 
   performancePoints: <PerformancePoints>{
