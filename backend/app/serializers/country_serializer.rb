@@ -1,12 +1,5 @@
 class CountrySerializer < ActiveModel::Serializer
-  attributes :name, :categories
-
-  def categories
-    object.categories.map do |category|
-      {
-        category: category.name,
-        inflationRate: category.inflation_rate.round(2)
-      }
-    end
-  end
+    attributes :name, :overall_inflation_rate
+    has_many :categories
 end
+  

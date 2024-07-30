@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_29_175332) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_30_121313) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
-    t.float "inflation_rate"
+    t.string "inflation_rate"
     t.bigint "country_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -25,6 +25,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_29_175332) do
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
+    t.string "overall_inflation_rate"
     t.bigint "region_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -36,3 +37,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_29_175332) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "categories", "countries"
+  add_foreign_key "countries", "regions"
+end
