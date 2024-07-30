@@ -1,5 +1,5 @@
 class CountrySerializer < ActiveModel::Serializer
-    attributes :name, :overall_inflation_rate
-    has_many :categories
+    attributes :id, :name, :overall_inflation_rate
+    has_many :categories, serializer: CategorySerializer
 end
   
