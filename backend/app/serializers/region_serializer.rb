@@ -1,5 +1,4 @@
 class RegionSerializer < ActiveModel::Serializer
-    attributes :id, :name
-    has_many :countries, serializer: CountrySerializer
+    attributes :id, :name, :countries
 end
   

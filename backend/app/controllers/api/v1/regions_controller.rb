@@ -2,7 +2,7 @@ module Api
     module V1
       class RegionsController < ApplicationController
         def index
-          @regions = Region.includes(countries: :categories).all
+          @regions = Region.includes(:countries).all
           render json: @regions, each_serializer: RegionSerializer
         end
   
