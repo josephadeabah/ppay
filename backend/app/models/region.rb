@@ -1,4 +1,6 @@
 class Region < ApplicationRecord
     has_many :countries, dependent: :destroy
-end
+  
+    validates :name, presence: true, uniqueness: true
+  end
   
