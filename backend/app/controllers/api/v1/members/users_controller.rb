@@ -4,7 +4,7 @@ module Api
         class UsersController < ApplicationController
           before_action :authenticate_request, except: [:index]  # Skip authentication for index action
           before_action :authorize_admin, only: [:make_admin]
-          before_action :set_user, only: [:update, :change_password, :make_admin]
+          before_action :set_user, only: [:change_password, :make_admin]
   
           # GET /api/v1/members/users        
         def index
@@ -30,12 +30,13 @@ module Api
   
           # PUT /api/v1/members/users/me
           def update
-            if @user.update(user_params)
-              render json: @user.as_json(include: :profile), status: :ok
+            if @current_user.update(user_params)
+              render json: @current_user.as_json(include: :profile), status: :ok
             else
-              render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+              render json: { errors: @current_user.errors.full_messages }, status: :unprocessable_entity
             end
           end
+          
   
           # PUT /api/v1/members/users/me/password
           def change_password
