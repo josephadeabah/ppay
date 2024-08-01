@@ -4,34 +4,34 @@ module Api
         class UsersController < ApplicationController
           before_action :authenticate_request, except: [:index]  # Skip authentication for index action
           before_action :authorize_admin, only: [:make_admin]
-          before_action :set_user, only: [:show, :update, :change_password, :make_admin]
+          before_action :set_user, only: [:update, :change_password, :make_admin]
   
-          # GET /api/v1/members/users
-          def index
-            @users = User.all
-            render json: @users, status: :ok
-          end
+          # GET /api/v1/members/users        
+        def index
+          @users = User.includes(:profile).all
+          render json: @users.to_json(include: :profile), status: :ok
+        end
   
           # GET /api/v1/members/users/me
           # GET /api/v1/members/users/:id
           def show
-            render json: @user, status: :ok
+            render json: @current_user.as_json(include: :profile), status: :ok
           end
 
         # PUT /api/v1/members/users/:id/make_admin
         def make_admin
-            admin_status = params[:admin] == "true"
-            if @user.update(admin: admin_status)
-              render json: @user, status: :ok
-            else
-              render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
-            end
+          admin_status = params[:admin] == "true"
+          if @user.update(admin: admin_status)
+            render json: @user.as_json(include: :profile), status: :ok
+          else
+            render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+          end
         end
   
           # PUT /api/v1/members/users/me
           def update
             if @user.update(user_params)
-              render json: @user, status: :ok
+              render json: @user.as_json(include: :profile), status: :ok
             else
               render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
             end
@@ -49,13 +49,13 @@ module Api
           private
   
           def set_user
-            @user = params[:id] == "me" ? @current_user : User.find(params[:id])
+            @user = User.includes(:profile).find(params[:id])
           rescue ActiveRecord::RecordNotFound
             render json: { error: 'User not found' }, status: :not_found
           end
   
           def user_params
-            params.require(:user).permit(:email, :password, :password_confirmation, :admin)
+            params.require(:user).permit(:email, :password, :password_confirmation, :admin, profile_attributes: [:name, :role, :status, :salary_role, :experience, :country, :industry, :category, :company, :actual_salary, :job_website, :avatar])
           end
   
           def password_params
