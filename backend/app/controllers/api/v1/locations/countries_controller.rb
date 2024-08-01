@@ -1,6 +1,8 @@
 module Api
   module V1
+    module Locations
     class CountriesController < ApplicationController
+      before_action :authenticate_request  # Ensure the user is authenticated
       before_action :set_country, only: [:show, :update, :destroy]
 
       def index
@@ -53,4 +55,5 @@ module Api
       end
     end
   end
+end
 end

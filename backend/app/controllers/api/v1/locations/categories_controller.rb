@@ -1,6 +1,8 @@
 module Api
   module V1
+    module Locations
     class CategoriesController < ApplicationController
+      before_action :authenticate_request  # Ensure the user is authenticated
       before_action :set_category, only: [:show, :update, :destroy]
 
       def index
@@ -50,5 +52,6 @@ module Api
         errors.full_messages.join(', ')
       end
     end
+  end
   end
 end
