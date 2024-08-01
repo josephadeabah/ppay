@@ -8,6 +8,10 @@ module Authenticable
     rescue
       render json: { error: 'Not Authorized' }, status: :unauthorized
     end
+
+    def authorize_admin
+        render json: { error: 'Forbidden' }, status: :forbidden unless @current_user&.admin?
+    end
   
     private
   

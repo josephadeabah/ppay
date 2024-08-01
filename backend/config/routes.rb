@@ -11,6 +11,7 @@ Rails.application.routes.draw do
         put 'users/me', to: 'users#update'
         put 'users/me/password', to: 'users#change_password'
         get 'users/:id', to: 'users#show'      # Route to get user by ID
+        put 'users/:id/make_admin', to: 'users#make_admin'  # Route to make user an admin
       end
       namespace :locations do
         resources :regions
