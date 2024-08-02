@@ -157,10 +157,11 @@ const CompanyCard: React.FC<{ company: Company; onClick: () => void }> = ({
     <div
       className="cursor-pointer rounded-sm bg-white p-4 shadow-sm dark:bg-gray-800"
       onClick={onClick}
-      onKeyPress={(e) => {
+      onKeyDown={(e) => {
         if (e.key === "Enter") onClick();
       }}
       tabIndex={0}
+      role="button"
       aria-label={`View details for ${company.name}`}
       title={`View details for ${company.name}`}
       style={{ transition: "background-color 0.3s ease" }}
