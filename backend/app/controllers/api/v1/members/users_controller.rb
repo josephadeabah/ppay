@@ -4,7 +4,7 @@ module Api
       class UsersController < ApplicationController
         before_action :authenticate_request, except: [:index]  # Skip authentication for index action
         before_action :authorize_admin, only: [:make_admin]
-        before_action :set_user, only: [:change_password, :make_admin, :show_by_id]
+        before_action :set_user, only: [:make_admin, :show_by_id]
 
         # GET /api/v1/members/users
         def index
@@ -43,7 +43,7 @@ module Api
 
         # PUT /api/v1/members/users/me/password
         def change_password
-          if @user.authenticate(params[:current_password]) && @user.update(password_params)
+          if @current_user.authenticate(params[:user][:current_password]) && @current_user.update(password_params)
             render json: { message: 'Password updated successfully' }, status: :ok
           else
             render json: { error: 'Current password is incorrect or new password is invalid' }, status: :unprocessable_entity
