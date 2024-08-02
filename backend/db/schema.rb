@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_01_190503) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_02_130200) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,6 +33,20 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_01_190503) do
     t.index ["name", "region_id"], name: "index_countries_on_name_and_region_id", unique: true
     t.index ["name"], name: "index_countries_on_name", unique: true
     t.index ["region_id"], name: "index_countries_on_region_id"
+  end
+
+  create_table "pay_trends", force: :cascade do |t|
+    t.string "country"
+    t.string "industry"
+    t.string "company"
+    t.string "role"
+    t.integer "currentSalaryByCompany"
+    t.integer "currentSalaryByRole"
+    t.integer "change"
+    t.string "changeTimeframe"
+    t.string "benefits"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "profiles", force: :cascade do |t|

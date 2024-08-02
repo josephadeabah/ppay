@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  country: MyString
+  industry: MyString
+  company: MyString
+  role: MyString
+  currentSalaryByCompany: 1
+  currentSalaryByRole: 1
+  change: 1
+  changeTimeframe: MyString
+  benefits: MyString
+
+two:
+  country: MyString
+  industry: MyString
+  company: MyString
+  role: MyString
+  currentSalaryByCompany: 1
+  currentSalaryByRole: 1
+  change: 1
+  changeTimeframe: MyString
+  benefits: MyString

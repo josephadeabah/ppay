@@ -13,6 +13,9 @@ Rails.application.routes.draw do
         get 'users/:id', to: 'users#show_by_id' # Route to get user by ID
         put 'users/:id/make_admin', to: 'users#make_admin'  # Route to make user an admin
       end
+      namespace :paytrend do
+        resources :pay_trends, only: [:index, :create, :update, :destroy]
+      end
       namespace :locations do
         resources :regions
         resources :countries
