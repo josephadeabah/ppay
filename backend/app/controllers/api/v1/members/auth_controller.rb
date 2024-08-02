@@ -11,7 +11,7 @@ module Api
                     render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
                   end
                 end
-          
+
                 def login
                   user = User.find_by(email: params[:email])
                   if user&.authenticate(params[:password])
@@ -20,7 +20,7 @@ module Api
                     render json: { error: 'Invalid email or password' }, status: :unauthorized
                   end
                 end
-          
+
                 def password_reset
                   user = User.find_by(email: params[:email])
                   if user
@@ -30,18 +30,18 @@ module Api
                     render json: { error: 'Email not found' }, status: :not_found
                   end
                 end
-          
+
                 def reset_password
                   # Find user by reset token and update password
                   # Implement actual reset password logic
                 end
-          
+
                 private
-          
+
                 def user_params
                   params.require(:user).permit(:email, :password, :password_confirmation, :admin)
                 end
-          
+
                 def encode_token(user_id)
                   JWT.encode({ user_id: user_id, exp: 24.hours.from_now.to_i }, Rails.application.secret_key_base)
                 end
