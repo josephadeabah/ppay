@@ -13,6 +13,7 @@ import {
   HiOutlineDownload,
   HiOutlineFastForward,
   HiOutlineGlobe,
+  HiOutlineOfficeBuilding,
   HiOutlineTrendingUp,
   HiOutlineUser,
 } from "react-icons/hi";
@@ -83,6 +84,15 @@ export const DashboardSidebar: FC = function () {
           className={getItemClass("/dashboard/benchmark")}
         >
           BenchMarks
+        </Sidebar.Item>
+        <Sidebar.Item
+          href="/dashboard/companies"
+          icon={() => (
+            <HiOutlineOfficeBuilding className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+          )}
+          className={getItemClass("/dashboard/companies")}
+        >
+          Companies
         </Sidebar.Item>
         <Sidebar.Item
           href="/dashboard/trendanalysis"
