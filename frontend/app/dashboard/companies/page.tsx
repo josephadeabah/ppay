@@ -1,7 +1,6 @@
 "use client";
-import { Accordion, AccordionItem, Card } from "@nextui-org/react";
+import { Card, Tooltip } from "@nextui-org/react";
 import React from "react";
-import { HiOutlineArrowDown, HiOutlineArrowUp } from "react-icons/hi";
 
 interface Company {
   name: string;
@@ -25,7 +24,8 @@ const companies: Company[] = [
     location: "New York, USA",
     size: "500-1000 employees",
     industry: "Technology",
-    description: "A leading tech company.",
+    description:
+      "Google LLC is an American multinational technology company specializing in Internet-related services and products, which include online advertising technologies, a search engine, cloud computing, software, and hardware.",
   },
   {
     name: "Facebook",
@@ -35,8 +35,9 @@ const companies: Company[] = [
     jobs: 8,
     location: "San Francisco, USA",
     size: "1000-5000 employees",
-    industry: "Finance",
-    description: "A top financial firm.",
+    industry: "Technology",
+    description:
+      "Meta Platforms, Inc., doing business as Meta and formerly named Facebook, Inc., is an American multinational technology conglomerate based in Menlo Park, California.",
   },
   {
     name: "Yandex",
@@ -46,8 +47,9 @@ const companies: Company[] = [
     jobs: 15,
     location: "London, UK",
     size: "200-500 employees",
-    industry: "Healthcare",
-    description: "A renowned healthcare company.",
+    industry: "Technology",
+    description:
+      "Yandex N.V. is a Dutch-domiciled multinational corporation specializing in Internet-related products and services, including transportation, search and information services, eCommerce, navigation, mobile applications, and online advertising.",
   },
   {
     name: "Apple",
@@ -57,8 +59,9 @@ const companies: Company[] = [
     jobs: 12,
     location: "Berlin, Germany",
     size: "50-200 employees",
-    industry: "Automotive",
-    description: "A pioneering automotive company.",
+    industry: "Technology",
+    description:
+      "Apple Inc. is an American multinational technology company headquartered in Cupertino, California, that designs, manufactures, and sells consumer electronics, computer software, and online services.",
   },
   {
     name: "Andela",
@@ -69,7 +72,8 @@ const companies: Company[] = [
     location: "Paris, France",
     size: "500-1000 employees",
     industry: "Technology",
-    description: "A leading tech company.",
+    description:
+      "Andela is an American company with operational campuses in Africa including Nigeria, Ghana, Kenya, Rwanda, Uganda, and Egypt. Andela builds distributed engineering teams with software developers.",
   },
   {
     name: "Airbnb",
@@ -79,8 +83,9 @@ const companies: Company[] = [
     jobs: 9,
     location: "Sydney, Australia",
     size: "1000-5000 employees",
-    industry: "Finance",
-    description: "A top financial firm.",
+    industry: "Travel & Tourism",
+    description:
+      "Airbnb, Inc. operates an online marketplace for lodging, primarily homestays for vacation rentals, and tourism activities. Based in San Francisco, California, the platform is accessible via website and mobile app.",
   },
   {
     name: "Zoom",
@@ -90,8 +95,9 @@ const companies: Company[] = [
     jobs: 6,
     location: "Tokyo, Japan",
     size: "50-200 employees",
-    industry: "Education",
-    description: "A leading educational institution.",
+    industry: "Communications",
+    description:
+      "Zoom Video Communications, Inc. is an American communications technology company headquartered in San Jose, California. It provides videotelephony and online chat services through a cloud-based peer-to-peer software platform.",
   },
   {
     name: "Verizon",
@@ -101,8 +107,9 @@ const companies: Company[] = [
     jobs: 10,
     location: "New York, USA",
     size: "500-1000 employees",
-    industry: "Technology",
-    description: "A leading tech company.",
+    industry: "Telecommunications",
+    description:
+      "Verizon Communications Inc. is an American multinational telecommunications conglomerate and a corporate component of the Dow Jones Industrial Average. The company is headquartered at 1095 Avenue of the Americas in Midtown Manhattan, New York City.",
   },
   {
     name: "Twitter",
@@ -112,8 +119,9 @@ const companies: Company[] = [
     jobs: 6,
     location: "Tokyo, Japan",
     size: "50-200 employees",
-    industry: "Education",
-    description: "A leading educational institution.",
+    industry: "Technology",
+    description:
+      "Twitter, Inc. is an American microblogging and social networking service on which users post and interact with messages known as 'tweets'. Registered users can post, like, and retweet tweets, but unregistered users can only read them.",
   },
   {
     name: "Instagram",
@@ -124,7 +132,8 @@ const companies: Company[] = [
     location: "New York, USA",
     size: "500-1000 employees",
     industry: "Technology",
-    description: "A leading tech company.",
+    description:
+      "Instagram is an American photo and video sharing social networking service created by Kevin Systrom and Mike Krieger. The app allows users to upload media that can be edited with filters and organized by hashtags and geographical tagging.",
   },
   {
     name: "Telegram",
@@ -134,8 +143,9 @@ const companies: Company[] = [
     jobs: 6,
     location: "Tokyo, Japan",
     size: "50-200 employees",
-    industry: "Education",
-    description: "A leading educational institution.",
+    industry: "Technology",
+    description:
+      "Telegram is a cloud-based instant messaging, video telephony, and VoIP service. The service also provides end-to-end encrypted video calling, VoIP, file sharing, and several other features.",
   },
   {
     name: "mPharma",
@@ -143,32 +153,28 @@ const companies: Company[] = [
     reviews: 120,
     salaries: 50,
     jobs: 10,
-    location: "New York, USA",
+    location: "Accra, Ghana",
     size: "500-1000 employees",
-    industry: "Technology",
-    description: "A leading tech company.",
+    industry: "Healthcare",
+    description:
+      "mPharma is a pharmaceutical distribution company that aims to increase patient access to affordable high-quality medications in developing countries. They partner with drug manufacturers, wholesalers, and pharmacies.",
   },
   // Add more company objects as needed
 ];
 
 const CompaniesPage: React.FC = () => {
   return (
-    <div className="mx-auto bg-neutral-50 p-2 dark:bg-gray-900">
+    <div className="mx-auto p-2">
       <h1 className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">
         Companies
       </h1>
-      <Accordion
-        selectionMode="single"
-        className="text-gray-800 dark:text-gray-100"
-      >
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {companies.map((company, index) => (
-          <AccordionItem
+          <Card
             key={index}
-            aria-label={company.name}
-            indicator={({ isOpen }) =>
-              isOpen ? <HiOutlineArrowDown /> : <HiOutlineArrowUp />
-            }
-            startContent={
+            className="flex h-auto flex-col justify-between bg-white p-4 dark:bg-gray-800 dark:text-gray-100"
+          >
+            <div className="flex items-center justify-between">
               <img
                 src={company.logo}
                 alt={`${company.name} logo`}
@@ -176,38 +182,33 @@ const CompaniesPage: React.FC = () => {
                 height={40}
                 className="rounded-full"
               />
-            }
-            subtitle={`${company.reviews} reviews`}
-            title={company.name}
-          >
-            <Card>
-              <Card>
-                <p className="text-gray-700 dark:text-gray-300">
-                  <strong>Location:</strong> {company.location}
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                {company.name}
+              </h2>
+            </div>
+            <div className="mt-2 text-gray-700 dark:text-gray-300">
+              <p>
+                <strong>Location:</strong> {company.location}
+              </p>
+              <p>
+                <strong>Size:</strong> {company.size}
+              </p>
+              <p>
+                <strong>Industry:</strong> {company.industry}
+              </p>
+              <Tooltip
+                content={company.description}
+                placement="bottom"
+                className="w-full max-w-xl bg-gray-700 p-5 text-gray-100 dark:bg-slate-800 dark:text-gray-50"
+              >
+                <p className="overflow-hidden text-ellipsis whitespace-nowrap">
+                  <strong>Description:</strong> {company.description}
                 </p>
-                <p className="text-gray-700 dark:text-gray-300">
-                  <strong>Global Company Size:</strong> {company.size}
-                </p>
-                <p className="text-gray-700 dark:text-gray-300">
-                  <strong>Industry:</strong> {company.industry}
-                </p>
-                <p className="text-gray-700 dark:text-gray-300">
-                  <strong>Reviews:</strong> {company.reviews}
-                </p>
-                <p className="text-gray-700 dark:text-gray-300">
-                  <strong>Salaries:</strong> {company.salaries}
-                </p>
-                <p className="text-gray-700 dark:text-gray-300">
-                  <strong>Jobs:</strong> {company.jobs}
-                </p>
-                <p className="mt-2 text-gray-700 dark:text-gray-300">
-                  {company.description}
-                </p>
-              </Card>
-            </Card>
-          </AccordionItem>
+              </Tooltip>
+            </div>
+          </Card>
         ))}
-      </Accordion>
+      </div>
     </div>
   );
 };
