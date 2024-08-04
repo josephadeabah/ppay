@@ -168,11 +168,11 @@ const CompaniesPage: React.FC = () => {
       <h1 className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">
         Companies
       </h1>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
         {companies.map((company, index) => (
           <Card
             key={index}
-            className="flex h-auto flex-col justify-between bg-white p-4 dark:bg-gray-800 dark:text-gray-100"
+            className="flex h-auto flex-col justify-between bg-white p-4 transition-shadow duration-300 hover:shadow-xl dark:bg-gray-800 dark:text-gray-100"
           >
             <div className="flex items-center justify-between">
               <img
