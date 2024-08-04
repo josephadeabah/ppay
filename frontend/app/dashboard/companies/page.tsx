@@ -1,6 +1,7 @@
 "use client";
+import PaginationComponent from "@/components/pagination/pagination";
 import { Card, Tooltip } from "@nextui-org/react";
-import React from "react";
+import React, { useState } from "react";
 
 interface Company {
   name: string;
@@ -163,52 +164,74 @@ const companies: Company[] = [
 ];
 
 const CompaniesPage: React.FC = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const companiesPerPage = 6;
+  const totalPages = Math.ceil(companies.length / companiesPerPage);
+
+  const indexOfLastCompany = currentPage * companiesPerPage;
+  const indexOfFirstCompany = indexOfLastCompany - companiesPerPage;
+  const currentCompanies = companies.slice(
+    indexOfFirstCompany,
+    indexOfLastCompany,
+  );
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
   return (
     <div className="mx-auto p-2">
-      <h1 className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">
-        Companies
-      </h1>
-      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
-        {companies.map((company, index) => (
-          <Card
-            key={index}
-            className="flex h-auto flex-col justify-between bg-white p-4 transition-shadow duration-300 hover:shadow-xl dark:bg-gray-800 dark:text-gray-100"
-          >
-            <div className="flex items-center justify-between">
-              <img
-                src={company.logo}
-                alt={`${company.name} logo`}
-                width={40}
-                height={40}
-                className="rounded-full"
-              />
-              <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                {company.name}
-              </h2>
-            </div>
-            <div className="mt-2 text-gray-700 dark:text-gray-300">
-              <p>
-                <strong>Location:</strong> {company.location}
-              </p>
-              <p>
-                <strong>Size:</strong> {company.size}
-              </p>
-              <p>
-                <strong>Industry:</strong> {company.industry}
-              </p>
-              <Tooltip
-                content={company.description}
-                placement="bottom"
-                className="w-full max-w-xl bg-gray-700 p-5 text-gray-100 dark:bg-slate-800 dark:text-gray-50"
-              >
-                <p className="overflow-hidden text-ellipsis whitespace-nowrap">
-                  <strong>Description:</strong> {company.description}
+      <div className="h-screen">
+        <h1 className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">
+          Companies
+        </h1>
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          {currentCompanies.map((company, index) => (
+            <Card
+              key={index}
+              className="flex h-full flex-col justify-between bg-white p-4 transition-shadow duration-300 hover:shadow-xl dark:bg-gray-800 dark:text-gray-100"
+            >
+              <div className="flex items-center justify-between">
+                <img
+                  src={company.logo}
+                  alt={`${company.name} logo`}
+                  width={40}
+                  height={40}
+                  className="rounded-full"
+                />
+                <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                  {company.name}
+                </h2>
+              </div>
+              <div className="mt-2 text-gray-700 dark:text-gray-300">
+                <p>
+                  <strong>Location:</strong> {company.location}
                 </p>
-              </Tooltip>
-            </div>
-          </Card>
-        ))}
+                <p>
+                  <strong>Size:</strong> {company.size}
+                </p>
+                <p>
+                  <strong>Industry:</strong> {company.industry}
+                </p>
+                <Tooltip
+                  content={company.description}
+                  placement="bottom"
+                  className="w-full max-w-xl bg-gray-700 p-5 text-gray-100 dark:bg-slate-800 dark:text-gray-50"
+                >
+                  <p className="overflow-hidden text-ellipsis whitespace-nowrap">
+                    <strong>Description:</strong> {company.description}
+                  </p>
+                </Tooltip>
+              </div>
+            </Card>
+          ))}
+        </div>
       </div>
+      <PaginationComponent
+        initialPage={currentPage}
+        total={totalPages}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 };
