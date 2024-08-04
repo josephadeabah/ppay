@@ -264,7 +264,9 @@ const CompaniesPage: React.FC = () => {
         {currentCompanies.map((company, index) => (
           <Card
             key={index}
-            className={twMerge("mx-auto w-full max-w-xl")}
+            className={twMerge(
+              "mx-auto w-full max-w-xl transition-shadow duration-300 hover:shadow-md",
+            )}
             isHoverable
           >
             <CardHeader>
