@@ -218,92 +218,104 @@ const CompaniesPage: React.FC = () => {
 
   return (
     <div className="mx-auto px-4 py-8">
-      <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        <DropdownSelect
-          placeholder="Location"
-          selectedValue={locationFilter}
-          options={[
-            { label: "All", value: "" },
-            { label: "New York, USA", value: "New York, USA" },
-            { label: "San Francisco, USA", value: "San Francisco, USA" },
-            { label: "London, UK", value: "London, UK" },
-            { label: "Berlin, Germany", value: "Berlin, Germany" },
-            { label: "Paris, France", value: "Paris, France" },
-            { label: "Sydney, Australia", value: "Sydney, Australia" },
-            { label: "Tokyo, Japan", value: "Tokyo, Japan" },
-            { label: "Accra, Ghana", value: "Accra, Ghana" },
-          ]}
-          onChange={handleLocationChange}
-        />
-        <DropdownSelect
-          placeholder="Industry"
-          selectedValue={industryFilter}
-          options={[
-            { label: "All", value: "" },
-            { label: "Technology", value: "Technology" },
-            { label: "Travel & Tourism", value: "Travel & Tourism" },
-            { label: "Communications", value: "Communications" },
-            { label: "Telecommunications", value: "Telecommunications" },
-            { label: "Healthcare", value: "Healthcare" },
-          ]}
-          onChange={handleIndustryChange}
-        />
-        <div className="flex flex-col">
-          <SliderComponent
-            id="companySize"
-            minValue={0}
-            maxValue={10000}
-            step={10}
-            value={sizeFilter}
-            onChange={handleSizeChange}
-            label={`Size (${sizeFilter[0]})`}
-          />
-        </div>
-      </div>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-        {currentCompanies.map((company, index) => (
-          <Card
-            key={index}
-            className={twMerge(
-              "mx-auto w-full max-w-xl transition-shadow duration-300 hover:shadow-md",
-            )}
-            isHoverable
-          >
-            <CardHeader>
-              <div className="flex items-center">
-                <img
-                  src={company.logo}
-                  alt={company.name}
-                  className="mr-4 h-12 w-12"
+      <div className="h-screen">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
+          <div className="lg:col-span-2">
+            <div className="mb-8 space-y-4">
+              <DropdownSelect
+                placeholder="Location"
+                selectedValue={locationFilter}
+                options={[
+                  { label: "All", value: "" },
+                  { label: "New York, USA", value: "New York, USA" },
+                  { label: "San Francisco, USA", value: "San Francisco, USA" },
+                  { label: "London, UK", value: "London, UK" },
+                  { label: "Berlin, Germany", value: "Berlin, Germany" },
+                  { label: "Paris, France", value: "Paris, France" },
+                  { label: "Sydney, Australia", value: "Sydney, Australia" },
+                  { label: "Tokyo, Japan", value: "Tokyo, Japan" },
+                  { label: "Accra, Ghana", value: "Accra, Ghana" },
+                ]}
+                onChange={handleLocationChange}
+              />
+              <DropdownSelect
+                placeholder="Industry"
+                selectedValue={industryFilter}
+                options={[
+                  { label: "All", value: "" },
+                  { label: "Technology", value: "Technology" },
+                  { label: "Travel & Tourism", value: "Travel & Tourism" },
+                  { label: "Communications", value: "Communications" },
+                  { label: "Telecommunications", value: "Telecommunications" },
+                  { label: "Healthcare", value: "Healthcare" },
+                ]}
+                onChange={handleIndustryChange}
+              />
+              <div className="flex flex-col">
+                <SliderComponent
+                  id="companySize"
+                  minValue={0}
+                  maxValue={10000}
+                  step={10}
+                  value={sizeFilter}
+                  onChange={handleSizeChange}
+                  label="Size"
                 />
-                <div>
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                    {company.name}
-                  </h4>
-                  <p className="text-gray-500">{company.location}</p>
-                </div>
               </div>
-            </CardHeader>
-            <CardBody>
-              <Tooltip
-                content={company.description}
-                placement="bottom"
-                className="w-full max-w-md bg-gray-700 p-5 text-gray-100 dark:bg-slate-800 dark:text-gray-50"
-              >
-                <p className="overflow-hidden text-ellipsis whitespace-nowrap text-gray-500 dark:text-gray-100">
-                  <strong>Description:</strong> {company.description}
-                </p>
-              </Tooltip>
-            </CardBody>
-            <CardFooter className="flex items-center justify-between">
-              <div>
-                <p className="text-gray-500">Reviews: {company.reviews}</p>
-                <p className="text-gray-500">Salaries: {company.salaries}</p>
-                <p className="text-gray-500">Jobs: {company.jobs}</p>
-              </div>
-            </CardFooter>
-          </Card>
-        ))}
+            </div>
+          </div>
+          <div className="lg:col-span-9">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+              {currentCompanies.map((company, index) => (
+                <Card
+                  key={index}
+                  className={twMerge(
+                    "mx-auto w-full max-w-xl transition-shadow duration-300 hover:shadow-md",
+                  )}
+                  isHoverable
+                >
+                  <CardHeader>
+                    <div className="flex items-center">
+                      <img
+                        src={company.logo}
+                        alt={company.name}
+                        className="mr-4 h-12 w-12"
+                      />
+                      <div>
+                        <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                          {company.name}
+                        </h4>
+                        <p className="text-gray-500">{company.location}</p>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardBody>
+                    <Tooltip
+                      content={company.description}
+                      placement="bottom"
+                      className="w-full max-w-md bg-gray-700 p-5 text-gray-100 dark:bg-slate-800 dark:text-gray-50"
+                    >
+                      <p className="overflow-hidden text-ellipsis whitespace-nowrap text-gray-500 dark:text-gray-100">
+                        <strong>Description:</strong> {company.description}
+                      </p>
+                    </Tooltip>
+                  </CardBody>
+                  <CardFooter className="flex items-center justify-between">
+                    <div>
+                      <p className="text-gray-500">
+                        Reviews: {company.reviews}
+                      </p>
+                      <p className="text-gray-500">
+                        Salaries: {company.salaries}
+                      </p>
+                      <p className="text-gray-500">Jobs: {company.jobs}</p>
+                    </div>
+                  </CardFooter>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
       <div className="mt-8 flex justify-center">
         <PaginationComponent
