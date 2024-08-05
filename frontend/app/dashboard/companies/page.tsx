@@ -293,7 +293,7 @@ const CompaniesPage: React.FC = () => {
                     <Tooltip
                       content={company.description}
                       placement="bottom"
-                      className="w-full max-w-md bg-gray-700 p-5 text-gray-100 dark:bg-slate-800 dark:text-gray-50"
+                      className="w-full max-w-md bg-slate-100 p-5 text-gray-900 dark:bg-slate-800 dark:text-gray-50"
                     >
                       <p className="overflow-hidden text-ellipsis whitespace-nowrap text-gray-500 dark:text-gray-100">
                         <strong>Description:</strong> {company.description}
