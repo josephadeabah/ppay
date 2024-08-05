@@ -10,6 +10,7 @@ import {
   Tooltip,
 } from "@nextui-org/react";
 import React, { useState } from "react";
+import { HiOutlineSearch } from "react-icons/hi";
 import { twMerge } from "tailwind-merge";
 import { companies } from "./data";
 
@@ -21,6 +22,9 @@ const CompaniesPage: React.FC = () => {
   const [locationFilter, setLocationFilter] = useState("");
   const [industryFilter, setIndustryFilter] = useState("");
   const [sizeFilter, setSizeFilter] = useState<number[]>([0, 10000]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [jobFunctionFilter, setJobFunctionFilter] = useState("");
+  const [ratingFilter, setRatingFilter] = useState("");
 
   const handleLocationChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
@@ -40,6 +44,10 @@ const CompaniesPage: React.FC = () => {
     }
   };
 
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(event.target.value);
+  };
+
   const filteredCompanies = companies.filter((company) => {
     const size = parseInt(company.size.split(" ")[0].replace(",", ""));
     const isLocationMatch =
@@ -47,7 +55,11 @@ const CompaniesPage: React.FC = () => {
     const isIndustryMatch =
       industryFilter === "" || company.industry === industryFilter;
     const isSizeMatch = size >= sizeFilter[0] && size <= sizeFilter[1];
-    return isLocationMatch && isIndustryMatch && isSizeMatch;
+    const isSearchMatch =
+      searchQuery === "" ||
+      company.name.toLowerCase().includes(searchQuery.toLowerCase());
+
+    return isLocationMatch && isIndustryMatch && isSizeMatch && isSearchMatch;
   });
 
   const indexOfLastCompany = currentPage * companiesPerPage;
@@ -61,8 +73,15 @@ const CompaniesPage: React.FC = () => {
     <div className="mx-auto px-4 py-8">
       <div className="min-h-screen">
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-3">
             <div className="mb-8 space-y-4">
+              <input
+                type="text"
+                placeholder="Search companies"
+                value={searchQuery}
+                onChange={handleSearchChange}
+                className="block w-full border border-gray-300 p-2.5 text-sm text-gray-900 focus:border-primary-600 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
+              />
               <DropdownSelect
                 placeholder="Location"
                 selectedValue={locationFilter}
@@ -92,6 +111,24 @@ const CompaniesPage: React.FC = () => {
                 ]}
                 onChange={handleIndustryChange}
               />
+              <DropdownSelect
+                placeholder="Job Function"
+                selectedValue={jobFunctionFilter}
+                options={[
+                  { label: "All", value: "" },
+                  // Add actual job functions here when available
+                ]}
+                onChange={(e) => setJobFunctionFilter(e.target.value)}
+              />
+              <DropdownSelect
+                placeholder="Company Rating"
+                selectedValue={ratingFilter}
+                options={[
+                  { label: "All", value: "" },
+                  // Add actual ratings here when available
+                ]}
+                onChange={(e) => setRatingFilter(e.target.value)}
+              />
               <div className="flex flex-col">
                 <SliderComponent
                   id="companySize"
@@ -102,6 +139,60 @@ const CompaniesPage: React.FC = () => {
                   onChange={handleSizeChange}
                   label="Size"
                 />
+              </div>
+
+              <div className="mb-8">
+                <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
+                  Explore Similar Searches
+                </h3>
+                <ul className="space-y-2">
+                  <li>
+                    <a
+                      href="."
+                      className="flex items-center space-x-2 text-blue-600 hover:text-gray-500 hover:no-underline dark:text-blue-400"
+                    >
+                      <HiOutlineSearch className="h-5 w-5 text-gray-500" />
+                      <span>Technology Companies</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="."
+                      className="flex items-center space-x-2 text-blue-600 hover:text-gray-500 hover:no-underline dark:text-blue-400"
+                    >
+                      <HiOutlineSearch className="h-5 w-5 text-gray-500" />
+                      <span>Healthcare Startups</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="."
+                      className="flex items-center space-x-2 text-blue-600 hover:text-gray-500 hover:no-underline dark:text-blue-400"
+                    >
+                      <HiOutlineSearch className="h-5 w-5 text-gray-500" />
+                      <span>Remote Jobs</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="."
+                      className="flex items-center space-x-2 text-blue-600 hover:text-gray-500 hover:no-underline dark:text-blue-400"
+                    >
+                      <HiOutlineSearch className="h-5 w-5 text-gray-500" />
+                      <span>Travel Companies</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="."
+                      className="flex items-center space-x-2 text-blue-600 hover:text-gray-500 hover:no-underline dark:text-blue-400"
+                    >
+                      <HiOutlineSearch className="h-5 w-5 text-gray-500" />
+                      <span>Travel Startups</span>
+                    </a>
+                  </li>
+                  {/* Add more similar searches here */}
+                </ul>
               </div>
             </div>
           </div>
