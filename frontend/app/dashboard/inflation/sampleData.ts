@@ -4,13 +4,15 @@ interface CategoryData {
   categories: { category: string; inflationRate: string }[];
 }
 
-interface InflationData {
+export interface InflationDataType {
   historical: Record<string, any>;
   current: Record<string, any>;
   regional: any;
 }
 
-export const inflationData: InflationData = {
+export type Region = "NorthAmerica" | "Europe" | "Asia" | "Africa"; // Define your specific regions here
+
+export const inflationData: InflationDataType = {
   historical: {
     NorthAmerica: {
       labels: ["Jan 2023", "Feb 2023", "Mar 2023", "Apr 2023", "May 2023"],
