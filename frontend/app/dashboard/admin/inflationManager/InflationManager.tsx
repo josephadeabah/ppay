@@ -1,14 +1,143 @@
 "use client";
 
 import { useState } from "react";
-import {
-  InflationDataType,
-  Region,
-  inflationData,
-} from "../../inflation/sampleData";
+
+type InflationData = {
+  historical: {
+    [key in Region]: {
+      labels: string[];
+      datasets: {
+        label: string;
+        data: number[];
+        borderColor: string;
+        backgroundColor: string;
+        fill: boolean;
+      }[];
+    };
+  };
+  current: {
+    [key in Region]: {
+      labels: string[];
+      datasets: {
+        label: string;
+        data: number[];
+        borderColor: string;
+        backgroundColor: string;
+        fill: boolean;
+      }[];
+    };
+  };
+  regional: any;
+};
+
+const inflationData: InflationData = {
+  historical: {
+    NorthAmerica: {
+      labels: [],
+      datasets: [
+        {
+          label: "",
+          data: [],
+          borderColor: "",
+          backgroundColor: "",
+          fill: false,
+        },
+      ],
+    },
+    Europe: {
+      labels: [],
+      datasets: [
+        {
+          label: "",
+          data: [],
+          borderColor: "",
+          backgroundColor: "",
+          fill: false,
+        },
+      ],
+    },
+    Asia: {
+      labels: [],
+      datasets: [
+        {
+          label: "",
+          data: [],
+          borderColor: "",
+          backgroundColor: "",
+          fill: false,
+        },
+      ],
+    },
+    Africa: {
+      labels: [],
+      datasets: [
+        {
+          label: "",
+          data: [],
+          borderColor: "",
+          backgroundColor: "",
+          fill: false,
+        },
+      ],
+    },
+  },
+  current: {
+    NorthAmerica: {
+      labels: [],
+      datasets: [
+        {
+          label: "",
+          data: [],
+          borderColor: "",
+          backgroundColor: "",
+          fill: false,
+        },
+      ],
+    },
+    Europe: {
+      labels: [],
+      datasets: [
+        {
+          label: "",
+          data: [],
+          borderColor: "",
+          backgroundColor: "",
+          fill: false,
+        },
+      ],
+    },
+    Asia: {
+      labels: [],
+      datasets: [
+        {
+          label: "",
+          data: [],
+          borderColor: "",
+          backgroundColor: "",
+          fill: false,
+        },
+      ],
+    },
+    Africa: {
+      labels: [],
+      datasets: [
+        {
+          label: "",
+          data: [],
+          borderColor: "",
+          backgroundColor: "",
+          fill: false,
+        },
+      ],
+    },
+  },
+  regional: {},
+};
+
+type Region = "NorthAmerica" | "Europe" | "Asia" | "Africa"; // Define your specific regions here
 
 const InflationManager = () => {
-  const [data, setData] = useState<InflationDataType>(inflationData);
+  const [data, setData] = useState<InflationData>(inflationData);
   const [selectedRegion, setSelectedRegion] = useState<Region>("NorthAmerica");
   const [newData, setNewData] = useState({ month: "", rate: "" });
 
@@ -69,26 +198,24 @@ const InflationManager = () => {
             Historical Data for {selectedRegion}
           </h2>
           <div>
-            {data.historical[selectedRegion].labels.map(
-              (label: string, index: number) => (
-                <div key={`${selectedRegion}-${label}`} className="mb-4">
-                  <label
-                    htmlFor="monthInput"
-                    className="mb-1 block text-gray-600 dark:text-gray-400"
-                  >
-                    {label}
-                  </label>
-                  <input
-                    type="number"
-                    value={
-                      data.historical[selectedRegion].datasets[0].data[index]
-                    }
-                    onChange={(e) => handleDataChange(e, index)}
-                    className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-600 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                  />
-                </div>
-              ),
-            )}
+            {data.historical[selectedRegion].labels.map((label, index) => (
+              <div key={`${selectedRegion}-${label}`} className="mb-4">
+                <label
+                  htmlFor="monthInput"
+                  className="mb-1 block text-gray-600 dark:text-gray-400"
+                >
+                  {label}
+                </label>
+                <input
+                  type="number"
+                  value={
+                    data.historical[selectedRegion].datasets[0].data[index]
+                  }
+                  onChange={(e) => handleDataChange(e, index)}
+                  className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-600 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
+                />
+              </div>
+            ))}
           </div>
         </div>
         <div className="mb-6">
