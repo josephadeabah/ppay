@@ -1,5 +1,6 @@
 "use client";
 
+import PaginationComponent from "@/components/pagination/pagination";
 import { useState } from "react";
 import { HiOutlineBriefcase } from "react-icons/hi"; // Import the icon
 
@@ -52,9 +53,127 @@ const users = [
     avatar:
       "https://img.clerk.com/eyJ0eXBlIjoiZGVmYXVsdCIsImlpZCI6Imluc18yUFhCM2ZKczBEd2NDVnRleGhIVElNNmxkWG4iLCJyaWQiOiJ1c2VyXzJqWTA4empFUU5XS0oyNXVNOFU5elB3RnhOTyJ9",
   },
+  {
+    id: 4,
+    name: "**** *****",
+    role: "Software Engineer",
+    status: "Online",
+    salaryRole: "Full-time",
+    experience: "5 years",
+    country: "USA",
+    industry: "Technology",
+    category: "Employer",
+    company: "TechCorp",
+    actualSalary: "$100,000",
+    jobWebsite: "https://techcorp.jobs",
+    avatar:
+      "https://img.clerk.com/eyJ0eXBlIjoiZGVmYXVsdCIsImlpZCI6Imluc18yUFhCM2ZKczBEd2NDVnRleGhIVElNNmxkWG4iLCJyaWQiOiJ1c2VyXzJqWTA4empFUU5XS0oyNXVNOFU5elB3RnhOTyJ9",
+  },
+  {
+    id: 5,
+    name: "**** *****",
+    role: "UX Designer",
+    status: "Offline",
+    salaryRole: "Part-time",
+    experience: "3 years",
+    country: "UK",
+    industry: "Design",
+    category: "Employee",
+    company: "DesignCo",
+    actualSalary: "$70,000",
+    jobWebsite: "https://designco.jobs",
+    avatar:
+      "https://img.clerk.com/eyJ0eXBlIjoiZGVmYXVsdCIsImlpZCI6Imluc18yUFhCM2ZKczBEd2NDVnRleGhIVElNNmxkWG4iLCJyaWQiOiJ1c2VyXzJqWTA4empFUU5XS0oyNXVNOFU5elB3RnhOTyJ9",
+  },
+  {
+    id: 6,
+    name: "**** *****",
+    role: "Web Developer",
+    status: "Online",
+    salaryRole: "Part-time",
+    experience: "1 year",
+    country: "UK",
+    industry: "Technology",
+    category: "Internship",
+    company: "DesignCo",
+    actualSalary: "$70,000",
+    jobWebsite: "https://designco.jobs",
+    avatar:
+      "https://img.clerk.com/eyJ0eXBlIjoiZGVmYXVsdCIsImlpZCI6Imluc18yUFhCM2ZKczBEd2NDVnRleGhIVElNNmxkWG4iLCJyaWQiOiJ1c2VyXzJqWTA4empFUU5XS0oyNXVNOFU5elB3RnhOTyJ9",
+  },
+  {
+    id: 7,
+    name: "**** *****",
+    role: "Software Engineer",
+    status: "Online",
+    salaryRole: "Full-time",
+    experience: "5 years",
+    country: "USA",
+    industry: "Technology",
+    category: "Employer",
+    company: "TechCorp",
+    actualSalary: "$100,000",
+    jobWebsite: "https://techcorp.jobs",
+    avatar:
+      "https://img.clerk.com/eyJ0eXBlIjoiZGVmYXVsdCIsImlpZCI6Imluc18yUFhCM2ZKczBEd2NDVnRleGhIVElNNmxkWG4iLCJyaWQiOiJ1c2VyXzJqWTA4empFUU5XS0oyNXVNOFU5elB3RnhOTyJ9",
+  },
+  {
+    id: 8,
+    name: "**** *****",
+    role: "UX Designer",
+    status: "Offline",
+    salaryRole: "Part-time",
+    experience: "3 years",
+    country: "UK",
+    industry: "Design",
+    category: "Employee",
+    company: "DesignCo",
+    actualSalary: "$70,000",
+    jobWebsite: "https://designco.jobs",
+    avatar:
+      "https://img.clerk.com/eyJ0eXBlIjoiZGVmYXVsdCIsImlpZCI6Imluc18yUFhCM2ZKczBEd2NDVnRleGhIVElNNmxkWG4iLCJyaWQiOiJ1c2VyXzJqWTA4empFUU5XS0oyNXVNOFU5elB3RnhOTyJ9",
+  },
+  {
+    id: 9,
+    name: "**** *****",
+    role: "Web Developer",
+    status: "Online",
+    salaryRole: "Part-time",
+    experience: "1 year",
+    country: "UK",
+    industry: "Technology",
+    category: "Internship",
+    company: "DesignCo",
+    actualSalary: "$70,000",
+    jobWebsite: "https://designco.jobs",
+    avatar:
+      "https://img.clerk.com/eyJ0eXBlIjoiZGVmYXVsdCIsImlpZCI6Imluc18yUFhCM2ZKczBEd2NDVnRleGhIVElNNmxkWG4iLCJyaWQiOiJ1c2VyXzJqWTA4empFUU5XS0oyNXVNOFU5elB3RnhOTyJ9",
+  },
+  {
+    id: 10,
+    name: "**** *****",
+    role: "Software Engineer",
+    status: "Online",
+    salaryRole: "Full-time",
+    experience: "5 years",
+    country: "USA",
+    industry: "Technology",
+    category: "Employer",
+    company: "TechCorp",
+    actualSalary: "$100,000",
+    jobWebsite: "https://techcorp.jobs",
+    avatar:
+      "https://img.clerk.com/eyJ0eXBlIjoiZGVmYXVsdCIsImlpZCI6Imluc18yUFhCM2ZKczBEd2NDVnRleGhIVElNNmxkWG4iLCJyaWQiOiJ1c2VyXzJqWTA4empFUU5XS0oyNXVNOFU5elB3RnhOTyJ9",
+  },
 ];
 
 export default function UsersPage() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const usersPerPage = 9;
+  const totalPages = Math.ceil(users.length / usersPerPage);
+  const indexOfLastCompany = currentPage * usersPerPage;
+  const indexOfFirstCompany = indexOfLastCompany - usersPerPage;
+  const currentUsers = users.slice(indexOfFirstCompany, indexOfLastCompany);
   const [expandedRow, setExpandedRow] = useState<number | null>(null);
 
   const toggleRow = (id: number) => {
@@ -183,7 +302,7 @@ export default function UsersPage() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 text-gray-600 dark:divide-gray-600 dark:text-gray-200">
-                  {users.map((user) => (
+                  {currentUsers.map((user) => (
                     <>
                       <tr
                         key={user.id}
@@ -360,6 +479,13 @@ export default function UsersPage() {
           </div>
         </div>
       </section>
+      <div className="mt-8 flex justify-center">
+        <PaginationComponent
+          initialPage={currentPage}
+          total={totalPages}
+          onPageChange={setCurrentPage}
+        />
+      </div>
     </div>
   );
 }

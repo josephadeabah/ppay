@@ -1,4 +1,16 @@
-export const inflationData = {
+interface CategoryData {
+  country: string;
+  overallInflationRate: string;
+  categories: { category: string; inflationRate: string }[];
+}
+
+interface InflationData {
+  historical: Record<string, any>;
+  current: Record<string, any>;
+  regional: any;
+}
+
+export const inflationData: InflationData = {
   historical: {
     NorthAmerica: {
       labels: ["Jan 2023", "Feb 2023", "Mar 2023", "Apr 2023", "May 2023"],
@@ -256,13 +268,7 @@ function generateRandomInflationRate(min: number, max: number) {
 }
 
 // Updated categoryData with random inflation rates
-export const categoryData: {
-  [key: string]: {
-    country: string;
-    overallInflationRate: string; // Added this line
-    categories: { category: string; inflationRate: string }[];
-  }[];
-} = {
+export const categoryData: Record<string, CategoryData[]> = {
   NorthAmerica: [
     {
       country: "USA",
@@ -343,12 +349,12 @@ export const categoryData: {
       ],
     },
     {
-      country: "Brazil",
-      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
+      country: "Cuba",
+      overallInflationRate: generateRandomInflationRate(2.2, 3.5),
       categories: [
         {
           category: "Food",
-          inflationRate: generateRandomInflationRate(2.0, 3.0),
+          inflationRate: generateRandomInflationRate(4.0, 3.0),
         },
         {
           category: "Housing",
@@ -356,7 +362,7 @@ export const categoryData: {
         },
         {
           category: "Transportation",
-          inflationRate: generateRandomInflationRate(2.0, 3.0),
+          inflationRate: generateRandomInflationRate(3.0, 3.0),
         },
         {
           category: "Healthcare",
@@ -364,33 +370,7 @@ export const categoryData: {
         },
         {
           category: "Education",
-          inflationRate: generateRandomInflationRate(2.0, 3.0),
-        },
-      ],
-    },
-    {
-      country: "Argentina",
-      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
-      categories: [
-        {
-          category: "Food",
-          inflationRate: generateRandomInflationRate(2.0, 3.0),
-        },
-        {
-          category: "Housing",
-          inflationRate: generateRandomInflationRate(2.5, 3.5),
-        },
-        {
-          category: "Transportation",
-          inflationRate: generateRandomInflationRate(2.0, 3.0),
-        },
-        {
-          category: "Healthcare",
-          inflationRate: generateRandomInflationRate(2.5, 3.5),
-        },
-        {
-          category: "Education",
-          inflationRate: generateRandomInflationRate(2.0, 3.0),
+          inflationRate: generateRandomInflationRate(-2.6, 3.0),
         },
       ],
     },
@@ -843,6 +823,32 @@ export const categoryData: {
         {
           category: "Transportation",
           inflationRate: generateRandomInflationRate(3.0, 4.0),
+        },
+      ],
+    },
+    {
+      country: "Argentina",
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
+      categories: [
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
         },
       ],
     },

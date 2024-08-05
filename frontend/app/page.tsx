@@ -146,18 +146,7 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="gap-y-6 py-8 *:text-sm *:text-gray-500 lg:flex-row lg:justify-between">
-            <p>
-              &copy; 2024 Paysight.live. A product of{" "}
-              <a
-                href="https://www.pnpmmedia.com"
-                target="_blank"
-                rel="noreferrer"
-                className="text-blue-600 hover:*:text-gray-950 dark:hover:*:text-gray-50"
-              >
-                PNPM Media Digital.
-              </a>{" "}
-              &nbsp;All Rights Reserved.
-            </p>
+            <p>&copy; 2024 Paysight.live &nbsp;All Rights Reserved.</p>
             <div className="flex items-center gap-x-6 *:transition *:duration-[250ms] *:ease-in-out hover:*:text-gray-950 dark:hover:*:text-gray-50">
               <a href=".">Privacy</a>
               <a href=".">Terms</a>

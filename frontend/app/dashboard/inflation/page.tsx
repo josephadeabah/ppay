@@ -1,5 +1,6 @@
 "use client";
 import DropdownSelect from "@/components/dropdown/DropdownSelect"; // Ensure this path is correct
+import PaginationComponent from "@/components/pagination/pagination";
 import {
   BarElement,
   CategoryScale,
@@ -30,18 +31,6 @@ ChartJS.register(
   Legend,
 );
 
-interface CategoryData {
-  country: string;
-  overallInflationRate: string;
-  categories: { category: string; inflationRate: string }[];
-}
-
-interface InflationData {
-  historical: Record<string, any>;
-  current: Record<string, any>;
-  regional: any;
-}
-
 const InflationPage: React.FC = () => {
   type Region =
     | "Europe"
@@ -53,6 +42,8 @@ const InflationPage: React.FC = () => {
     | "Antarctica";
 
   const [selectedRegion, setSelectedRegion] = useState<Region>("NorthAmerica");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 3;
 
   const getChartOptions = (title: string) => ({
     responsive: true,
@@ -115,6 +106,12 @@ const InflationPage: React.FC = () => {
     ],
   };
 
+  // Calculate paginated data
+  const paginatedData = categoryData[selectedRegion].slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage,
+  );
+
   return (
     <div className="mx-auto px-4">
       <div className="mb-6 mt-2 flex items-center gap-2 text-xl font-bold text-gray-700 dark:text-gray-50">
@@ -135,6 +132,7 @@ const InflationPage: React.FC = () => {
           selectedValue={selectedRegion}
           onChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
             setSelectedRegion(event.target.value as Region);
+            setCurrentPage(1); // Reset to the first page when the region changes
           }}
           placeholder="Select a region"
         />
@@ -177,7 +175,7 @@ const InflationPage: React.FC = () => {
         Category-wise Inflation Rates
       </h2>
 
-      {categoryData[selectedRegion].map((countryData) => (
+      {paginatedData.map((countryData) => (
         <div key={countryData.country} className="mb-6">
           <h3 className="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-50">
             {countryData.country} - Overall Inflation Rate:{" "}
@@ -204,6 +202,13 @@ const InflationPage: React.FC = () => {
           </Table>
         </div>
       ))}
+      <div className="mt-8 flex justify-center">
+        <PaginationComponent
+          total={Math.ceil(categoryData[selectedRegion].length / itemsPerPage)}
+          initialPage={currentPage}
+          onPageChange={(page) => setCurrentPage(page)}
+        />
+      </div>
     </div>
   );
 };
