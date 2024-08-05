@@ -506,6 +506,500 @@ export const categoryData: Record<string, CategoryData[]> = {
         },
       ],
     },
+    {
+      country: "Portugal",
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
+      categories: [
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+      ],
+    },
+    {
+      country: "Switzerland",
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
+      categories: [
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+      ],
+    },
+    {
+      country: "Netherlands",
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
+      categories: [
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+      ],
+    },
+    {
+      country: "Denmark",
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
+      categories: [
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+      ],
+    },
+    {
+      country: "Finland",
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
+      categories: [
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+      ],
+    },
+    {
+      country: "Iceland",
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
+      categories: [
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+      ],
+    },
+    {
+      country: "Norway",
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
+      categories: [
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+      ],
+    },
+    {
+      country: "Sweden",
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
+      categories: [
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+      ],
+    },
+    {
+      country: "Poland",
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
+      categories: [
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+      ],
+    },
+    {
+      country: "Russia",
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
+      categories: [
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+      ],
+    },
+    {
+      country: "Lithuania",
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
+      categories: [
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+      ],
+    },
+    {
+      country: "Latvia",
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
+      categories: [
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+      ],
+    },
+    {
+      country: "Bulgaria",
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
+      categories: [
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+      ],
+    },
+    {
+      country: "Serbia",
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
+      categories: [
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+      ],
+    },
+    {
+      country: "Croatia",
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
+      categories: [
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+      ],
+    },
+    {
+      country: "Chech Republic",
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
+      categories: [
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+      ],
+    },
+    {
+      country: "Hungary",
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
+      categories: [
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+      ],
+    },
+    {
+      country: "Belgium",
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
+      categories: [
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+      ],
+    },
+    {
+      country: "Montenegro",
+      overallInflationRate: generateRandomInflationRate(2.0, 3.5),
+      categories: [
+        {
+          category: "Food",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Housing",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Transportation",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+        {
+          category: "Healthcare",
+          inflationRate: generateRandomInflationRate(2.5, 3.5),
+        },
+        {
+          category: "Education",
+          inflationRate: generateRandomInflationRate(2.0, 3.0),
+        },
+      ],
+    },
   ],
   Asia: [
     {
