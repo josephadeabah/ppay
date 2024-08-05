@@ -268,7 +268,13 @@ function generateRandomInflationRate(min: number, max: number) {
 }
 
 // Updated categoryData with random inflation rates
-export const categoryData: Record<string, CategoryData[]> = {
+export const categoryData: {
+  [key: string]: {
+    country: string;
+    overallInflationRate: string; // Added this line
+    categories: { category: string; inflationRate: string }[];
+  }[];
+} = {
   NorthAmerica: [
     {
       country: "USA",
