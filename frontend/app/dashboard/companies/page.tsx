@@ -23,7 +23,6 @@ const CompaniesPage: React.FC = () => {
   const [industryFilter, setIndustryFilter] = useState("");
   const [sizeFilter, setSizeFilter] = useState<number[]>([0, 10000]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [jobFunctionFilter, setJobFunctionFilter] = useState("");
   const [ratingFilter, setRatingFilter] = useState("");
 
   const handleLocationChange = (
@@ -112,15 +111,6 @@ const CompaniesPage: React.FC = () => {
                 onChange={handleIndustryChange}
               />
               <DropdownSelect
-                placeholder="Job Function"
-                selectedValue={jobFunctionFilter}
-                options={[
-                  { label: "All", value: "" },
-                  // Add actual job functions here when available
-                ]}
-                onChange={(e) => setJobFunctionFilter(e.target.value)}
-              />
-              <DropdownSelect
                 placeholder="Company Rating"
                 selectedValue={ratingFilter}
                 options={[
@@ -149,46 +139,55 @@ const CompaniesPage: React.FC = () => {
                   <li>
                     <a
                       href="."
-                      className="flex items-center space-x-2 text-blue-600 hover:text-gray-500 hover:no-underline dark:text-blue-400"
+                      className="flex items-center space-x-2 text-sm text-blue-600 hover:text-gray-500 hover:no-underline dark:text-blue-400"
                     >
                       <HiOutlineSearch className="h-5 w-5 text-gray-500" />
-                      <span>Technology Companies</span>
+                      <span>Best Companies by Salaries</span>
                     </a>
                   </li>
                   <li>
                     <a
                       href="."
-                      className="flex items-center space-x-2 text-blue-600 hover:text-gray-500 hover:no-underline dark:text-blue-400"
+                      className="flex items-center space-x-2 text-sm text-blue-600 hover:text-gray-500 hover:no-underline dark:text-blue-400"
                     >
                       <HiOutlineSearch className="h-5 w-5 text-gray-500" />
-                      <span>Healthcare Startups</span>
+                      <span>Best Companies by Employee Retention</span>
                     </a>
                   </li>
                   <li>
                     <a
                       href="."
-                      className="flex items-center space-x-2 text-blue-600 hover:text-gray-500 hover:no-underline dark:text-blue-400"
+                      className="flex items-center space-x-2 text-sm text-blue-600 hover:text-gray-500 hover:no-underline dark:text-blue-400"
                     >
                       <HiOutlineSearch className="h-5 w-5 text-gray-500" />
-                      <span>Remote Jobs</span>
+                      <span>Best Companies by Work Life Balance</span>
                     </a>
                   </li>
                   <li>
                     <a
                       href="."
-                      className="flex items-center space-x-2 text-blue-600 hover:text-gray-500 hover:no-underline dark:text-blue-400"
+                      className="flex items-center space-x-2 text-sm text-blue-600 hover:text-gray-500 hover:no-underline dark:text-blue-400"
                     >
                       <HiOutlineSearch className="h-5 w-5 text-gray-500" />
-                      <span>Travel Companies</span>
+                      <span>Best Companies by Work Environment</span>
                     </a>
                   </li>
                   <li>
                     <a
                       href="."
-                      className="flex items-center space-x-2 text-blue-600 hover:text-gray-500 hover:no-underline dark:text-blue-400"
+                      className="flex items-center space-x-2 text-sm text-blue-600 hover:text-gray-500 hover:no-underline dark:text-blue-400"
                     >
                       <HiOutlineSearch className="h-5 w-5 text-gray-500" />
-                      <span>Travel Startups</span>
+                      <span>Best Companies by Innovation</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="."
+                      className="flex items-center space-x-2 text-sm text-blue-600 hover:text-gray-500 hover:no-underline dark:text-blue-400"
+                    >
+                      <HiOutlineSearch className="h-5 w-5 text-gray-500" />
+                      <span>Best Companies by Corporate Culture</span>
                     </a>
                   </li>
                   {/* Add more similar searches here */}
