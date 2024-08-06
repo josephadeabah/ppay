@@ -6,6 +6,7 @@ import { ActiveElement, ChartData, ChartEvent, ChartOptions } from "chart.js";
 import "chart.js/auto";
 import React, { useState } from "react";
 import { Bar } from "react-chartjs-2";
+import CompanyMetrics from "./CompanyMetrics";
 import { Company, Country, data, Industry } from "./data";
 
 const Compare: React.FC = () => {
@@ -287,6 +288,7 @@ const Compare: React.FC = () => {
           </div>
         </div>
       </div>
+      <CompanyMetrics />
     </div>
   );
 };
