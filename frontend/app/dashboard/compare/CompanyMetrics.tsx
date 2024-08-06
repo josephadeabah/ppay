@@ -89,10 +89,7 @@ const CompanyMetrics: React.FC = () => {
       </h2>
       <div className="mb-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {metrics.map((metric) => (
-          <div
-            key={metric.key}
-            className="bg-white p-4 shadow-md dark:bg-gray-800"
-          >
+          <div key={metric.key} className="bg-white p-4 dark:bg-gray-800">
             <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-50">
               {metric.label}
             </h3>
