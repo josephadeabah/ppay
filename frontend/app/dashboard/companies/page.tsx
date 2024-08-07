@@ -139,7 +139,7 @@ const CompaniesPage: React.FC = () => {
                   <li>
                     <a
                       href="."
-                      className="flex items-center space-x-2 text-sm text-blue-600 hover:text-gray-500 hover:no-underline dark:text-blue-400"
+                      className="flex items-center space-x-2 text-sm text-gray-800 hover:text-gray-500 hover:no-underline dark:text-blue-400"
                     >
                       <HiOutlineSearch className="h-5 w-5 text-gray-500" />
                       <span>Best Companies by Salaries</span>
@@ -148,7 +148,7 @@ const CompaniesPage: React.FC = () => {
                   <li>
                     <a
                       href="."
-                      className="flex items-center space-x-2 text-sm text-blue-600 hover:text-gray-500 hover:no-underline dark:text-blue-400"
+                      className="flex items-center space-x-2 text-sm text-gray-800 hover:text-gray-500 hover:no-underline dark:text-blue-400"
                     >
                       <HiOutlineSearch className="h-5 w-5 text-gray-500" />
                       <span>Best Companies by Employee Retention</span>
@@ -157,7 +157,7 @@ const CompaniesPage: React.FC = () => {
                   <li>
                     <a
                       href="."
-                      className="flex items-center space-x-2 text-sm text-blue-600 hover:text-gray-500 hover:no-underline dark:text-blue-400"
+                      className="flex items-center space-x-2 text-sm text-gray-800 hover:text-gray-500 hover:no-underline dark:text-blue-400"
                     >
                       <HiOutlineSearch className="h-5 w-5 text-gray-500" />
                       <span>Best Companies by Work Life Balance</span>
@@ -166,7 +166,7 @@ const CompaniesPage: React.FC = () => {
                   <li>
                     <a
                       href="."
-                      className="flex items-center space-x-2 text-sm text-blue-600 hover:text-gray-500 hover:no-underline dark:text-blue-400"
+                      className="flex items-center space-x-2 text-sm text-gray-800 hover:text-gray-500 hover:no-underline dark:text-blue-400"
                     >
                       <HiOutlineSearch className="h-5 w-5 text-gray-500" />
                       <span>Best Companies by Work Environment</span>
@@ -175,7 +175,7 @@ const CompaniesPage: React.FC = () => {
                   <li>
                     <a
                       href="."
-                      className="flex items-center space-x-2 text-sm text-blue-600 hover:text-gray-500 hover:no-underline dark:text-blue-400"
+                      className="flex items-center space-x-2 text-sm text-gray-800 hover:text-gray-500 hover:no-underline dark:text-blue-400"
                     >
                       <HiOutlineSearch className="h-5 w-5 text-gray-500" />
                       <span>Best Companies by Innovation</span>
@@ -184,10 +184,46 @@ const CompaniesPage: React.FC = () => {
                   <li>
                     <a
                       href="."
-                      className="flex items-center space-x-2 text-sm text-blue-600 hover:text-gray-500 hover:no-underline dark:text-blue-400"
+                      className="flex items-center space-x-2 text-sm text-gray-800 hover:text-gray-500 hover:no-underline dark:text-blue-400"
                     >
                       <HiOutlineSearch className="h-5 w-5 text-gray-500" />
                       <span>Best Companies by Corporate Culture</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="."
+                      className="flex items-center space-x-2 text-sm text-gray-800 hover:text-gray-500 hover:no-underline dark:text-blue-400"
+                    >
+                      <HiOutlineSearch className="h-5 w-5 text-gray-500" />
+                      <span>Best Companies by Diversity</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="."
+                      className="flex items-center space-x-2 text-sm text-gray-800 hover:text-gray-500 hover:no-underline dark:text-blue-400"
+                    >
+                      <HiOutlineSearch className="h-5 w-5 text-gray-500" />
+                      <span>Best Companies by Job Security</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="."
+                      className="flex items-center space-x-2 text-sm text-gray-800 hover:text-gray-500 hover:no-underline dark:text-blue-400"
+                    >
+                      <HiOutlineSearch className="h-5 w-5 text-gray-500" />
+                      <span>Best Companies by Company Reviews</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="."
+                      className="flex items-center space-x-2 text-sm text-gray-800 hover:text-gray-500 hover:no-underline dark:text-blue-400"
+                    >
+                      <HiOutlineSearch className="h-5 w-5 text-gray-500" />
+                      <span>Best Companies by Jobs</span>
                     </a>
                   </li>
                   {/* Add more similar searches here */}

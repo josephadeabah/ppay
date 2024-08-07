@@ -1,7 +1,8 @@
 "use client";
 
+import PaginationComponent from "@/components/pagination/pagination"; // Import your Pagination component
 import { ChartData, ChartOptions } from "chart.js";
-import React from "react";
+import React, { useState } from "react";
 import { Bar } from "react-chartjs-2";
 import { data } from "./data";
 
@@ -18,6 +19,9 @@ const CompanyMetrics: React.FC = () => {
     { key: "reviews", label: "Reviews" },
     { key: "jobs", label: "Jobs" },
   ];
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   const getRankedCompanies = (metricKey: string) => {
     const sortedCompanies = [...data.companies]
@@ -81,6 +85,12 @@ const CompanyMetrics: React.FC = () => {
     return `${rank}th`;
   };
 
+  // Calculate paginated data
+  const paginatedCompanies = data.companies.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage,
+  );
+
   return (
     <div className="flex w-full flex-col p-3">
       <div className="mb-6 mt-2 flex items-center gap-4 text-xl font-bold text-gray-700 dark:text-gray-50">
@@ -133,7 +143,7 @@ const CompanyMetrics: React.FC = () => {
               </tr>
             </thead>
             <tbody className="text-sm">
-              {data.companies.map((company) => {
+              {paginatedCompanies.map((company) => {
                 const rankedCompanies = metrics.map((metric) =>
                   getRankedCompanies(metric.key).find(
                     (c) => c.name === company.name,
@@ -184,6 +194,11 @@ const CompanyMetrics: React.FC = () => {
             </tbody>
           </table>
         </div>
+        <PaginationComponent
+          total={Math.ceil(data.companies.length / itemsPerPage)}
+          initialPage={currentPage}
+          onPageChange={(page: number) => setCurrentPage(page)}
+        />
       </div>
     </div>
   );

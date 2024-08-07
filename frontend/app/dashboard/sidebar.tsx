@@ -65,7 +65,7 @@ export const DashboardSidebar: FC = function () {
           )}
           className={getItemClass("/dashboard/compare")}
         >
-          Compare
+          Assess
         </Sidebar.Item>
         <Sidebar.Item
           href="/dashboard/users"

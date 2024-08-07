@@ -1,6 +1,7 @@
 "use client";
 
 import DropdownSelect from "@/components/dropdown/DropdownSelect";
+import PaginationComponent from "@/components/pagination/pagination"; // Import your Pagination component
 import { Tooltip } from "@nextui-org/react";
 import { ActiveElement, ChartData, ChartEvent, ChartOptions } from "chart.js";
 import "chart.js/auto";
@@ -20,6 +21,10 @@ const Compare: React.FC = () => {
 
   const [selectedItem, setSelectedItem] = useState<SelectedItem>(null);
   const [highlightedItem, setHighlightedItem] = useState<SelectedItem>(null);
+
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   const categories: { [key: string]: (Country | Industry | Company)[] } = {
     countries: data.countries as Country[],
@@ -103,6 +108,12 @@ const Compare: React.FC = () => {
 
   const differences = calculateDifferences(selectedItem);
 
+  // Calculate paginated data
+  const paginatedItems = categories[selectedCategory].slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage,
+  );
+
   return (
     <div className="flex w-full flex-col">
       <div className="flex w-full flex-col lg:flex-row">
@@ -127,6 +138,7 @@ const Compare: React.FC = () => {
                   );
                   setSelectedItem(null);
                   setHighlightedItem(null); // Clear highlighted item
+                  setCurrentPage(1); // Reset to first page when category changes
                 }}
               >
                 {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -259,7 +271,7 @@ const Compare: React.FC = () => {
                 </tr>
               </thead>
               <tbody className="text-sm">
-                {categories[selectedCategory].map((item, index) => (
+                {paginatedItems.map((item, index) => (
                   <tr
                     key={item.name}
                     className={`${
@@ -286,6 +298,13 @@ const Compare: React.FC = () => {
               </tbody>
             </table>
           </div>
+          <PaginationComponent
+            total={Math.ceil(
+              categories[selectedCategory].length / itemsPerPage,
+            )}
+            initialPage={currentPage}
+            onPageChange={(page: number) => setCurrentPage(page)}
+          />
         </div>
       </div>
       <CompanyMetrics />
