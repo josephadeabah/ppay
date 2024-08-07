@@ -13,16 +13,8 @@ const CompanyMetrics: React.FC = () => {
     { key: "work_environment", label: "Work Environment" },
     { key: "innovation", label: "Innovation" },
     { key: "corporate_culture", label: "Corporate Culture" },
-    { key: "job_prospects", label: "Job Prospects" },
-    { key: "growth_prospects", label: "Growth Prospects" },
-    { key: "salary_prospects", label: "Salary Prospects" },
     { key: "job_security", label: "Job Security" },
-    { key: "tech_salaries", label: "Tech Salaries" },
-    { key: "healthcare_salaries", label: "Healthcare Salaries" },
-    { key: "education_salaries", label: "Education Salaries" },
-    { key: "size", label: "Size" },
-    { key: "industry", label: "Industry" },
-    { key: "location", label: "Location" },
+    { key: "size", label: "Company Size" },
     { key: "reviews", label: "Reviews" },
     { key: "jobs", label: "Jobs" },
   ];
@@ -72,13 +64,13 @@ const CompanyMetrics: React.FC = () => {
   const getBackgroundColorForRank = (rank: number) => {
     switch (rank) {
       case 1:
-        return "bg-green-100"; // Light Green
+        return "bg-green-200"; // Light Green
       case 2:
         return "bg-yellow-100"; // Light Yellow
       case 3:
-        return "bg-orange-100"; // Light Orange
+        return "bg-orange-300"; // Light Orange
       default:
-        return "bg-red-100"; // Light Red
+        return "bg-red-200"; // Light Red
     }
   };
 
@@ -175,10 +167,10 @@ const CompanyMetrics: React.FC = () => {
                       return (
                         <td
                           key={metric.key}
-                          className={`relative border border-gray-200 p-1 text-gray-700 dark:border-gray-700 dark:text-gray-50 ${bgColor}`}
+                          className={`relative border border-gray-200 p-1 text-gray-700 dark:border-gray-700 dark:text-gray-950 ${bgColor}`}
                         >
                           {metricValue > 0 && (
-                            <span className="absolute right-0 top-0 p-1 text-[0.525rem] font-bold text-gray-700 dark:text-gray-50">
+                            <span className="absolute right-0 top-0 px-2 py-0 text-[0.500rem] font-bold text-gray-700 dark:text-gray-950">
                               {getOrdinalSuffix(rankedCompany?.rank ?? 0)}
                             </span>
                           )}

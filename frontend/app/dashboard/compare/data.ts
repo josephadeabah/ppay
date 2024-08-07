@@ -20,6 +20,12 @@ export interface Company {
   innovation: number;
   work_environment: number;
   employee_retention: number;
+  corporate_culture?: number;
+  work_life_balance?: number;
+  job_security?: number;
+  size?: number;
+  reviews?: number;
+  jobs?: number;
 }
 
 export const data = {
@@ -384,6 +390,12 @@ export const data = {
       innovation: 95,
       work_environment: 90,
       employee_retention: 85,
+      corporate_culture: 88,
+      work_life_balance: 87,
+      job_security: 89,
+      size: 500,
+      reviews: 450,
+      jobs: 120,
     },
     {
       name: "HealthInc",
@@ -391,6 +403,12 @@ export const data = {
       innovation: 95,
       work_environment: 90,
       employee_retention: 88,
+      corporate_culture: 90,
+      work_life_balance: 85,
+      job_security: 91,
+      size: 600,
+      reviews: 470,
+      jobs: 130,
     },
     {
       name: "EduGroup",
@@ -398,6 +416,12 @@ export const data = {
       innovation: 85,
       work_environment: 80,
       employee_retention: 84,
+      corporate_culture: 82,
+      work_life_balance: 83,
+      job_security: 84,
+      size: 300,
+      reviews: 400,
+      jobs: 110,
     },
     {
       name: "FinancePros",
@@ -405,6 +429,12 @@ export const data = {
       innovation: 80,
       work_environment: 75,
       employee_retention: 82,
+      corporate_culture: 80,
+      work_life_balance: 78,
+      job_security: 78,
+      size: 400,
+      reviews: 420,
+      jobs: 115,
     },
     {
       name: "ManuWorks",
@@ -412,6 +442,12 @@ export const data = {
       innovation: 95,
       work_environment: 90,
       employee_retention: 80,
+      corporate_culture: 84,
+      work_life_balance: 82,
+      job_security: 85,
+      size: 350,
+      reviews: 410,
+      jobs: 105,
     },
     {
       name: "BuildRight",
@@ -419,6 +455,12 @@ export const data = {
       innovation: 70,
       work_environment: 85,
       employee_retention: 78,
+      corporate_culture: 76,
+      work_life_balance: 77,
+      job_security: 73,
+      size: 200,
+      reviews: 380,
+      jobs: 90,
     },
     {
       name: "RetailWorld",
@@ -426,6 +468,12 @@ export const data = {
       innovation: 65,
       work_environment: 60,
       employee_retention: 87,
+      corporate_culture: 70,
+      work_life_balance: 75,
+      job_security: 67,
+      size: 150,
+      reviews: 370,
+      jobs: 85,
     },
     {
       name: "AgriLife",
@@ -433,6 +481,12 @@ export const data = {
       innovation: 60,
       work_environment: 86,
       employee_retention: 74,
+      corporate_culture: 68,
+      work_life_balance: 70,
+      job_security: 65,
+      size: 250,
+      reviews: 360,
+      jobs: 80,
     },
     {
       name: "Hospitable",
@@ -440,6 +494,12 @@ export const data = {
       innovation: 95,
       work_environment: 90,
       employee_retention: 88,
+      corporate_culture: 92,
+      work_life_balance: 91,
+      job_security: 94,
+      size: 550,
+      reviews: 460,
+      jobs: 125,
     },
     {
       name: "Construx",
@@ -447,6 +507,12 @@ export const data = {
       innovation: 50,
       work_environment: 45,
       employee_retention: 70,
+      corporate_culture: 55,
+      work_life_balance: 60,
+      job_security: 50,
+      size: 100,
+      reviews: 350,
+      jobs: 75,
     },
   ],
 };
