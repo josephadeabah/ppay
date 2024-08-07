@@ -82,11 +82,19 @@ const CompanyMetrics: React.FC = () => {
     }
   };
 
+  const getOrdinalSuffix = (rank: number) => {
+    if (rank === 1) return "1st";
+    if (rank === 2) return "2nd";
+    if (rank === 3) return "3rd";
+    return `${rank}th`;
+  };
+
   return (
     <div className="flex w-full flex-col p-3">
-      <h2 className="text-2xl font-bold text-gray-700 dark:text-gray-50">
-        Company Metrics
-      </h2>
+      <div className="mb-6 mt-2 flex items-center gap-4 text-xl font-bold text-gray-700 dark:text-gray-50">
+        Company Metrics {new Date().getFullYear()} (Live{" "}
+        <div className="inline-block h-3 w-3 rounded-full bg-green-400"></div>)
+      </div>
       <div className="mb-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {metrics.map((metric) => (
           <div key={metric.key} className="bg-white p-4 dark:bg-gray-800">
@@ -110,9 +118,11 @@ const CompanyMetrics: React.FC = () => {
         ))}
       </div>
       <div className="mt-8">
-        <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-50">
-          Best Companies by
-        </h3>
+        <div className="mb-6 mt-2 flex items-center gap-2 text-xl font-bold text-gray-700 dark:text-gray-50">
+          {new Date().getFullYear()} (Live{" "}
+          <div className="inline-block h-3 w-3 rounded-full bg-green-400"></div>
+          ) in Ranking of Best Companies by
+        </div>
         <div className="overflow-x-auto [&::-moz-scrollbar-thumb]:rounded-full [&::-moz-scrollbar-thumb]:bg-gray-200 [&::-moz-scrollbar-track]:m-1 [&::-moz-scrollbar]:w-2 [&::-ms-scrollbar-thumb]:rounded-full [&::-ms-scrollbar-thumb]:bg-gray-200 [&::-ms-scrollbar-track]:m-1 [&::-ms-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-track]:m-1 [&::-webkit-scrollbar]:w-2">
           <table className="min-w-full border-collapse border border-gray-200 dark:border-gray-700">
             <thead className="text-sm">
@@ -158,18 +168,21 @@ const CompanyMetrics: React.FC = () => {
                       const bgColor =
                         metricValue > 0
                           ? getBackgroundColorForRank(
-                              rankedCompany?.rank || Infinity,
+                              rankedCompany?.rank ?? Infinity,
                             )
                           : "bg-white";
 
                       return (
                         <td
                           key={metric.key}
-                          className={`border border-gray-200 p-2 text-gray-700 dark:border-gray-700 dark:text-gray-50 ${bgColor}`}
+                          className={`relative border border-gray-200 p-2 text-gray-700 dark:border-gray-700 dark:text-gray-50 ${bgColor}`}
                         >
-                          {metricValue > 0
-                            ? `${rankedCompany?.rank} (${metricValue})`
-                            : "-"}
+                          {metricValue > 0 && (
+                            <span className="absolute right-0 top-0 p-1 text-[0.525rem] font-bold text-gray-700 dark:text-gray-50">
+                              {getOrdinalSuffix(rankedCompany?.rank ?? 0)}
+                            </span>
+                          )}
+                          <span>{metricValue > 0 ? metricValue : "-"}</span>
                         </td>
                       );
                     })}
