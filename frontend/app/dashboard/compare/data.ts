@@ -425,7 +425,7 @@ export const data = {
       average_salary: 60000,
       innovation: 65,
       work_environment: 60,
-      employee_retention: 76,
+      employee_retention: 87,
     },
     {
       name: "AgriLife",

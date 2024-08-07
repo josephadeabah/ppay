@@ -175,7 +175,7 @@ const CompanyMetrics: React.FC = () => {
                       return (
                         <td
                           key={metric.key}
-                          className={`relative border border-gray-200 p-2 text-gray-700 dark:border-gray-700 dark:text-gray-50 ${bgColor}`}
+                          className={`relative border border-gray-200 p-1 text-gray-700 dark:border-gray-700 dark:text-gray-50 ${bgColor}`}
                         >
                           {metricValue > 0 && (
                             <span className="absolute right-0 top-0 p-1 text-[0.525rem] font-bold text-gray-700 dark:text-gray-50">
