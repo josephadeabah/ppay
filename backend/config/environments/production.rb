@@ -4,8 +4,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   ENV['DB_USERNAME'] = 'postgres'
-  ENV['DB_PASSWORD'] = '10c947c880054d8bb87120cb5136eb6a'
-end
+  ENV['DB_PASSWORD'] = 'paysight.postgres'
 
   # Code is not reloaded between requests.
   config.enable_reloading = false

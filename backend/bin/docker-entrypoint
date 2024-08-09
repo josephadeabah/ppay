@@ -1,8 +1,16 @@
 #!/bin/bash -e
 
-# If running the rails server then create or migrate existing database
+# Run database preparation only if the command is 'server'
 if [ "${1}" == "./bin/rails" ] && [ "${2}" == "server" ]; then
-  ./bin/rails db:prepare
+  echo "Preparing the database..."
+  ./bin/rails db:prepare || { echo "Database preparation failed"; exit 1; }
 fi
 
-exec "${@}"
+# Ensure assets are precompiled if necessary
+if [ "${1}" == "./bin/rails" ] && [ "${2}" == "server" ]; then
+  echo "Precompiling assets..."
+  ./bin/rails assets:precompile || { echo "Asset precompilation failed"; exit 1; }
+fi
+
+# Start the main process
+exec "$@"
