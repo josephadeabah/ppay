@@ -8,8 +8,8 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  ENV['DB_USERNAME'] = 'postgres'
-  ENV['DB_PASSWORD'] = '10c947c880054d8bb87120cb5136eb6a'
+  # ENV['DB_USERNAME'] = 'postgres'
+  # ENV['DB_PASSWORD'] = '10c947c880054d8bb87120cb5136eb6a'
 end
 
   # While tests run files are not watched, reloading is not necessary.
