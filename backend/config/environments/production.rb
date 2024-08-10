@@ -3,8 +3,8 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  # ENV['DB_USERNAME'] = 'postgres'
-  # ENV['DB_PASSWORD'] = '10c947c880054d8bb87120cb5136eb6a'
+  ENV['DB_USERNAME'] = 'postgres'
+  ENV['DB_PASSWORD'] = '10c947c880054d8bb87120cb5136eb6a'
 end
 
   # Code is not reloaded between requests.
@@ -53,7 +53,7 @@ end
   # config.assume_ssl = true
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # Log to STDOUT by default
   config.logger = ActiveSupport::Logger.new(STDOUT)
