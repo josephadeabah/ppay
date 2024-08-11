@@ -13,7 +13,6 @@ ENV RAILS_ENV="production" \
     BUNDLE_PATH="/usr/local/bundle" \
     BUNDLE_WITHOUT="development"
 
-
 # Throw-away build stage to reduce size of final image
 FROM base as build
 
@@ -41,7 +40,6 @@ RUN chmod +x bin/* && \
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
-
 # Final stage for app image
 FROM base
 
@@ -54,6 +52,25 @@ RUN apt-get update -qq && \
 COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
 
+# Set Google App Credentials environment variable with Service Account
+ENV GOOGLE_APPLICATION_CREDENTIALS=/usr/src/app/config/paysight_runner.key
+
+# Setup Rails DB password and secret key passed on docker command line
+ARG DB_PASSWORD
+ARG SECRET_KEY_BASE
+
+# Set environment variables for the build
+ENV DATABASE_PASSWORD=${DB_PASSWORD}
+ENV SECRET_KEY_BASE=${SECRET_KEY_BASE}
+
+# For now we don't have a Nginx/Apache frontend so tell
+# the Puma HTTP server to serve static content
+# (e.g. CSS and Javascript files)
+ENV RAILS_SERVE_STATIC_FILES=true
+
+# Redirect Rails log to STDOUT for Cloud Run to capture
+ENV RAILS_LOG_TO_STDOUT=true
+
 # Run and own only the runtime files as a non-root user for security
 RUN useradd rails --create-home --shell /bin/bash && \
     chown -R rails:rails db log storage tmp
@@ -63,5 +80,5 @@ USER rails:rails
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start the server by default, this can be overwritten at runtime
-EXPOSE 3000
-CMD ["./bin/rails", "server"]
+EXPOSE 8080
+CMD ["rails", "server", "-e", "production", "-b", "0.0.0.0", "-p", "8080"]

@@ -15,6 +15,10 @@ Rails.application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
 
+
+  # Store uploaded files on the local file system (see config/storage.yml for options).
+  config.active_storage.service = :google
+
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
@@ -52,7 +56,7 @@ Rails.application.configure do
   # config.assume_ssl = true
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # Log to STDOUT by default
   config.logger = ActiveSupport::Logger.new(STDOUT)
