@@ -22,3 +22,8 @@ production:
   password: <%= ENV['DB_PASSWORD'] %>
   host: <%= ENV['DB_HOST'] %>
   port: <%= ENV['DB_PORT'] %>
+  socket: <%= ENV['DB_SOCKET'] %>
+  google_project_id: <%= ENV['GOOGLE_PROJECT_ID'] %>
+  storage_bucket_name: <%= ENV['STORAGE_BUCKET_NAME'] %>
+  rails_master_key: <%= ENV['RAILS_MASTER_KEY'] %>
+  storage_bucket_name: <%= ENV['STORAGE_BUCKET_NAME'] %>

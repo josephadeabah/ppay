@@ -10,7 +10,7 @@ cd /usr/src/app
 rm -f tmp/pids/server.pid
 
 # Ensure the database is created and migrated
-RAILS_ENV=production bundle exec rake db:prepare
+RAILS_ENV=production bundle exec rake db:migrate
 
 # Start Puma server
 exec bundle exec puma -C config/puma.rb
