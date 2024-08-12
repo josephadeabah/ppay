@@ -11,8 +11,12 @@ if ENV["RAILS_ENV"] == "production"
 end
 
 # Specifies the port that Puma will listen on to receive requests
-port ENV.fetch("$PORT") { 8080 }
-# bind "tcp://0.0.0.0:#{ENV.fetch('$PORT', 3000)}"
+port ENV.fetch("PORT") {8080}
+# bind "tcp://0.0.0.0:#{ENV.fetch('$PORT', 8080)}"
+
+on_worker_boot do
+  ActiveRecord::Base.establish_connection if defined?(ActiveRecord::Base)
+end
 
 
 # Specifies the environment that Puma will run in

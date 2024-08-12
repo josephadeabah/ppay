@@ -43,8 +43,10 @@ steps:
     args:
       [
         "build",
+        "--platform",
+        "linux/amd64",
         "--tag",
-        "gcr.io/paysight-backend/paysightimage:latest",
+        "gcr.io/paysight-backend/atall:latest",
         "--build-arg",
         "DB_PASSWORD=$(cat /workspace/env_vars.sh | grep DB_PASSWORD | cut -d '=' -f2)",
         "--build-arg",
@@ -54,5 +56,4 @@ steps:
 
   # Push new image to Google Container Registry
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/paysight-backend/paysightimage:latest"]
-# Substitutions are not needed since we're using build arguments directly
+    args: ["push", "gcr.io/paysight-backend/atall:latest"]

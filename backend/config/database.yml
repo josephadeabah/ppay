@@ -15,14 +15,6 @@ test:
   <<: *default
   database: myapp_test
 
-# production:
-#   <<: *default
-#   database: ppay_development
-#   username: postgres
-#   password: postgres
-#   host: host.docker.internal
-#   port: 5432
-
 production:
   <<: *default
   database: <%= ENV['DB_NAME'] %>
