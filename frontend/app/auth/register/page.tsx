@@ -1,4 +1,40 @@
+"use client";
+
+import { RegisterUserRequest, RegisterUserResponse } from "@/types/auth";
+import { registerUser } from "@/utils/api.register";
+import { useState } from "react";
 export default function Register() {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState<string>("");
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+
+    const user: RegisterUserRequest = {
+      email,
+      password,
+      password_confirmation: passwordConfirmation,
+    };
+
+    try {
+      const response: RegisterUserResponse = await registerUser(user);
+
+      // Check if response contains 'errors' or not
+      if ("errors" in response) {
+        // Handle error response
+        setError(response.errors.join(", "));
+      } else {
+        // Handle successful response
+        console.log("User registered:", response.user);
+      }
+    } catch (error) {
+      setError("An error occurred during registration");
+    }
+  };
+
   return (
     <section className="flex h-screen bg-white dark:bg-gray-900">
       {/* Left container */}
@@ -22,7 +58,8 @@ export default function Register() {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-2xl">
                 Create a new account
               </h1>
-              <form className="space-y-4 md:space-y-6" action="#">
+              {error && <p className="text-red-500">{error}</p>}
+              <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
                 <div>
                   <label
                     htmlFor="email"
@@ -32,8 +69,9 @@ export default function Register() {
                   </label>
                   <input
                     type="email"
-                    name="email"
                     id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-primary-600 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                     placeholder="name@company.com"
                     required
@@ -48,8 +86,9 @@ export default function Register() {
                   </label>
                   <input
                     type="password"
-                    name="password"
                     id="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
                     className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-primary-600 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                     required
@@ -64,8 +103,9 @@ export default function Register() {
                   </label>
                   <input
                     type="password"
-                    name="confirm-password"
                     id="confirm-password"
+                    value={passwordConfirmation}
+                    onChange={(e) => setPasswordConfirmation(e.target.value)}
                     placeholder="••••••••"
                     className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-gray-900 focus:border-primary-600 focus:ring-primary-600 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                     required
@@ -92,7 +132,7 @@ export default function Register() {
         </div>
       </div>
       {/* Right container */}
-      <div className="hidden w-full items-center justify-center bg-primary-600 dark:bg-gray-950  lg:flex lg:w-1/2">
+      <div className="hidden w-full items-center justify-center bg-primary-600 dark:bg-gray-950 lg:flex lg:w-1/2">
         <section className="bg-primary-600 text-gray-50 dark:bg-gray-950 dark:text-gray-50">
           <div className="mx-auto flex max-w-[52.5rem] flex-col items-center gap-y-16 px-6 py-32 lg:max-w-[78rem]">
             <div className="mx-auto max-w-[36.75rem] text-center">
