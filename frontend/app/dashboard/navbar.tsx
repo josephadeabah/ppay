@@ -1,21 +1,117 @@
-// app/dashboard/navbar.tsx
+import { Avatar, AvatarFallback } from "@/components/avatar/Avatar";
+import { BlurPopover } from "@/components/popover/Popover";
 import { useSidebarContext } from "@/context/SidebarContext";
 import { isSmallScreen } from "@/helpers/is-small-screen";
-import { Popover, PopoverContent, PopoverTrigger } from "@nextui-org/react";
 import { DarkThemeToggle } from "flowbite-react";
 import Link from "next/link";
-import type { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import {
-  HiMenuAlt1,
-  HiOutlineChatAlt2,
-  HiOutlineExternalLink,
-  HiOutlineInformationCircle,
-  HiX,
+  HiOutlineHome,
+  HiOutlineLogout,
+  HiOutlineMenuAlt1,
+  HiOutlineUser,
+  HiOutlineX,
 } from "react-icons/hi";
 
 export const DashboardNavbar: FC = function () {
   const { isCollapsed: isSidebarCollapsed, setCollapsed: setSidebarCollapsed } =
     useSidebarContext();
+
+  const [user, setUser] = useState<{ email?: string } | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const tokenString = localStorage.getItem("token");
+    if (tokenString) {
+      try {
+        const token = JSON.parse(tokenString);
+        setUser(token.user);
+      } catch (error) {
+        console.error("Failed to parse token from local storage:", error);
+      }
+    }
+    setLoading(false);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/";
+  };
+
+  // Extract the first letter of the email or default to a placeholder
+  const getInitial = (email?: string) => {
+    return email ? email[0].toUpperCase() : "?";
+  };
+
+  const content = (
+    <div className="mt-2 flex w-full flex-col gap-2">
+      <Link
+        href="/dashboard"
+        className="flex items-center truncate rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-white"
+      >
+        <HiOutlineHome className="mr-2 h-5 w-5 text-gray-600 dark:text-gray-400" />
+        {user?.email}
+      </Link>
+      <Link
+        href="/dashboard/profile"
+        className="flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-white"
+      >
+        <HiOutlineUser className="mr-2 h-5 w-5 text-gray-600 dark:text-gray-400" />
+        Profile
+      </Link>
+      <button
+        onClick={handleLogout}
+        className="flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:text-white"
+      >
+        <HiOutlineLogout className="mr-2 h-5 w-5 text-gray-600 dark:text-gray-400" />
+        Logout
+      </button>
+    </div>
+  );
+
+  if (loading) {
+    // You can return a loading spinner or nothing here
+    return (
+      <header>
+        <nav className="fixed top-0 z-30 w-full border-b border-s-0 border-gray-200 bg-white p-0 dark:border-gray-700 dark:bg-gray-800 sm:p-0">
+          <div className="flex w-full items-center justify-between p-3 pr-4">
+            <div className="flex items-center">
+              <button
+                aria-controls="sidebar"
+                aria-expanded
+                className="mr-2 cursor-pointer rounded p-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:ring-2 focus:ring-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:bg-gray-700 dark:focus:ring-gray-700"
+                onClick={() => setSidebarCollapsed(!isSidebarCollapsed)}
+              >
+                {isSidebarCollapsed || !isSmallScreen() ? (
+                  <HiOutlineMenuAlt1 className="h-6 w-6" />
+                ) : (
+                  <HiOutlineX className="h-6 w-6" />
+                )}
+              </button>
+              <div className="flex items-center">
+                <Link
+                  href="/"
+                  className="flex items-center justify-center overflow-hidden rounded-xl"
+                >
+                  <span className="flex h-7 w-auto items-center justify-center rounded-xl bg-blue-600 p-1 text-xs font-extrabold text-white dark:bg-blue-700 dark:text-white">
+                    Pay
+                  </span>
+                  <span className="inline-block py-2 text-xs font-extrabold text-blue-600 dark:text-white">
+                    Sight
+                  </span>
+                </Link>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="rounded-full bg-gray-200 p-2 dark:bg-gray-700">
+                Loading...
+              </span>
+            </div>
+          </div>
+        </nav>
+      </header>
+    );
+  }
 
   return (
     <header>
@@ -29,9 +125,9 @@ export const DashboardNavbar: FC = function () {
               onClick={() => setSidebarCollapsed(!isSidebarCollapsed)}
             >
               {isSidebarCollapsed || !isSmallScreen() ? (
-                <HiMenuAlt1 className="h-6 w-6" />
+                <HiOutlineMenuAlt1 className="h-6 w-6" />
               ) : (
-                <HiX className="h-6 w-6" />
+                <HiOutlineX className="h-6 w-6" />
               )}
             </button>
             <div className="flex items-center">
@@ -49,52 +145,32 @@ export const DashboardNavbar: FC = function () {
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <Popover>
-              <PopoverTrigger>
-                <button
-                  className="rounded-full p-2 text-gray-600 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  aria-label="Help"
+            {user ? (
+              <BlurPopover
+                triggerLabel={
+                  <Avatar>
+                    <AvatarFallback>{getInitial(user.email)}</AvatarFallback>
+                  </Avatar>
+                }
+                backdrop="blur"
+                content={content}
+              />
+            ) : (
+              <>
+                <Link
+                  href="/auth/login"
+                  className="bg-white px-2 py-1 text-gray-950 ring-1 ring-gray-200 hover:bg-gray-50 dark:bg-gray-900 dark:text-gray-50 dark:ring-gray-700 dark:hover:bg-gray-800"
                 >
-                  <HiOutlineInformationCircle className="h-6 w-6" />
-                </button>
-              </PopoverTrigger>
-              <PopoverContent>
-                <div className="bg-gray-800 p-4 text-gray-50 dark:bg-gray-700 dark:text-gray-200 ">
-                  <div className="mb-2">
-                    <HiOutlineChatAlt2 className="mr-2 inline-block h-5 w-5" />
-                    <Link
-                      href="https://pnpmmedia.com"
-                      target="_blank"
-                      className="bg-gray-800 text-gray-50 dark:bg-gray-700 dark:text-gray-200"
-                    >
-                      Need help? Join us on
-                    </Link>
-                  </div>
-                  <div>
-                    <HiOutlineExternalLink className="mr-2 inline-block h-5 w-5" />
-                    <Link
-                      href="https://pnpmmedia.com/journal"
-                      target="_blank"
-                      className="bg-gray-800 text-gray-50 dark:bg-gray-700 dark:text-gray-200"
-                    >
-                      Learn More
-                    </Link>
-                  </div>
-                </div>
-              </PopoverContent>
-            </Popover>
-            <Link
-              href="/auth/login"
-              className="bg-white px-2 py-1 text-gray-950 ring-1 ring-gray-200 hover:bg-gray-50 dark:bg-gray-900 dark:text-gray-50 dark:ring-gray-700 dark:hover:bg-gray-800"
-            >
-              Sign In
-            </Link>
-            <Link
-              href="/auth/register"
-              className="bg-blue-600 px-2 py-1 text-white hover:bg-blue-700 dark:bg-gray-900 dark:hover:bg-blue-800"
-            >
-              Sign Up
-            </Link>
+                  Sign In
+                </Link>
+                <Link
+                  href="/auth/register"
+                  className="bg-blue-600 px-2 py-1 text-white hover:bg-blue-700 dark:bg-gray-900 dark:hover:bg-blue-800"
+                >
+                  Sign Up
+                </Link>
+              </>
+            )}
             <DarkThemeToggle />
           </div>
         </div>

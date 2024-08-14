@@ -1,5 +1,8 @@
-// utils/api.ts
-import { RegisterUserRequest, RegisterUserResponse } from "@/types/auth";
+// utils/api.register.ts
+import {
+  RegisterUserRequest,
+  RegisterUserResponse,
+} from "@/types/auth.register";
 export async function registerUser(
   user: RegisterUserRequest,
 ): Promise<RegisterUserResponse> {

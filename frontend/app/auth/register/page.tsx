@@ -1,7 +1,7 @@
 "use client";
 
 import ToastComponent from "@/components/toast/Toast";
-import { RegisterUserRequest } from "@/types/auth";
+import { RegisterUserRequest } from "@/types/auth.register";
 import { registerUser } from "@/utils/api.register";
 import React, { useState } from "react";
 
