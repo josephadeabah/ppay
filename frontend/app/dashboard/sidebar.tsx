@@ -3,7 +3,7 @@ import { useSidebarContext } from "@/context/SidebarContext";
 import { Tooltip } from "@nextui-org/react";
 import { Sidebar } from "flowbite-react";
 import { usePathname } from "next/navigation";
-import type { FC } from "react";
+import { useEffect, useState, type FC } from "react";
 import { BiNotepad, BiStats, BiWrench } from "react-icons/bi";
 import {
   HiOutlineCalculator,
@@ -22,6 +22,21 @@ import { twMerge } from "tailwind-merge";
 export const DashboardSidebar: FC = function () {
   const { isCollapsed } = useSidebarContext();
   const pathname = usePathname();
+
+  const [user, setUser] = useState<{ email?: string; admin?: boolean } | null>(
+    null,
+  );
+  useEffect(() => {
+    const tokenString = localStorage.getItem("token");
+    if (tokenString) {
+      try {
+        const token = JSON.parse(tokenString);
+        setUser(token.user);
+      } catch (error) {
+        console.error("Failed to parse token from local storage:", error);
+      }
+    }
+  }, []);
 
   const getItemClass = (href: string) =>
     twMerge(
@@ -154,15 +169,17 @@ export const DashboardSidebar: FC = function () {
           content="You're seeing me because I'm unauthenticated for now!"
           className="bg-gray-950 text-sm text-white"
         >
-          <Sidebar.Item
-            href="/dashboard/admin"
-            icon={() => (
-              <BiWrench className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-            )}
-            className={getItemClass("/dashboard/admin")}
-          >
-            Administration
-          </Sidebar.Item>
+          {user?.admin && (
+            <Sidebar.Item
+              href="/dashboard/admin"
+              icon={() => (
+                <BiWrench className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+              )}
+              className={getItemClass("/dashboard/admin")}
+            >
+              Administration
+            </Sidebar.Item>
+          )}
         </Tooltip>
       </Sidebar.ItemGroup>
     </Sidebar>
