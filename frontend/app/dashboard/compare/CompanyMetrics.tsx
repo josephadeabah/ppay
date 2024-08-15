@@ -15,8 +15,6 @@ const CompanyMetrics: React.FC = () => {
     { key: "innovation", label: "Innovation" },
     { key: "corporate_culture", label: "Corporate Culture" },
     { key: "job_security", label: "Job Security" },
-    { key: "size", label: "Company Size" },
-    { key: "reviews", label: "Reviews" },
     { key: "jobs", label: "Jobs" },
   ];
 

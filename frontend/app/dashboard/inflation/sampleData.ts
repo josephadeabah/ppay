@@ -222,7 +222,7 @@ export const inflationData: InflationData = {
             ],
             datasets: [
               {
-                overallInflationRate: -2.5,
+                overallInflationRate: -2.9,
                 categories: [
                   {
                     category: "Food",
