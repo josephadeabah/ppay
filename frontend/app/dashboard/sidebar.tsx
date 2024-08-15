@@ -2,7 +2,7 @@
 import { useSidebarContext } from "@/context/SidebarContext";
 import { Tooltip } from "@nextui-org/react";
 import { Sidebar } from "flowbite-react";
-import Link from "next/link"; // Import Link from Next.js
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, type FC } from "react";
 import { BiNotepad, BiStats, BiWrench } from "react-icons/bi";
@@ -41,7 +41,7 @@ export const DashboardSidebar: FC = function () {
 
   const getItemClass = (href: string) =>
     twMerge(
-      "text-sm text-gray-800 rounded-none flex items-center gap-2 py-1.5 px-2 my-1",
+      "text-sm text-gray-800 rounded-none",
       pathname === href ? "bg-gray-100 dark:bg-gray-700" : "",
     );
 
@@ -56,100 +56,146 @@ export const DashboardSidebar: FC = function () {
       )}
     >
       <Sidebar.ItemGroup>
-        <Link href="/dashboard" className={getItemClass("/dashboard")}>
-          <HiOutlineChartPie className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-          Dashboard
+        <Link href="/dashboard" passHref suppressHydrationWarning>
+          <Sidebar.Item
+            icon={() => (
+              <HiOutlineChartPie className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+            )}
+            className={getItemClass("/dashboard")}
+          >
+            Dashboard
+          </Sidebar.Item>
         </Link>
-        <Link
-          href="/dashboard/reportpay"
-          className={getItemClass("/dashboard/reportpay")}
-        >
-          <BiNotepad className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-          Report Data
+        <Link href="/dashboard/reportpay" passHref suppressHydrationWarning>
+          <Sidebar.Item
+            icon={() => (
+              <BiNotepad className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+            )}
+            className={getItemClass("/dashboard/reportpay")}
+          >
+            Report Data
+          </Sidebar.Item>
         </Link>
-        <Link
-          href="/dashboard/compare"
-          className={getItemClass("/dashboard/compare")}
-        >
-          <HiOutlineFastForward className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-          Assess
+        <Link href="/dashboard/compare" passHref suppressHydrationWarning>
+          <Sidebar.Item
+            icon={() => (
+              <HiOutlineFastForward className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+            )}
+            className={getItemClass("/dashboard/compare")}
+          >
+            Assess
+          </Sidebar.Item>
         </Link>
-        <Link
-          href="/dashboard/users"
-          className={getItemClass("/dashboard/users")}
-        >
-          <HiOutlineUser className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-          Members
+        <Link href="/dashboard/users" passHref suppressHydrationWarning>
+          <Sidebar.Item
+            icon={() => (
+              <HiOutlineUser className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+            )}
+            className={getItemClass("/dashboard/users")}
+          >
+            Members
+          </Sidebar.Item>
         </Link>
-        <Link
-          href="/dashboard/benchmark"
-          className={getItemClass("/dashboard/benchmark")}
-        >
-          <HiOutlineGlobe className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-          BenchMarks
+        <Link href="/dashboard/benchmark" passHref suppressHydrationWarning>
+          <Sidebar.Item
+            icon={() => (
+              <HiOutlineGlobe className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+            )}
+            className={getItemClass("/dashboard/benchmark")}
+          >
+            BenchMarks
+          </Sidebar.Item>
         </Link>
-        <Link
-          href="/dashboard/companies"
-          className={getItemClass("/dashboard/companies")}
-        >
-          <HiOutlineOfficeBuilding className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-          Companies
+        <Link href="/dashboard/companies" passHref suppressHydrationWarning>
+          <Sidebar.Item
+            icon={() => (
+              <HiOutlineOfficeBuilding className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+            )}
+            className={getItemClass("/dashboard/companies")}
+          >
+            Companies
+          </Sidebar.Item>
         </Link>
-        <Link
-          href="/dashboard/trendanalysis"
-          className={getItemClass("/dashboard/trendanalysis")}
-        >
-          <BiStats className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-          Pay Trends
+        <Link href="/dashboard/trendanalysis" passHref suppressHydrationWarning>
+          <Sidebar.Item
+            icon={() => (
+              <BiStats className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+            )}
+            className={getItemClass("/dashboard/trendanalysis")}
+          >
+            Pay Trends
+          </Sidebar.Item>
         </Link>
-        <Link
-          href="/dashboard/inflation"
-          className={getItemClass("/dashboard/inflation")}
-        >
-          <HiOutlineTrendingUp className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-          Inflation
+        <Link href="/dashboard/inflation" passHref suppressHydrationWarning>
+          <Sidebar.Item
+            icon={() => (
+              <HiOutlineTrendingUp className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+            )}
+            className={getItemClass("/dashboard/inflation")}
+          >
+            Inflation
+          </Sidebar.Item>
         </Link>
         <Link
           href="/dashboard/equityanalyzer"
-          className={getItemClass("/dashboard/equityanalyzer")}
+          passHref
+          suppressHydrationWarning
         >
-          <HiOutlineCalculator className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-          Pay Equity Analyzer
+          <Sidebar.Item
+            icon={() => (
+              <HiOutlineCalculator className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+            )}
+            className={getItemClass("/dashboard/equityanalyzer")}
+          >
+            Pay Equity Analyzer
+          </Sidebar.Item>
         </Link>
-        <Link
-          href="/dashboard/compliance"
-          className={getItemClass("/dashboard/compliance")}
-        >
-          <HiOutlineDocumentReport className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-          Compliance
+        <Link href="/dashboard/compliance" passHref suppressHydrationWarning>
+          <Sidebar.Item
+            icon={() => (
+              <HiOutlineDocumentReport className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+            )}
+            className={getItemClass("/dashboard/compliance")}
+          >
+            Compliance
+          </Sidebar.Item>
         </Link>
-        <Link
-          href="/dashboard/download"
-          className={getItemClass("/dashboard/download")}
-        >
-          <HiOutlineDownload className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-          Download
+        <Link href="/dashboard/download" passHref suppressHydrationWarning>
+          <Sidebar.Item
+            icon={() => (
+              <HiOutlineDownload className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+            )}
+            className={getItemClass("/dashboard/download")}
+          >
+            Download
+          </Sidebar.Item>
         </Link>
-        <Link
-          href="/dashboard/upgrade"
-          className={getItemClass("/dashboard/upgrade")}
-        >
-          <HiOutlineCash className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-          Upgrade to Pro
+        <Link href="/dashboard/upgrade" passHref suppressHydrationWarning>
+          <Sidebar.Item
+            icon={() => (
+              <HiOutlineCash className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+            )}
+            className={getItemClass("/dashboard/upgrade")}
+          >
+            Upgrade to Pro
+          </Sidebar.Item>
         </Link>
         <Tooltip
           color="primary"
           placement="bottom-end"
-          content="Admin Welcome!"
+          content="You're seeing me because I'm unauthenticated for now!"
           className="bg-gray-950 text-sm text-white"
         >
           {user?.admin && (
-            <Link
-              href="/dashboard/admin"
-              className={getItemClass("/dashboard/admin")}
-            >
-              <BiWrench className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-              Administration
+            <Link href="/dashboard/admin" passHref suppressHydrationWarning>
+              <Sidebar.Item
+                icon={() => (
+                  <BiWrench className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+                )}
+                className={getItemClass("/dashboard/admin")}
+              >
+                Administration
+              </Sidebar.Item>
             </Link>
           )}
         </Tooltip>
