@@ -5,6 +5,7 @@ import {
   BarElement,
   CategoryScale,
   Chart,
+  ChartData,
   ChartEvent,
   Chart as ChartJS,
   Legend,
@@ -17,7 +18,8 @@ import {
 import { Table } from "flowbite-react";
 import React, { useState } from "react";
 import { Bar, Line } from "react-chartjs-2";
-import { categoryData, inflationData } from "./sampleData";
+import { categoryData } from "./sampleCategoryData";
+import { inflationData } from "./sampleData";
 
 // Register ChartJS components
 ChartJS.register(
@@ -42,12 +44,13 @@ const InflationPage: React.FC = () => {
     | "Antarctica";
 
   const [selectedRegion, setSelectedRegion] = useState<Region>("NorthAmerica");
+  const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 3;
 
   const getChartOptions = (title: string) => ({
     responsive: true,
-    maintainAspectRatio: false, // Allows charts to adjust their aspect ratio
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: "top" as const,
@@ -97,18 +100,51 @@ const InflationPage: React.FC = () => {
     currentPage * itemsPerPage,
   );
 
-  // Prepare inflation data for the empty container on the right (line chart)
-  const inflationChartData = {
-    labels: inflationData.current[selectedRegion].labels, // months
-    datasets: [
-      {
-        label: `Inflation Rate in ${new Date().getFullYear()}`,
-        data: inflationData.current[selectedRegion].data, // inflation rate per month
-        borderColor: "rgba(75, 192, 192, 1)",
-        backgroundColor: "rgba(75, 192, 192, 0.2)",
-        fill: false,
-      },
-    ],
+  // Prepare inflation data for the line chart
+  const lineChartData: ChartData<"line", number[], string> = {
+    labels: inflationData.regional[selectedRegion]?.labels || [], // Ensure labels are not undefined
+    datasets: inflationData.regional[selectedRegion]?.datasets
+      ? inflationData.regional[selectedRegion]?.datasets.map((dataset) => ({
+          ...dataset,
+          data: dataset?.data || [], // Ensure data is not undefined
+        }))
+      : [], // Ensure datasets are not undefined
+  };
+
+  // Prepare inflation data for the bar chart
+  const barChartData: ChartData<"bar", number[], string> = {
+    labels: inflationData.regional[selectedRegion]?.labels || [], // Ensure labels are not undefined
+    datasets: inflationData.regional[selectedRegion]?.datasets
+      ? inflationData.regional[selectedRegion]?.datasets.map((dataset) => ({
+          ...dataset,
+          data: dataset?.data || [], // Ensure data is not undefined
+        }))
+      : [], // Ensure datasets are not undefined
+  };
+
+  // Prepare inflation data for country against overall inflation
+  const prepareChartData = (data: typeof categoryData) => {
+    const countries: string[] = [];
+    const inflationRates: number[] = [];
+
+    Object.values(data)
+      .flat()
+      .forEach((item) => {
+        countries.push(item.country);
+        inflationRates.push(parseFloat(item.overallInflationRate));
+      });
+
+    return {
+      labels: countries,
+      datasets: [
+        {
+          label: "Overall Inflation Rate (%)",
+          data: inflationRates,
+          borderColor: "rgba(75,192,192,1)",
+          backgroundColor: "rgba(75,192,192,0.2)",
+        },
+      ],
+    };
   };
 
   return (
@@ -140,15 +176,15 @@ const InflationPage: React.FC = () => {
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         <div className="h-64">
           <Line
-            data={inflationData.current[selectedRegion]}
+            data={lineChartData}
             options={getChartOptions(
-              `Current Inflation Data ${new Date().getFullYear()}`,
+              `Inflation Rate in ${new Date().getFullYear()}`,
             )}
           />
         </div>
         <div className="h-64">
           <Bar
-            data={inflationData.regional}
+            data={barChartData}
             options={{
               responsive: true,
               plugins: {
@@ -163,9 +199,10 @@ const InflationPage: React.FC = () => {
           />
         </div>
         <div className="h-64">
+          {/* This line chart now reflects the current overall inflation data per country */}
           <Line
-            data={inflationChartData}
-            options={getChartOptions("Inflation Rate by Month")}
+            data={prepareChartData(categoryData)}
+            options={getChartOptions("Current Inflation Rate Per Country")}
           />
         </div>
       </div>
@@ -207,12 +244,12 @@ const InflationPage: React.FC = () => {
               </Table>
             </div>
 
-            {/* Inflation Line Chart Container */}
+            {/* Inflation rate per month per country Chart Container */}
             <div className="mt-4 h-64 flex-1 md:mt-0">
-              <Line
+              {/* <Line
                 data={inflationChartData}
                 options={getChartOptions("Inflation Rate by Month")}
-              />
+              /> */}
             </div>
           </div>
         ))}
