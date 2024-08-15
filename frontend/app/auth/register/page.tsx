@@ -12,12 +12,14 @@ export default function Register() {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
   const [showToast, setShowToast] = useState(false);
+  const [loading, setLoading] = useState(false); // Loading state
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
     setSuccess(null);
     setShowToast(false);
+    setLoading(true); // Set loading to true
 
     const user: RegisterUserRequest = {
       email,
@@ -26,6 +28,8 @@ export default function Register() {
     };
 
     const response = await registerUser(user);
+
+    setLoading(false); // Reset loading to false
 
     if ("errors" in response) {
       setError(response.errors.join(", "));
@@ -137,8 +141,32 @@ export default function Register() {
                   <button
                     type="submit"
                     className="w-full rounded-lg bg-primary-600 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                    disabled={loading} // Disable button when loading
                   >
-                    Sign up
+                    {loading ? (
+                      <svg
+                        className="inline h-5 w-5 animate-spin text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        />
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8v8H4z"
+                        />
+                      </svg>
+                    ) : (
+                      "Sign up"
+                    )}
                   </button>
                   <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                     Already have an account?{" "}
