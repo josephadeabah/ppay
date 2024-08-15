@@ -1,4 +1,5 @@
 // app/layout.tsx
+import ErrorBoundary from "@/components/ErrorBoundary";
 import { SidebarProvider } from "@/context/SidebarContext";
 import { Flowbite, ThemeModeScript } from "flowbite-react";
 import { Inter } from "next/font/google";
@@ -21,7 +22,9 @@ const RootLayout: FC<PropsWithChildren> = function ({ children }) {
           <SidebarProvider>
             <div>
               <main>
-                <Suspense fallback={<Loading />}>{children}</Suspense>
+                <ErrorBoundary>
+                  <Suspense fallback={<Loading />}>{children}</Suspense>
+                </ErrorBoundary>
               </main>
             </div>
           </SidebarProvider>

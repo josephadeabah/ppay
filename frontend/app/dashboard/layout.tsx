@@ -1,6 +1,7 @@
 // dashboard/layout.tsx
 "use client";
 
+import ErrorBoundary from "@/components/ErrorBoundary"; // Import the ErrorBoundary
 import { useSidebarContext } from "@/context/SidebarContext";
 import { Suspense, type FC, type PropsWithChildren } from "react";
 import { twMerge } from "tailwind-merge";
@@ -23,7 +24,9 @@ const DashboardLayout: FC<PropsWithChildren> = function ({ children }) {
             isCollapsed ? "lg:ml-[4.5rem]" : "lg:ml-64",
           )}
         >
-          <Suspense fallback={<Loading />}>{children}</Suspense>
+          <ErrorBoundary>
+            <Suspense fallback={<Loading />}>{children}</Suspense>
+          </ErrorBoundary>
         </div>
       </div>
     </>
