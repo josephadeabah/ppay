@@ -1,5 +1,5 @@
 "use client";
-import DropdownSelect from "@/components/dropdown/DropdownSelect"; // Ensure this path is correct
+import DropdownSelect from "@/components/dropdown/DropdownSelect";
 import PaginationComponent from "@/components/pagination/pagination";
 import {
   BarElement,
@@ -14,7 +14,7 @@ import {
   Title,
   Tooltip,
 } from "chart.js";
-import { Table } from "flowbite-react"; // Ensure you have the correct library and path
+import { Table } from "flowbite-react";
 import React, { useState } from "react";
 import { Bar, Line } from "react-chartjs-2";
 import { categoryData, inflationData } from "./sampleData";
@@ -47,6 +47,7 @@ const InflationPage: React.FC = () => {
 
   const getChartOptions = (title: string) => ({
     responsive: true,
+    maintainAspectRatio: false, // Allows charts to adjust their aspect ratio
     plugins: {
       legend: {
         position: "top" as const,
@@ -90,27 +91,25 @@ const InflationPage: React.FC = () => {
     }
   };
 
-  // Data preparation for the new line chart (Overall Inflation Rates by Country)
-  const overallInflationData = {
-    labels: categoryData[selectedRegion].map((data) => data.country),
+  // Calculate paginated data
+  const paginatedData = categoryData[selectedRegion].slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage,
+  );
+
+  // Prepare inflation data for the empty container on the right (line chart)
+  const inflationChartData = {
+    labels: inflationData.current[selectedRegion].labels, // months
     datasets: [
       {
-        label: "Overall Inflation Rate",
-        data: categoryData[selectedRegion].map((data) =>
-          parseFloat(data.overallInflationRate),
-        ),
+        label: `Inflation Rate in ${new Date().getFullYear()}`,
+        data: inflationData.current[selectedRegion].data, // inflation rate per month
         borderColor: "rgba(75, 192, 192, 1)",
         backgroundColor: "rgba(75, 192, 192, 0.2)",
         fill: false,
       },
     ],
   };
-
-  // Calculate paginated data
-  const paginatedData = categoryData[selectedRegion].slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage,
-  );
 
   return (
     <div className="mx-auto px-4">
@@ -139,7 +138,7 @@ const InflationPage: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        <div>
+        <div className="h-64">
           <Line
             data={inflationData.current[selectedRegion]}
             options={getChartOptions(
@@ -147,7 +146,7 @@ const InflationPage: React.FC = () => {
             )}
           />
         </div>
-        <div>
+        <div className="h-64">
           <Bar
             data={inflationData.regional}
             options={{
@@ -163,10 +162,10 @@ const InflationPage: React.FC = () => {
             }}
           />
         </div>
-        <div>
+        <div className="h-64">
           <Line
-            data={overallInflationData}
-            options={getChartOptions("Overall Inflation Rates by Country")}
+            data={inflationChartData}
+            options={getChartOptions("Inflation Rate by Month")}
           />
         </div>
       </div>
@@ -175,33 +174,50 @@ const InflationPage: React.FC = () => {
         Category-wise Inflation Rates
       </h2>
 
-      {paginatedData.map((countryData) => (
-        <div key={countryData.country} className="mb-6">
-          <h3 className="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-50">
-            {countryData.country} - Overall Inflation Rate:{" "}
-            {countryData.overallInflationRate}
-          </h3>
-          <Table hoverable={true}>
-            <Table.Head>
-              <Table.HeadCell>Category</Table.HeadCell>
-              <Table.HeadCell>Inflation Rate</Table.HeadCell>
-            </Table.Head>
-            <Table.Body className="divide-y">
-              {countryData.categories.map((category) => (
-                <Table.Row
-                  key={category.category}
-                  className="bg-white dark:bg-gray-800"
-                >
-                  <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                    {category.category}
-                  </Table.Cell>
-                  <Table.Cell>{category.inflationRate}</Table.Cell>
-                </Table.Row>
-              ))}
-            </Table.Body>
-          </Table>
-        </div>
-      ))}
+      <div className="flex flex-1 flex-col">
+        {paginatedData.map((countryData) => (
+          <div
+            key={countryData.country}
+            className="mb-6 flex flex-col md:flex-row"
+          >
+            {/* Country Data Table */}
+            <div className="flex-1 overflow-x-auto">
+              <h3 className="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-50">
+                {countryData.country} - Overall Inflation Rate:{" "}
+                {countryData.overallInflationRate}
+              </h3>
+              <Table hoverable={true}>
+                <Table.Head>
+                  <Table.HeadCell>Category</Table.HeadCell>
+                  <Table.HeadCell>Inflation Rate</Table.HeadCell>
+                </Table.Head>
+                <Table.Body className="divide-y">
+                  {countryData.categories.map((category) => (
+                    <Table.Row
+                      key={category.category}
+                      className="bg-white dark:bg-gray-800"
+                    >
+                      <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                        {category.category}
+                      </Table.Cell>
+                      <Table.Cell>{category.inflationRate}</Table.Cell>
+                    </Table.Row>
+                  ))}
+                </Table.Body>
+              </Table>
+            </div>
+
+            {/* Inflation Line Chart Container */}
+            <div className="mt-4 h-64 flex-1 md:mt-0">
+              <Line
+                data={inflationChartData}
+                options={getChartOptions("Inflation Rate by Month")}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+
       <div className="mt-8 flex justify-center">
         <PaginationComponent
           total={Math.ceil(categoryData[selectedRegion].length / itemsPerPage)}
