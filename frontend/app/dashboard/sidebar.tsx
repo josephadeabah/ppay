@@ -183,7 +183,7 @@ export const DashboardSidebar: FC = function () {
         <Tooltip
           color="primary"
           placement="bottom-end"
-          content="You're seeing me because I'm unauthenticated for now!"
+          content="Admin Welcome!"
           className="bg-gray-950 text-sm text-white"
         >
           {user?.admin && (
