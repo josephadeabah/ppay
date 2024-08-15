@@ -1,3 +1,4 @@
+"use client";
 export default function ComplianceForm() {
   return (
     <section className="dark:bg-gray-900">

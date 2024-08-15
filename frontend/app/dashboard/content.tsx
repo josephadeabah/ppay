@@ -1,3 +1,4 @@
+"use client";
 import BenchMarkChart from "@/app/dashboard/benchmark/benchmarkchart/BenchMarkChart";
 import SalaryComparison from "@/app/dashboard/compare/salarycomparison/SalaryComparison";
 import WagesChart from "@/app/dashboard/compare/wageschart/WagesChart";

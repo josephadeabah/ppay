@@ -2,9 +2,10 @@
 import { SidebarProvider } from "@/context/SidebarContext";
 import { Flowbite, ThemeModeScript } from "flowbite-react";
 import { Inter } from "next/font/google";
-import { FC, PropsWithChildren } from "react";
+import { FC, PropsWithChildren, Suspense } from "react";
 import { twMerge } from "tailwind-merge";
 import "./globals.css";
+import Loading from "./loading";
 import { flowbiteTheme } from "./theme";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,7 +20,9 @@ const RootLayout: FC<PropsWithChildren> = function ({ children }) {
         <Flowbite theme={{ theme: flowbiteTheme }}>
           <SidebarProvider>
             <div>
-              <main>{children}</main>
+              <main>
+                <Suspense fallback={<Loading />}>{children}</Suspense>
+              </main>
             </div>
           </SidebarProvider>
         </Flowbite>

@@ -2,8 +2,9 @@
 "use client";
 
 import { useSidebarContext } from "@/context/SidebarContext";
-import type { FC, PropsWithChildren } from "react";
+import { Suspense, type FC, type PropsWithChildren } from "react";
 import { twMerge } from "tailwind-merge";
+import Loading from "./loading";
 import { DashboardNavbar } from "./navbar";
 import { DashboardSidebar } from "./sidebar";
 
@@ -22,7 +23,7 @@ const DashboardLayout: FC<PropsWithChildren> = function ({ children }) {
             isCollapsed ? "lg:ml-[4.5rem]" : "lg:ml-64",
           )}
         >
-          {children}
+          <Suspense fallback={<Loading />}>{children}</Suspense>
         </div>
       </div>
     </>

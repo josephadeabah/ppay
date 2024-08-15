@@ -1,7 +1,8 @@
-// dashboard/sidebar.tsx
+"use client";
 import { useSidebarContext } from "@/context/SidebarContext";
 import { Tooltip } from "@nextui-org/react";
 import { Sidebar } from "flowbite-react";
+import Link from "next/link"; // Import Link from Next.js
 import { usePathname } from "next/navigation";
 import { useEffect, useState, type FC } from "react";
 import { BiNotepad, BiStats, BiWrench } from "react-icons/bi";
@@ -40,7 +41,7 @@ export const DashboardSidebar: FC = function () {
 
   const getItemClass = (href: string) =>
     twMerge(
-      "text-sm text-gray-800 rounded-none",
+      "text-sm text-gray-800 rounded-none flex items-center gap-2 py-1.5 px-2 my-1",
       pathname === href ? "bg-gray-100 dark:bg-gray-700" : "",
     );
 
@@ -55,114 +56,87 @@ export const DashboardSidebar: FC = function () {
       )}
     >
       <Sidebar.ItemGroup>
-        <Sidebar.Item
-          href="/dashboard"
-          icon={() => (
-            <HiOutlineChartPie className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-          )}
-          className={getItemClass("/dashboard")}
-        >
+        <Link href="/dashboard" className={getItemClass("/dashboard")}>
+          <HiOutlineChartPie className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
           Dashboard
-        </Sidebar.Item>
-        <Sidebar.Item
+        </Link>
+        <Link
           href="/dashboard/reportpay"
-          icon={() => (
-            <BiNotepad className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-          )}
           className={getItemClass("/dashboard/reportpay")}
         >
+          <BiNotepad className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
           Report Data
-        </Sidebar.Item>
-        <Sidebar.Item
+        </Link>
+        <Link
           href="/dashboard/compare"
-          icon={() => (
-            <HiOutlineFastForward className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-          )}
           className={getItemClass("/dashboard/compare")}
         >
+          <HiOutlineFastForward className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
           Assess
-        </Sidebar.Item>
-        <Sidebar.Item
+        </Link>
+        <Link
           href="/dashboard/users"
-          icon={() => (
-            <HiOutlineUser className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-          )}
           className={getItemClass("/dashboard/users")}
         >
+          <HiOutlineUser className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
           Members
-        </Sidebar.Item>
-        <Sidebar.Item
+        </Link>
+        <Link
           href="/dashboard/benchmark"
-          icon={() => (
-            <HiOutlineGlobe className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-          )}
           className={getItemClass("/dashboard/benchmark")}
         >
+          <HiOutlineGlobe className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
           BenchMarks
-        </Sidebar.Item>
-        <Sidebar.Item
+        </Link>
+        <Link
           href="/dashboard/companies"
-          icon={() => (
-            <HiOutlineOfficeBuilding className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-          )}
           className={getItemClass("/dashboard/companies")}
         >
+          <HiOutlineOfficeBuilding className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
           Companies
-        </Sidebar.Item>
-        <Sidebar.Item
+        </Link>
+        <Link
           href="/dashboard/trendanalysis"
-          icon={() => (
-            <BiStats className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-          )}
           className={getItemClass("/dashboard/trendanalysis")}
         >
+          <BiStats className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
           Pay Trends
-        </Sidebar.Item>
-        <Sidebar.Item
+        </Link>
+        <Link
           href="/dashboard/inflation"
-          icon={() => (
-            <HiOutlineTrendingUp className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-          )}
           className={getItemClass("/dashboard/inflation")}
         >
+          <HiOutlineTrendingUp className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
           Inflation
-        </Sidebar.Item>
-        <Sidebar.Item
+        </Link>
+        <Link
           href="/dashboard/equityanalyzer"
-          icon={() => (
-            <HiOutlineCalculator className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-          )}
           className={getItemClass("/dashboard/equityanalyzer")}
         >
+          <HiOutlineCalculator className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
           Pay Equity Analyzer
-        </Sidebar.Item>
-        <Sidebar.Item
+        </Link>
+        <Link
           href="/dashboard/compliance"
-          icon={() => (
-            <HiOutlineDocumentReport className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-          )}
           className={getItemClass("/dashboard/compliance")}
         >
+          <HiOutlineDocumentReport className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
           Compliance
-        </Sidebar.Item>
-        <Sidebar.Item
+        </Link>
+        <Link
           href="/dashboard/download"
-          icon={() => (
-            <HiOutlineDownload className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-          )}
           className={getItemClass("/dashboard/download")}
         >
+          <HiOutlineDownload className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
           Download
-        </Sidebar.Item>
-        <Sidebar.Item
+        </Link>
+        <Link
           href="/dashboard/upgrade"
-          icon={() => (
-            <HiOutlineCash className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-          )}
           className={getItemClass("/dashboard/upgrade")}
         >
+          <HiOutlineCash className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
           Upgrade to Pro
-        </Sidebar.Item>
+        </Link>
         <Tooltip
           color="primary"
           placement="bottom-end"
@@ -170,15 +144,13 @@ export const DashboardSidebar: FC = function () {
           className="bg-gray-950 text-sm text-white"
         >
           {user?.admin && (
-            <Sidebar.Item
+            <Link
               href="/dashboard/admin"
-              icon={() => (
-                <BiWrench className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
-              )}
               className={getItemClass("/dashboard/admin")}
             >
+              <BiWrench className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
               Administration
-            </Sidebar.Item>
+            </Link>
           )}
         </Tooltip>
       </Sidebar.ItemGroup>

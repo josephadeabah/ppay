@@ -1,3 +1,4 @@
+"use client";
 const EmployeeForm = () => {
   return (
     <section className="dark:bg-gray-900">

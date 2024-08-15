@@ -1,3 +1,4 @@
+"use client";
 import { Avatar, AvatarFallback } from "@/components/avatar/Avatar";
 import { BlurPopover } from "@/components/popover/Popover";
 import { useSidebarContext } from "@/context/SidebarContext";
