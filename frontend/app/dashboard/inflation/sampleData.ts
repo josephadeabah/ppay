@@ -1,8 +1,15 @@
+interface Category {
+  category: string;
+  inflationRate: number;
+}
+
 interface Dataset {
+  overallInflationRate: number;
+  categories: Category[];
   label: string;
   data: number[];
-  borderColor: string;
-  backgroundColor: string;
+  borderColor?: string;
+  backgroundColor?: string;
   fill?: boolean;
 }
 
@@ -22,14 +29,14 @@ interface CountryData {
 }
 
 interface RegionalData {
-  labels?: string[]; // This is optional in case you only want it in some cases
+  labels?: string[];
   datasets?: Dataset[];
   countries: {
     [key: string]: CountryData;
   };
 }
 
-interface InflationData {
+export interface InflationData {
   regional: {
     [key: string]: RegionalData;
   };
@@ -54,10 +61,33 @@ export const inflationData: InflationData = {
       ],
       datasets: [
         {
-          label: "Current Year Inflation Rate",
-          data: [2.3, 2.5, 2.1, 2.4, 2.6, 2.3, 2.5, 2.4, 2.7, 2.6, 2.8, 2.9],
+          overallInflationRate: 2.4,
+          categories: [
+            {
+              category: "Food",
+              inflationRate: 2.8,
+            },
+            {
+              category: "Housing",
+              inflationRate: -2.1,
+            },
+            {
+              category: "Transportation",
+              inflationRate: 4.0,
+            },
+            {
+              category: "Healthcare",
+              inflationRate: 2.1,
+            },
+            {
+              category: "Education",
+              inflationRate: 3.0,
+            },
+          ],
           borderColor: "rgba(75, 192, 192, 1)",
           backgroundColor: "rgba(75, 192, 192, 0.2)",
+          label: "Overall Inflation Rate",
+          data: [],
         },
       ],
       countries: {
@@ -69,14 +99,44 @@ export const inflationData: InflationData = {
               "Mar 2023",
               "Apr 2023",
               "May 2023",
+              "Jun 2023",
+              "Jul 2023",
+              "Aug 2023",
+              "Sep 2023",
+              "Oct 2023",
+              "Nov 2023",
+              "Dec 2023",
             ],
             datasets: [
               {
-                label: "Inflation Rate",
-                data: [2.1, 2.3, 2.5, 2.4, 2.6],
+                overallInflationRate: 2.5,
+                categories: [
+                  {
+                    category: "Food",
+                    inflationRate: 3.0,
+                  },
+                  {
+                    category: "Housing",
+                    inflationRate: 1.8,
+                  },
+                  {
+                    category: "Transportation",
+                    inflationRate: 4.1,
+                  },
+                  {
+                    category: "Healthcare",
+                    inflationRate: 2.2,
+                  },
+                  {
+                    category: "Education",
+                    inflationRate: 2.9,
+                  },
+                ],
                 borderColor: "rgba(255, 99, 132, 0.6)",
                 backgroundColor: "rgba(255, 99, 132, 0.2)",
                 fill: true,
+                label: "Inflation Rate per country",
+                data: [],
               },
             ],
           },
@@ -97,12 +157,49 @@ export const inflationData: InflationData = {
             ],
             datasets: [
               {
-                label: "Current Year Inflation Rate",
-                data: [
-                  2.3, 2.5, 2.1, 2.4, 2.6, 2.3, 2.5, 2.4, 2.7, 2.6, 2.8, 2.9,
+                overallInflationRate: 2.4,
+                categories: [
+                  {
+                    category: "Food",
+                    inflationRate: 2.8,
+                  },
+                  {
+                    category: "Housing",
+                    inflationRate: -2.1,
+                  },
+                  {
+                    category: "Transportation",
+                    inflationRate: 4.0,
+                  },
+                  {
+                    category: "Healthcare",
+                    inflationRate: 2.1,
+                  },
+                  {
+                    category: "Education",
+                    inflationRate: 3.0,
+                  },
+                  {
+                    category: "Fashion",
+                    inflationRate: -2.2,
+                  },
+                  {
+                    category: "Entertainment",
+                    inflationRate: 2.9,
+                  },
+                  {
+                    category: "Real Estate",
+                    inflationRate: 2.3,
+                  },
+                  {
+                    category: "Vegetables",
+                    inflationRate: -2.1,
+                  },
                 ],
                 borderColor: "rgba(75, 192, 192, 1)",
                 backgroundColor: "rgba(75, 192, 192, 0.2)",
+                label: "Overall Inflation Rate",
+                data: [],
               },
             ],
           },
@@ -110,27 +207,9 @@ export const inflationData: InflationData = {
         Canada: {
           historical: {
             labels: [
-              "Jan 2023",
-              "Feb 2023",
-              "Mar 2023",
-              "Apr 2023",
-              "May 2023",
-            ],
-            datasets: [
-              {
-                label: "Inflation Rate",
-                data: [1.8, 2.0, 2.2, 2.1, 2.3],
-                borderColor: "rgba(54, 162, 235, 0.6)",
-                backgroundColor: "rgba(54, 162, 235, 0.2)",
-                fill: true,
-              },
-            ],
-          },
-          current: {
-            labels: [
               "Jan",
               "Feb",
-              "Mar",
+              "Mar ",
               "Apr",
               "May",
               "Jun",
@@ -143,58 +222,34 @@ export const inflationData: InflationData = {
             ],
             datasets: [
               {
-                label: "Current Year Inflation Rate",
-                data: [
-                  1.9, 2.1, 2.3, 2.2, 2.4, 2.2, 2.1, 2.3, 2.5, 2.4, 2.3, 2.2,
+                overallInflationRate: -2.5,
+                categories: [
+                  {
+                    category: "Food",
+                    inflationRate: 3.0,
+                  },
+                  {
+                    category: "Housing",
+                    inflationRate: -1.8,
+                  },
+                  {
+                    category: "Transportation",
+                    inflationRate: 4.1,
+                  },
+                  {
+                    category: "Healthcare",
+                    inflationRate: 2.2,
+                  },
+                  {
+                    category: "Education",
+                    inflationRate: 5.9,
+                  },
                 ],
-                borderColor: "rgba(153, 102, 255, 1)",
-                backgroundColor: "rgba(153, 102, 255, 0.2)",
-              },
-            ],
-          },
-        },
-      },
-    },
-    SouthAmerica: {
-      labels: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec",
-      ],
-      datasets: [
-        {
-          label: "Current Year Inflation Rate",
-          data: [3.0, 3.2, 3.1, 3.4, 3.6, 3.5, 3.7, 3.6, 3.8, 3.7, 3.9, 4.0],
-          borderColor: "rgba(255, 159, 64, 1)",
-          backgroundColor: "rgba(255, 159, 64, 0.2)",
-        },
-      ],
-      countries: {
-        Brazil: {
-          historical: {
-            labels: [
-              "Jan 2023",
-              "Feb 2023",
-              "Mar 2023",
-              "Apr 2023",
-              "May 2023",
-            ],
-            datasets: [
-              {
-                label: "Inflation Rate",
-                data: [3.2, 3.4, 3.6, 3.5, 3.7],
-                borderColor: "rgba(255, 159, 64, 0.6)",
-                backgroundColor: "rgba(255, 159, 64, 0.2)",
+                borderColor: "rgba(255, 99, 132, 0.6)",
+                backgroundColor: "rgba(255, 99, 132, 0.2)",
                 fill: true,
+                label: "Inflation Rate per country",
+                data: [],
               },
             ],
           },
@@ -215,65 +270,40 @@ export const inflationData: InflationData = {
             ],
             datasets: [
               {
-                label: "Current Year Inflation Rate",
-                data: [
-                  3.1, 3.3, 3.5, 3.6, 3.7, 3.8, 3.6, 3.7, 3.9, 4.0, 4.1, 4.2,
-                ],
-                borderColor: "rgba(255, 159, 64, 1)",
-                backgroundColor: "rgba(255, 159, 64, 0.2)",
-              },
-            ],
-          },
-        },
-        Argentina: {
-          historical: {
-            labels: [
-              "Jan 2023",
-              "Feb 2023",
-              "Mar 2023",
-              "Apr 2023",
-              "May 2023",
-            ],
-            datasets: [
-              {
-                label: "Inflation Rate",
-                data: [4.5, 4.7, 4.8, 4.6, 4.9],
-                borderColor: "rgba(75, 192, 192, 0.6)",
-                backgroundColor: "rgba(75, 192, 192, 0.2)",
-                fill: true,
-              },
-            ],
-          },
-          current: {
-            labels: [
-              "Jan",
-              "Feb",
-              "Mar",
-              "Apr",
-              "May",
-              "Jun",
-              "Jul",
-              "Aug",
-              "Sep",
-              "Oct",
-              "Nov",
-              "Dec",
-            ],
-            datasets: [
-              {
-                label: "Current Year Inflation Rate",
-                data: [
-                  4.6, 4.8, 5.0, 5.1, 5.2, 5.3, 5.5, 5.6, 5.7, 5.8, 5.9, 6.0,
+                overallInflationRate: 2.4,
+                categories: [
+                  {
+                    category: "Food",
+                    inflationRate: -2.8,
+                  },
+                  {
+                    category: "Housing",
+                    inflationRate: 2.1,
+                  },
+                  {
+                    category: "Transportation",
+                    inflationRate: -4.0,
+                  },
+                  {
+                    category: "Healthcare",
+                    inflationRate: 2.7,
+                  },
+                  {
+                    category: "Education",
+                    inflationRate: 5.0,
+                  },
                 ],
                 borderColor: "rgba(75, 192, 192, 1)",
                 backgroundColor: "rgba(75, 192, 192, 0.2)",
+                label: "Overall Inflation Rate",
+                data: [],
               },
             ],
           },
         },
       },
     },
-    Oceania: {
+    MiddleEast: {
       labels: [
         "Jan",
         "Feb",
@@ -290,29 +320,82 @@ export const inflationData: InflationData = {
       ],
       datasets: [
         {
-          label: "Current Year Inflation Rate",
-          data: [1.2, 1.3, 1.4, 1.5, 1.6, 1.5, 1.7, 1.8, 1.6, 1.7, 1.8, 1.9],
-          borderColor: "rgba(153, 102, 255, 1)",
-          backgroundColor: "rgba(153, 102, 255, 0.2)",
+          overallInflationRate: 3.7,
+          categories: [
+            {
+              category: "Food",
+              inflationRate: 4.5,
+            },
+            {
+              category: "Housing",
+              inflationRate: 3.2,
+            },
+            {
+              category: "Transportation",
+              inflationRate: 5.0,
+            },
+            {
+              category: "Healthcare",
+              inflationRate: 2.9,
+            },
+            {
+              category: "Education",
+              inflationRate: 3.7,
+            },
+          ],
+          borderColor: "rgba(54, 162, 235, 1)",
+          backgroundColor: "rgba(54, 162, 235, 0.2)",
+          label: "Overall Inflation Rate",
+          data: [],
         },
       ],
       countries: {
-        Australia: {
+        UAE: {
           historical: {
             labels: [
-              "Jan 2023",
-              "Feb 2023",
-              "Mar 2023",
-              "Apr 2023",
-              "May 2023",
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec",
             ],
             datasets: [
               {
-                label: "Inflation Rate",
-                data: [1.3, 1.4, 1.5, 1.6, 1.7],
+                overallInflationRate: 3.8,
+                categories: [
+                  {
+                    category: "Food",
+                    inflationRate: 4.4,
+                  },
+                  {
+                    category: "Housing",
+                    inflationRate: 2.8,
+                  },
+                  {
+                    category: "Transportation",
+                    inflationRate: 5.2,
+                  },
+                  {
+                    category: "Healthcare",
+                    inflationRate: 3.0,
+                  },
+                  {
+                    category: "Education",
+                    inflationRate: 3.6,
+                  },
+                ],
                 borderColor: "rgba(153, 102, 255, 0.6)",
                 backgroundColor: "rgba(153, 102, 255, 0.2)",
                 fill: true,
+                label: "Inflation Rate per country",
+                data: [],
               },
             ],
           },
@@ -333,32 +416,132 @@ export const inflationData: InflationData = {
             ],
             datasets: [
               {
-                label: "Current Year Inflation Rate",
-                data: [
-                  1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.7, 1.8, 1.9, 2.0, 2.1,
+                overallInflationRate: 3.7,
+                categories: [
+                  {
+                    category: "Food",
+                    inflationRate: 4.5,
+                  },
+                  {
+                    category: "Housing",
+                    inflationRate: 3.2,
+                  },
+                  {
+                    category: "Transportation",
+                    inflationRate: 5.0,
+                  },
+                  {
+                    category: "Healthcare",
+                    inflationRate: 2.9,
+                  },
+                  {
+                    category: "Education",
+                    inflationRate: 3.7,
+                  },
                 ],
-                borderColor: "rgba(153, 102, 255, 1)",
-                backgroundColor: "rgba(153, 102, 255, 0.2)",
+                borderColor: "rgba(54, 162, 235, 1)",
+                backgroundColor: "rgba(54, 162, 235, 0.2)",
+                label: "Overall Inflation Rate",
+                data: [],
               },
             ],
           },
         },
-        NewZealand: {
+      },
+    },
+    Europe: {
+      labels: [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ],
+      datasets: [
+        {
+          overallInflationRate: 4.2,
+          categories: [
+            {
+              category: "Food",
+              inflationRate: 5.0,
+            },
+            {
+              category: "Housing",
+              inflationRate: 4.5,
+            },
+            {
+              category: "Transportation",
+              inflationRate: 4.8,
+            },
+            {
+              category: "Healthcare",
+              inflationRate: 3.2,
+            },
+            {
+              category: "Education",
+              inflationRate: 3.9,
+            },
+          ],
+          borderColor: "rgba(255, 206, 86, 1)",
+          backgroundColor: "rgba(255, 206, 86, 0.2)",
+          label: "Overall Inflation Rate",
+          data: [],
+        },
+      ],
+      countries: {
+        Poland: {
           historical: {
             labels: [
-              "Jan 2023",
-              "Feb 2023",
-              "Mar 2023",
-              "Apr 2023",
-              "May 2023",
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec",
             ],
             datasets: [
               {
-                label: "Inflation Rate",
-                data: [1.0, 1.2, 1.3, 1.4, 1.5],
-                borderColor: "rgba(75, 192, 192, 0.6)",
-                backgroundColor: "rgba(75, 192, 192, 0.2)",
+                overallInflationRate: 4.3,
+                categories: [
+                  {
+                    category: "Food",
+                    inflationRate: 5.2,
+                  },
+                  {
+                    category: "Housing",
+                    inflationRate: 4.7,
+                  },
+                  {
+                    category: "Transportation",
+                    inflationRate: 4.6,
+                  },
+                  {
+                    category: "Healthcare",
+                    inflationRate: 3.4,
+                  },
+                  {
+                    category: "Education",
+                    inflationRate: 3.8,
+                  },
+                ],
+                borderColor: "rgba(255, 206, 86, 0.6)",
+                backgroundColor: "rgba(255, 206, 86, 0.2)",
                 fill: true,
+                label: "Inflation Rate per country",
+                data: [],
               },
             ],
           },
@@ -379,12 +562,191 @@ export const inflationData: InflationData = {
             ],
             datasets: [
               {
-                label: "Current Year Inflation Rate",
-                data: [
-                  1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.6, 1.7, 1.8, 1.9, 2.0,
+                overallInflationRate: 4.2,
+                categories: [
+                  {
+                    category: "Food",
+                    inflationRate: 5.0,
+                  },
+                  {
+                    category: "Housing",
+                    inflationRate: 4.5,
+                  },
+                  {
+                    category: "Transportation",
+                    inflationRate: 4.8,
+                  },
+                  {
+                    category: "Healthcare",
+                    inflationRate: 3.2,
+                  },
+                  {
+                    category: "Education",
+                    inflationRate: 3.9,
+                  },
                 ],
-                borderColor: "rgba(75, 192, 192, 1)",
-                backgroundColor: "rgba(75, 192, 192, 0.2)",
+                borderColor: "rgba(255, 206, 86, 1)",
+                backgroundColor: "rgba(255, 206, 86, 0.2)",
+                label: "Overall Inflation Rate",
+                data: [],
+              },
+            ],
+          },
+        },
+      },
+    },
+    Africa: {
+      labels: [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ],
+      datasets: [
+        {
+          overallInflationRate: -3.2,
+          categories: [
+            {
+              category: "Food",
+              inflationRate: -5.0,
+            },
+            {
+              category: "Housing",
+              inflationRate: 4.5,
+            },
+            {
+              category: "Transportation",
+              inflationRate: 2.8,
+            },
+            {
+              category: "Healthcare",
+              inflationRate: 4.2,
+            },
+            {
+              category: "Education",
+              inflationRate: 6.0,
+            },
+          ],
+          borderColor: "rgba(255, 206, 86, 1)",
+          backgroundColor: "rgba(255, 206, 86, 0.2)",
+          label: "Overall Inflation Rate",
+          data: [],
+        },
+      ],
+      countries: {
+        Ghana: {
+          historical: {
+            labels: [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec",
+            ],
+            datasets: [
+              {
+                overallInflationRate: 1.3,
+                categories: [
+                  {
+                    category: "Food",
+                    inflationRate: 5.2,
+                  },
+                  {
+                    category: "Housing",
+                    inflationRate: 4.7,
+                  },
+                  {
+                    category: "Transportation",
+                    inflationRate: -4.6,
+                  },
+                  {
+                    category: "Healthcare",
+                    inflationRate: 3.5,
+                  },
+                  {
+                    category: "Education",
+                    inflationRate: 5.8,
+                  },
+                ],
+                borderColor: "rgba(255, 206, 86, 0.6)",
+                backgroundColor: "rgba(255, 206, 86, 0.2)",
+                fill: true,
+                label: "Inflation Rate per country",
+                data: [],
+              },
+            ],
+          },
+          current: {
+            labels: [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec",
+            ],
+            datasets: [
+              {
+                overallInflationRate: 2.2,
+                categories: [
+                  {
+                    category: "Food",
+                    inflationRate: 5.0,
+                  },
+                  {
+                    category: "Housing",
+                    inflationRate: 4.5,
+                  },
+                  {
+                    category: "Transportation",
+                    inflationRate: -4.8,
+                  },
+                  {
+                    category: "Entertainment",
+                    inflationRate: 2.9,
+                  },
+                  {
+                    category: "Real Estate",
+                    inflationRate: 2.3,
+                  },
+                  {
+                    category: "Vegetables",
+                    inflationRate: -2.1,
+                  },
+                  {
+                    category: "Healthcare",
+                    inflationRate: -3.2,
+                  },
+                  {
+                    category: "Education",
+                    inflationRate: 3.9,
+                  },
+                ],
+                borderColor: "rgba(255, 206, 86, 1)",
+                backgroundColor: "rgba(255, 206, 86, 0.2)",
+                label: "Overall Inflation Rate",
+                data: [],
               },
             ],
           },
