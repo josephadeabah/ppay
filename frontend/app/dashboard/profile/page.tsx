@@ -3,7 +3,15 @@
 import ToastComponent from "@/components/toast/Toast";
 import { User } from "@/types/users.type";
 import { useEffect, useState } from "react";
-import { HiOutlineBriefcase } from "react-icons/hi";
+import {
+  HiOutlineBriefcase,
+  HiOutlineCash,
+  HiOutlineCube,
+  HiOutlineGlobe,
+  HiOutlineOfficeBuilding,
+  HiOutlineRss,
+  HiOutlineTag,
+} from "react-icons/hi";
 import UserProfileSkeleton from "./loader";
 
 export default function UserProfilePage() {
@@ -408,37 +416,43 @@ export default function UserProfilePage() {
           ) : (
             <div className="max-h-screen space-y-4 p-6">
               <div className="flex items-center space-x-2">
-                <HiOutlineBriefcase className="text-gray-500 dark:text-gray-300" />
+                <HiOutlineOfficeBuilding className="text-gray-500 dark:text-gray-300" />
                 <p className="text-gray-800 dark:text-white">
                   {user?.profile?.company ?? "Company Name"}
                 </p>
               </div>
               <div className="flex items-center space-x-2">
+                <HiOutlineCash className="text-gray-500 dark:text-gray-300" />
                 <p className="text-gray-800 dark:text-white">
                   {user?.profile?.actual_salary ?? "Actual Salary"}
                 </p>
               </div>
               <div className="flex items-center space-x-2">
+                <HiOutlineBriefcase className="text-gray-500 dark:text-gray-300" />
                 <p className="text-gray-800 dark:text-white">
                   {user?.profile?.experience ?? "Experience"}
                 </p>
               </div>
               <div className="flex items-center space-x-2">
+                <HiOutlineTag className="text-gray-500 dark:text-gray-300" />
                 <p className="text-gray-800 dark:text-white">
                   {user?.profile?.category ?? "Category"}
                 </p>
               </div>
               <div className="flex items-center space-x-2">
+                <HiOutlineGlobe className="text-gray-500 dark:text-gray-300" />
                 <p className="text-gray-800 dark:text-white">
                   {user?.profile?.country ?? "Country"}
                 </p>
               </div>
               <div className="flex items-center space-x-2">
+                <HiOutlineCube className="text-gray-500 dark:text-gray-300" />
                 <p className="text-gray-800 dark:text-white">
                   {user?.profile?.industry ?? "Industry"}
                 </p>
               </div>
               <div className="flex items-center space-x-2">
+                <HiOutlineRss className="text-gray-500 dark:text-gray-300" />
                 <p className="text-gray-800 dark:text-white">
                   {user?.profile?.job_website ?? "Website"}
                 </p>
