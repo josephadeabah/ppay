@@ -32,7 +32,7 @@ export default function MarketSalaryBenchmarksSkeleton() {
         <h2 className="mb-2 text-xl font-semibold text-gray-800 dark:text-gray-200">
           <Skeleton width={200} height={20} />
         </h2>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-hidden">
           <table className="w-full bg-white dark:bg-gray-800">
             <thead className="bg-gray-50 dark:bg-gray-800">
               <tr className="text-xs">
