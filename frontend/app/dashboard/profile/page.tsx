@@ -188,10 +188,7 @@ export default function UserProfilePage() {
           <div className="flex items-center space-x-6 p-6">
             <img
               className="h-24 w-24 rounded-full"
-              src={
-                user?.profile?.avatar &&
-                "https://img.clerk.com/eyJ0eXBlIjoiZGVmYXVsdCIsImlpZCI6Imluc18yUFhCM2ZKczBEd2NDVnRleGhIVElNNmxkWG4iLCJyaWQiOiJ1c2VyXzJqWTA4empFUU5XS0oyNXVNOFU5elB3RnhOTyJ9"
-              }
+              src="https://img.clerk.com/eyJ0eXBlIjoiZGVmYXVsdCIsImlpZCI6Imluc18yUFhCM2ZKczBEd2NDVnRleGhIVElNNmxkWG4iLCJyaWQiOiJ1c2VyXzJqWTA4empFUU5XS0oyNXVNOFU5elB3RnhOTyJ9"
               alt="User Avatar"
             />
             <div className="flex-1">
