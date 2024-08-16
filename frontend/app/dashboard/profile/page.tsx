@@ -5,24 +5,23 @@ import { useEffect, useState } from "react";
 import { HiOutlineBriefcase } from "react-icons/hi";
 import UserProfileSkeleton from "./loader";
 
-// Define the UserProfile and User types
 type UserProfile = {
-  id: number;
-  user_id: number;
-  name: string;
-  role: string;
-  status: string;
-  salary_role: string;
-  experience: string;
-  country: string;
-  industry: string;
-  category: string;
-  company: string;
-  actual_salary: string;
-  job_website: string;
-  avatar: string;
-  created_at: string;
-  updated_at: string;
+  id?: number;
+  user_id?: number;
+  name?: string;
+  role?: string;
+  status?: string;
+  salary_role?: string;
+  experience?: string;
+  country?: string;
+  industry?: string;
+  category?: string;
+  company?: string;
+  actual_salary?: string;
+  job_website?: string;
+  avatar?: string;
+  created_at?: string;
+  updated_at?: string;
 };
 
 type User = {
@@ -92,18 +91,18 @@ export default function UserProfilePage() {
       user: {
         email: user.email,
         profile_attributes: {
-          name: user.profile?.name,
-          role: user.profile?.role,
-          status: user.profile?.status,
-          salary_role: user.profile?.salary_role,
-          experience: user.profile?.experience,
-          country: user.profile?.country,
-          industry: user.profile?.industry,
-          category: user.profile?.category,
-          company: user.profile?.company,
-          actual_salary: user.profile?.actual_salary,
-          job_website: user.profile?.job_website,
-          avatar: user.profile?.avatar,
+          name: user.profile?.name ?? "",
+          role: user.profile?.role ?? "",
+          status: user.profile?.status ?? "",
+          salary_role: user.profile?.salary_role ?? "",
+          experience: user.profile?.experience ?? "",
+          country: user.profile?.country ?? "",
+          industry: user.profile?.industry ?? "",
+          category: user.profile?.category ?? "",
+          company: user.profile?.company ?? "",
+          actual_salary: user.profile?.actual_salary ?? "",
+          job_website: user.profile?.job_website ?? "",
+          avatar: user.profile?.avatar ?? "",
         },
       },
     };
@@ -175,7 +174,7 @@ export default function UserProfilePage() {
       )}
 
       <div className="max-h-screen bg-gray-100 px-2 py-3 dark:bg-gray-900">
-        <div className="mx-auto  overflow-hidden rounded-lg bg-white dark:bg-gray-800">
+        <div className="mx-auto overflow-hidden rounded-lg bg-white dark:bg-gray-800">
           <div className="flex justify-end p-6">
             <button
               onClick={handleEditToggle}
@@ -213,10 +212,13 @@ export default function UserProfilePage() {
                   value={user?.profile?.name ?? ""}
                   onChange={(e) =>
                     setUser((prev) =>
-                      prev?.profile
+                      prev
                         ? {
                             ...prev,
-                            profile: { ...prev.profile, name: e.target.value },
+                            profile: {
+                              ...prev.profile,
+                              name: e.target.value,
+                            },
                           }
                         : prev,
                     )
@@ -229,10 +231,13 @@ export default function UserProfilePage() {
                   value={user?.profile?.role ?? ""}
                   onChange={(e) =>
                     setUser((prev) =>
-                      prev?.profile
+                      prev
                         ? {
                             ...prev,
-                            profile: { ...prev.profile, role: e.target.value },
+                            profile: {
+                              ...prev.profile,
+                              role: e.target.value,
+                            },
                           }
                         : prev,
                     )
@@ -247,7 +252,7 @@ export default function UserProfilePage() {
                   value={user?.profile?.status ?? ""}
                   onChange={(e) =>
                     setUser((prev) =>
-                      prev?.profile
+                      prev
                         ? {
                             ...prev,
                             profile: {
@@ -266,7 +271,7 @@ export default function UserProfilePage() {
                   value={user?.profile?.salary_role ?? ""}
                   onChange={(e) =>
                     setUser((prev) =>
-                      prev?.profile
+                      prev
                         ? {
                             ...prev,
                             profile: {
@@ -287,7 +292,7 @@ export default function UserProfilePage() {
                   value={user?.profile?.experience ?? ""}
                   onChange={(e) =>
                     setUser((prev) =>
-                      prev?.profile
+                      prev
                         ? {
                             ...prev,
                             profile: {
@@ -306,7 +311,7 @@ export default function UserProfilePage() {
                   value={user?.profile?.country ?? ""}
                   onChange={(e) =>
                     setUser((prev) =>
-                      prev?.profile
+                      prev
                         ? {
                             ...prev,
                             profile: {
@@ -327,7 +332,7 @@ export default function UserProfilePage() {
                   value={user?.profile?.industry ?? ""}
                   onChange={(e) =>
                     setUser((prev) =>
-                      prev?.profile
+                      prev
                         ? {
                             ...prev,
                             profile: {
@@ -346,7 +351,7 @@ export default function UserProfilePage() {
                   value={user?.profile?.category ?? ""}
                   onChange={(e) =>
                     setUser((prev) =>
-                      prev?.profile
+                      prev
                         ? {
                             ...prev,
                             profile: {
@@ -367,7 +372,7 @@ export default function UserProfilePage() {
                   value={user?.profile?.company ?? ""}
                   onChange={(e) =>
                     setUser((prev) =>
-                      prev?.profile
+                      prev
                         ? {
                             ...prev,
                             profile: {
@@ -382,11 +387,11 @@ export default function UserProfilePage() {
                 />
                 <input
                   type="text"
-                  placeholder="Salary"
+                  placeholder="Actual Salary"
                   value={user?.profile?.actual_salary ?? ""}
                   onChange={(e) =>
                     setUser((prev) =>
-                      prev?.profile
+                      prev
                         ? {
                             ...prev,
                             profile: {
@@ -407,7 +412,7 @@ export default function UserProfilePage() {
                   value={user?.profile?.job_website ?? ""}
                   onChange={(e) =>
                     setUser((prev) =>
-                      prev?.profile
+                      prev
                         ? {
                             ...prev,
                             profile: {
@@ -425,7 +430,7 @@ export default function UserProfilePage() {
                 onClick={handleSaveProfile}
                 className="w-1/2 rounded-lg bg-gray-500 px-4 py-2 text-white transition duration-300 hover:bg-green-600 dark:bg-gray-950"
               >
-                Save Profile
+                Save
               </button>
             </div>
           ) : (
@@ -468,12 +473,6 @@ export default function UserProfilePage() {
               </div>
             </div>
           )}
-          <div className="px-2 py-5 text-sm font-normal text-gray-500 dark:text-gray-50">
-            Note: All fields are optional but it is neccessary for us to provide
-            the right data about global wages and salaries analysis for you to
-            have the best possible data experience on our platform. So please
-            fill all the fields with your accurate data.
-          </div>
         </div>
       </div>
     </>
