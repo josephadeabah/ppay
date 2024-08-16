@@ -3,6 +3,7 @@
 import ToastComponent from "@/components/toast/Toast";
 import { useEffect, useState } from "react";
 import { HiOutlineBriefcase } from "react-icons/hi";
+import UserProfileSkeleton from "./loader";
 
 // Define the UserProfile and User types
 type UserProfile = {
@@ -142,7 +143,15 @@ export default function UserProfilePage() {
     }
   };
 
-  if (loading) return <p>Loading...</p>;
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+
+  if (loading) {
+    return <UserProfileSkeleton />;
+  }
   if (error) return <p>{error}</p>;
 
   return (
