@@ -167,6 +167,15 @@ export default function UserProfilePage() {
 
       <div className="max-h-screen bg-gray-100 px-2 py-3 dark:bg-gray-900">
         <div className="mx-auto  overflow-hidden rounded-lg bg-white dark:bg-gray-800">
+          <div className="flex justify-end p-6">
+            <button
+              onClick={handleEditToggle}
+              className="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600"
+            >
+              {editing ? "Cancel" : "Edit Profile"}
+            </button>
+          </div>
+
           <div className="flex items-center space-x-6 p-6">
             <img
               className="h-24 w-24 rounded-full"
@@ -187,12 +196,6 @@ export default function UserProfilePage() {
                 {user?.profile?.role ?? "User Role"}
               </p>
             </div>
-            <button
-              onClick={handleEditToggle}
-              className="rounded-lg bg-blue-500 px-4 py-2 text-white transition duration-300 hover:bg-blue-600"
-            >
-              {editing ? "Cancel" : "Edit Profile"}
-            </button>
           </div>
 
           {editing ? (
@@ -414,7 +417,7 @@ export default function UserProfilePage() {
               </div>
               <button
                 onClick={handleSaveProfile}
-                className="w-96 rounded-lg bg-gray-500 px-4 py-2 text-white transition duration-300 hover:bg-green-600 dark:bg-gray-950"
+                className="w-1/2 rounded-lg bg-gray-500 px-4 py-2 text-white transition duration-300 hover:bg-green-600 dark:bg-gray-950"
               >
                 Save Profile
               </button>
