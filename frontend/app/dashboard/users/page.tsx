@@ -226,15 +226,12 @@ export default function UsersPage() {
                               <div className="flex items-center space-x-4">
                                 <img
                                   className="h-16 w-16 rounded-full object-cover"
-                                  src={
-                                    user?.profile?.avatar ??
-                                    "https://img.clerk.com/eyJ0eXBlIjoiZGVmYXVsdCIsImlpZCI6Imluc18yUFhCM2ZKczBEd2NDVnRleGhIVElNNmxkWG4iLCJyaWQiOiJ1c2VyXzJqWTA4empFUU5XS0oyNXVNOFU5elB3RnhOTyJ9"
-                                  }
+                                  src="https://img.clerk.com/eyJ0eXBlIjoiZGVmYXVsdCIsImlpZCI6Imluc18yUFhCM2ZKczBEd2NDVnRleGhIVElNNmxkWG4iLCJyaWQiOiJ1c2VyXzJqWTA4empFUU5XS0oyNXVNOFU5elB3RnhOTyJ9"
                                   alt="User Avatar"
                                 />
                                 <div>
                                   <div className="text-lg font-semibold text-gray-900 dark:text-white">
-                                    {user?.profile?.name}
+                                    ***** ****
                                   </div>
                                   <div className="text-sm font-normal text-gray-500 dark:text-gray-400">
                                     {user?.profile?.role}
@@ -242,11 +239,12 @@ export default function UsersPage() {
                                 </div>
                               </div>
                               <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2">
-                                <div className="flex flex-row items-center">
+                                <div>
                                   <div className="text-sm font-semibold text-gray-900 dark:text-white">
-                                    Status
+                                    Status:
                                   </div>
                                   <div className="flex flex-row items-center gap-2 text-sm font-normal text-gray-500 dark:text-gray-400">
+                                    {user?.profile?.status ?? "Offline"}
                                     {user?.profile?.status === "Online" ? (
                                       <div className="mr-2 inline-block h-3 w-3 rounded-full bg-green-400"></div>
                                     ) : (
