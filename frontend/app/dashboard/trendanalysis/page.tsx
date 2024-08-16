@@ -13,8 +13,9 @@ import {
   Title,
   Tooltip,
 } from "chart.js";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Bar, Line } from "react-chartjs-2";
+import LoadingSkeleton from "./loader";
 
 ChartJS.register(
   CategoryScale,
@@ -50,6 +51,14 @@ export default function TrendAnalysis() {
   const [salaryFilter, setSalaryFilter] = useState<number>(50000); // Default minimum salary filter
   const [changeFilter, setChangeFilter] = useState<number>(0); // Default change filter
   const [selectedCountry, setSelectedCountry] = useState<string>(""); // Empty string for "All Countries"
+  const [loading, setLoading] = useState(true); // Loading state
+
+  useEffect(() => {
+    // Simulate a data fetch
+    setTimeout(() => {
+      setLoading(false); // Set loading to false after 2 seconds
+    }, 2000);
+  }, []);
 
   const tableData = [
     // Data entries here...
@@ -282,249 +291,255 @@ export default function TrendAnalysis() {
 
   return (
     <div className="mx-auto flex flex-col px-4">
-      <div className="mb-6 mt-2 flex items-center gap-2 text-xl font-bold text-gray-700 dark:text-gray-200">
-        <span>Trend Analysis</span>
-      </div>
-      <div className="mb-4 flex flex-col gap-2 md:flex-row md:gap-4">
-        <div className="flex-1">
-          <label htmlFor="trendSelect" className="mb-2 block">
-            Select Trend
-          </label>
-          <DropdownSelect
-            id="trendSelect"
-            options={trendOptions}
-            selectedValue={selectedTrend}
-            onChange={handleTrendChange}
-            placeholder="Select Trend"
-          />
-        </div>
-        <div className="flex-1">
-          <label htmlFor="countrySelect" className="mb-2 block">
-            Select Country
-          </label>
-          <DropdownSelect
-            id="countrySelect"
-            options={countryOptions}
-            selectedValue={selectedCountry}
-            onChange={handleCountryChange}
-            placeholder="Select Country"
-          />
-        </div>
-      </div>
-      <div className="flex flex-col gap-4 md:flex-row md:gap-8">
-        <div className="flex-1">
-          <Line
-            data={selectedTrendData}
-            options={{
-              responsive: true,
-              plugins: {
-                legend: { position: "top" },
-                tooltip: {
-                  callbacks: {
-                    label: function (tooltipItem) {
-                      const companyName = tooltipItem.label;
-                      const value = tooltipItem.raw;
-                      return `${companyName}: ${value}% change`;
+      {loading ? (
+        <LoadingSkeleton /> // Show skeleton while loading
+      ) : (
+        <>
+          <div className="mb-6 mt-2 flex items-center gap-2 text-xl font-bold text-gray-700 dark:text-gray-200">
+            <span>Trend Analysis</span>
+          </div>
+          <div className="mb-4 flex flex-col gap-2 md:flex-row md:gap-4">
+            <div className="flex-1">
+              <label htmlFor="trendSelect" className="mb-2 block">
+                Select Trend
+              </label>
+              <DropdownSelect
+                id="trendSelect"
+                options={trendOptions}
+                selectedValue={selectedTrend}
+                onChange={handleTrendChange}
+                placeholder="Select Trend"
+              />
+            </div>
+            <div className="flex-1">
+              <label htmlFor="countrySelect" className="mb-2 block">
+                Select Country
+              </label>
+              <DropdownSelect
+                id="countrySelect"
+                options={countryOptions}
+                selectedValue={selectedCountry}
+                onChange={handleCountryChange}
+                placeholder="Select Country"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col gap-4 md:flex-row md:gap-8">
+            <div className="flex-1">
+              <Line
+                data={selectedTrendData}
+                options={{
+                  responsive: true,
+                  plugins: {
+                    legend: { position: "top" },
+                    tooltip: {
+                      callbacks: {
+                        label: function (tooltipItem) {
+                          const companyName = tooltipItem.label;
+                          const value = tooltipItem.raw;
+                          return `${companyName}: ${value}% change`;
+                        },
+                      },
                     },
                   },
-                },
-              },
-            }}
-          />
-        </div>
-        <div className="flex-1">
-          <Bar
-            data={selectedTrendData}
-            options={{
-              responsive: true,
-              plugins: {
-                legend: { position: "top" },
-                tooltip: {
-                  callbacks: {
-                    label: function (tooltipItem) {
-                      const companyName = tooltipItem.label;
-                      const value = tooltipItem.raw;
-                      return `${companyName}: ${value}% change`;
+                }}
+              />
+            </div>
+            <div className="flex-1">
+              <Bar
+                data={selectedTrendData}
+                options={{
+                  responsive: true,
+                  plugins: {
+                    legend: { position: "top" },
+                    tooltip: {
+                      callbacks: {
+                        label: function (tooltipItem) {
+                          const companyName = tooltipItem.label;
+                          const value = tooltipItem.raw;
+                          return `${companyName}: ${value}% change`;
+                        },
+                      },
                     },
                   },
-                },
-              },
-            }}
-          />
-        </div>
-      </div>
-      <div className="my-4">
-        <div className="flex flex-col md:flex-row md:gap-4">
-          <div className="flex-1">
-            <label htmlFor="growthRate" className="mb-2 block">
-              Growth Rate {growthRate} (%)
-            </label>
-            <SliderComponent
-              id="growthRate"
-              minValue={-100}
-              maxValue={100}
-              step={1}
-              value={growthRate}
-              onChange={handleGrowthRateChange}
-            />
+                }}
+              />
+            </div>
           </div>
-          <div className="flex-1">
-            <label htmlFor="salaryFilter" className="mb-2 block">
-              Minimum Salary ($) {salaryFilter.toLocaleString()}
-            </label>
-            <SliderComponent
-              id="salaryFilter"
-              minValue={0}
-              maxValue={200000}
-              step={10}
-              value={salaryFilter}
-              onChange={handleSalaryFilterChange}
-            />
+          <div className="my-4">
+            <div className="flex flex-col md:flex-row md:gap-4">
+              <div className="flex-1">
+                <label htmlFor="growthRate" className="mb-2 block">
+                  Growth Rate {growthRate} (%)
+                </label>
+                <SliderComponent
+                  id="growthRate"
+                  minValue={-100}
+                  maxValue={100}
+                  step={1}
+                  value={growthRate}
+                  onChange={handleGrowthRateChange}
+                />
+              </div>
+              <div className="flex-1">
+                <label htmlFor="salaryFilter" className="mb-2 block">
+                  Minimum Salary ($) {salaryFilter.toLocaleString()}
+                </label>
+                <SliderComponent
+                  id="salaryFilter"
+                  minValue={0}
+                  maxValue={200000}
+                  step={10}
+                  value={salaryFilter}
+                  onChange={handleSalaryFilterChange}
+                />
+              </div>
+              <div className="flex-1">
+                <label htmlFor="changeFilter" className="mb-2 block">
+                  Change Filter (%) {changeFilter}
+                </label>
+                <SliderComponent
+                  id="changeFilter"
+                  minValue={-100}
+                  maxValue={100}
+                  step={1}
+                  value={changeFilter}
+                  onChange={handleChangeFilterChange}
+                />
+              </div>
+            </div>
           </div>
-          <div className="flex-1">
-            <label htmlFor="changeFilter" className="mb-2 block">
-              Change Filter (%) {changeFilter}
-            </label>
-            <SliderComponent
-              id="changeFilter"
-              minValue={-100}
-              maxValue={100}
-              step={1}
-              value={changeFilter}
-              onChange={handleChangeFilterChange}
-            />
+          <div className="overflow-x-auto [&::-moz-scrollbar-thumb]:rounded-full [&::-moz-scrollbar-thumb]:bg-gray-200 [&::-moz-scrollbar-track]:m-1 [&::-moz-scrollbar]:w-2 [&::-ms-scrollbar-thumb]:rounded-full [&::-ms-scrollbar-thumb]:bg-gray-200 [&::-ms-scrollbar-track]:m-1 [&::-ms-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-track]:m-1 [&::-webkit-scrollbar]:w-2">
+            <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+              <thead className="bg-white dark:bg-gray-800">
+                <tr>
+                  <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
+                    <Tooltp
+                      placement="top"
+                      content="Country where the job is located"
+                      className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
+                    >
+                      Country
+                    </Tooltp>
+                  </th>
+                  <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
+                    <Tooltp
+                      placement="top"
+                      content="Industry in which the job is categorized"
+                      className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
+                    >
+                      Industry
+                    </Tooltp>
+                  </th>
+                  <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
+                    <Tooltp
+                      placement="top"
+                      content="Company offering the job"
+                      className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
+                    >
+                      Company
+                    </Tooltp>
+                  </th>
+                  <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
+                    <Tooltp
+                      placement="top"
+                      content="Job role or position"
+                      className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
+                    >
+                      Role
+                    </Tooltp>
+                  </th>
+                  <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
+                    <Tooltp
+                      placement="top"
+                      content="Current salary at the company per year"
+                      className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
+                    >
+                      Company Salary
+                    </Tooltp>
+                  </th>
+                  <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
+                    <Tooltp
+                      placement="top"
+                      content="Current salary for the role per year"
+                      className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
+                    >
+                      Role Salary
+                    </Tooltp>
+                  </th>
+                  <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
+                    <Tooltp
+                      placement="top"
+                      content="Timeframe for the salary change"
+                      className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
+                    >
+                      Timeframe
+                    </Tooltp>
+                  </th>
+                  <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
+                    <Tooltp
+                      placement="top"
+                      content="Percentage change in salary over the specified timeframe"
+                      className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
+                    >
+                      Change
+                    </Tooltp>
+                  </th>
+                  <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
+                    <Tooltp
+                      placement="top"
+                      content="Additional benefits offered by the company"
+                      className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
+                    >
+                      Benefits
+                    </Tooltp>
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+                {filteredTableData.map((data, index) => (
+                  <tr key={index}>
+                    <td className="whitespace-nowrap px-4 py-2 text-sm text-gray-900 dark:text-gray-200 md:px-6 md:py-4">
+                      {data.country}
+                    </td>
+                    <td className="whitespace-nowrap px-4 py-2 text-sm text-gray-900 dark:text-gray-200 md:px-6 md:py-4">
+                      {data.industry}
+                    </td>
+                    <td className="whitespace-nowrap px-4 py-2 text-sm text-gray-900 dark:text-gray-200 md:px-6 md:py-4">
+                      {data.company}
+                    </td>
+                    <td className="whitespace-nowrap px-4 py-2 text-sm text-gray-900 dark:text-gray-200 md:px-6 md:py-4">
+                      {data.role}
+                    </td>
+                    <td className="whitespace-nowrap px-4 py-2 text-sm text-gray-900 dark:text-gray-200 md:px-6 md:py-4">
+                      ${data.currentSalaryByCompany.toLocaleString()}
+                    </td>
+                    <td className="whitespace-nowrap px-4 py-2 text-sm text-gray-900 dark:text-gray-200 md:px-6 md:py-4">
+                      ${data.currentSalaryByRole.toLocaleString()}
+                    </td>
+                    <td className="whitespace-nowrap px-4 py-2 text-sm text-gray-900 dark:text-gray-200 md:px-6 md:py-4">
+                      {data.changeTimeframe}
+                    </td>
+                    <td className="whitespace-nowrap px-4 py-2">
+                      <span
+                        className={`inline-flex rounded-full px-2 text-xs font-semibold leading-5 ${getChangeColor(
+                          data.change,
+                        )}`}
+                      >
+                        {data.change > 0 ? "+" : ""}
+                        {data.change.toFixed(2)}%
+                      </span>
+                    </td>
+                    <td className="whitespace-nowrap px-4 py-2 text-sm text-gray-900 dark:text-gray-200 md:px-6 md:py-4">
+                      {data.benefits}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-        </div>
-      </div>
-      <div className="overflow-x-auto [&::-moz-scrollbar-thumb]:rounded-full [&::-moz-scrollbar-thumb]:bg-gray-200 [&::-moz-scrollbar-track]:m-1 [&::-moz-scrollbar]:w-2 [&::-ms-scrollbar-thumb]:rounded-full [&::-ms-scrollbar-thumb]:bg-gray-200 [&::-ms-scrollbar-track]:m-1 [&::-ms-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-track]:m-1 [&::-webkit-scrollbar]:w-2">
-        <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-          <thead className="bg-white dark:bg-gray-800">
-            <tr>
-              <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
-                <Tooltp
-                  placement="top"
-                  content="Country where the job is located"
-                  className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
-                >
-                  Country
-                </Tooltp>
-              </th>
-              <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
-                <Tooltp
-                  placement="top"
-                  content="Industry in which the job is categorized"
-                  className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
-                >
-                  Industry
-                </Tooltp>
-              </th>
-              <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
-                <Tooltp
-                  placement="top"
-                  content="Company offering the job"
-                  className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
-                >
-                  Company
-                </Tooltp>
-              </th>
-              <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
-                <Tooltp
-                  placement="top"
-                  content="Job role or position"
-                  className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
-                >
-                  Role
-                </Tooltp>
-              </th>
-              <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
-                <Tooltp
-                  placement="top"
-                  content="Current salary at the company per year"
-                  className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
-                >
-                  Company Salary
-                </Tooltp>
-              </th>
-              <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
-                <Tooltp
-                  placement="top"
-                  content="Current salary for the role per year"
-                  className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
-                >
-                  Role Salary
-                </Tooltp>
-              </th>
-              <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
-                <Tooltp
-                  placement="top"
-                  content="Timeframe for the salary change"
-                  className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
-                >
-                  Timeframe
-                </Tooltp>
-              </th>
-              <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
-                <Tooltp
-                  placement="top"
-                  content="Percentage change in salary over the specified timeframe"
-                  className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
-                >
-                  Change
-                </Tooltp>
-              </th>
-              <th className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider text-gray-500 md:px-6 md:py-3">
-                <Tooltp
-                  placement="top"
-                  content="Additional benefits offered by the company"
-                  className="bg-white text-xs text-gray-600 dark:bg-gray-950 dark:text-gray-50"
-                >
-                  Benefits
-                </Tooltp>
-              </th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-            {filteredTableData.map((data, index) => (
-              <tr key={index}>
-                <td className="whitespace-nowrap px-4 py-2 text-sm text-gray-900 dark:text-gray-200 md:px-6 md:py-4">
-                  {data.country}
-                </td>
-                <td className="whitespace-nowrap px-4 py-2 text-sm text-gray-900 dark:text-gray-200 md:px-6 md:py-4">
-                  {data.industry}
-                </td>
-                <td className="whitespace-nowrap px-4 py-2 text-sm text-gray-900 dark:text-gray-200 md:px-6 md:py-4">
-                  {data.company}
-                </td>
-                <td className="whitespace-nowrap px-4 py-2 text-sm text-gray-900 dark:text-gray-200 md:px-6 md:py-4">
-                  {data.role}
-                </td>
-                <td className="whitespace-nowrap px-4 py-2 text-sm text-gray-900 dark:text-gray-200 md:px-6 md:py-4">
-                  ${data.currentSalaryByCompany.toLocaleString()}
-                </td>
-                <td className="whitespace-nowrap px-4 py-2 text-sm text-gray-900 dark:text-gray-200 md:px-6 md:py-4">
-                  ${data.currentSalaryByRole.toLocaleString()}
-                </td>
-                <td className="whitespace-nowrap px-4 py-2 text-sm text-gray-900 dark:text-gray-200 md:px-6 md:py-4">
-                  {data.changeTimeframe}
-                </td>
-                <td className="whitespace-nowrap px-4 py-2">
-                  <span
-                    className={`inline-flex rounded-full px-2 text-xs font-semibold leading-5 ${getChangeColor(
-                      data.change,
-                    )}`}
-                  >
-                    {data.change > 0 ? "+" : ""}
-                    {data.change.toFixed(2)}%
-                  </span>
-                </td>
-                <td className="whitespace-nowrap px-4 py-2 text-sm text-gray-900 dark:text-gray-200 md:px-6 md:py-4">
-                  {data.benefits}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+        </>
+      )}
     </div>
   );
 }

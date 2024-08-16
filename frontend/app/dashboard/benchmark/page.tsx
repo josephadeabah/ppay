@@ -14,9 +14,10 @@ import {
   Title,
   Tooltip,
 } from "chart.js";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Bar, Line } from "react-chartjs-2";
 import { BenchmarkDataType, Company, Country, data, Industry } from "./data";
+import MarketSalaryBenchmarksSkeleton from "./loader";
 
 ChartJS.register(
   CategoryScale,
@@ -38,6 +39,13 @@ export default function MarketSalaryBenchmarks() {
     null,
   );
   const [selectedCompany, setSelectedCompany] = useState<Company | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
 
   // Calculate adjusted salary based on inflation rate
   const calculateAdjustedSalary = (salary: number, inflationRate: number) => {
@@ -126,7 +134,9 @@ export default function MarketSalaryBenchmarks() {
     };
   }, [filteredRoles]);
 
-  return (
+  return loading ? (
+    <MarketSalaryBenchmarksSkeleton />
+  ) : (
     <div className="mx-auto px-4">
       <div className="mb-6 mt-2 flex items-center gap-2 text-xl font-bold text-gray-700 dark:text-gray-50">
         Market Salary Benchmarks (Live{" "}

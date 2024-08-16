@@ -1,8 +1,9 @@
 "use client";
 
 import PaginationComponent from "@/components/pagination/pagination";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HiOutlineBriefcase } from "react-icons/hi"; // Import the icon
+import UsersPageSkeleton from "./loader";
 
 const users = [
   {
@@ -175,10 +176,22 @@ export default function UsersPage() {
   const indexOfFirstCompany = indexOfLastCompany - usersPerPage;
   const currentUsers = users.slice(indexOfFirstCompany, indexOfLastCompany);
   const [expandedRow, setExpandedRow] = useState<number | null>(null);
+  const [loading, setLoading] = useState(true);
 
   const toggleRow = (id: number) => {
     setExpandedRow(expandedRow === id ? null : id);
   };
+
+  useEffect(() => {
+    // Simulate a data fetching delay
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000); // Adjust time as needed
+  }, []);
+
+  if (loading) {
+    return <UsersPageSkeleton />;
+  }
 
   return (
     <div>

@@ -2,14 +2,27 @@
 import ComplianceForm from "@/app/dashboard/reportpay/forms/ComplianceForm";
 import EmployeeForm from "@/app/dashboard/reportpay/forms/EmployeeForm";
 import EmployerForm from "@/app/dashboard/reportpay/forms/EmployerForm";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import ReportPaySkeleton from "./loader";
 
 export default function ReportPay() {
   const [activeTab, setActiveTab] = useState("profile-example");
+  const [loading, setLoading] = useState(true);
 
   const handleTabClick = (tabId: string) => {
     setActiveTab(tabId);
   };
+
+  useEffect(() => {
+    // Simulate a data fetching delay
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000); // Adjust time as needed
+  }, []);
+
+  if (loading) {
+    return <ReportPaySkeleton />;
+  }
 
   return (
     <>

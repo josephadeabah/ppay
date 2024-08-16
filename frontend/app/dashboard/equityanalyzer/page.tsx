@@ -20,6 +20,7 @@ import { Table } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import { Bar, Line } from "react-chartjs-2";
 import { payEquityData } from "./data";
+import SkeletonLoader from "./loader";
 
 // Register necessary Chart.js components
 ChartJS.register(
@@ -186,6 +187,7 @@ export default function PayEquityAnalyzer() {
     useState<string>("Non");
   const [jobEvaluationSystems, setJobEvaluationSystems] =
     useState<string>("Non");
+  const [loading, setLoading] = useState(true);
 
   const [barChartData, setBarChartData] = useState<BarChartData>({
     labels: [],
@@ -447,6 +449,17 @@ export default function PayEquityAnalyzer() {
       value: payEquityData.jobEvaluationSystems[jobEvaluationSystems] || 0,
     },
   ];
+
+  useEffect(() => {
+    // Simulate a data fetching delay
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000); // Adjust time as needed
+  }, []);
+
+  if (loading) {
+    return <SkeletonLoader />;
+  }
 
   return (
     <div className="p-4">

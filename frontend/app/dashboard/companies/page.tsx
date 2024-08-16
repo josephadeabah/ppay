@@ -9,10 +9,11 @@ import {
   CardHeader,
   Tooltip,
 } from "@nextui-org/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
 import { twMerge } from "tailwind-merge";
 import { companies } from "./data";
+import SkeletonLoader from "./loader";
 
 const CompaniesPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,6 +25,7 @@ const CompaniesPage: React.FC = () => {
   const [sizeFilter, setSizeFilter] = useState<number[]>([0, 10000]);
   const [searchQuery, setSearchQuery] = useState("");
   const [ratingFilter, setRatingFilter] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const handleLocationChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
@@ -67,6 +69,17 @@ const CompaniesPage: React.FC = () => {
     indexOfFirstCompany,
     indexOfLastCompany,
   );
+
+  useEffect(() => {
+    // Simulate a data fetching delay
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000); // Adjust time as needed
+  }, []);
+
+  if (loading) {
+    return <SkeletonLoader />;
+  }
 
   return (
     <div className="mx-auto px-4 py-8">

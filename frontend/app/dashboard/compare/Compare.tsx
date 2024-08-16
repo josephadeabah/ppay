@@ -5,10 +5,11 @@ import PaginationComponent from "@/components/pagination/pagination"; // Import 
 import { Tooltip } from "@nextui-org/react";
 import { ActiveElement, ChartData, ChartEvent, ChartOptions } from "chart.js";
 import "chart.js/auto";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import CompanyMetrics from "./CompanyMetrics";
 import { Company, Country, data, Industry } from "./data";
+import CompareSkeletonLoader from "./loader";
 
 const Compare: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<
@@ -21,6 +22,11 @@ const Compare: React.FC = () => {
 
   const [selectedItem, setSelectedItem] = useState<SelectedItem>(null);
   const [highlightedItem, setHighlightedItem] = useState<SelectedItem>(null);
+  const [loading, setLoading] = useState(true); // Add loading state
+  useEffect(() => {
+    // Simulate a data loading scenario
+    setTimeout(() => setLoading(false), 1000); // Adjust time as needed
+  }, []);
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
@@ -114,7 +120,9 @@ const Compare: React.FC = () => {
     currentPage * itemsPerPage,
   );
 
-  return (
+  return loading ? (
+    <CompareSkeletonLoader />
+  ) : (
     <div className="flex w-full flex-col">
       <div className="flex w-full flex-col lg:flex-row">
         <div className="flex w-full flex-col p-3 lg:w-1/2">

@@ -13,6 +13,7 @@ import {
 import { Button, Table } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
+import CompliancePageSkeleton from "./loader";
 
 // Register necessary Chart.js components
 ChartJS.register(
@@ -67,6 +68,7 @@ export default function CompliancePage() {
   const [complianceTrendsData, setComplianceTrendsData] = useState(
     initialComplianceTrendsData,
   );
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Function to generate random data for simulation
@@ -100,6 +102,16 @@ export default function CompliancePage() {
       },
     },
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+
+  if (loading) {
+    return <CompliancePageSkeleton />;
+  }
 
   return (
     <div className="bg-gray-50 p-6 dark:bg-gray-900">

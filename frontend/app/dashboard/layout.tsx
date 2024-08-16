@@ -5,7 +5,6 @@ import ErrorBoundary from "@/components/ErrorBoundary"; // Import the ErrorBound
 import { useSidebarContext } from "@/context/SidebarContext";
 import { Suspense, type FC, type PropsWithChildren } from "react";
 import { twMerge } from "tailwind-merge";
-import Loading from "./loading";
 import { DashboardNavbar } from "./navbar";
 import { DashboardSidebar } from "./sidebar";
 
@@ -25,7 +24,7 @@ const DashboardLayout: FC<PropsWithChildren> = function ({ children }) {
           )}
         >
           <ErrorBoundary>
-            <Suspense fallback={<Loading />}>{children}</Suspense>
+            <Suspense>{children}</Suspense>
           </ErrorBoundary>
         </div>
       </div>

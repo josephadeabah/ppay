@@ -6,7 +6,6 @@ import { Inter } from "next/font/google";
 import { FC, PropsWithChildren, Suspense } from "react";
 import { twMerge } from "tailwind-merge";
 import "./globals.css";
-import Loading from "./loading";
 import { flowbiteTheme } from "./theme";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -23,7 +22,7 @@ const RootLayout: FC<PropsWithChildren> = function ({ children }) {
             <div>
               <main>
                 <ErrorBoundary>
-                  <Suspense fallback={<Loading />}>{children}</Suspense>
+                  <Suspense>{children}</Suspense>
                 </ErrorBoundary>
               </main>
             </div>

@@ -1,8 +1,11 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { FiDownload } from "react-icons/fi"; // Import the download icon from react-icons
+import DownloadPageSkeleton from "./loader";
 
 const DownloadPage = () => {
+  const [loading, setLoading] = useState(true);
   const dataCategories = [
     {
       title: "Financial Reports",
@@ -172,6 +175,16 @@ const DownloadPage = () => {
     },
     // More categories...
   ];
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+
+  if (loading) {
+    return <DownloadPageSkeleton />;
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200">

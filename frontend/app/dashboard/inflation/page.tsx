@@ -14,8 +14,9 @@ import {
   Tooltip,
 } from "chart.js";
 import { Table } from "flowbite-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Bar, Line } from "react-chartjs-2";
+import InflationLoading from "./inflationloader";
 import { InflationData, inflationData } from "./sampleData";
 
 // Register ChartJS components
@@ -44,6 +45,7 @@ const InflationPage: React.FC = () => {
   const [selectedRegion, setSelectedRegion] = useState<Region>("NorthAmerica");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 3;
+  const [loading, setLoading] = useState(true);
 
   const getChartOptions = (title: string) => ({
     responsive: true,
@@ -125,7 +127,16 @@ const InflationPage: React.FC = () => {
   const countriesData =
     inflationData?.regional?.[selectedRegion]?.countries || {};
 
-  return (
+  useEffect(() => {
+    // Simulate a loading period
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000); // Simulates a 2-second load time
+  }, []);
+
+  return loading ? (
+    <InflationLoading />
+  ) : (
     <div className="flex min-h-screen flex-col p-4">
       <div className="flex flex-grow flex-col">
         <div className="mb-6 mt-2 flex items-center gap-2 text-xl font-bold text-gray-700 dark:text-gray-50">

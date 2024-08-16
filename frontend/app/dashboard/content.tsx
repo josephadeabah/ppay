@@ -5,12 +5,27 @@ import WagesChart from "@/app/dashboard/compare/wageschart/WagesChart";
 import InflationChart from "@/app/dashboard/inflation/inflationchart/InflationChart";
 
 import type { NextPage } from "next";
+import { useEffect, useState } from "react";
+import HomePageContentSkeleton from "./dashboardloader";
 
 export const HomePageContent: NextPage = function () {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate a data fetching delay
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000); // Adjust time as needed
+  }, []);
+
+  if (loading) {
+    return <HomePageContentSkeleton />;
+  }
+
   return (
     <div className="bg-slate-50 dark:bg-gray-800">
       <div className="flex items-center gap-2 bg-white p-2 text-xl font-bold text-gray-700 dark:bg-gray-800 dark:text-gray-50">
-        Global Wages and Salaries Analysis Summary (Live{" "}
+        <span>Global Wages and Salaries Analysis Summary (Live</span>{" "}
         <div className="inline-block h-3 w-3 rounded-full bg-green-400"></div>)
       </div>
       <main className="p-0">
