@@ -25,7 +25,7 @@ const PaginationComponent: React.FC<PaginationComponentProps> = ({
 
   return (
     <Pagination
-      className="overflow-hidden"
+      className="flex justify-center space-x-2 overflow-hidden py-4"
       initialPage={currentPage}
       total={total}
       onChange={(page: number | React.FormEvent<HTMLLIElement>) =>
@@ -34,15 +34,17 @@ const PaginationComponent: React.FC<PaginationComponentProps> = ({
       showControls
       renderItem={(props: PaginationItemRenderProps) => {
         const isActive = props.page === currentPage;
+        const { key, ...restProps } = props;
 
         return (
           <PaginationItem
-            {...props}
+            key={key}
+            {...restProps}
             className={`focus:outline-none ${
               isActive
-                ? "bg-blue-600 text-white dark:bg-gray-950 dark:text-gray-700"
-                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-            } mx-1 rounded-md px-4 py-2 transition-colors duration-200`}
+                ? "bg-gradient-to-r from-blue-500 to-purple-600 text-gray-300 shadow-sm dark:from-purple-500 dark:to-blue-600"
+                : "bg-white text-gray-700 hover:bg-gray-100 hover:shadow-md dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+            } mx-2 transform rounded-full px-5 py-3 transition-all duration-300 ease-in-out hover:scale-105`}
           />
         );
       }}

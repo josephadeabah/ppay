@@ -52,6 +52,7 @@ const SliderComponent: React.FC<SliderComponentProps> = ({
         renderThumb={(props) => (
           <div
             {...props}
+            aria-label="Slider Thumb"
             className={`h-6 w-6 ${thumbColor} flex cursor-pointer items-center justify-center rounded-full border border-gray-300 shadow-md dark:border-gray-600 ${thumbClasses}`}
           >
             <span className="h-2.5 w-2.5 rounded-full bg-indigo-500" />
