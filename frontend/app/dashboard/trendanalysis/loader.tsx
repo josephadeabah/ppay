@@ -8,7 +8,20 @@ const LoadingSkeleton: React.FC = () => {
     <div className="animate-pulse space-y-4">
       {/* Placeholder for title */}
       <Skeleton width="1/3" height="1.5rem" />
-
+      <div className="my-4 flex flex-col gap-4 md:flex-row">
+        <div className="flex-1">
+          <h2 className="mb-2 text-xl font-semibold text-gray-800 dark:text-gray-200">
+            <Skeleton width={120} height={20} />
+          </h2>
+          <Skeleton height={40} />
+        </div>
+        <div className="flex-1">
+          <h2 className="mb-2 text-xl font-semibold text-gray-800 dark:text-gray-200">
+            <Skeleton width={120} height={20} />
+          </h2>
+          <Skeleton height={40} />
+        </div>
+      </div>
       {/* Placeholders for filters */}
       <div className="flex flex-col gap-2 md:flex-row md:gap-4">
         <Skeleton width="100%" height="2.5rem" />
