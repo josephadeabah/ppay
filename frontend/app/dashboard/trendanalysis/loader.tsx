@@ -53,7 +53,7 @@ const LoadingSkeleton: React.FC = () => {
               {Array.from({ length: 9 }).map((_, i) => (
                 <th
                   key={i}
-                  className="bg-gray-50 px-4 py-2 text-left text-xs font-medium uppercase tracking-wider"
+                  className="px-4 py-2 text-left text-xs font-medium uppercase tracking-wider"
                 >
                   <Skeleton width="4rem" height="1.5rem" />
                 </th>
