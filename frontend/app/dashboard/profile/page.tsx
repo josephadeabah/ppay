@@ -1,38 +1,10 @@
 "use client";
 
 import ToastComponent from "@/components/toast/Toast";
+import { User } from "@/types/users.type";
 import { useEffect, useState } from "react";
 import { HiOutlineBriefcase } from "react-icons/hi";
 import UserProfileSkeleton from "./loader";
-
-type UserProfile = {
-  id?: number;
-  user_id?: number;
-  name?: string;
-  role?: string;
-  status?: string;
-  salary_role?: string;
-  experience?: string;
-  country?: string;
-  industry?: string;
-  category?: string;
-  company?: string;
-  actual_salary?: string;
-  job_website?: string;
-  avatar?: string;
-  created_at?: string;
-  updated_at?: string;
-};
-
-type User = {
-  id: number;
-  email: string;
-  password_digest: string;
-  created_at: string;
-  updated_at: string;
-  admin: boolean;
-  profile?: UserProfile;
-};
 
 export default function UserProfilePage() {
   const [user, setUser] = useState<User | null>(null);
