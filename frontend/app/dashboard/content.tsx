@@ -53,8 +53,10 @@ export const HomePageContent: NextPage = function () {
         <section className="mb-8 rounded-sm bg-white p-8 text-gray-800 dark:bg-gray-900 dark:text-gray-50">
           <h2 className="mb-4 text-xl font-bold">Global Insights</h2>
           <div className="h-96">
-            <div className="flex h-full items-center justify-center bg-gray-200 text-gray-800 dark:bg-gray-900 dark:text-gray-50">
-              <MapComponent />
+            <div className="relative h-full w-full">
+              <div className="absolute inset-0 flex items-center justify-center bg-gray-200 text-gray-800 dark:bg-gray-900 dark:text-gray-50">
+                <MapComponent />
+              </div>
             </div>
           </div>
           <div className="mt-4 text-center"></div>
