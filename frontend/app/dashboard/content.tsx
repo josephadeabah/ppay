@@ -2,6 +2,7 @@
 
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
+import MapComponent from "./dashbmain/worldmap/WorldMap";
 import HomePageContentSkeleton from "./dashboardloader";
 
 export const HomePageContent: NextPage = function () {
@@ -51,11 +52,8 @@ export const HomePageContent: NextPage = function () {
         <section className="mb-8 rounded-sm bg-white p-8 text-gray-800 dark:bg-gray-900 dark:text-gray-50">
           <h2 className="mb-4 text-xl font-bold">Global Insights</h2>
           <div className="h-96">
-            {/* Placeholder htmlFor Interactive World Map */}
             <div className="flex h-full items-center justify-center bg-gray-200 text-gray-800 dark:bg-gray-900 dark:text-gray-50">
-              <p className="text-gray-500">
-                [Interactive World Map Placeholder]
-              </p>
+              <MapComponent />
             </div>
           </div>
           <div className="mt-4 text-center">
