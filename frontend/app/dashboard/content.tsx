@@ -1,10 +1,5 @@
 "use client";
 
-// import BenchMarkChart from "@/app/dashboard/benchmark/benchmarkchart/BenchMarkChart";
-// import SalaryComparison from "@/app/dashboard/compare/salarycomparison/SalaryComparison";
-// import WagesChart from "@/app/dashboard/compare/wageschart/WagesChart";
-// import InflationChart from "@/app/dashboard/inflation/inflationchart/InflationChart";
-
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import HomePageContentSkeleton from "./dashboardloader";
@@ -13,10 +8,9 @@ export const HomePageContent: NextPage = function () {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate a data fetching delay
     setTimeout(() => {
       setLoading(false);
-    }, 2000); // Adjust time as needed
+    }, 2000);
   }, []);
 
   if (loading) {
