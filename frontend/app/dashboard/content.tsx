@@ -2,6 +2,7 @@
 
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
+import RecessionProneCountriesTable from "./dashbmain/recession/RecessionCountries";
 import MapComponent from "./dashbmain/worldmap/WorldMap";
 import HomePageContentSkeleton from "./dashboardloader";
 
@@ -56,24 +57,14 @@ export const HomePageContent: NextPage = function () {
               <MapComponent />
             </div>
           </div>
-          <div className="mt-4 text-center">
-            <button className="rounded bg-blue-600 px-4 py-2 text-white">
-              Customize Data
-            </button>
-          </div>
+          <div className="mt-4 text-center"></div>
         </section>
 
         {/* Recession Prone Countries */}
         <section className="mb-8 rounded-sm bg-white p-8 text-gray-800 dark:bg-gray-900 dark:text-gray-50">
           <h2 className="mb-4 text-xl font-bold">Recession Prone Countries</h2>
-          <div className="h-72">
-            {/* Placeholder htmlFor Pay Trend and Inflation Line Chart */}
-            <div className="flex h-full items-center justify-center bg-gray-200">
-              <p className="text-gray-500">
-                [Pay Trend & Inflation Line Chart Placeholder]
-              </p>
-            </div>
-          </div>
+          {/* RecessionProneCountriesTable */}
+          <RecessionProneCountriesTable />
         </section>
 
         {/* Compliance & Pay Equity Alerts */}
