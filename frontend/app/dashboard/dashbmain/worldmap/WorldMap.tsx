@@ -29,7 +29,7 @@ interface GeoProperties {
 export default function MapComponent() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
-  const [props, setModalContent] = useState<JSX.Element | null>(null);
+  const [modalContent, setModalContent] = useState<JSX.Element | null>(null);
 
   const getRegionColor = (name: string): string => {
     switch (name) {
@@ -227,7 +227,7 @@ export default function MapComponent() {
         onClose={() => setIsModalOpen(false)}
         title={modalTitle}
       >
-        {props}
+        {modalContent}
       </ModalComponent>
     </>
   );
