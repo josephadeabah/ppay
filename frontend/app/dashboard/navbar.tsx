@@ -7,6 +7,7 @@ import { DarkThemeToggle } from "flowbite-react";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 import {
+  HiOutlineBell,
   HiOutlineLogout,
   HiOutlineMenuAlt1,
   HiOutlineUser,
@@ -35,6 +36,24 @@ export const DashboardNavbar: FC = function () {
     }
     setLoading(false);
   };
+
+  // Log user out automatically when token expires
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const tokenString = localStorage.getItem("token");
+      if (tokenString) {
+        try {
+          const token = JSON.parse(tokenString);
+          if (!token) {
+            handleLogout();
+          }
+        } catch (error) {
+          console.error("Failed to parse token from local storage:", error);
+        }
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -108,15 +127,29 @@ export const DashboardNavbar: FC = function () {
     if (loading) return null;
 
     return user ? (
-      <BlurPopover
-        triggerLabel={
-          <Avatar>
-            <AvatarFallback>{getInitial(user.email)}</AvatarFallback>
-          </Avatar>
-        }
-        backdrop="blur"
-        content={renderUserPopoverContent()}
-      />
+      <>
+        {/* Notification Icon */}
+        <button
+          aria-label="Notifications"
+          className="relative cursor-pointer p-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900 focus:ring-2 focus:ring-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
+        >
+          <HiOutlineBell className="h-6 w-6" />
+          {/* Notification Badge */}
+          <span className="absolute right-0 top-0 inline-flex items-center justify-center rounded-full bg-red-600 px-1 py-0.5 text-xs font-bold leading-none text-white">
+            3
+          </span>
+        </button>
+        {/* User Avatar and Popover */}
+        <BlurPopover
+          triggerLabel={
+            <Avatar>
+              <AvatarFallback>{getInitial(user.email)}</AvatarFallback>
+            </Avatar>
+          }
+          backdrop="blur"
+          content={renderUserPopoverContent()}
+        />
+      </>
     ) : (
       <>
         <Link
