@@ -1,15 +1,15 @@
 "use client";
 
+import RecessionProneCountriesTable from "@/app/dashboard/dashbmain/recession/RecessionCountries";
+import TopSatisfactionCompanies from "@/app/dashboard/dashbmain/topcompanies/TopCompaniesByEmployeeSatisfaction";
+import TopLowInflationCountries from "@/app/dashboard/dashbmain/topcompanies/TopCountriesLowerInflation";
+import TopSalaryChangeCompanies from "@/app/dashboard/dashbmain/topcompanies/TopSalaryChangeCompanies";
+import MapComponent from "@/app/dashboard/dashbmain/worldmap/WorldMap";
+import HomePageContentSkeleton from "@/app/dashboard/dashboardloader";
+import RecentUserActivity from "@/app/dashboard/settings/recentactivity/RecentUserActivity";
+import RecentDownloads from "@/app/dashboard/settings/recentdownloads/RecentDownloadsList";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
-import RecessionProneCountriesTable from "./dashbmain/recession/RecessionCountries";
-import TopSatisfactionCompanies from "./dashbmain/topcompanies/TopCompaniesByEmployeeSatisfaction";
-import TopLowInflationCountries from "./dashbmain/topcompanies/TopCountriesLowerInflation";
-import TopSalaryChangeCompanies from "./dashbmain/topcompanies/TopSalaryChangeCompanies";
-import MapComponent from "./dashbmain/worldmap/WorldMap";
-import HomePageContentSkeleton from "./dashboardloader";
-import RecentUserActivity from "./settings/recentactivity/RecentUserActivity";
-import RecentDownloads from "./settings/recentdownloads/RecentDownloadsList";
 
 export const HomePageContent: NextPage = function () {
   const [loading, setLoading] = useState(true);
