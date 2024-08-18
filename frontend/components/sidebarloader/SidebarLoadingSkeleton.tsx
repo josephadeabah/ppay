@@ -4,7 +4,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 const SidebarLoadingSkeleton: React.FC = () => {
   return (
-    <div className="flex h-full w-[3.5rem] flex-col space-y-4 bg-gray-50 px-4 dark:bg-gray-900">
+    <div className="flex h-full flex-col space-y-4 bg-gray-50 px-4 dark:bg-gray-900">
       {/* Simulating each sidebar item */}
       <div className="flex-1 space-y-4">
         {Array.from({ length: 10 }).map((_, index) => (

@@ -26,7 +26,7 @@ export const HomePageContent: NextPage = function () {
 
   return (
     <div className="bg-slate-50 dark:bg-gray-800">
-      <div className="flex items-center gap-2 bg-white p-2 text-xl font-bold text-gray-700 dark:bg-gray-800 dark:text-gray-50">
+      <div className="flex items-center bg-white p-4 text-xl font-bold text-gray-700 dark:bg-gray-800 dark:text-gray-50">
         Dashboard Insights Summary
       </div>
       <div className="min-h-screen bg-gray-100 p-3 text-gray-800 dark:bg-gray-800 dark:text-gray-50">

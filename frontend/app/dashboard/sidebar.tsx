@@ -49,7 +49,7 @@ export const DashboardSidebar: FC = function () {
 
   if (loading) {
     return (
-      <div className="w-[8px]">
+      <div className="w-[0.5rem]">
         <SidebarLoadingSkeleton />
       </div>
     );
@@ -197,7 +197,7 @@ export const DashboardSidebar: FC = function () {
           </>
         )}
         {/* Restricted Items */}
-        {!user && <RenderRestrictedItemComponent />}
+        {!user && <RenderRestrictedItemComponent isCollapsed={isCollapsed} />}
         <Sidebar.Item
           as={Link}
           href="/dashboard/upgrade"
