@@ -164,13 +164,13 @@ export const DashboardSidebar: FC = function () {
 
             <Sidebar.Item
               as={Link}
-              href="/dashboard/equityanalyzer"
+              href="/dashboard/payanalyzer"
               icon={() => (
                 <HiOutlineCalculator className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
               )}
-              className={getItemClass("/dashboard/equityanalyzer")}
+              className={getItemClass("/dashboard/payanalyzer")}
             >
-              Pay Equity Analyzer
+              Pay Analyzer
             </Sidebar.Item>
 
             <Sidebar.Item

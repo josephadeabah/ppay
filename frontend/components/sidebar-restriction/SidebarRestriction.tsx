@@ -90,7 +90,7 @@ const RenderRestrictedItemComponent = ({
       )}
       {renderRestrictedItem(
         <HiOutlineCalculator className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />,
-        "Pay Equity Analyzer",
+        "Pay Analyzer",
         isCollapsed,
       )}
       {renderRestrictedItem(
