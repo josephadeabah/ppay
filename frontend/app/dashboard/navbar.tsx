@@ -4,6 +4,7 @@ import { BlurPopover } from "@/components/popover/Popover";
 import { useSidebarContext } from "@/context/SidebarContext";
 import { isSmallScreen } from "@/helpers/is-small-screen";
 import { DarkThemeToggle } from "flowbite-react";
+import { jwtDecode } from "jwt-decode";
 import Link from "next/link";
 import { FC, useEffect, useState } from "react";
 import {
@@ -24,6 +25,30 @@ export const DashboardNavbar: FC = function () {
     fetchUserFromLocalStorage();
   }, []);
 
+  useEffect(() => {
+    const tokenString = localStorage.getItem("token");
+    if (tokenString) {
+      try {
+        const token = JSON.parse(tokenString);
+        const decodedToken: { exp: number; user: { email?: string } } =
+          jwtDecode(token.token); // Assuming token structure includes a 'token' field with the JWT.
+        // Check if token is expired
+        const currentTime = Date.now() / 1000;
+        if (decodedToken.exp < currentTime) {
+          handleLogout(); // Log out if the token has expired
+        } else {
+          // Set a timeout to log out when the token expires
+          const expirationTime = (decodedToken.exp - currentTime) * 1000;
+          setTimeout(() => {
+            handleLogout();
+          }, expirationTime);
+        }
+      } catch (error) {
+        console.error("Failed to decode token:", error);
+      }
+    }
+  }, []);
+
   const fetchUserFromLocalStorage = () => {
     const tokenString = localStorage.getItem("token");
     if (tokenString) {
@@ -36,24 +61,6 @@ export const DashboardNavbar: FC = function () {
     }
     setLoading(false);
   };
-
-  // Log user out automatically when token expires
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const tokenString = localStorage.getItem("token");
-      if (tokenString) {
-        try {
-          const token = JSON.parse(tokenString);
-          if (!token) {
-            handleLogout();
-          }
-        } catch (error) {
-          console.error("Failed to parse token from local storage:", error);
-        }
-      }
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
