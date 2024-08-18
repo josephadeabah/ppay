@@ -25,7 +25,7 @@ export default function LandingPage() {
                     href="/dashboard"
                     className="border border-gray-100 bg-white text-gray-800 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-700 dark:text-gray-50"
                   >
-                    View App
+                    Get Started
                   </a>
                 </div>
               </div>
