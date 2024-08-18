@@ -29,7 +29,7 @@ export const HomePageContent: NextPage = function () {
       <div className="flex items-center gap-2 bg-white p-2 text-xl font-bold text-gray-700 dark:bg-gray-800 dark:text-gray-50">
         Dashboard Insights Summary
       </div>
-      <div className="min-h-screen bg-gray-100 p-8 text-gray-800 dark:bg-gray-800 dark:text-gray-50">
+      <div className="min-h-screen bg-gray-100 p-3 text-gray-800 dark:bg-gray-800 dark:text-gray-50">
         {/* Hero Section */}
         <section className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           <div className="rounded-sm  bg-white p-6 text-center text-gray-800 dark:bg-gray-900 dark:text-gray-50">
