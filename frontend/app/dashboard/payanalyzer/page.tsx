@@ -1,21 +1,34 @@
 // pages/dashboard/page.tsx
 // inspired by https://synd.io/ and https://www.payanalytics.com/
 "use client";
+import SkeletonLoader from "@/app/dashboard/equityanalyzer/loader";
 import DataTable from "@/app/dashboard/payanalyzer/datatable/DataTable";
 import ExportButton from "@/app/dashboard/payanalyzer/exportbutton/ExportButton";
 import UploadData from "@/app/dashboard/payanalyzer/fileupload/UploadData";
 import MetricsAnalysis from "@/app/dashboard/payanalyzer/metricsanalysis/MetricsAnalysis";
 import Visualization from "@/app/dashboard/payanalyzer/visualize/Visualization";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function PayAnalyzerPage() {
   const [data, setData] = useState<any[]>([]);
   const [isDataUploaded, setIsDataUploaded] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const handleDataExtracted = (extractedData: any[]) => {
     setData(extractedData);
     setIsDataUploaded(true);
   };
+
+  useEffect(() => {
+    // Simulate a data fetching delay
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000); // Adjust time as needed
+  }, []);
+
+  if (loading) {
+    return <SkeletonLoader />;
+  }
 
   return (
     <div className="p-8">

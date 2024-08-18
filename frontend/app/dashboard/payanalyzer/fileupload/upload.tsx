@@ -11,6 +11,15 @@ import { useState } from "react";
 // 004,Anna Ivan,Female,White,HR Specialist,HR,USA,85000,3000,10000,4,4
 // 005,Ahmed Ali,Male,Middle Eastern,Software Engineer,IT,Canada,98000,4500,18000,6,3
 
+// Sample CSV Data 2
+// gender,salary,position,experience
+// Male,50000,Software Engineer,5
+// Female,45000,Software Engineer,4
+// Male,55000,Senior Developer,6
+// Female,50000,Senior Developer,5
+// Male,48000,Junior Developer,2
+// Female,46000,Junior Developer,3
+
 export default function UploadPage() {
   const [data, setData] = useState<any[]>([]);
 
