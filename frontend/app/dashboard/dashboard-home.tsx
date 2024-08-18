@@ -3,8 +3,13 @@
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import RecessionProneCountriesTable from "./dashbmain/recession/RecessionCountries";
+import TopSatisfactionCompanies from "./dashbmain/topcompanies/TopCompaniesByEmployeeSatisfaction";
+import TopLowInflationCountries from "./dashbmain/topcompanies/TopCountriesLowerInflation";
+import TopSalaryChangeCompanies from "./dashbmain/topcompanies/TopSalaryChangeCompanies";
 import MapComponent from "./dashbmain/worldmap/WorldMap";
 import HomePageContentSkeleton from "./dashboardloader";
+import RecentUserActivity from "./settings/recentactivity/RecentUserActivity";
+import RecentDownloads from "./settings/recentdownloads/RecentDownloadsList";
 
 export const HomePageContent: NextPage = function () {
   const [loading, setLoading] = useState(true);
@@ -118,15 +123,9 @@ export const HomePageContent: NextPage = function () {
             Salary & Inflation Insights
           </h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <div className="rounded bg-gray-50 p-4">
-              Top 5 Countries with Salary Changes
-            </div>
-            <div className="rounded bg-gray-50 p-4">
-              Top Companies by Employee Satisfaction
-            </div>
-            <div className="rounded bg-gray-50 p-4">
-              Inflation Rate in Key Regions
-            </div>
+            <TopSalaryChangeCompanies />
+            <TopSatisfactionCompanies />
+            <TopLowInflationCountries />
           </div>
         </section>
 
@@ -134,13 +133,9 @@ export const HomePageContent: NextPage = function () {
 
         {/* User Activity Overview */}
         <section className="mb-8 rounded-sm bg-white p-6 text-gray-800 dark:bg-gray-900 dark:text-gray-50">
-          <h2 className="mb-4 text-xl font-semibold">Recent Activity</h2>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <div className="rounded bg-gray-50 p-4">
-              Recent Searches & Comparisons
-            </div>
-            <div className="rounded bg-gray-50 p-4">Recent Downloads</div>
-            <div className="rounded bg-gray-50 p-4">Active Alerts</div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2">
+            <RecentUserActivity />
+            <RecentDownloads />
           </div>
         </section>
 
