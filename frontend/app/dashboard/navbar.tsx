@@ -153,7 +153,7 @@ export const DashboardNavbar: FC = function () {
               <AvatarFallback>{getInitial(user.email)}</AvatarFallback>
             </Avatar>
           }
-          backdrop="blur"
+          backdrop="transparent"
           content={renderUserPopoverContent()}
         />
       </>
