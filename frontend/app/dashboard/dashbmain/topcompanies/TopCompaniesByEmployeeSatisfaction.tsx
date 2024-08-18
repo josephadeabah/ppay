@@ -72,7 +72,7 @@ export default function TopSatisfactionCompanies() {
   }, [filteredTableData]);
 
   return (
-    <div className="mx-auto flex flex-col px-4 py-6">
+    <div className="mx-auto flex w-full max-w-screen-lg flex-col px-4 py-6">
       <div className="mb-4 rounded bg-gray-50 p-4 text-sm font-bold text-gray-700 dark:text-gray-200">
         Top Companies by Employee Satisfaction in {getCurrentMonthName()}
         {", "}

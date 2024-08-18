@@ -118,10 +118,10 @@ export const HomePageContent: NextPage = function () {
         </section>
 
         {/* Salary & Inflation Insights */}
+        <h2 className="mb-4 text-xl font-semibold">
+          Salary & Inflation Insights
+        </h2>
         <section className="mb-8 rounded-sm bg-white p-6 text-gray-800 dark:bg-gray-900 dark:text-gray-50">
-          <h2 className="mb-4 text-xl font-semibold">
-            Salary & Inflation Insights
-          </h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <TopSalaryChangeCompanies />
             <TopSatisfactionCompanies />

@@ -40,6 +40,20 @@ export default function TopSalaryChangeCompanies() {
     { company: "Amazon", change: 8, timeframe: "Monthly" },
     { company: "Facebook", change: 6, timeframe: "Monthly" },
     { company: "Tesla", change: -1, timeframe: "Yearly" },
+    { company: "Netflix", change: 3, timeframe: "Monthly" },
+    { company: "Twitter", change: 2, timeframe: "Monthly" },
+    { company: "Uber", change: 4, timeframe: "Monthly" },
+    { company: "Airbnb", change: 7, timeframe: "Monthly" },
+    { company: "Salesforce", change: 1, timeframe: "Yearly" },
+    { company: "Oracle", change: 3, timeframe: "Monthly" },
+    { company: "IBM", change: 2, timeframe: "Monthly" },
+    { company: "Intel", change: 4, timeframe: "Monthly" },
+    { company: "HP", change: 3, timeframe: "Monthly" },
+    { company: "Dell", change: 5, timeframe: "Monthly" },
+    { company: "Cisco", change: 2, timeframe: "Monthly" },
+    { company: "Accenture", change: 4, timeframe: "Monthly" },
+    { company: "TCS", change: 6, timeframe: "Monthly" },
+    { company: "Infosys", change: 3, timeframe: "Monthly" },
     // Add more entries as needed
   ];
 
