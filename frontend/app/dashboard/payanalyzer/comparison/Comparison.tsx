@@ -67,14 +67,14 @@ const ComparisonPage = ({ data }: { data: any[] }) => {
 
       <div className="overflow-x-auto">
         <Table aria-label="Comparative Data Table" style={{ minWidth: "100%" }}>
-          <TableHeader style={{ textAlign: "left" }}>
-            <TableColumn>Name</TableColumn>
-            <TableColumn>Location</TableColumn>
-            <TableColumn>Job Title</TableColumn>
-            <TableColumn>Salary</TableColumn>
-            <TableColumn>Bonus</TableColumn>
-            <TableColumn>Stock Options</TableColumn>
-            <TableColumn>Gender</TableColumn>
+          <TableHeader>
+            <TableColumn className="text-left">Name</TableColumn>
+            <TableColumn className="text-left">Location</TableColumn>
+            <TableColumn className="text-left">Job Title</TableColumn>
+            <TableColumn className="text-left">Salary</TableColumn>
+            <TableColumn className="text-left">Bonus</TableColumn>
+            <TableColumn className="text-left">Stock Options</TableColumn>
+            <TableColumn className="text-left">Gender</TableColumn>
           </TableHeader>
           <TableBody>
             {data.map((row, idx) => (
