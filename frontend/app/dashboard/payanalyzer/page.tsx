@@ -9,10 +9,50 @@ import MetricsAnalysis from "@/app/dashboard/payanalyzer/metricsanalysis/Metrics
 import Visualization from "@/app/dashboard/payanalyzer/visualize/Visualization";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { useEffect, useState } from "react";
+import PayFactors from "./payfactors/payFactors";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
+
+const userData = [
+  {
+    name: "Alice Johnson",
+    salary: 5000,
+    location: "USA",
+    jobTitle: "Software Engineer",
+    bonus: 5000,
+    stockOptions: 10000,
+    gender: "Female",
+  },
+  {
+    name: "Bob Smith",
+    salary: 2000,
+    location: "Canada",
+    jobTitle: "Project Manager",
+    bonus: 7000,
+    stockOptions: 5000,
+    gender: "Male",
+  },
+  {
+    name: "Cathy Lee",
+    salary: 78000,
+    location: "United Kingdom",
+    jobTitle: "HR Specialist",
+    bonus: 3000,
+    stockOptions: 0,
+    gender: "Female",
+  },
+  {
+    name: "David Brown",
+    salary: 60000,
+    location: "USA",
+    jobTitle: "Data Scientist",
+    bonus: 4000,
+    stockOptions: 8000,
+    gender: "Male",
+  },
+];
 
 export default function PayAnalyzerPage() {
   const [data, setData] = useState<any[]>([]);
@@ -157,6 +197,24 @@ export default function PayAnalyzerPage() {
                             <Visualization data={data} />
                           </div>
                         )}
+                      </div>
+                    </section>
+                  </main>
+                </div>
+              </div>
+            </TabPanel>
+
+            {/* Upload Tab */}
+            <TabPanel className="space-y-6">
+              <div className="min-h-screen w-full overflow-x-hidden bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+                {/* Main Content */}
+                <div className="flex">
+                  {/* Main Dashboard Sections */}
+                  <main className="flex-1 space-y-6 overflow-x-hidden p-6">
+                    {/* Management Section */}
+                    <section className="rounded bg-white p-4 shadow dark:bg-gray-800">
+                      <div className="space-y-4">
+                        <PayFactors userData={userData} />
                       </div>
                     </section>
                   </main>
