@@ -54,7 +54,7 @@ export default function PayAnalyzerPage() {
       <div className="flex-1">
         <TabGroup>
           <TabList className="flex space-x-1 bg-gray-50 p-1">
-            {["Upload", "Manage Data", "Compare"].map((tab) => (
+            {["Assess", "Manage Data", "Compare"].map((tab) => (
               <Tab
                 key={tab}
                 className={({ selected }) =>
