@@ -9,6 +9,7 @@ import MetricsAnalysis from "@/app/dashboard/payanalyzer/metricsanalysis/Metrics
 import Visualization from "@/app/dashboard/payanalyzer/visualize/Visualization";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { useEffect, useState } from "react";
+import ComparisonPage from "./comparison/Comparison";
 import PayFactors from "./payfactors/payFactors";
 
 function classNames(...classes: string[]) {
@@ -94,7 +95,7 @@ export default function PayAnalyzerPage() {
       <div className="flex-1">
         <TabGroup>
           <TabList className="flex space-x-1 bg-gray-50 p-1">
-            {["Assess", "Manage Data", "Compare"].map((tab) => (
+            {["Assess", "Analyze", "Compare"].map((tab) => (
               <Tab
                 key={tab}
                 className={({ selected }) =>
@@ -215,6 +216,24 @@ export default function PayAnalyzerPage() {
                     <section className="rounded bg-white p-4 shadow dark:bg-gray-800">
                       <div className="space-y-4">
                         <PayFactors userData={userData} />
+                      </div>
+                    </section>
+                  </main>
+                </div>
+              </div>
+            </TabPanel>
+
+            {/* Upload Tab */}
+            <TabPanel className="space-y-6">
+              <div className="min-h-screen w-full overflow-x-hidden bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+                {/* Main Content */}
+                <div className="flex">
+                  {/* Main Dashboard Sections */}
+                  <main className="flex-1 space-y-6 overflow-x-hidden p-6">
+                    {/* Management Section */}
+                    <section className="rounded bg-white p-4 shadow dark:bg-gray-800">
+                      <div className="space-y-4">
+                        <ComparisonPage data={userData} />
                       </div>
                     </section>
                   </main>
