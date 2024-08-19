@@ -52,14 +52,44 @@ const MetricsAnalysis = ({ data }: { data: any[] }) => {
   const metrics = calculateMetrics(data);
 
   return (
-    <div className="metrics-container">
-      <h2>Analysis Metrics</h2>
-      <ul>
-        <li>Average Salary: ${metrics.averageSalary.toFixed(2)}</li>
-        <li>Male Average Salary: ${metrics.maleAverage.toFixed(2)}</li>
-        <li>Female Average Salary: ${metrics.femaleAverage.toFixed(2)}</li>
-        <li>Gender Pay Gap: {metrics.payGap.toFixed(2)}%</li>
-      </ul>
+    <div className="metrics-container w-full overflow-x-auto">
+      <h2 className="mb-4 text-lg">Analysis Metrics</h2>
+      <table className="min-w-full table-auto border-collapse">
+        <thead>
+          <tr className="bg-gray-100 dark:bg-gray-700">
+            <th className="px-4 py-2 text-left text-gray-600 dark:text-gray-200">
+              Metric
+            </th>
+            <th className="px-4 py-2 text-left text-gray-600 dark:text-gray-200">
+              Value
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td className="border px-4 py-2">Average Salary</td>
+            <td className="border px-4 py-2">
+              ${metrics.averageSalary.toFixed(2)}
+            </td>
+          </tr>
+          <tr>
+            <td className="border px-4 py-2">Male Average Salary</td>
+            <td className="border px-4 py-2">
+              ${metrics.maleAverage.toFixed(2)}
+            </td>
+          </tr>
+          <tr>
+            <td className="border px-4 py-2">Female Average Salary</td>
+            <td className="border px-4 py-2">
+              ${metrics.femaleAverage.toFixed(2)}
+            </td>
+          </tr>
+          <tr>
+            <td className="border px-4 py-2">Gender Pay Gap</td>
+            <td className="border px-4 py-2">{metrics.payGap.toFixed(2)}%</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 };
