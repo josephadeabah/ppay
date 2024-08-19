@@ -7,7 +7,12 @@ import ExportButton from "@/app/dashboard/payanalyzer/exportbutton/ExportButton"
 import UploadData from "@/app/dashboard/payanalyzer/fileupload/UploadData";
 import MetricsAnalysis from "@/app/dashboard/payanalyzer/metricsanalysis/MetricsAnalysis";
 import Visualization from "@/app/dashboard/payanalyzer/visualize/Visualization";
+import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { useEffect, useState } from "react";
+
+function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(" ");
+}
 
 export default function PayAnalyzerPage() {
   const [data, setData] = useState<any[]>([]);
@@ -31,144 +36,139 @@ export default function PayAnalyzerPage() {
   }
 
   return (
-    <div className="min-h-screen w-full overflow-x-hidden bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+    <div className="flex min-h-screen w-full flex-col overflow-x-hidden bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
       {/* Navbar */}
       <header className="bg-white shadow dark:bg-gray-800">
-        <div className="mx-auto flex items-center justify-between px-6 py-4">
-          <h1 className="text-lg font-bold">Pay Equity Analyzer</h1>
-          <div className="mb-3 text-xs text-gray-700 dark:text-gray-50">
+        <div className="mx-auto flex flex-col items-center justify-between space-y-2 px-4 py-4 sm:flex-row sm:space-y-0 sm:px-6">
+          <h1 className="text-center text-lg font-bold sm:text-left">
+            Pay Equity Analyzer
+          </h1>
+          <div className="text-center text-xs text-gray-700 dark:text-gray-50 sm:mb-0 sm:text-right">
             Assess and analyze the fairness and equity of compensation within
             your organization
           </div>
         </div>
       </header>
 
-      {/* Main Content with Sidebar */}
-      <div className="flex">
-        {/* Sidebar */}
-        <aside className="w-34 max-h-screen bg-white p-4 dark:bg-gray-800">
-          <nav>
-            <ul className="space-y-4">
-              <li>
-                <a
-                  href="."
-                  className="block rounded p-2 hover:bg-gray-200 dark:hover:bg-gray-700"
-                >
-                  Upload
-                </a>
-              </li>
-              <li>
-                <a
-                  href="."
-                  className="block rounded p-2 hover:bg-gray-200 dark:hover:bg-gray-700"
-                >
-                  Management
-                </a>
-              </li>
-              <li>
-                <a
-                  href="."
-                  className="block rounded p-2 hover:bg-gray-200 dark:hover:bg-gray-700"
-                >
-                  Visualization
-                </a>
-              </li>
-              <li>
-                <a
-                  href="."
-                  className="block rounded p-2 hover:bg-gray-200 dark:hover:bg-gray-700"
-                >
-                  Analysis
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </aside>
+      {/* Tabs */}
+      <div className="flex-1">
+        <TabGroup>
+          <TabList className="flex space-x-1 bg-gray-50 p-1">
+            {["Upload", "Manage Data"].map((tab) => (
+              <Tab
+                key={tab}
+                className={({ selected }) =>
+                  classNames(
+                    "w-full py-2.5 text-sm font-medium leading-5 text-gray-950 focus:outline-none",
+                    selected
+                      ? "bg-white shadow"
+                      : "text-gray-700 hover:bg-white/[0.12] hover:text-gray-300",
+                  )
+                }
+              >
+                {tab}
+              </Tab>
+            ))}
+          </TabList>
+          <TabPanels className="mt-6">
+            {/* Upload Tab */}
+            <TabPanel className="space-y-6">
+              <div className="min-h-screen w-full overflow-x-hidden bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+                {/* Main Content */}
+                <div className="flex">
+                  {/* Main Dashboard Sections */}
+                  <main className="flex-1 space-y-6 overflow-x-hidden p-6">
+                    <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+                      {/* Upload Section */}
+                      <section className="rounded bg-white p-4 shadow dark:bg-gray-800">
+                        <h2 className="mb-4 text-xl font-bold">Upload Data</h2>
+                        <div className="rounded border border-dashed border-gray-300 p-6 dark:border-gray-600">
+                          {!isDataUploaded && (
+                            <div className="mb-8">
+                              <h2 className="mb-4 text-xl">Upload CSV File</h2>
+                              <UploadData
+                                onDataExtracted={handleDataExtracted}
+                              />
+                            </div>
+                          )}
+                          {isDataUploaded && data.length > 0 && (
+                            <div className="mb-8">
+                              <h2 className="mb-4 text-xl">Export Data</h2>
+                              <ExportButton data={data} />
+                            </div>
+                          )}
+                        </div>
+                      </section>
 
-        {/* Main Dashboard Sections */}
-        <main className="flex-1 space-y-6 overflow-x-hidden p-6">
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-            {/* Upload Section */}
-            <section className="rounded bg-white p-4 shadow dark:bg-gray-800">
-              <h2 className="mb-4 text-xl font-bold">Upload Data</h2>
-              <div className="rounded border border-dashed border-gray-300 p-6 dark:border-gray-600">
-                {!isDataUploaded && (
-                  <div className="mb-8">
-                    <h2 className="mb-4 text-xl">Upload CSV File</h2>
-                    <UploadData onDataExtracted={handleDataExtracted} />
-                  </div>
-                )}
-                {isDataUploaded && data.length > 0 && (
-                  <div className="mb-8">
-                    <h2 className="mb-4 text-xl">Export Data</h2>
-                    <ExportButton data={data} />
-                  </div>
-                )}
+                      {/* Management Section */}
+                      <section className="rounded bg-white p-4 shadow dark:bg-gray-800">
+                        <h2 className="mb-4 text-xl font-bold">Manage Data</h2>
+                        <div className="space-y-4">
+                          <div className="flex items-center justify-between">
+                            <span>Dataset 1</span>
+                            <button className="rounded bg-red-500 px-4 py-2 text-white hover:bg-red-600">
+                              Delete
+                            </button>
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <span>Dataset 2</span>
+                            <button className="rounded bg-red-500 px-4 py-2 text-white hover:bg-red-600">
+                              Delete
+                            </button>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+
+                    {/* Table visualization Section */}
+                    <section className="overflow-x-auto rounded bg-white p-4 shadow dark:bg-gray-800">
+                      <h2 className="mb-4 text-xl font-bold">
+                        Table Visualization
+                      </h2>
+                      <div className="h-full rounded bg-gray-200 dark:bg-gray-700">
+                        {isDataUploaded && data.length > 0 && (
+                          <div className="mb-8 p-2">
+                            <h2 className="mb-4 text-xl">Extracted Data</h2>
+                            <DataTable data={data} />
+                          </div>
+                        )}
+                      </div>
+                    </section>
+
+                    {/* Visualization Analysis */}
+                    <section className="rounded bg-white p-4 shadow dark:bg-gray-800">
+                      <h2 className="mb-4 text-xl font-bold">Visualization</h2>
+                      <div className="h-full rounded bg-gray-200 dark:bg-gray-700">
+                        {isDataUploaded && data.length > 0 && (
+                          <div className="mb-8 p-2">
+                            <MetricsAnalysis data={data} />
+                          </div>
+                        )}
+                      </div>
+                    </section>
+
+                    {/* Analysis Section */}
+                    <section className="rounded bg-white p-4 shadow dark:bg-gray-800">
+                      <h2 className="mb-4 text-xl font-bold">Chart Analysis</h2>
+                      <div className="h-full rounded bg-gray-200 dark:bg-gray-700">
+                        {isDataUploaded && data.length > 0 && (
+                          <div className="mb-8 p-2">
+                            <h2 className="mb-4 text-xl">Data Visualization</h2>
+                            <Visualization data={data} />
+                          </div>
+                        )}
+                      </div>
+                    </section>
+                  </main>
+                </div>
               </div>
-            </section>
-
-            {/* Management Section */}
-            <section className="rounded bg-white p-4 shadow dark:bg-gray-800">
-              <h2 className="mb-4 text-xl font-bold">Manage Data</h2>
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <span>Dataset 1</span>
-                  <button className="rounded bg-red-500 px-4 py-2 text-white hover:bg-red-600">
-                    Delete
-                  </button>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span>Dataset 2</span>
-                  <button className="rounded bg-red-500 px-4 py-2 text-white hover:bg-red-600">
-                    Delete
-                  </button>
-                </div>
-              </div>
-            </section>
-          </div>
-
-          {/* Table visualization Section */}
-          <section className="overflow-x-auto rounded bg-white p-4 shadow dark:bg-gray-800">
-            <h2 className="mb-4 text-xl font-bold">Table Visualization</h2>
-            <div className="h-full rounded bg-gray-200 dark:bg-gray-700">
-              {isDataUploaded && data.length > 0 && (
-                <div className="mb-8 p-2">
-                  <h2 className="mb-4 text-xl">Extracted Data</h2>
-                  <DataTable data={data} />
-                </div>
-              )}
-            </div>
-          </section>
-
-          {/* Visualization Analysis */}
-          <section className="rounded bg-white p-4 shadow dark:bg-gray-800">
-            <h2 className="mb-4 text-xl font-bold">Visualization</h2>
-            <div className="h-full rounded bg-gray-200 dark:bg-gray-700">
-              {isDataUploaded && data.length > 0 && (
-                <div className="mb-8 p-2">
-                  <MetricsAnalysis data={data} />
-                </div>
-              )}
-            </div>
-          </section>
-
-          {/* Analysis Section */}
-          <section className="rounded bg-white p-4 shadow dark:bg-gray-800">
-            <h2 className="mb-4 text-xl font-bold">Chart Analysis</h2>
-            <div className="h-full rounded bg-gray-200 dark:bg-gray-700">
-              {isDataUploaded && data.length > 0 && (
-                <div className="mb-8 p-2">
-                  <h2 className="mb-4 text-xl">Data Visualization</h2>
-                  <Visualization data={data} />
-                </div>
-              )}
-            </div>
-          </section>
-        </main>
+            </TabPanel>
+          </TabPanels>
+        </TabGroup>
       </div>
 
       {/* Footer */}
-      <footer className="mt-6 bg-white py-4 dark:bg-gray-800">
+      <footer className="bg-white py-4 dark:bg-gray-800">
         <div className="text-center">
           <p>&copy; 2024 Paysight.live</p>
         </div>
