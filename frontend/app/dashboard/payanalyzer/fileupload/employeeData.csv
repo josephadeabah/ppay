@@ -1,16 +1,16 @@
-employeeId,name,gender,ethnicity,jobTitle,department,location,salary,bonus,stockOptions,yearsOfExperience,performancePoints,marketRate,industryPoints,departmentPoints,seniorityLevels,educationLevelPoints,companySizePoints
-001,John Doe,Male,White,Software Engineer,IT,USA,100000,5000,20000,5,4,95000,10,8,6,7,9
-002,Jane Smith,Female,Asian,Project Manager,Operations,USA,95000,4000,15000,7,3,90000,12,7,8,6,8
-003,Mike Lee,Male,Asian,Data Scientist,IT,USA,120000,6000,25000,3,5,115000,11,9,5,8,10
-004,Anna Ivan,Female,White,HR Specialist,HR,USA,85000,3000,10000,4,4,83000,8,6,5,5,7
-005,Ahmed Ali,Male,Middle Eastern,Software Engineer,IT,Canada,98000,4500,18000,6,3,96000,9,7,7,6,8
-006,Emily Davis,Female,Black,Marketing Manager,Marketing,UK,90000,3500,12000,8,4,89000,9,8,7,7,8
-007,Rajesh Kumar,Male,Indian,DevOps Engineer,IT,India,75000,2000,10000,9,5,74000,10,7,6,6,7
-008,Susan Lee,Female,Asian,Financial Analyst,Finance,USA,87000,3000,11000,5,4,86000,8,6,6,6,9
-009,David Kim,Male,Korean,Product Manager,Product,South Korea,95000,4000,15000,6,5,94000,12,9,7,8,9
-010,Olivia Martin,Female,Hispanic,UX Designer,Design,Brazil,82000,2500,9000,4,3,81000,7,6,5,7,8
-011,Luis Gonzalez,Male,Hispanic,Data Engineer,IT,Mexico,78000,3000,10000,3,4,77000,8,7,5,6,7
-012,Chen Wang,Male,Chinese,Cybersecurity Analyst,Security,China,83000,3500,12000,5,4,82000,9,8,6,7,8
-013,Maria Garcia,Female,Hispanic,Operations Manager,Operations,Spain,92000,4000,14000,10,5,91000,11,7,9,8,9
-014,Tommy Brown,Male,Black,Sales Executive,Sales,USA,86000,3000,10000,4,3,85000,9,6,5,6,7
-015,Amira Khalid,Female,Middle Eastern,Quality Assurance Engineer,IT,UAE,90000,3500,12000,6,4,89000,10,7,6,7,8
+employeeId,name,gender,ethnicity,jobTitle,department,location,baseSalary,bonus,stockOptions,yearsOfExperience,performancePoints,marketRate,industryPoints,departmentPoints,seniorityLevels,educationLevelPoints,companySizePoints,seniorityLevel
+001,John Doe,Male,White,Software Engineer,IT,USA,100000,5000,20000,5,4,95000,10,8,6,7,9,Mid
+002,Jane Smith,Female,Asian,Project Manager,Operations,USA,95000,4000,15000,7,3,90000,12,7,8,6,8,Senior
+003,Mike Lee,Male,Asian,Data Scientist,IT,USA,120000,6000,25000,3,5,115000,11,9,5,8,10,Mid
+004,Anna Ivan,Female,White,HR Specialist,HR,USA,85000,3000,10000,4,4,83000,8,6,5,5,7,Mid
+005,Ahmed Ali,Male,Middle Eastern,Software Engineer,IT,Canada,98000,4500,18000,6,3,96000,9,7,7,6,8,Mid
+006,Emily Davis,Female,Black,Marketing Manager,Marketing,UK,90000,3500,12000,8,4,89000,9,8,7,7,8,Senior
+007,Rajesh Kumar,Male,Indian,DevOps Engineer,IT,India,75000,2000,10000,9,5,74000,10,7,6,6,7,Senior
+008,Susan Lee,Female,Asian,Financial Analyst,Finance,USA,87000,3000,11000,5,4,86000,8,6,6,6,9,Mid
+009,David Kim,Male,Korean,Product Manager,Product,South Korea,95000,4000,15000,6,5,94000,12,9,7,8,9,Senior
+010,Olivia Martin,Female,Hispanic,UX Designer,Design,Brazil,82000,2500,9000,4,3,81000,7,6,5,7,8,Mid
+011,Luis Gonzalez,Male,Hispanic,Data Engineer,IT,Mexico,78000,3000,10000,3,4,77000,8,7,5,6,7,Junior
+012,Chen Wang,Male,Chinese,Cybersecurity Analyst,Security,China,83000,3500,12000,5,4,82000,9,8,6,7,8,Mid
+013,Maria Garcia,Female,Hispanic,Operations Manager,Operations,Spain,92000,4000,14000,10,5,91000,11,7,9,8,9,Senior
+014,Tommy Brown,Male,Black,Sales Executive,Sales,USA,86000,3000,10000,4,3,85000,9,6,5,6,7,Mid
+015,Amira Khalid,Female,Middle Eastern,Quality Assurance Engineer,IT,UAE,90000,3500,12000,6,4,89000,10,7,6,7,8,Mid
