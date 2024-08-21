@@ -1,7 +1,32 @@
+// UploadData.tsx
+
 import { useState } from "react";
 
-// utils/csvParser.ts
-export const parseCSV = (file: File): Promise<any[]> => {
+// Define the type for the CSV data
+interface EmployeeData {
+  [key: string]: string;
+  employeeId: string;
+  name: string;
+  gender: string;
+  ethnicity: string;
+  jobTitle: string;
+  department: string;
+  location: string;
+  baseSalary: string;
+  bonus: string;
+  stockOptions: string;
+  yearsOfExperience: string;
+  performancePoints: string;
+  marketRate: string;
+  industryPoints: string;
+  departmentPoints: string;
+  seniorityLevels: string;
+  educationLevelPoints: string;
+  companySizePoints: string;
+}
+
+// Utility function to parse CSV
+export const parseCSV = (file: File): Promise<EmployeeData[]> => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = (event) => {
@@ -13,7 +38,7 @@ export const parseCSV = (file: File): Promise<any[]> => {
         return headers.reduce((obj, header, index) => {
           obj[header] = values[index];
           return obj;
-        }, {} as any);
+        }, {} as EmployeeData);
       });
       resolve(data);
     };
@@ -25,7 +50,7 @@ export const parseCSV = (file: File): Promise<any[]> => {
 const UploadData = ({
   onDataExtracted,
 }: {
-  onDataExtracted: (data: any[]) => void;
+  onDataExtracted: (data: EmployeeData[]) => void;
 }) => {
   const [file, setFile] = useState<File | null>(null);
 

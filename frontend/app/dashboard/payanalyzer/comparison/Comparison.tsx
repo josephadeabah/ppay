@@ -22,9 +22,9 @@ const ComparisonPage = ({ data }: { data: any[] }) => {
     datasets: [
       {
         label: `Comparison of ${selectedComparison}`,
-        data: data.map((d) => d[selectedComparison]),
+        data: data.map((d) => d[selectedComparison] ?? 0), // Default to 0 if undefined
         backgroundColor: data.map((d) =>
-          d[selectedComparison] > 0
+          (d[selectedComparison] ?? 0) > 0
             ? "rgba(75, 192, 192, 0.2)"
             : "rgba(255, 99, 132, 0.2)",
         ),
@@ -61,7 +61,10 @@ const ComparisonPage = ({ data }: { data: any[] }) => {
         </select>
       </div>
 
-      <div className="mb-8">
+      <div
+        className="mb-8"
+        style={{ position: "relative", height: "400px", width: "100%" }}
+      >
         <Line data={chartData} />
       </div>
 
@@ -83,8 +86,8 @@ const ComparisonPage = ({ data }: { data: any[] }) => {
                 <TableCell>{row.location}</TableCell>
                 <TableCell>{row.jobTitle}</TableCell>
                 <TableCell>${row.salary}</TableCell>
-                <TableCell>${row.bonus}</TableCell>
-                <TableCell>${row.stockOptions}</TableCell>
+                <TableCell>${row.bonus ?? 0}</TableCell>
+                <TableCell>${row.stockOptions ?? 0}</TableCell>
                 <TableCell>{row.gender}</TableCell>
               </TableRow>
             ))}

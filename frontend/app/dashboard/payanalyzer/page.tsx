@@ -1,4 +1,4 @@
-// pages/dashboard/page.tsx
+// app/dashboard/page.tsx
 // inspired by https://synd.io/ and https://www.payanalytics.com/
 "use client";
 import SkeletonLoader from "@/app/dashboard/equityanalyzer/loader";
@@ -16,44 +16,27 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-const userData = [
-  {
-    name: "Alice Johnson",
-    salary: 5000,
-    location: "USA",
-    jobTitle: "Software Engineer",
-    bonus: 5000,
-    stockOptions: 10000,
-    gender: "Female",
-  },
-  {
-    name: "Bob Smith",
-    salary: 2000,
-    location: "Canada",
-    jobTitle: "Project Manager",
-    bonus: 7000,
-    stockOptions: 5000,
-    gender: "Male",
-  },
-  {
-    name: "Cathy Lee",
-    salary: 78000,
-    location: "United Kingdom",
-    jobTitle: "HR Specialist",
-    bonus: 3000,
-    stockOptions: 0,
-    gender: "Female",
-  },
-  {
-    name: "David Brown",
-    salary: 60000,
-    location: "USA",
-    jobTitle: "Data Scientist",
-    bonus: 4000,
-    stockOptions: 8000,
-    gender: "Male",
-  },
-];
+interface EmployeeData {
+  [key: string]: string;
+  employeeId: string;
+  name: string;
+  gender: string;
+  ethnicity: string;
+  jobTitle: string;
+  department: string;
+  location: string;
+  baseSalary: string;
+  bonus: string;
+  stockOptions: string;
+  yearsOfExperience: string;
+  performancePoints: string;
+  marketRate: string;
+  industryPoints: string;
+  departmentPoints: string;
+  seniorityLevels: string;
+  educationLevelPoints: string;
+  companySizePoints: string;
+}
 
 export default function PayAnalyzerPage() {
   const [data, setData] = useState<any[]>([]);
@@ -95,7 +78,7 @@ export default function PayAnalyzerPage() {
       <div className="flex-1">
         <TabGroup>
           <TabList className="flex space-x-1 bg-gray-50 p-1">
-            {["Assess", "Analyze", "Compare"].map((tab) => (
+            {["Assess", "Analyze"].map((tab) => (
               <Tab
                 key={tab}
                 className={({ selected }) =>
@@ -145,18 +128,7 @@ export default function PayAnalyzerPage() {
                       <section className="rounded bg-white p-4 shadow dark:bg-gray-800">
                         <h2 className="mb-4 text-xl font-bold">Manage Data</h2>
                         <div className="space-y-4">
-                          <div className="flex items-center justify-between">
-                            <span>Dataset 1</span>
-                            <button className="rounded bg-red-500 px-4 py-2 text-white hover:bg-red-600">
-                              Delete
-                            </button>
-                          </div>
-                          <div className="flex items-center justify-between">
-                            <span>Dataset 2</span>
-                            <button className="rounded bg-red-500 px-4 py-2 text-white hover:bg-red-600">
-                              Delete
-                            </button>
-                          </div>
+                          {/* Management logic can be added here */}
                         </div>
                       </section>
                     </div>
@@ -178,7 +150,9 @@ export default function PayAnalyzerPage() {
 
                     {/* Visualization Analysis */}
                     <section className="rounded bg-white p-4 shadow dark:bg-gray-800">
-                      <h2 className="mb-4 text-xl font-bold">Visualization</h2>
+                      <h2 className="mb-4 text-xl font-bold">
+                        Visualization Analysis
+                      </h2>
                       <div className="h-full rounded bg-gray-200 dark:bg-gray-700">
                         {isDataUploaded && data.length > 0 && (
                           <div className="mb-8 p-2">
@@ -205,37 +179,30 @@ export default function PayAnalyzerPage() {
               </div>
             </TabPanel>
 
-            {/* Upload Tab */}
+            {/* Analyze Tab */}
             <TabPanel className="space-y-6">
               <div className="min-h-screen w-full overflow-x-hidden bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
                 {/* Main Content */}
                 <div className="flex">
                   {/* Main Dashboard Sections */}
                   <main className="flex-1 space-y-6 overflow-x-hidden p-6">
-                    {/* Management Section */}
-                    <section className="rounded bg-white p-4 shadow dark:bg-gray-800">
-                      <div className="space-y-4">
-                        <PayFactors userData={userData} />
-                      </div>
-                    </section>
-                  </main>
-                </div>
-              </div>
-            </TabPanel>
+                    <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+                      {/* Comparison Section */}
+                      <section className="rounded bg-white p-4 shadow dark:bg-gray-800">
+                        <h2 className="mb-4 text-xl font-bold">Compare Data</h2>
+                        <div className="h-full rounded bg-gray-200 dark:bg-gray-700">
+                          <ComparisonPage data={data} />
+                        </div>
+                      </section>
 
-            {/* Upload Tab */}
-            <TabPanel className="space-y-6">
-              <div className="min-h-screen w-full overflow-x-hidden bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
-                {/* Main Content */}
-                <div className="flex">
-                  {/* Main Dashboard Sections */}
-                  <main className="flex-1 space-y-6 overflow-x-hidden p-6">
-                    {/* Management Section */}
-                    <section className="rounded bg-white p-4 shadow dark:bg-gray-800">
-                      <div className="space-y-4">
-                        <ComparisonPage data={userData} />
-                      </div>
-                    </section>
+                      {/* Pay Factors Section */}
+                      <section className="rounded bg-white p-4 shadow dark:bg-gray-800">
+                        <h2 className="mb-4 text-xl font-bold">Pay Factors</h2>
+                        <div className="h-full rounded bg-gray-200 dark:bg-gray-700">
+                          <PayFactors userData={data} />
+                        </div>
+                      </section>
+                    </div>
                   </main>
                 </div>
               </div>
@@ -243,13 +210,6 @@ export default function PayAnalyzerPage() {
           </TabPanels>
         </TabGroup>
       </div>
-
-      {/* Footer */}
-      <footer className="bg-white py-4 dark:bg-gray-800">
-        <div className="text-center">
-          <p>&copy; 2024 Paysight.live</p>
-        </div>
-      </footer>
     </div>
   );
 }

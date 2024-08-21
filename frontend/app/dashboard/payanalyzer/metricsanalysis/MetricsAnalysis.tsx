@@ -1,5 +1,63 @@
 // components/Dashboard/MetricsAnalysis.tsx
 // utils/analysis.ts
+
+interface EmployeeData {
+  employeeId: string;
+  name: string;
+  gender: string;
+  ethnicity: string;
+  jobTitle: string;
+  department: string;
+  location: string;
+  baseSalary: string;
+  bonus: string;
+  stockOptions: string;
+  yearsOfExperience: string;
+  performancePoints: string;
+  marketRate: string;
+  industryPoints: string;
+  departmentPoints: string;
+  seniorityLevels: string;
+  educationLevelPoints: string;
+  companySizePoints: string;
+}
+
+// Function to calculate average base salary
+export const calculateAverageBaseSalary = (data: EmployeeData[]): number => {
+  const totalSalary = data.reduce(
+    (acc, employee) => acc + parseFloat(employee.baseSalary),
+    0,
+  );
+  return totalSalary / data.length;
+};
+
+// Function to compare salaries by department
+export const compareSalariesByDepartment = (
+  data: EmployeeData[],
+): { [key: string]: number } => {
+  const departmentSalaries: { [key: string]: number[] } = {};
+
+  data.forEach((employee) => {
+    if (!departmentSalaries[employee.department]) {
+      departmentSalaries[employee.department] = [];
+    }
+    departmentSalaries[employee.department].push(
+      parseFloat(employee.baseSalary),
+    );
+  });
+
+  return Object.keys(departmentSalaries).reduce(
+    (acc, department) => {
+      const salaries = departmentSalaries[department];
+      const average =
+        salaries.reduce((sum, salary) => sum + salary, 0) / salaries.length;
+      acc[department] = average;
+      return acc;
+    },
+    {} as { [key: string]: number },
+  );
+};
+
 export const calculateMetrics = (data: any[]) => {
   // Filter out rows where salary is not a valid number
   const filteredData = data.filter((row) => !isNaN(parseFloat(row.salary)));
