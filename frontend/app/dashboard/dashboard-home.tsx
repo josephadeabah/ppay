@@ -8,6 +8,7 @@ import MapComponent from "@/app/dashboard/dashbmain/worldmap/WorldMap";
 import HomePageContentSkeleton from "@/app/dashboard/dashboardloader";
 import RecentUserActivity from "@/app/dashboard/settings/recentactivity/RecentUserActivity";
 import RecentDownloads from "@/app/dashboard/settings/recentdownloads/RecentDownloadsList";
+import { Tooltip } from "@nextui-org/react";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 
@@ -31,26 +32,70 @@ export const HomePageContent: NextPage = function () {
       </div>
       <div className="min-h-screen bg-gray-100 p-3 text-gray-800 dark:bg-gray-800 dark:text-gray-50">
         {/* Hero Section */}
-        <section className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-          <div className="rounded-sm  bg-white p-6 text-center text-gray-800 dark:bg-gray-900 dark:text-gray-50">
+        <section className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="rounded-sm bg-white p-6 text-center text-gray-800 dark:bg-gray-900 dark:text-gray-50">
             <h2 className="text-lg font-semibold">
               Global Average Salary Change
             </h2>
-            <p className="text-3xl font-bold text-green-600">+3.5%</p>
+            <p className="text-sm">
+              In the past month, the global average salary has increased by
+              <div className="font-bold text-green-600"> +3.5%</div>
+            </p>
+            <div className="inline-block text-sm text-blue-500 hover:no-underline">
+              <Tooltip
+                content="This reflects the overall trend in global wage growth and its impact on industries worldwide."
+                color="primary"
+                placement="top"
+                className="w-full max-w-sm bg-white p-5 text-gray-900 dark:bg-slate-800 dark:text-gray-50"
+              >
+                <p className="cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap text-gray-500 dark:text-gray-100">
+                  What does this mean?
+                </p>
+              </Tooltip>
+            </div>
           </div>
+
           <div className="rounded-sm bg-white p-6 text-center text-gray-800 dark:bg-gray-900 dark:text-gray-50">
             <h2 className="text-lg font-semibold">Inflation Rate</h2>
-            <p className="text-3xl font-bold text-red-600">4.2%</p>
-          </div>
-          <div className="rounded-sm bg-white p-6 text-center text-gray-800 dark:bg-gray-900 dark:text-gray-50">
-            <h2 className="text-lg font-semibold">Top-Ranked Company</h2>
-            <p className="text-3xl font-bold text-blue-600">
-              Tech Innovators Inc.
+            <p className="text-sm">
+              The current inflation rate in USA is
+              <div className="font-bold text-red-600"> 4.2%</div>
             </p>
+            <div className="inline-block text-sm text-blue-500 hover:no-underline">
+              <Tooltip
+                content=" This means the cost of goods and services has risen, potentially
+              affecting your purchasing power and overall financial health.
+              Monitoring inflation is essential for maintaining your pay's real
+              value."
+                color="primary"
+                placement="top"
+                className="w-full max-w-sm bg-white p-5 text-gray-900 dark:bg-slate-800 dark:text-gray-50"
+              >
+                <p className="cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap text-gray-500 dark:text-gray-100">
+                  What does this mean?
+                </p>
+              </Tooltip>
+            </div>
           </div>
+
           <div className="rounded-sm bg-white p-6 text-center text-gray-800 dark:bg-gray-900 dark:text-gray-50">
             <h2 className="text-lg font-semibold">Pay Equity Score</h2>
-            <p className="text-3xl font-bold text-purple-600">92%</p>
+            <p className="text-sm">
+              By your recent pay equity analysis, your pay equity score is
+              <div className="font-bold text-purple-600"> 92%</div>
+            </p>
+            <div className="inline-block text-sm text-blue-500 hover:no-underline">
+              <Tooltip
+                content="This score indicates how fairly you are compensated compared to others in similar roles, industries, and regions. A score of 92% means your pay is relatively equitable, though some disparities may still exist."
+                color="primary"
+                placement="top"
+                className="w-full max-w-sm bg-white p-5 text-gray-900 dark:bg-slate-800 dark:text-gray-50"
+              >
+                <p className="cursor-pointer  overflow-hidden text-ellipsis whitespace-nowrap text-gray-500 dark:text-gray-100">
+                  What does this mean?
+                </p>
+              </Tooltip>
+            </div>
           </div>
         </section>
 
