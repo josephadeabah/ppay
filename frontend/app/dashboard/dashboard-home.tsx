@@ -86,7 +86,7 @@ export const HomePageContent: NextPage = function () {
             </p>
             <div className="inline-block text-sm text-blue-500 hover:no-underline">
               <Tooltip
-                content="This score indicates how fairly you are compensated compared to others in similar roles, industries, and regions. A score of 92% means your pay is relatively equitable, though some disparities may still exist."
+                content="This score indicates how fairly you are compensating your workers compared to others in similar industries, and regions. A score of 92% means your pay is relatively equitable, though some disparities may still exist."
                 color="primary"
                 placement="top"
                 className="w-full max-w-sm bg-white p-5 text-gray-900 dark:bg-slate-800 dark:text-gray-50"
