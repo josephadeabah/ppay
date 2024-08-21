@@ -7,28 +7,28 @@ import RootCauseAnalysis from "./rootcauseanalysis";
 
 const PayFactors = ({ userData }: { userData: any[] }) => {
   return (
-    <div className="w-full max-w-full">
+    <div className="flex w-full max-w-full flex-col gap-8">
       {/* Top row with 3 components */}
       <div className="grid grid-cols-1">
-        <div className="col-span-1 mb-3">
+        <div className="col-span-1">
           <CostOfLivingArea data={userData} />
         </div>
       </div>
 
       <div className="grid grid-cols-1">
-        <div className="col-span-1 mb-3">
+        <div className="col-span-1">
           <MarketRates data={userData} />
         </div>
       </div>
 
       <div className="grid grid-cols-1">
-        <div className="col-span-1 mb-3">
+        <div className="col-span-1">
           <CompensationComponentAnalysis data={userData} />
         </div>
       </div>
 
       <div className="grid grid-cols-1">
-        <div className="col-span-1 mb-3">
+        <div className="col-span-1">
           <RootCauseAnalysis data={userData} />
         </div>
       </div>

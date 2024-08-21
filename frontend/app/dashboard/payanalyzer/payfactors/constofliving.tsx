@@ -52,10 +52,10 @@ const CostOfLivingArea = ({ data }: { data: any[] }) => {
                   {row.location}
                 </td>
                 <td className="border-b px-4 py-2 text-gray-900 dark:text-gray-100">
-                  ${row.salary}
+                  {row.salary}
                 </td>
                 <td className="border-b px-4 py-2 text-gray-900 dark:text-gray-100">
-                  ${row.adjustedSalary}
+                  {row.adjustedSalary}
                 </td>
               </tr>
             ))}

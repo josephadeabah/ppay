@@ -108,13 +108,13 @@ const ComparisonPage = ({ data }: { data: any[] }) => {
                   {row.jobTitle}
                 </TableCell>
                 <TableCell className="text-gray-900 dark:text-gray-100">
-                  ${row.salary}
+                  {row.salary}
                 </TableCell>
                 <TableCell className="text-gray-900 dark:text-gray-100">
-                  ${row.bonus ?? 0}
+                  {row.bonus ?? 0}
                 </TableCell>
                 <TableCell className="text-gray-900 dark:text-gray-100">
-                  ${row.stockOptions ?? 0}
+                  {row.stockOptions ?? 0}
                 </TableCell>
                 <TableCell className="text-gray-900 dark:text-gray-100">
                   {row.gender}

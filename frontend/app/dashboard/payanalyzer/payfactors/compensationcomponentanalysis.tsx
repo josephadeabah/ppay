@@ -41,16 +41,16 @@ const CompensationComponentAnalysis = ({ data }: { data: any[] }) => {
                     {row.name}
                   </td>
                   <td className="border-b px-4 py-2 text-gray-900 dark:text-gray-100">
-                    ${salary.toFixed(2)}
+                    {salary.toFixed(2)}
                   </td>
                   <td className="border-b px-4 py-2 text-gray-900 dark:text-gray-100">
-                    ${bonus.toFixed(2)}
+                    {bonus.toFixed(2)}
                   </td>
                   <td className="border-b px-4 py-2 text-gray-900 dark:text-gray-100">
-                    ${stockOptions.toFixed(2)}
+                    {stockOptions.toFixed(2)}
                   </td>
                   <td className="border-b px-4 py-2 text-gray-900 dark:text-gray-100">
-                    ${(salary + bonus + stockOptions).toFixed(2)}
+                    {(salary + bonus + stockOptions).toFixed(2)}
                   </td>
                 </tr>
               );
