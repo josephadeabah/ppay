@@ -1,4 +1,4 @@
-employeeId,name,gender,ethnicity,jobTitle,department,location,baseSalary,bonus,stockOptions,yearsOfExperience,performancePoints,marketRate,industryPoints,departmentPoints,seniorityLevels,educationLevelPoints,companySizePoints,seniorityLevel
+employeeId,name,gender,ethnicity,jobTitle,department,location,baseSalary,bonus,stockOptions,yearsOfExperience,performancePoints,marketRate,industryPoints,departmentPoints,seniorityPoints,educationLevelPoints,companySizePoints,seniorityLevel
 001,John Doe,Male,White,Software Engineer,IT,USA,100000,5000,20000,5,4,95000,10,8,6,7,9,Mid
 002,Jane Smith,Female,Asian,Project Manager,Operations,USA,95000,4000,15000,7,3,90000,12,7,8,6,8,Senior
 003,Mike Lee,Male,Asian,Data Scientist,IT,USA,120000,6000,25000,3,5,115000,11,9,5,8,10,Mid
