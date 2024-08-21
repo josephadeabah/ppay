@@ -60,7 +60,7 @@ export default function PayAnalyzerPage() {
   }
 
   return (
-    <div className="flex min-h-screen w-full flex-col overflow-x-hidden bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+    <div className="flex w-full flex-col overflow-x-hidden bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
       {/* Navbar */}
       <header className="bg-white shadow dark:bg-gray-800">
         <div className="mx-auto flex flex-col items-center justify-between space-y-2 px-4 py-4 sm:flex-row sm:space-y-0 sm:px-6">
@@ -97,11 +97,11 @@ export default function PayAnalyzerPage() {
           <TabPanels className="mt-6">
             {/* Upload Tab */}
             <TabPanel className="space-y-6">
-              <div className="min-h-screen w-full overflow-x-hidden bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+              <div className="w-full overflow-x-hidden bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
                 {/* Main Content */}
                 <div className="flex">
                   {/* Main Dashboard Sections */}
-                  <main className="flex-1 space-y-6 overflow-x-hidden p-6">
+                  <main className="flex-1 space-y-6 overflow-x-hidden p-2">
                     <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
                       {/* Upload Section */}
                       <section className="rounded bg-white p-4 shadow dark:bg-gray-800">
@@ -181,11 +181,11 @@ export default function PayAnalyzerPage() {
 
             {/* Analyze Tab */}
             <TabPanel className="space-y-6">
-              <div className="min-h-screen w-full overflow-x-hidden bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+              <div className="w-full overflow-x-hidden bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
                 {/* Main Content */}
                 <div className="flex">
                   {/* Main Dashboard Sections */}
-                  <main className="flex-1 space-y-6 overflow-x-hidden p-6">
+                  <main className="flex-1 space-y-6 overflow-x-hidden p-2">
                     <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
                       {/* Comparison Section */}
                       <section className="rounded bg-white p-4 shadow dark:bg-gray-800">

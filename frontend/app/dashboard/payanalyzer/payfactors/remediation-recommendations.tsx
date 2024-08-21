@@ -15,25 +15,46 @@ const RemediationRecommendations = ({ data }: { data: any[] }) => {
   }));
 
   return (
-    <div className="remediation-recommendations">
-      <h2 className="mb-4 text-lg">Remediation Recommendations</h2>
+    <div className="w-full max-w-full overflow-hidden bg-white dark:bg-gray-900">
+      <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
+        Remediation Recommendations
+      </h2>
       <div className="overflow-x-auto">
-        <table className="min-w-full table-auto border-collapse">
-          <thead>
+        <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+          <thead className="bg-gray-50 dark:bg-gray-800">
             <tr>
-              <th className="px-4 py-2">Name</th>
-              <th className="px-4 py-2">Job Title</th>
-              <th className="px-4 py-2">Root Cause</th>
-              <th className="px-4 py-2">Recommendation</th>
+              <th className="px-4 py-2 text-left font-medium text-gray-900 dark:text-gray-100">
+                Name
+              </th>
+              <th className="px-4 py-2 text-left font-medium text-gray-900 dark:text-gray-100">
+                Job Title
+              </th>
+              <th className="px-4 py-2 text-left font-medium text-gray-900 dark:text-gray-100">
+                Root Cause
+              </th>
+              <th className="px-4 py-2 text-left font-medium text-gray-900 dark:text-gray-100">
+                Recommendation
+              </th>
             </tr>
           </thead>
           <tbody>
             {enrichedData.map((row, idx) => (
-              <tr key={idx}>
-                <td className="border px-4 py-2">{row.name}</td>
-                <td className="border px-4 py-2">{row.jobTitle}</td>
-                <td className="border px-4 py-2">{row.rootCause}</td>
-                <td className="border px-4 py-2">{row.recommendation}</td>
+              <tr
+                key={idx}
+                className="hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                <td className="border-b px-4 py-2 text-gray-900 dark:text-gray-100">
+                  {row.name}
+                </td>
+                <td className="border-b px-4 py-2 text-gray-900 dark:text-gray-100">
+                  {row.jobTitle}
+                </td>
+                <td className="border-b px-4 py-2 text-gray-900 dark:text-gray-100">
+                  {row.rootCause}
+                </td>
+                <td className="border-b px-4 py-2 text-gray-900 dark:text-gray-100">
+                  {row.recommendation}
+                </td>
               </tr>
             ))}
           </tbody>

@@ -1,5 +1,6 @@
 "use client";
 
+import DropdownSelect from "@/components/dropdown/DropdownSelect";
 import {
   Table,
   TableBody,
@@ -34,9 +35,16 @@ const ComparisonPage = ({ data }: { data: any[] }) => {
     ],
   };
 
+  const comparisonOptions = [
+    { value: "salary", label: "Salary" },
+    { value: "bonus", label: "Bonus" },
+    { value: "stockOptions", label: "Stock Options" },
+    { value: "marketRate", label: "Market Rate" },
+  ];
+
   return (
-    <div className="p-6">
-      <h1 className="mb-6 text-2xl font-bold">
+    <div className="bg-white p-6 dark:bg-gray-900">
+      <h1 className="mb-6 text-2xl font-bold text-gray-900 dark:text-gray-100">
         Pay Factors and Equity Scores Comparison
       </h1>
 
@@ -47,18 +55,13 @@ const ComparisonPage = ({ data }: { data: any[] }) => {
         >
           Select Comparison Factor:
         </label>
-        <select
-          className="form-select mt-1 block w-full"
-          value={selectedComparison}
+        <DropdownSelect
+          options={comparisonOptions}
+          selectedValue={selectedComparison}
           onChange={(e) => setSelectedComparison(e.target.value)}
-        >
-          <option value="salary">Salary</option>
-          <option value="bonus">Bonus</option>
-          <option value="stockOptions">Stock Options</option>
-          <option value="marketRate">Market Rate</option>
-
-          {/* Add more options as needed */}
-        </select>
+          placeholder="Select a factor"
+          id="comparisonFactor"
+        />
       </div>
 
       <div
@@ -69,26 +72,60 @@ const ComparisonPage = ({ data }: { data: any[] }) => {
       </div>
 
       <div className="overflow-x-auto">
-        <Table aria-label="Comparative Data Table" style={{ minWidth: "100%" }}>
-          <TableHeader>
-            <TableColumn className="text-left">Name</TableColumn>
-            <TableColumn className="text-left">Location</TableColumn>
-            <TableColumn className="text-left">Job Title</TableColumn>
-            <TableColumn className="text-left">Salary</TableColumn>
-            <TableColumn className="text-left">Bonus</TableColumn>
-            <TableColumn className="text-left">Stock Options</TableColumn>
-            <TableColumn className="text-left">Gender</TableColumn>
+        <Table
+          aria-label="Comparative Data Table"
+          className="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
+        >
+          <TableHeader className="bg-gray-50 dark:bg-gray-800">
+            <TableColumn className="text-left font-medium text-gray-900 dark:text-gray-100">
+              Name
+            </TableColumn>
+            <TableColumn className="text-left font-medium text-gray-900 dark:text-gray-100">
+              Location
+            </TableColumn>
+            <TableColumn className="text-left font-medium text-gray-900 dark:text-gray-100">
+              Job Title
+            </TableColumn>
+            <TableColumn className="text-left font-medium text-gray-900 dark:text-gray-100">
+              Salary
+            </TableColumn>
+            <TableColumn className="text-left font-medium text-gray-900 dark:text-gray-100">
+              Bonus
+            </TableColumn>
+            <TableColumn className="text-left font-medium text-gray-900 dark:text-gray-100">
+              Stock Options
+            </TableColumn>
+            <TableColumn className="text-left font-medium text-gray-900 dark:text-gray-100">
+              Gender
+            </TableColumn>
           </TableHeader>
           <TableBody>
             {data.map((row, idx) => (
-              <TableRow key={idx}>
-                <TableCell>{row.name}</TableCell>
-                <TableCell>{row.location}</TableCell>
-                <TableCell>{row.jobTitle}</TableCell>
-                <TableCell>${row.salary}</TableCell>
-                <TableCell>${row.bonus ?? 0}</TableCell>
-                <TableCell>${row.stockOptions ?? 0}</TableCell>
-                <TableCell>{row.gender}</TableCell>
+              <TableRow
+                key={idx}
+                className="hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                <TableCell className="text-gray-900 dark:text-gray-100">
+                  {row.name}
+                </TableCell>
+                <TableCell className="text-gray-900 dark:text-gray-100">
+                  {row.location}
+                </TableCell>
+                <TableCell className="text-gray-900 dark:text-gray-100">
+                  {row.jobTitle}
+                </TableCell>
+                <TableCell className="text-gray-900 dark:text-gray-100">
+                  ${row.salary}
+                </TableCell>
+                <TableCell className="text-gray-900 dark:text-gray-100">
+                  ${row.bonus ?? 0}
+                </TableCell>
+                <TableCell className="text-gray-900 dark:text-gray-100">
+                  ${row.stockOptions ?? 0}
+                </TableCell>
+                <TableCell className="text-gray-900 dark:text-gray-100">
+                  {row.gender}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
