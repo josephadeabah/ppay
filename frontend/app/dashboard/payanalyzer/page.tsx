@@ -10,6 +10,7 @@ import Visualization from "@/app/dashboard/payanalyzer/visualize/Visualization";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { useEffect, useState } from "react";
 import ComparisonPage from "./comparison/Comparison";
+import ManagementComponent from "./managedata/manageData";
 import PayFactors from "./payfactors/payFactors";
 
 function classNames(...classes: string[]) {
@@ -100,7 +101,7 @@ export default function PayAnalyzerPage() {
               <div className="w-full bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
                 <div className="w-full max-w-full">
                   {/* Upload Section */}
-                  <section className="bg-white p-4 shadow dark:bg-gray-800">
+                  <section className="bg-white p-4 shadow-sm dark:bg-gray-800">
                     <div className="flex w-full items-center justify-between rounded border border-dashed border-gray-300 p-6 dark:border-gray-600">
                       <div>
                         {!isDataUploaded && (
@@ -123,7 +124,7 @@ export default function PayAnalyzerPage() {
 
                 {/* Table visualization Section */}
                 <div className="flex flex-col gap-4">
-                  <section className="overflow-x-auto bg-white p-4 shadow dark:bg-gray-800 [&::-moz-scrollbar-thumb]:rounded-full [&::-moz-scrollbar-thumb]:bg-gray-200 [&::-moz-scrollbar-track]:m-1 [&::-moz-scrollbar]:w-2 [&::-ms-scrollbar-thumb]:rounded-full [&::-ms-scrollbar-thumb]:bg-gray-200 [&::-ms-scrollbar-track]:m-1 [&::-ms-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-track]:m-1 [&::-webkit-scrollbar]:w-2">
+                  <section className="overflow-x-auto bg-white p-4 shadow-sm dark:bg-gray-800 [&::-moz-scrollbar-thumb]:rounded-full [&::-moz-scrollbar-thumb]:bg-gray-200 [&::-moz-scrollbar-track]:m-1 [&::-moz-scrollbar]:w-2 [&::-ms-scrollbar-thumb]:rounded-full [&::-ms-scrollbar-thumb]:bg-gray-200 [&::-ms-scrollbar-track]:m-1 [&::-ms-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-track]:m-1 [&::-webkit-scrollbar]:w-2">
                     <h2 className="mb-4 text-xl font-bold">
                       Table Visualization
                     </h2>
@@ -138,7 +139,7 @@ export default function PayAnalyzerPage() {
                   </section>
 
                   {/* Visualization Analysis */}
-                  <section className=" bg-white p-4 shadow dark:bg-gray-800">
+                  <section className=" bg-white p-4 shadow-sm dark:bg-gray-800">
                     <h2 className="mb-4 text-xl font-bold">
                       Visualization Analysis
                     </h2>
@@ -184,7 +185,7 @@ export default function PayAnalyzerPage() {
                       </section>
 
                       {/* Pay Factors Section */}
-                      <section className="bg-white p-2 shadow dark:bg-gray-800">
+                      <section className="bg-white p-2 shadow-sm dark:bg-gray-800">
                         <h2 className="mb-4 text-xl font-bold">Pay Factors</h2>
                         <div className="bg-gray-200 dark:bg-gray-700">
                           <PayFactors userData={data} />
@@ -200,10 +201,12 @@ export default function PayAnalyzerPage() {
             <TabPanel className="space-y-6">
               <div className="w-full bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
                 {/* Management Section */}
-                <section className="rounded bg-white p-4 shadow dark:bg-gray-800">
+                <section className="rounded bg-white p-4 shadow-sm dark:bg-gray-800">
                   <h2 className="mb-4 text-xl font-bold">Manage Data</h2>
                   <div className="space-y-4">
-                    {/* Management logic can be added here */}
+                    {data.length > 0 && (
+                      <ManagementComponent initialData={data} />
+                    )}
                   </div>
                 </section>
               </div>

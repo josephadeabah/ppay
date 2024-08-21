@@ -3,9 +3,9 @@
 import DataTable from "@/app/dashboard/payanalyzer/datatable/DataTable";
 import UploadData from "@/app/dashboard/payanalyzer/fileupload/UploadData";
 import { useState } from "react";
-
 // Define the type for the CSV data
 interface EmployeeData {
+  [key: string]: string;
   employeeId: string;
   name: string;
   gender: string;
@@ -24,6 +24,7 @@ interface EmployeeData {
   seniorityLevels: string;
   educationLevelPoints: string;
   companySizePoints: string;
+  seniorityLevel: string; // Newly added field
 }
 
 export default function UploadPage() {

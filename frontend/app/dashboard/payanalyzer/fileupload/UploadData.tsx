@@ -23,6 +23,7 @@ interface EmployeeData {
   seniorityLevels: string;
   educationLevelPoints: string;
   companySizePoints: string;
+  seniorityLevel: string; // Newly added field
 }
 
 // Utility function to parse CSV
