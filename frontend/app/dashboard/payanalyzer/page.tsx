@@ -78,7 +78,7 @@ export default function PayAnalyzerPage() {
       <div className="flex-1">
         <TabGroup>
           <TabList className="flex space-x-1 bg-gray-50">
-            {["Assess", "Analyze"].map((tab) => (
+            {["Assess", "Analyze", "Manage"].map((tab) => (
               <Tab
                 key={tab}
                 className={({ selected }) =>
@@ -97,84 +97,72 @@ export default function PayAnalyzerPage() {
           <TabPanels className="mt-6">
             {/* Upload Tab */}
             <TabPanel className="space-y-6">
-              <div className="w-full overflow-x-hidden bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
-                {/* Main Content */}
-                <div className="flex">
-                  {/* Main Dashboard Sections */}
-                  <main className="flex-1 space-y-6 overflow-x-hidden p-2">
-                    <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-                      {/* Upload Section */}
-                      <section className="rounded bg-white p-4 shadow dark:bg-gray-800">
-                        <h2 className="mb-4 text-xl font-bold">Upload Data</h2>
-                        <div className="rounded border border-dashed border-gray-300 p-6 dark:border-gray-600">
-                          {!isDataUploaded && (
-                            <div className="mb-8">
-                              <h2 className="mb-4 text-xl">Upload CSV File</h2>
-                              <UploadData
-                                onDataExtracted={handleDataExtracted}
-                              />
-                            </div>
-                          )}
-                          {isDataUploaded && data.length > 0 && (
-                            <div className="mb-8">
-                              <h2 className="mb-4 text-xl">Export Data</h2>
-                              <ExportButton data={data} />
-                            </div>
-                          )}
-                        </div>
-                      </section>
-
-                      {/* Management Section */}
-                      <section className="rounded bg-white p-4 shadow dark:bg-gray-800">
-                        <h2 className="mb-4 text-xl font-bold">Manage Data</h2>
-                        <div className="space-y-4">
-                          {/* Management logic can be added here */}
-                        </div>
-                      </section>
+              <div className="w-full bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+                <div className="w-full max-w-full">
+                  {/* Upload Section */}
+                  <section className="bg-white p-4 shadow dark:bg-gray-800">
+                    <div className="flex w-full items-center justify-between rounded border border-dashed border-gray-300 p-6 dark:border-gray-600">
+                      <div>
+                        {!isDataUploaded && (
+                          <div>
+                            <h2 className="mb-4 text-xl">Upload CSV File</h2>
+                            <UploadData onDataExtracted={handleDataExtracted} />
+                          </div>
+                        )}
+                      </div>
+                      <div>
+                        {isDataUploaded && data.length > 0 && (
+                          <div className="">
+                            <ExportButton data={data} />
+                          </div>
+                        )}
+                      </div>
                     </div>
+                  </section>
+                </div>
 
-                    {/* Table visualization Section */}
-                    <section className="overflow-x-auto rounded bg-white p-4 shadow dark:bg-gray-800 [&::-moz-scrollbar-thumb]:rounded-full [&::-moz-scrollbar-thumb]:bg-gray-200 [&::-moz-scrollbar-track]:m-1 [&::-moz-scrollbar]:w-2 [&::-ms-scrollbar-thumb]:rounded-full [&::-ms-scrollbar-thumb]:bg-gray-200 [&::-ms-scrollbar-track]:m-1 [&::-ms-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-track]:m-1 [&::-webkit-scrollbar]:w-2">
-                      <h2 className="mb-4 text-xl font-bold">
-                        Table Visualization
-                      </h2>
-                      <div className="h-full rounded bg-gray-200 dark:bg-gray-700">
-                        {isDataUploaded && data.length > 0 && (
-                          <div className="mb-8 p-2">
-                            <h2 className="mb-4 text-xl">Extracted Data</h2>
-                            <DataTable data={data} />
-                          </div>
-                        )}
-                      </div>
-                    </section>
+                {/* Table visualization Section */}
+                <div className="flex flex-col gap-4">
+                  <section className="overflow-x-auto bg-white p-4 shadow dark:bg-gray-800 [&::-moz-scrollbar-thumb]:rounded-full [&::-moz-scrollbar-thumb]:bg-gray-200 [&::-moz-scrollbar-track]:m-1 [&::-moz-scrollbar]:w-2 [&::-ms-scrollbar-thumb]:rounded-full [&::-ms-scrollbar-thumb]:bg-gray-200 [&::-ms-scrollbar-track]:m-1 [&::-ms-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-track]:m-1 [&::-webkit-scrollbar]:w-2">
+                    <h2 className="mb-4 text-xl font-bold">
+                      Table Visualization
+                    </h2>
+                    <div className="h-full rounded bg-gray-200 dark:bg-gray-700">
+                      {isDataUploaded && data.length > 0 && (
+                        <div className="mb-8 p-2">
+                          <h2 className="mb-4 text-xl">Extracted Data</h2>
+                          <DataTable data={data} />
+                        </div>
+                      )}
+                    </div>
+                  </section>
 
-                    {/* Visualization Analysis */}
-                    <section className="rounded bg-white p-4 shadow dark:bg-gray-800">
-                      <h2 className="mb-4 text-xl font-bold">
-                        Visualization Analysis
-                      </h2>
-                      <div className="h-full rounded bg-gray-200 dark:bg-gray-700">
-                        {isDataUploaded && data.length > 0 && (
-                          <div className="mb-8 p-2">
-                            <MetricsAnalysis data={data} />
-                          </div>
-                        )}
-                      </div>
-                    </section>
+                  {/* Visualization Analysis */}
+                  <section className=" bg-white p-4 shadow dark:bg-gray-800">
+                    <h2 className="mb-4 text-xl font-bold">
+                      Visualization Analysis
+                    </h2>
+                    <div className="h-full rounded bg-gray-200 dark:bg-gray-700">
+                      {isDataUploaded && data.length > 0 && (
+                        <div className="mb-8 p-2">
+                          <MetricsAnalysis data={data} />
+                        </div>
+                      )}
+                    </div>
+                  </section>
 
-                    {/* Analysis Section */}
-                    <section className="bg-white p-4 dark:bg-gray-800">
-                      <h2 className="mb-4 text-xl font-bold">Chart Analysis</h2>
-                      <div className="h-full rounded bg-gray-200 dark:bg-gray-700">
-                        {isDataUploaded && data.length > 0 && (
-                          <div className="mb-8 p-2">
-                            <h2 className="mb-4 text-xl">Data Visualization</h2>
-                            <Visualization data={data} />
-                          </div>
-                        )}
-                      </div>
-                    </section>
-                  </main>
+                  {/* Analysis Section */}
+                  <section className="bg-white p-4 dark:bg-gray-800">
+                    <h2 className="mb-4 text-xl font-bold">Chart Analysis</h2>
+                    <div className="h-full rounded bg-gray-200 dark:bg-gray-700">
+                      {isDataUploaded && data.length > 0 && (
+                        <div className="mb-8 p-2">
+                          <h2 className="mb-4 text-xl">Data Visualization</h2>
+                          <Visualization data={data} />
+                        </div>
+                      )}
+                    </div>
+                  </section>
                 </div>
               </div>
             </TabPanel>
@@ -205,6 +193,19 @@ export default function PayAnalyzerPage() {
                     </div>
                   </main>
                 </div>
+              </div>
+            </TabPanel>
+
+            {/* Manage Tab */}
+            <TabPanel className="space-y-6">
+              <div className="w-full bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+                {/* Management Section */}
+                <section className="rounded bg-white p-4 shadow dark:bg-gray-800">
+                  <h2 className="mb-4 text-xl font-bold">Manage Data</h2>
+                  <div className="space-y-4">
+                    {/* Management logic can be added here */}
+                  </div>
+                </section>
               </div>
             </TabPanel>
           </TabPanels>
