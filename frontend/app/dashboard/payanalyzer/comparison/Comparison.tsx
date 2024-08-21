@@ -43,11 +43,7 @@ const ComparisonPage = ({ data }: { data: any[] }) => {
   ];
 
   return (
-    <div className="bg-white p-6 dark:bg-gray-900">
-      <h1 className="mb-6 text-2xl font-bold text-gray-900 dark:text-gray-100">
-        Pay Factors and Equity Scores Comparison
-      </h1>
-
+    <div className="bg-gray-100 dark:bg-gray-900">
       <div className="mb-6">
         <label
           className="mb-2 block text-lg font-medium"
@@ -64,38 +60,35 @@ const ComparisonPage = ({ data }: { data: any[] }) => {
         />
       </div>
 
-      <div
-        className="mb-8 bg-gray-50 dark:bg-slate-700"
-        style={{ position: "relative", height: "auto", width: "100%" }}
-      >
+      <div className="relative mb-8 h-auto w-full min-w-full bg-gray-50 dark:bg-slate-700">
         <Line data={chartData} />
       </div>
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto [&::-moz-scrollbar-thumb]:rounded-full [&::-moz-scrollbar-thumb]:bg-gray-200 [&::-moz-scrollbar-track]:m-1 [&::-moz-scrollbar]:w-2 [&::-ms-scrollbar-thumb]:rounded-full [&::-ms-scrollbar-thumb]:bg-gray-200 [&::-ms-scrollbar-track]:m-1 [&::-ms-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-track]:m-1 [&::-webkit-scrollbar]:w-2">
         <Table
           aria-label="Comparative Data Table"
           className="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
         >
-          <TableHeader className="bg-gray-50 dark:bg-gray-800">
-            <TableColumn className="text-left font-medium text-gray-900 dark:text-gray-100">
+          <TableHeader className="w-full min-w-full">
+            <TableColumn className="bg-white text-left font-medium text-gray-900 dark:bg-gray-800 dark:text-gray-100">
               Name
             </TableColumn>
-            <TableColumn className="text-left font-medium text-gray-900 dark:text-gray-100">
+            <TableColumn className="bg-white text-left font-medium text-gray-900 dark:bg-gray-800 dark:text-gray-100">
               Location
             </TableColumn>
-            <TableColumn className="text-left font-medium text-gray-900 dark:text-gray-100">
+            <TableColumn className="bg-white text-left font-medium text-gray-900 dark:bg-gray-800 dark:text-gray-100">
               Job Title
             </TableColumn>
-            <TableColumn className="text-left font-medium text-gray-900 dark:text-gray-100">
+            <TableColumn className="bg-white text-left font-medium text-gray-900 dark:bg-gray-800 dark:text-gray-100">
               Salary
             </TableColumn>
-            <TableColumn className="text-left font-medium text-gray-900 dark:text-gray-100">
+            <TableColumn className="bg-white text-left font-medium text-gray-900 dark:bg-gray-800 dark:text-gray-100">
               Bonus
             </TableColumn>
-            <TableColumn className="text-left font-medium text-gray-900 dark:text-gray-100">
+            <TableColumn className="bg-white text-left font-medium text-gray-900 dark:bg-gray-800 dark:text-gray-100">
               Stock Options
             </TableColumn>
-            <TableColumn className="text-left font-medium text-gray-900 dark:text-gray-100">
+            <TableColumn className="bg-white text-left font-medium text-gray-900 dark:bg-gray-800 dark:text-gray-100">
               Gender
             </TableColumn>
           </TableHeader>

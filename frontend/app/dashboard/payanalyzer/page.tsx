@@ -134,7 +134,7 @@ export default function PayAnalyzerPage() {
                     </div>
 
                     {/* Table visualization Section */}
-                    <section className="overflow-x-auto rounded bg-white p-4 shadow dark:bg-gray-800">
+                    <section className="overflow-x-auto rounded bg-white p-4 shadow dark:bg-gray-800 [&::-moz-scrollbar-thumb]:rounded-full [&::-moz-scrollbar-thumb]:bg-gray-200 [&::-moz-scrollbar-track]:m-1 [&::-moz-scrollbar]:w-2 [&::-ms-scrollbar-thumb]:rounded-full [&::-ms-scrollbar-thumb]:bg-gray-200 [&::-ms-scrollbar-track]:m-1 [&::-ms-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-track]:m-1 [&::-webkit-scrollbar]:w-2">
                       <h2 className="mb-4 text-xl font-bold">
                         Table Visualization
                       </h2>
