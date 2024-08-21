@@ -33,7 +33,7 @@ const PayFactors = ({ userData }: { userData: any[] }) => {
         </div>
       </div>
 
-      <div className="mt-8 grid grid-cols-1">
+      <div className="grid grid-cols-1">
         <div className="col-span-1">
           <RemediationRecommendations data={userData} />
         </div>

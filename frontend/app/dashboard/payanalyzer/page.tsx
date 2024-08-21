@@ -77,15 +77,15 @@ export default function PayAnalyzerPage() {
       {/* Tabs */}
       <div className="flex-1">
         <TabGroup>
-          <TabList className="flex space-x-1 bg-gray-50 p-1">
+          <TabList className="flex space-x-1 bg-gray-50">
             {["Assess", "Analyze"].map((tab) => (
               <Tab
                 key={tab}
                 className={({ selected }) =>
                   classNames(
-                    "w-full py-2.5 text-sm font-medium leading-5 text-gray-950 focus:outline-none",
+                    "text-md w-full py-2.5 font-medium leading-5 text-gray-950 focus:outline-none",
                     selected
-                      ? "bg-white shadow"
+                      ? "bg-white shadow-sm dark:border-gray-950 dark:bg-gray-950 dark:text-gray-50"
                       : "text-gray-700 hover:bg-white/[0.12] hover:text-gray-300",
                   )
                 }
@@ -163,7 +163,7 @@ export default function PayAnalyzerPage() {
                     </section>
 
                     {/* Analysis Section */}
-                    <section className="rounded bg-white p-4 shadow dark:bg-gray-800">
+                    <section className="bg-white p-4 dark:bg-gray-800">
                       <h2 className="mb-4 text-xl font-bold">Chart Analysis</h2>
                       <div className="h-full rounded bg-gray-200 dark:bg-gray-700">
                         {isDataUploaded && data.length > 0 && (
@@ -181,24 +181,24 @@ export default function PayAnalyzerPage() {
 
             {/* Analyze Tab */}
             <TabPanel className="space-y-6">
-              <div className="w-full overflow-x-hidden bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+              <div className="w-full bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
                 {/* Main Content */}
                 <div className="flex">
                   {/* Main Dashboard Sections */}
-                  <main className="flex-1 space-y-6 overflow-x-hidden p-2">
-                    <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+                  <main className="flex-1 space-y-6 p-2">
+                    <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
                       {/* Comparison Section */}
-                      <section className="rounded bg-white p-4 shadow dark:bg-gray-800">
+                      <section className=" bg-white p-2 dark:bg-gray-800">
                         <h2 className="mb-4 text-xl font-bold">Compare Data</h2>
-                        <div className="h-full rounded bg-gray-200 dark:bg-gray-700">
+                        <div className="bg-gray-200 dark:bg-gray-700">
                           <ComparisonPage data={data} />
                         </div>
                       </section>
 
                       {/* Pay Factors Section */}
-                      <section className="rounded bg-white p-4 shadow dark:bg-gray-800">
+                      <section className="bg-white p-2 shadow dark:bg-gray-800">
                         <h2 className="mb-4 text-xl font-bold">Pay Factors</h2>
-                        <div className="h-full rounded bg-gray-200 dark:bg-gray-700">
+                        <div className="bg-gray-200 dark:bg-gray-700">
                           <PayFactors userData={data} />
                         </div>
                       </section>

@@ -65,8 +65,8 @@ const ComparisonPage = ({ data }: { data: any[] }) => {
       </div>
 
       <div
-        className="mb-8"
-        style={{ position: "relative", height: "400px", width: "100%" }}
+        className="mb-8 bg-gray-50 dark:bg-slate-700"
+        style={{ position: "relative", height: "auto", width: "100%" }}
       >
         <Line data={chartData} />
       </div>
