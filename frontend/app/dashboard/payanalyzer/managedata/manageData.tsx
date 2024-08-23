@@ -1,3 +1,4 @@
+import ExportButton from "@/app/dashboard/payanalyzer/exportbutton/ExportButton";
 import ModalComponent from "@/components/modal/ModalComponent";
 import { useState } from "react";
 import { AiOutlineEdit } from "react-icons/ai";
@@ -65,6 +66,14 @@ const ManagementComponent = ({
 
   return (
     <div>
+      <div className="flex w-full items-center justify-between rounded-sm border border-dashed border-gray-300 p-6 dark:border-gray-600">
+        <div>
+          <h2 className="text-xl font-bold">Manage Data</h2>
+        </div>
+        <div>
+          <ExportButton data={data} />
+        </div>
+      </div>
       <div className="overflow-x-auto [&::-moz-scrollbar-thumb]:rounded-full [&::-moz-scrollbar-thumb]:bg-gray-200 [&::-moz-scrollbar-track]:m-1 [&::-moz-scrollbar]:w-2 [&::-ms-scrollbar-thumb]:rounded-full [&::-ms-scrollbar-thumb]:bg-gray-200 [&::-ms-scrollbar-track]:m-1 [&::-ms-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-track]:m-1 [&::-webkit-scrollbar]:w-2">
         <table className="min-w-full table-auto border-collapse">
           <thead className="bg-gray-100 dark:bg-gray-700">

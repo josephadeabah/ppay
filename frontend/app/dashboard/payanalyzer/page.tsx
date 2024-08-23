@@ -3,7 +3,6 @@
 "use client";
 import SkeletonLoader from "@/app/dashboard/equityanalyzer/loader";
 import DataTable from "@/app/dashboard/payanalyzer/datatable/DataTable";
-import ExportButton from "@/app/dashboard/payanalyzer/exportbutton/ExportButton";
 import UploadData from "@/app/dashboard/payanalyzer/fileupload/UploadData";
 import MetricsAnalysis from "@/app/dashboard/payanalyzer/metricsanalysis/MetricsAnalysis";
 import Visualization from "@/app/dashboard/payanalyzer/visualize/Visualization";
@@ -108,13 +107,23 @@ export default function PayAnalyzerPage() {
                           <div>
                             <h2 className="mb-4 text-xl">Upload CSV File</h2>
                             <UploadData onDataExtracted={handleDataExtracted} />
+                            {/* Example file */}
+                            <a
+                              href="/employeeData.csv"
+                              download="/employeeData.csv"
+                              className="flex items-center text-sm text-gray-600 hover:underline"
+                            >
+                              Download Example CSV
+                            </a>
                           </div>
                         )}
                       </div>
                       <div>
                         {isDataUploaded && data.length > 0 && (
                           <div className="">
-                            <ExportButton data={data} />
+                            <button className="w-full min-w-20 rounded-sm bg-slate-100 p-2 shadow-sm">
+                              Scan
+                            </button>
                           </div>
                         )}
                       </div>
@@ -202,7 +211,6 @@ export default function PayAnalyzerPage() {
               <div className="w-full bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
                 {/* Management Section */}
                 <section className="rounded bg-white p-4 shadow-sm dark:bg-gray-800">
-                  <h2 className="mb-4 text-xl font-bold">Manage Data</h2>
                   <div className="space-y-4">
                     {data.length > 0 && (
                       <ManagementComponent initialData={data} />
