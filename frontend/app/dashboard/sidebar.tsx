@@ -170,7 +170,7 @@ export const DashboardSidebar: FC = function () {
               )}
               className={getItemClass("/dashboard/payanalyzer")}
             >
-              Pay Analyzer
+              PayAid
             </Sidebar.Item>
 
             <Sidebar.Item
