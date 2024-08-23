@@ -8,6 +8,7 @@ import MetricsAnalysis from "@/app/dashboard/payanalyzer/metricsanalysis/Metrics
 import Visualization from "@/app/dashboard/payanalyzer/visualize/Visualization";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { useEffect, useState } from "react";
+import { AiOutlineScan } from "react-icons/ai";
 import ComparisonPage from "./comparison/Comparison";
 import ManagementComponent from "./managedata/manageData";
 import PayFactors from "./payfactors/payFactors";
@@ -121,8 +122,8 @@ export default function PayAnalyzerPage() {
                       <div>
                         {isDataUploaded && data.length > 0 && (
                           <div className="">
-                            <button className="w-full min-w-20 rounded-sm bg-slate-100 p-2 shadow-sm">
-                              Scan
+                            <button className="flex w-full min-w-20 items-center gap-1 rounded-sm bg-slate-100 p-2 shadow-sm">
+                              <AiOutlineScan className="h-5 w-5" /> Scan
                             </button>
                           </div>
                         )}
