@@ -137,10 +137,9 @@ export default function PayAnalyzerPage() {
                     <h2 className="mb-4 text-xl font-bold">
                       Table Visualization
                     </h2>
-                    <div className="h-full rounded bg-gray-200 dark:bg-gray-700">
+                    <div className="h-full rounded dark:bg-gray-700">
                       {isDataUploaded && data.length > 0 && (
                         <div className="mb-8 p-2">
-                          <h2 className="mb-4 text-xl">Extracted Data</h2>
                           <DataTable data={data} />
                         </div>
                       )}
@@ -152,7 +151,7 @@ export default function PayAnalyzerPage() {
                     <h2 className="mb-4 text-xl font-bold">
                       Visualization Analysis
                     </h2>
-                    <div className="h-full rounded bg-gray-200 dark:bg-gray-700">
+                    <div className="h-full rounded dark:bg-gray-700">
                       {isDataUploaded && data.length > 0 && (
                         <div className="mb-8 p-2">
                           <MetricsAnalysis data={data} />
@@ -164,7 +163,7 @@ export default function PayAnalyzerPage() {
                   {/* Analysis Section */}
                   <section className="bg-white p-4 dark:bg-gray-800">
                     <h2 className="mb-4 text-xl font-bold">Chart Analysis</h2>
-                    <div className="h-full rounded bg-gray-200 dark:bg-gray-700">
+                    <div className="h-full rounded bg-gray-100 dark:bg-gray-700">
                       {isDataUploaded && data.length > 0 && (
                         <div className="mb-8 p-2">
                           <h2 className="mb-4 text-xl">Data Visualization</h2>

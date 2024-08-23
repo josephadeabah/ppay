@@ -29,11 +29,14 @@ const DataTable = ({ data }: { data: EmployeeData[] }) => {
 
   return (
     <div className="overflow-x-auto [&::-moz-scrollbar-thumb]:rounded-full [&::-moz-scrollbar-thumb]:bg-gray-200 [&::-moz-scrollbar-track]:m-1 [&::-moz-scrollbar]:w-2 [&::-ms-scrollbar-thumb]:rounded-full [&::-ms-scrollbar-thumb]:bg-gray-200 [&::-ms-scrollbar-track]:m-1 [&::-ms-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-track]:m-1 [&::-webkit-scrollbar]:w-2">
-      <table className="min-w-full table-auto border-collapse">
+      <table className="min-w-full table-auto border-collapse bg-white dark:bg-gray-900">
         <thead className="bg-gray-100 dark:bg-gray-700">
           <tr>
             {headers.map((header) => (
-              <th key={header} className="border px-4 py-2 text-left">
+              <th
+                key={header}
+                className="border px-4 py-2 text-left font-medium text-gray-700 dark:text-gray-300"
+              >
                 {header}
               </th>
             ))}
@@ -41,9 +44,19 @@ const DataTable = ({ data }: { data: EmployeeData[] }) => {
         </thead>
         <tbody>
           {data.map((row, idx) => (
-            <tr key={idx}>
+            <tr
+              key={idx}
+              className={
+                idx % 2 === 0
+                  ? "bg-gray-50 dark:bg-gray-800"
+                  : "bg-gray-50 dark:bg-gray-900"
+              }
+            >
               {headers.map((header) => (
-                <td key={header} className="border px-4 py-2">
+                <td
+                  key={header}
+                  className="border px-4 py-2 text-gray-900 dark:text-gray-100"
+                >
                   {row[header as keyof EmployeeData]}
                 </td>
               ))}
