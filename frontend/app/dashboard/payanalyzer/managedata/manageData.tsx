@@ -2,6 +2,7 @@ import ExportButton from "@/app/dashboard/payanalyzer/exportbutton/ExportButton"
 import ModalComponent from "@/components/modal/ModalComponent";
 import { useState } from "react";
 import { AiOutlineEdit } from "react-icons/ai";
+import { HiOutlineUserAdd } from "react-icons/hi";
 
 interface EmployeeData {
   employeeId: string;
@@ -66,14 +67,24 @@ const ManagementComponent = ({
 
   return (
     <div>
-      <div className="flex w-full items-center justify-between rounded-sm border border-dashed border-gray-300 p-6 dark:border-gray-600">
+      <div className="flex w-full flex-col items-start justify-between gap-4 rounded-sm border border-dashed border-gray-300 p-6 dark:border-gray-600 sm:flex-row sm:items-center sm:gap-0">
         <div>
           <h2 className="text-xl font-bold">Manage Data</h2>
         </div>
-        <div>
+        <div className="flex w-full flex-col items-start gap-2 sm:w-auto sm:flex-row sm:items-center">
+          {/* Add Viewer Button */}
+          <button
+            data-tip="Scan the data for potential issues or trends."
+            className="flex w-full items-center gap-1 rounded-sm bg-slate-100 p-2 shadow-sm sm:w-auto"
+          >
+            <HiOutlineUserAdd className="h-5 w-5" />
+            <span className="hidden sm:inline">Add Viewer</span>
+          </button>
+          {/* Export Button */}
           <ExportButton data={data} />
         </div>
       </div>
+
       <div className="overflow-x-auto [&::-moz-scrollbar-thumb]:rounded-full [&::-moz-scrollbar-thumb]:bg-gray-200 [&::-moz-scrollbar-track]:m-1 [&::-moz-scrollbar]:w-2 [&::-ms-scrollbar-thumb]:rounded-full [&::-ms-scrollbar-thumb]:bg-gray-200 [&::-ms-scrollbar-track]:m-1 [&::-ms-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-track]:m-1 [&::-webkit-scrollbar]:w-2">
         <table className="min-w-full table-auto border-collapse">
           <thead className="bg-gray-100 dark:bg-gray-700">

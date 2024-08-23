@@ -8,7 +8,16 @@ import MetricsAnalysis from "@/app/dashboard/payanalyzer/metricsanalysis/Metrics
 import Visualization from "@/app/dashboard/payanalyzer/visualize/Visualization";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { useEffect, useState } from "react";
-import { AiOutlineScan } from "react-icons/ai";
+import { AiOutlineScan, AiOutlineSearch } from "react-icons/ai";
+import { BiFilterAlt } from "react-icons/bi";
+import { FiGitMerge } from "react-icons/fi";
+import {
+  HiOutlineAnnotation,
+  HiOutlineChartPie,
+  HiOutlineStar,
+} from "react-icons/hi";
+import { MdOutlineCompareArrows, MdSort } from "react-icons/md";
+import { TbFlag } from "react-icons/tb";
 import ComparisonPage from "./comparison/Comparison";
 import ManagementComponent from "./managedata/manageData";
 import PayFactors from "./payfactors/payFactors";
@@ -121,9 +130,99 @@ export default function PayAnalyzerPage() {
                       </div>
                       <div>
                         {isDataUploaded && data.length > 0 && (
-                          <div className="">
-                            <button className="flex w-full min-w-20 items-center gap-1 rounded-sm bg-slate-100 p-2 shadow-sm">
-                              <AiOutlineScan className="h-5 w-5" /> Scan
+                          <div className="flex flex-wrap justify-center gap-2 text-xs sm:justify-start">
+                            {/* Scan Button */}
+                            <button
+                              data-tip="Scan the data for potential issues or trends."
+                              className="flex w-full items-center gap-1 rounded-sm bg-slate-100 p-2 shadow-sm sm:w-auto"
+                            >
+                              <AiOutlineScan className="h-4 w-4" />
+                              <span className="hidden sm:inline">Scan</span>
+                            </button>
+
+                            {/* Search Button */}
+                            <button
+                              data-tip="Search the data for specific terms or criteria."
+                              className="flex w-full items-center gap-1 rounded-sm bg-slate-100 p-2 shadow-sm sm:w-auto"
+                            >
+                              <AiOutlineSearch className="h-4 w-4" />
+                              <span className="hidden sm:inline">Search</span>
+                            </button>
+
+                            {/* Filter Button */}
+                            <button
+                              data-tip="Narrow down the data by specific criteria (e.g., gender, ethnicity, department, or salary range)."
+                              className="flex w-full items-center gap-1 rounded-sm bg-slate-100 p-2 shadow-sm sm:w-auto"
+                            >
+                              <BiFilterAlt className="h-4 w-4" />
+                              <span className="hidden sm:inline">Filter</span>
+                            </button>
+
+                            {/* Sort Button */}
+                            <button
+                              data-tip="Organize the data in ascending or descending order by specific columns (e.g., base salary, years of experience)."
+                              className="flex w-full items-center gap-1 rounded-sm bg-slate-100 p-2 shadow-sm sm:w-auto"
+                            >
+                              <MdSort className="h-4 w-4" />
+                              <span className="hidden sm:inline">Sort</span>
+                            </button>
+
+                            {/* Aggregate Button */}
+                            <button
+                              data-tip="Perform aggregate calculations like average, median, or sum for columns such as salaries or bonuses."
+                              className="flex w-full items-center gap-1 rounded-sm bg-slate-100 p-2 shadow-sm sm:w-auto"
+                            >
+                              <HiOutlineChartPie className="h-4 w-4" />
+                              <span className="hidden sm:inline">
+                                Aggregate
+                              </span>
+                            </button>
+
+                            {/* Compare Button */}
+                            <button
+                              data-tip="Compare multiple rows of data to analyze differences in salary, bonus, or other compensation components."
+                              className="flex w-full items-center gap-1 rounded-sm bg-slate-100 p-2 shadow-sm sm:w-auto"
+                            >
+                              <MdOutlineCompareArrows className="h-4 w-4" />
+                              <span className="hidden sm:inline">Compare</span>
+                            </button>
+
+                            {/* Flag Button */}
+                            <button
+                              data-tip="Allow users to flag or mark specific rows for follow-up or further review."
+                              className="flex w-full items-center gap-1 rounded-sm bg-slate-100 p-2 shadow-sm sm:w-auto"
+                            >
+                              <TbFlag className="h-4 w-4" />
+                              <span className="hidden sm:inline">Flag</span>
+                            </button>
+
+                            {/* Annotate Button */}
+                            <button
+                              data-tip="Add notes or comments to specific rows or cells for context or additional information."
+                              className="flex w-full items-center gap-1 rounded-sm bg-slate-100 p-2 shadow-sm sm:w-auto"
+                            >
+                              <HiOutlineAnnotation className="h-4 w-4" />
+                              <span className="hidden sm:inline">Annotate</span>
+                            </button>
+
+                            {/* Highlight Button */}
+                            <button
+                              data-tip="Visually mark or color-code rows where discrepancies or significant differences are detected."
+                              className="flex w-full items-center gap-1 rounded-sm bg-slate-100 p-2 shadow-sm sm:w-auto"
+                            >
+                              <HiOutlineStar className="h-4 w-4" />
+                              <span className="hidden sm:inline">
+                                Highlight
+                              </span>
+                            </button>
+
+                            {/* Merge Button */}
+                            <button
+                              data-tip="Combine data from multiple sources or datasets, such as merging salary data with performance metrics."
+                              className="flex w-full items-center gap-1 rounded-sm bg-slate-100 p-2 shadow-sm sm:w-auto"
+                            >
+                              <FiGitMerge className="h-4 w-4" />
+                              <span className="hidden sm:inline">Merge</span>
                             </button>
                           </div>
                         )}
