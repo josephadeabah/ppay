@@ -3,6 +3,7 @@ import ModalComponent from "@/components/modal/ModalComponent";
 import { useState } from "react";
 import { AiOutlineEdit } from "react-icons/ai";
 import { HiOutlineUserAdd } from "react-icons/hi";
+import { TbFlag } from "react-icons/tb";
 
 interface EmployeeData {
   employeeId: string;
@@ -72,12 +73,20 @@ const ManagementComponent = ({
           <h2 className="text-xl font-bold">Manage Data</h2>
         </div>
         <div className="flex w-full flex-col items-start gap-2 sm:w-auto sm:flex-row sm:items-center">
+          {/* Add user to Flag Button */}
+          <button
+            data-tip="Allow users to flag or mark specific rows for follow-up or further review."
+            className="flex w-full items-center gap-1 rounded-sm bg-slate-100 p-2 shadow-sm sm:w-auto"
+          >
+            <TbFlag className="h-4 w-4" />
+            <span className="hidden sm:inline">Add Flagger</span>
+          </button>
           {/* Add Viewer Button */}
           <button
             data-tip="Scan the data for potential issues or trends."
             className="flex w-full items-center gap-1 rounded-sm bg-slate-100 p-2 shadow-sm sm:w-auto"
           >
-            <HiOutlineUserAdd className="h-5 w-5" />
+            <HiOutlineUserAdd className="h-4 w-4" />
             <span className="hidden sm:inline">Add Viewer</span>
           </button>
           {/* Export Button */}

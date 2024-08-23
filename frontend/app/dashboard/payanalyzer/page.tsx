@@ -13,7 +13,6 @@ import { BiFilterAlt } from "react-icons/bi";
 import { FiGitMerge } from "react-icons/fi";
 import { HiOutlineAnnotation, HiOutlineChartPie } from "react-icons/hi";
 import { MdOutlineCompareArrows, MdSort } from "react-icons/md";
-import { TbFlag } from "react-icons/tb";
 import ComparisonPage from "./comparison/Comparison";
 import ManagementComponent from "./managedata/manageData";
 import PayFactors from "./payfactors/payFactors";
@@ -181,15 +180,6 @@ export default function PayAnalyzerPage() {
                             >
                               <MdOutlineCompareArrows className="h-4 w-4" />
                               <span className="hidden sm:inline">Compare</span>
-                            </button>
-
-                            {/* Flag Button */}
-                            <button
-                              data-tip="Allow users to flag or mark specific rows for follow-up or further review."
-                              className="flex w-full items-center gap-1 rounded-sm bg-slate-100 p-2 shadow-sm sm:w-auto"
-                            >
-                              <TbFlag className="h-4 w-4" />
-                              <span className="hidden sm:inline">Flag</span>
                             </button>
 
                             {/* Annotate Button */}
