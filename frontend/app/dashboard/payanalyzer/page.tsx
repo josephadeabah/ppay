@@ -11,11 +11,7 @@ import { useEffect, useState } from "react";
 import { AiOutlineScan, AiOutlineSearch } from "react-icons/ai";
 import { BiFilterAlt } from "react-icons/bi";
 import { FiGitMerge } from "react-icons/fi";
-import {
-  HiOutlineAnnotation,
-  HiOutlineChartPie,
-  HiOutlineStar,
-} from "react-icons/hi";
+import { HiOutlineAnnotation, HiOutlineChartPie } from "react-icons/hi";
 import { MdOutlineCompareArrows, MdSort } from "react-icons/md";
 import { TbFlag } from "react-icons/tb";
 import ComparisonPage from "./comparison/Comparison";
@@ -133,7 +129,7 @@ export default function PayAnalyzerPage() {
                           <div className="flex flex-wrap justify-center gap-2 text-xs sm:justify-start">
                             {/* Scan Button */}
                             <button
-                              data-tip="Scan the data for potential issues or trends."
+                              data-tip="Scan the data for potential issues or trends. Visually mark or color-code rows where discrepancies or significant differences are detected."
                               className="flex w-full items-center gap-1 rounded-sm bg-slate-100 p-2 shadow-sm sm:w-auto"
                             >
                               <AiOutlineScan className="h-4 w-4" />
@@ -204,18 +200,6 @@ export default function PayAnalyzerPage() {
                               <HiOutlineAnnotation className="h-4 w-4" />
                               <span className="hidden sm:inline">Annotate</span>
                             </button>
-
-                            {/* Highlight Button */}
-                            <button
-                              data-tip="Visually mark or color-code rows where discrepancies or significant differences are detected."
-                              className="flex w-full items-center gap-1 rounded-sm bg-slate-100 p-2 shadow-sm sm:w-auto"
-                            >
-                              <HiOutlineStar className="h-4 w-4" />
-                              <span className="hidden sm:inline">
-                                Highlight
-                              </span>
-                            </button>
-
                             {/* Merge Button */}
                             <button
                               data-tip="Combine data from multiple sources or datasets, such as merging salary data with performance metrics."
