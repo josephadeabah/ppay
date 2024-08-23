@@ -1,6 +1,6 @@
 import ModalComponent from "@/components/modal/ModalComponent";
 import { useState } from "react";
-import { HiOutlinePencil } from "react-icons/hi";
+import { AiOutlineEdit } from "react-icons/ai";
 
 interface EmployeeData {
   employeeId: string;
@@ -80,20 +80,19 @@ const ManagementComponent = ({
             {data.map((row, rowIndex) => (
               <tr key={rowIndex}>
                 {headers.map((header) => (
-                  <td key={header} className="border px-4 py-2">
-                    {header === "employeeId" ? (
-                      <>
-                        {row[header]}{" "}
+                  <td key={header} className="relative border px-4 py-2">
+                    <div className="flex items-center justify-between">
+                      <span>{row[header]}</span>
+                      {header === "employeeId" && row[header] && (
                         <button
-                          className="text-blue-500 hover:text-blue-700"
+                          className="absolute right-2 top-2 text-blue-500 hover:text-blue-700"
                           onClick={() => openModal(rowIndex)}
                         >
-                          <HiOutlinePencil className="inline h-5 w-5" />
+                          <AiOutlineEdit className="h-5 w-5" />
+                          <span className="sr-only">Edit</span>
                         </button>
-                      </>
-                    ) : (
-                      row[header]
-                    )}
+                      )}
+                    </div>
                   </td>
                 ))}
               </tr>
