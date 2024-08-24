@@ -1,4 +1,3 @@
-// components/Loading.tsx
 import React from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -10,18 +9,34 @@ const SkeletonLoader: React.FC = () => {
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
           <div className="lg:col-span-3">
             <div className="mb-8 space-y-4">
+              {/* Search Input Skeleton */}
+              <Skeleton width="100%" height="2.5rem" />
+
+              {/* Dropdown Filters Skeleton */}
               <div className="space-y-4">
                 <Skeleton width="100%" height="2.5rem" />
                 <Skeleton width="100%" height="2.5rem" />
                 <Skeleton width="100%" height="2.5rem" />
-                <Skeleton width="100%" height="7rem" />
+              </div>
+
+              {/* Slider Component Skeleton */}
+              <div className="mt-4">
                 <Skeleton width="100%" height="2.5rem" />
-                <Skeleton width="100%" height="2.5rem" />
+              </div>
+
+              {/* Similar Searches Skeleton */}
+              <div className="mt-8 space-y-2">
+                {Array(10)
+                  .fill(null)
+                  .map((_, idx) => (
+                    <Skeleton key={idx} width="100%" height="1.5rem" />
+                  ))}
               </div>
             </div>
           </div>
           <div className="lg:col-span-9">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+              {/* Company Cards Skeleton */}
               {Array(9)
                 .fill(null)
                 .map((_, index) => (
@@ -44,6 +59,7 @@ const SkeletonLoader: React.FC = () => {
             </div>
           </div>
         </div>
+        {/* Pagination Button Skeleton */}
         <div className="mt-8 flex justify-center">
           <Skeleton width="6rem" height="2rem" />
         </div>
