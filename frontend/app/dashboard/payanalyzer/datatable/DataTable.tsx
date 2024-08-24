@@ -18,9 +18,10 @@ export interface EmployeeData {
   marketRate: string;
   industryPoints: string;
   departmentPoints: string;
+  seniorityPoints: string;
   educationLevelPoints: string;
   companySizePoints: string;
-  seniorityLevels: string;
+  seniorityLevel: string;
 }
 
 // Map to hold human-readable table headers
@@ -40,9 +41,10 @@ const headerNames: Record<keyof EmployeeData, string> = {
   marketRate: "Market Rate",
   industryPoints: "Industry Points",
   departmentPoints: "Department Points",
+  seniorityPoints: "Seniority Points",
   educationLevelPoints: "Education Level Points",
   companySizePoints: "Company Size Points",
-  seniorityLevels: "Seniority Levels",
+  seniorityLevel: "Seniority Level",
 };
 
 const DataTable = ({ data }: { data: EmployeeData[] }) => {
