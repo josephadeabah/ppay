@@ -78,70 +78,64 @@ const Visualization = ({ data }: { data: EmployeeData[] }) => {
   };
 
   return (
-    <div className="w-full bg-gray-100 p-4 dark:bg-gray-800">
-      <h2 className="mb-6 text-2xl font-semibold text-gray-800 dark:text-gray-200">
-        Analysis Metrics
-      </h2>
-
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-2">
-        <div className=" bg-white p-4 dark:bg-gray-900">
-          <h3 className="mb-2 text-lg font-medium text-gray-800 dark:text-gray-200">
-            Experience Distribution
-          </h3>
-          <div className="chart-container">
-            <Bar
-              data={experienceDistributionData}
-              options={{
-                responsive: true,
-                plugins: { legend: { position: "top" } },
-              }}
-            />
-          </div>
+    <div className="grid grid-cols-1 gap-3 bg-gray-50 sm:grid-cols-2 md:grid-cols-2">
+      <div className=" bg-white dark:bg-gray-900">
+        <h3 className="mb-2 text-lg font-medium text-gray-800 dark:text-gray-200">
+          Experience Distribution
+        </h3>
+        <div className="chart-container">
+          <Bar
+            data={experienceDistributionData}
+            options={{
+              responsive: true,
+              plugins: { legend: { position: "top" } },
+            }}
+          />
         </div>
+      </div>
 
-        <div className=" bg-white p-4 dark:bg-gray-900">
-          <h3 className="mb-2 text-lg font-medium text-gray-800 dark:text-gray-200">
-            Performance by Department
-          </h3>
-          <div className="chart-container">
-            <Bar
-              data={performanceByDepartmentData}
-              options={{
-                responsive: true,
-                plugins: { legend: { position: "top" } },
-              }}
-            />
-          </div>
+      <div className=" bg-white p-4 dark:bg-gray-900">
+        <h3 className="mb-2 text-lg font-medium text-gray-800 dark:text-gray-200">
+          Performance by Department
+        </h3>
+        <div className="chart-container">
+          <Bar
+            data={performanceByDepartmentData}
+            options={{
+              responsive: true,
+              plugins: { legend: { position: "top" } },
+            }}
+          />
         </div>
+      </div>
 
-        <div className=" bg-white p-4 dark:bg-gray-900">
-          <h3 className="mb-2 text-lg font-medium text-gray-800 dark:text-gray-200">
-            Salary by Location
-          </h3>
-          <div className="chart-container">
-            <Bar
-              data={salaryByLocationData}
-              options={{
-                responsive: true,
-                plugins: { legend: { position: "top" } },
-              }}
-            />
-          </div>
+      <div className=" bg-white p-4 dark:bg-gray-900">
+        <h3 className="mb-2 text-lg font-medium text-gray-800 dark:text-gray-200">
+          Salary by Location
+        </h3>
+        <div className="chart-container">
+          <Bar
+            data={salaryByLocationData}
+            options={{
+              responsive: true,
+              plugins: { legend: { position: "top" } },
+            }}
+          />
         </div>
+      </div>
 
-        <div className=" bg-white p-4 dark:bg-gray-900">
-          <h3 className="mb-2 text-lg font-medium text-gray-800 dark:text-gray-200">
-            Ethnicity Pay Gap
-          </h3>
-          <div className="chart-container">
-            <Pie
-              data={ethnicityPayGapData}
-              options={{
-                responsive: true,
-                plugins: { legend: { position: "top" } },
-              }}
-            />
-          </div>
+      <div className=" bg-white p-4 dark:bg-gray-900">
+        <h3 className="mb-2 text-lg font-medium text-gray-800 dark:text-gray-200">
+          Ethnicity Pay Gap
+        </h3>
+        <div className="chart-container">
+          <Pie
+            data={ethnicityPayGapData}
+            options={{
+              responsive: true,
+              plugins: { legend: { position: "top" } },
+            }}
+          />
         </div>
       </div>
     </div>

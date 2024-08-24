@@ -18,9 +18,9 @@ export interface EmployeeData {
   marketRate: string;
   industryPoints: string;
   departmentPoints: string;
-  seniorityLevels: string;
   educationLevelPoints: string;
   companySizePoints: string;
+  seniorityLevels: string;
 }
 
 // Map to hold human-readable table headers
@@ -40,9 +40,9 @@ const headerNames: Record<keyof EmployeeData, string> = {
   marketRate: "Market Rate",
   industryPoints: "Industry Points",
   departmentPoints: "Department Points",
-  seniorityLevels: "Seniority Levels",
   educationLevelPoints: "Education Level Points",
   companySizePoints: "Company Size Points",
+  seniorityLevels: "Seniority Levels",
 };
 
 const DataTable = ({ data }: { data: EmployeeData[] }) => {
@@ -53,7 +53,7 @@ const DataTable = ({ data }: { data: EmployeeData[] }) => {
   return (
     <div className="overflow-x-auto [&::-moz-scrollbar-thumb]:rounded-full [&::-moz-scrollbar-thumb]:bg-gray-200 [&::-moz-scrollbar-track]:m-1 [&::-moz-scrollbar]:w-2 [&::-ms-scrollbar-thumb]:rounded-full [&::-ms-scrollbar-thumb]:bg-gray-200 [&::-ms-scrollbar-track]:m-1 [&::-ms-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-track]:m-1 [&::-webkit-scrollbar]:w-2">
       <table className="min-w-full table-auto border-collapse bg-white dark:bg-gray-900">
-        <thead className="bg-gray-200 text-sm dark:bg-gray-700">
+        <thead className="bg-gray-100 text-sm dark:bg-gray-700">
           <tr>
             {headers.map((header) => (
               <th

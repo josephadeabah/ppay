@@ -215,10 +215,9 @@ export default function PayAnalyzerPage() {
                   {/* Analysis Section */}
                   <section className="bg-white p-4 dark:bg-gray-800">
                     <h2 className="mb-4 text-xl font-bold">Chart Analysis</h2>
-                    <div className="h-full rounded bg-gray-100 dark:bg-gray-700">
+                    <div className="h-full dark:bg-gray-700">
                       {isDataUploaded && data.length > 0 && (
                         <div className="mb-8 p-2">
-                          <h2 className="mb-4 text-xl">Data Visualization</h2>
                           <Visualization data={data} />
                         </div>
                       )}
