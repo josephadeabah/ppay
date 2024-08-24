@@ -21,28 +21,6 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-interface EmployeeData {
-  [key: string]: string;
-  employeeId: string;
-  name: string;
-  gender: string;
-  ethnicity: string;
-  jobTitle: string;
-  department: string;
-  location: string;
-  baseSalary: string;
-  bonus: string;
-  stockOptions: string;
-  yearsOfExperience: string;
-  performancePoints: string;
-  marketRate: string;
-  industryPoints: string;
-  departmentPoints: string;
-  seniorityLevels: string;
-  educationLevelPoints: string;
-  companySizePoints: string;
-}
-
 export default function PayAnalyzerPage() {
   const [data, setData] = useState<any[]>([]);
   const [isDataUploaded, setIsDataUploaded] = useState(false);

@@ -1,31 +1,10 @@
+import { EmployeeData } from "@/app/dashboard/payanalyzer/datatable/DataTable";
 import ExportButton from "@/app/dashboard/payanalyzer/exportbutton/ExportButton";
 import ModalComponent from "@/components/modal/ModalComponent";
 import { useState } from "react";
 import { AiOutlineEdit } from "react-icons/ai";
 import { HiOutlineUserAdd } from "react-icons/hi";
 import { TbFlag } from "react-icons/tb";
-
-interface EmployeeData {
-  employeeId: string;
-  name: string;
-  gender: string;
-  ethnicity: string;
-  jobTitle: string;
-  department: string;
-  location: string;
-  baseSalary: string;
-  bonus: string;
-  stockOptions: string;
-  yearsOfExperience: string;
-  performancePoints: string;
-  marketRate: string;
-  industryPoints: string;
-  departmentPoints: string;
-  seniorityLevel: string;
-  educationLevelPoints: string;
-  companySizePoints: string;
-  [key: string]: string;
-}
 
 const ManagementComponent = ({
   initialData,

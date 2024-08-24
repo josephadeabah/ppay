@@ -1,7 +1,8 @@
 "use client";
 
 // Define the type for the CSV data
-interface EmployeeData {
+export interface EmployeeData {
+  [key: string]: string;
   employeeId: string;
   name: string;
   gender: string;

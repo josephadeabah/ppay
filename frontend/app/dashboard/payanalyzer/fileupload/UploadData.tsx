@@ -1,30 +1,7 @@
 // UploadData.tsx
 
+import { EmployeeData } from "@/app/dashboard/payanalyzer/datatable/DataTable";
 import { useState } from "react";
-
-// Define the type for the CSV data
-interface EmployeeData {
-  [key: string]: string;
-  employeeId: string;
-  name: string;
-  gender: string;
-  ethnicity: string;
-  jobTitle: string;
-  department: string;
-  location: string;
-  baseSalary: string;
-  bonus: string;
-  stockOptions: string;
-  yearsOfExperience: string;
-  performancePoints: string;
-  marketRate: string;
-  industryPoints: string;
-  departmentPoints: string;
-  seniorityLevels: string;
-  educationLevelPoints: string;
-  companySizePoints: string;
-  seniorityLevel: string; // Newly added field
-}
 
 // Utility function to parse CSV
 export const parseCSV = (file: File): Promise<EmployeeData[]> => {

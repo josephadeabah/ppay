@@ -1,31 +1,11 @@
 // upload.tsx
 
-import DataTable from "@/app/dashboard/payanalyzer/datatable/DataTable";
+import DataTable, {
+  EmployeeData,
+} from "@/app/dashboard/payanalyzer/datatable/DataTable";
 import UploadData from "@/app/dashboard/payanalyzer/fileupload/UploadData";
 import { useState } from "react";
 // Define the type for the CSV data
-interface EmployeeData {
-  [key: string]: string;
-  employeeId: string;
-  name: string;
-  gender: string;
-  ethnicity: string;
-  jobTitle: string;
-  department: string;
-  location: string;
-  baseSalary: string;
-  bonus: string;
-  stockOptions: string;
-  yearsOfExperience: string;
-  performancePoints: string;
-  marketRate: string;
-  industryPoints: string;
-  departmentPoints: string;
-  seniorityLevels: string;
-  educationLevelPoints: string;
-  companySizePoints: string;
-  seniorityLevel: string; // Newly added field
-}
 
 export default function UploadPage() {
   const [data, setData] = useState<EmployeeData[]>([]);

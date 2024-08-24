@@ -1,26 +1,4 @@
-// components/Dashboard/MetricsAnalysis.tsx
-// utils/analysis.ts
-
-interface EmployeeData {
-  employeeId: string;
-  name: string;
-  gender: string;
-  ethnicity: string;
-  jobTitle: string;
-  department: string;
-  location: string;
-  baseSalary: string;
-  bonus: string;
-  stockOptions: string;
-  yearsOfExperience: string;
-  performancePoints: string;
-  marketRate: string;
-  industryPoints: string;
-  departmentPoints: string;
-  seniorityLevels: string;
-  educationLevelPoints: string;
-  companySizePoints: string;
-}
+import { EmployeeData } from "@/app/dashboard/payanalyzer/datatable/DataTable";
 
 // Function to calculate average base salary
 export const calculateAverageBaseSalary = (data: EmployeeData[]): number => {
