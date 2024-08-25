@@ -38,7 +38,7 @@ const UpgradePage: React.FC = () => {
               <li>Access to free salary negotiation template</li>
             </ul>
             <div className="mb-4 text-gray-900 dark:text-gray-100">
-              <span className="text-2xl font-bold">$3</span> per month
+              <span className="text-2xl font-bold">$5</span> per month
             </div>
             <button
               onClick={() => setSelectedPlan("Basic")}
@@ -62,7 +62,7 @@ const UpgradePage: React.FC = () => {
               <li>Access to professional salary negotiation writing support</li>
             </ul>
             <div className="mb-4 text-gray-900 dark:text-gray-100">
-              <span className="text-2xl font-bold">$30</span> per month
+              <span className="text-2xl font-bold">$20</span> per month
             </div>
             <button
               onClick={() => setSelectedPlan("Premium")}
