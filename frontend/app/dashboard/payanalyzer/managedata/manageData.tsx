@@ -47,7 +47,7 @@ const ManagementComponent = ({
 
   return (
     <div>
-      <div className="flex w-full flex-col items-start justify-between gap-4 rounded-sm border border-dashed border-gray-300 p-6 dark:border-gray-600 sm:flex-row sm:items-center sm:gap-0">
+      <div className="flex w-full flex-col items-start justify-between gap-4 rounded-sm border border-dashed border-gray-300 p-2 dark:border-gray-600 sm:flex-row sm:items-center sm:gap-0">
         <div>
           <h2 className="text-xl font-bold">Manage Data</h2>
         </div>

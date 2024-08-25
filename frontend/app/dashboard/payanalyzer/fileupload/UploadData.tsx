@@ -1,5 +1,3 @@
-// UploadData.tsx
-
 import { EmployeeData } from "@/app/dashboard/payanalyzer/datatable/DataTable";
 import { useState } from "react";
 
@@ -49,11 +47,40 @@ const UploadData = ({
   };
 
   return (
-    <div className="upload-container">
-      <input type="file" accept=".csv" onChange={handleFileChange} />
+    <div className="flex h-full w-full flex-col items-center justify-center rounded border border-dashed border-gray-300 p-6 dark:border-gray-600">
+      <h2 className="mb-4 text-xl font-semibold text-gray-800 dark:text-gray-200">
+        Please upload a CSV file containing employee data to analyze.
+      </h2>
+      <div className="flex flex-col items-center gap-4 sm:flex-row">
+        <label className="w-full cursor-pointer sm:w-auto">
+          <input
+            type="file"
+            accept=".csv"
+            className="hidden"
+            onChange={handleFileChange}
+          />
+          <div className="flex items-center justify-center rounded-lg bg-blue-500 px-4 py-2 font-medium text-white transition-all duration-150 hover:bg-blue-600">
+            Choose CSV File
+          </div>
+        </label>
+        {file && (
+          <span className="text-sm text-gray-700 dark:text-gray-300">
+            {file.name}
+          </span>
+        )}
+      </div>
+      {/* Example file */}
+      <a
+        href="/employeeData.csv"
+        download="/employeeData.csv"
+        className="flex items-center text-sm text-gray-600 hover:underline"
+      >
+        Download Example CSV
+      </a>
+
       <button
         onClick={handleUpload}
-        className="mt-4 bg-blue-500 p-2 text-white"
+        className="mt-6 w-full rounded-lg bg-green-500 px-6 py-2 font-medium text-white shadow-sm transition-all duration-150 hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-green-400 sm:w-auto"
       >
         Upload & Extract
       </button>
