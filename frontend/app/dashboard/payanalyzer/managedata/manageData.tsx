@@ -1,5 +1,13 @@
 import ExportButton from "@/app/dashboard/payanalyzer/exportbutton/ExportButton";
 import ModalComponent from "@/components/modal/ModalComponent";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/table/Table";
 import { EmployeeData } from "@/types/payaid.data";
 import { useState } from "react";
 import { AiOutlineEdit } from "react-icons/ai";
@@ -73,41 +81,40 @@ const ManagementComponent = ({
         </div>
       </div>
 
-      <div className="overflow-x-auto [&::-moz-scrollbar-thumb]:rounded-full [&::-moz-scrollbar-thumb]:bg-gray-200 [&::-moz-scrollbar-track]:m-1 [&::-moz-scrollbar]:w-2 [&::-ms-scrollbar-thumb]:rounded-full [&::-ms-scrollbar-thumb]:bg-gray-200 [&::-ms-scrollbar-track]:m-1 [&::-ms-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-track]:m-1 [&::-webkit-scrollbar]:w-2">
-        <table className="min-w-full table-auto border-collapse">
-          <thead className="bg-gray-100 dark:bg-gray-700">
-            <tr>
-              {headers.map((header) => (
-                <th key={header} className="border px-4 py-2">
-                  {header}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((row, rowIndex) => (
-              <tr key={rowIndex}>
-                {headers.map((header) => (
-                  <td key={header} className="relative border px-4 py-2">
-                    <div className="flex items-center justify-between">
-                      <span>{row[header]}</span>
-                      {header === "employeeId" && row[header] && (
-                        <button
-                          className="absolute right-2 top-2 text-blue-500 hover:text-blue-700"
-                          onClick={() => openModal(rowIndex)}
-                        >
-                          <AiOutlineEdit className="h-5 w-5" />
-                          <span className="sr-only">Edit</span>
-                        </button>
-                      )}
-                    </div>
-                  </td>
-                ))}
-              </tr>
+      {/* Table Component */}
+      <Table className="min-w-full table-auto">
+        <TableHeader>
+          <tr>
+            {headers.map((header) => (
+              <TableHead key={header} className="border px-4 py-2">
+                {header}
+              </TableHead>
             ))}
-          </tbody>
-        </table>
-      </div>
+          </tr>
+        </TableHeader>
+        <TableBody>
+          {data.map((row, rowIndex) => (
+            <TableRow key={rowIndex}>
+              {headers.map((header) => (
+                <TableCell key={header} className="relative border px-4 py-2">
+                  <div className="flex items-center justify-between">
+                    <span>{row[header]}</span>
+                    {header === "employeeId" && row[header] && (
+                      <button
+                        className="absolute right-2 top-2 text-blue-500 hover:text-blue-700"
+                        onClick={() => openModal(rowIndex)}
+                      >
+                        <AiOutlineEdit className="h-5 w-5" />
+                        <span className="sr-only">Edit</span>
+                      </button>
+                    )}
+                  </div>
+                </TableCell>
+              ))}
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
 
       {/* Modal for editing */}
       <ModalComponent

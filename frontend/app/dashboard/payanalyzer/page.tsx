@@ -117,15 +117,13 @@ export default function PayAnalyzerPage() {
             </TabPanel>
 
             {/* Manage Tab */}
-            <TabPanel className="space-y-6">
+            <TabPanel>
+              {/* Management Section */}
               <div className="w-full bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
-                {/* Management Section */}
-                <section className="rounded bg-white p-4 shadow-sm dark:bg-gray-800">
-                  <div className="space-y-4">
-                    {data.length > 0 && (
-                      <ManagementComponent initialData={data} />
-                    )}
-                  </div>
+                <section className="h-screen bg-white p-4 shadow-sm dark:bg-gray-800">
+                  {data.length > 0 && (
+                    <ManagementComponent initialData={data} />
+                  )}
                 </section>
               </div>
             </TabPanel>

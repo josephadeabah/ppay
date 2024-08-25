@@ -47,7 +47,7 @@ const UploadData = ({
   };
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center rounded border border-dashed border-gray-300 p-6 dark:border-gray-600">
+    <div className="flex h-screen w-full flex-col items-center justify-center rounded border border-dashed border-gray-300 p-6 dark:border-gray-600">
       <h2 className="mb-4 text-xl font-semibold text-gray-800 dark:text-gray-200">
         Please upload a CSV file containing employee data to analyze.
       </h2>
