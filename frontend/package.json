@@ -30,6 +30,7 @@
     "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-popover": "^1.1.1",
     "@radix-ui/react-toast": "^1.2.1",
+    "@tanstack/react-table": "^8.20.5",
     "apexcharts": "^3.50.0",
     "axios": "^1.7.2",
     "chart.js": "^4.4.3",
