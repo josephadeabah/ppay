@@ -1,6 +1,6 @@
-import { EmployeeData } from "@/app/dashboard/payanalyzer/datatable/DataTable";
 import ExportButton from "@/app/dashboard/payanalyzer/exportbutton/ExportButton";
 import ModalComponent from "@/components/modal/ModalComponent";
+import { EmployeeData } from "@/types/payaid.data";
 import { useState } from "react";
 import { AiOutlineEdit } from "react-icons/ai";
 import { HiOutlineUserAdd } from "react-icons/hi";

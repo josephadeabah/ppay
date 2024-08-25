@@ -1,9 +1,8 @@
 // upload.tsx
 
-import DataTable, {
-  EmployeeData,
-} from "@/app/dashboard/payanalyzer/datatable/DataTable";
+import DataTable from "@/app/dashboard/payanalyzer/datatable/DataTable";
 import UploadData from "@/app/dashboard/payanalyzer/fileupload/UploadData";
+import { EmployeeData } from "@/types/payaid.data";
 import { useState } from "react";
 // Define the type for the CSV data
 

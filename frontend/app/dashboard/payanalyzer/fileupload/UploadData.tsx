@@ -1,4 +1,4 @@
-import { EmployeeData } from "@/app/dashboard/payanalyzer/datatable/DataTable";
+import { EmployeeData } from "@/types/payaid.data";
 import { useState } from "react";
 
 // Utility function to parse CSV
