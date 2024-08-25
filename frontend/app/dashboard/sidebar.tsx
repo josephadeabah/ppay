@@ -78,7 +78,7 @@ export const DashboardSidebar: FC = function () {
               as={Link}
               href="/dashboard"
               icon={() => (
-                <HiOutlineChartPie className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+                <HiOutlineChartPie className="my-1 h-6 w-6 text-orange-500 dark:text-gray-100" />
               )}
               className={getItemClass("/dashboard")}
             >
@@ -89,7 +89,7 @@ export const DashboardSidebar: FC = function () {
               as={Link}
               href="/dashboard/reportpay"
               icon={() => (
-                <BiNotepad className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+                <BiNotepad className="my-1 h-6 w-6 text-blue-500 dark:text-gray-100" />
               )}
               className={getItemClass("/dashboard/reportpay")}
             >
@@ -100,7 +100,7 @@ export const DashboardSidebar: FC = function () {
               as={Link}
               href="/dashboard/compare"
               icon={() => (
-                <HiOutlineFastForward className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+                <HiOutlineFastForward className="my-1 h-6 w-6 text-red-500 dark:text-gray-100" />
               )}
               className={getItemClass("/dashboard/compare")}
             >
@@ -111,7 +111,7 @@ export const DashboardSidebar: FC = function () {
               as={Link}
               href="/dashboard/users"
               icon={() => (
-                <HiOutlineUser className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+                <HiOutlineUser className="my-1 h-6 w-6 text-lime-500 dark:text-gray-100" />
               )}
               className={getItemClass("/dashboard/users")}
             >
@@ -122,7 +122,7 @@ export const DashboardSidebar: FC = function () {
               as={Link}
               href="/dashboard/benchmark"
               icon={() => (
-                <HiOutlineGlobe className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+                <HiOutlineGlobe className="my-1 h-6 w-6 text-teal-500 dark:text-gray-100" />
               )}
               className={getItemClass("/dashboard/benchmark")}
             >
@@ -133,7 +133,7 @@ export const DashboardSidebar: FC = function () {
               as={Link}
               href="/dashboard/companies"
               icon={() => (
-                <HiOutlineOfficeBuilding className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+                <HiOutlineOfficeBuilding className="my-1 h-6 w-6 text-purple-500 dark:text-gray-100" />
               )}
               className={getItemClass("/dashboard/companies")}
             >
@@ -144,7 +144,7 @@ export const DashboardSidebar: FC = function () {
               as={Link}
               href="/dashboard/trendanalysis"
               icon={() => (
-                <BiStats className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+                <BiStats className="my-1 h-6 w-6 text-pink-500 dark:text-gray-100" />
               )}
               className={getItemClass("/dashboard/trendanalysis")}
             >
@@ -155,7 +155,7 @@ export const DashboardSidebar: FC = function () {
               as={Link}
               href="/dashboard/inflation"
               icon={() => (
-                <HiOutlineTrendingUp className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+                <HiOutlineTrendingUp className="my-1 h-6 w-6 text-green-500 dark:text-gray-100" />
               )}
               className={getItemClass("/dashboard/inflation")}
             >
@@ -166,7 +166,7 @@ export const DashboardSidebar: FC = function () {
               as={Link}
               href="/dashboard/payanalyzer"
               icon={() => (
-                <HiOutlineCalculator className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+                <HiOutlineCalculator className="my-1 h-6 w-6 text-indigo-500 dark:text-gray-100" />
               )}
               className={getItemClass("/dashboard/payanalyzer")}
             >
@@ -177,7 +177,7 @@ export const DashboardSidebar: FC = function () {
               as={Link}
               href="/dashboard/compliance"
               icon={() => (
-                <HiOutlineDocumentReport className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+                <HiOutlineDocumentReport className="my-1 h-6 w-6 text-fuchsia-500 dark:text-gray-100" />
               )}
               className={getItemClass("/dashboard/compliance")}
             >
@@ -188,7 +188,7 @@ export const DashboardSidebar: FC = function () {
               as={Link}
               href="/dashboard/download"
               icon={() => (
-                <HiOutlineDownload className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+                <HiOutlineDownload className="my-1 h-6 w-6 text-cyan-500 dark:text-gray-100" />
               )}
               className={getItemClass("/dashboard/download")}
             >
@@ -202,7 +202,7 @@ export const DashboardSidebar: FC = function () {
           as={Link}
           href="/dashboard/upgrade"
           icon={() => (
-            <HiOutlineCash className="my-1 h-6 w-6 text-gray-950 dark:text-gray-100" />
+            <HiOutlineCash className="my-1 h-6 w-6 text-stone-500 dark:text-gray-100" />
           )}
           className={getItemClass("/dashboard/upgrade")}
         >
