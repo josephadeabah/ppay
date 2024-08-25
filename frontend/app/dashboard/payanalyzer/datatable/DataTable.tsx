@@ -24,7 +24,7 @@ const DataTable = ({ data }: { data: EmployeeData[] }) => {
   });
 
   return (
-    <div className="w-full overflow-x-auto">
+    <div className="w-full overflow-x-auto px-1">
       <h2 className="mb-4 text-xl font-bold">Table Visualization</h2>
       <TableOperators />
       {data.length > 0 ? (

@@ -7,7 +7,7 @@ import { MdOutlineCompareArrows, MdSort } from "react-icons/md";
 const TableOperators = () => {
   return (
     <div className="flex w-full items-center justify-between rounded border border-dashed border-gray-300 p-2 dark:border-gray-600">
-      <div className="flex flex-wrap justify-center gap-2 text-xs">
+      <div className="flex w-full flex-wrap justify-end gap-2 text-xs">
         {/* Scan Button */}
         <button
           data-tip="Scan the data for potential issues or trends. Visually mark or color-code rows where discrepancies or significant differences are detected."
