@@ -1,11 +1,12 @@
 // inspired by https://synd.io/ and https://www.payanalytics.com/
 "use client";
-import SkeletonLoader from "@/app/dashboard/equityanalyzer/loader";
 import DataTable from "@/app/dashboard/payanalyzer/datatable/DataTable";
+import SkeletonLoader from "@/app/dashboard/payanalyzer/equitycalculator/loader";
 import UploadData from "@/app/dashboard/payanalyzer/fileupload/UploadData";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import { useEffect, useState } from "react";
 import ComparisonPage from "./comparison/Comparison";
+import PayEquityAnalyzer from "./equitycalculator/page";
 import ManagementComponent from "./managedata/manageData";
 import PayFactors from "./payfactors/payFactors";
 
@@ -52,7 +53,7 @@ export default function PayAnalyzerPage() {
       <div className="flex-1">
         <TabGroup>
           <TabList className="flex space-x-1 bg-gray-50">
-            {["Assess", "Analyze", "Manage"].map((tab) => (
+            {["Assess", "Analyze", "Manage", "Calculate"].map((tab) => (
               <Tab
                 key={tab}
                 className={({ selected }) =>
@@ -127,6 +128,14 @@ export default function PayAnalyzerPage() {
                       <ManagementComponent initialData={data} />
                     )}
                   </div>
+                </section>
+              </div>
+            </TabPanel>
+
+            <TabPanel className="space-y-6">
+              <div className="w-full bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+                <section className="bg-white p-4 shadow-sm dark:bg-gray-800">
+                  <PayEquityAnalyzer />
                 </section>
               </div>
             </TabPanel>
