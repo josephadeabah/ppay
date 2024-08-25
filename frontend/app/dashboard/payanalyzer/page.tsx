@@ -35,7 +35,7 @@ export default function PayAnalyzerPage() {
   }
 
   return (
-    <div className="flex w-full flex-col overflow-x-hidden bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+    <div className="flex w-full flex-col text-gray-900 dark:bg-gray-900 dark:text-gray-100">
       {/* Navbar */}
       <header className="bg-white shadow dark:bg-gray-800">
         <div className="mx-auto flex flex-col items-center justify-between space-y-2 px-4 py-4 sm:flex-row sm:space-y-0 sm:px-6">
@@ -89,30 +89,20 @@ export default function PayAnalyzerPage() {
 
             {/* Analyze Tab */}
             <TabPanel className="space-y-6">
-              <div className="w-full bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
-                {/* Main Content */}
-                <div className="flex">
-                  {/* Main Dashboard Sections */}
-                  <main className="flex-1 space-y-6 p-2">
-                    <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
-                      {/* Comparison Section */}
-                      <section className=" bg-white p-2 dark:bg-gray-800">
-                        <h2 className="mb-4 text-xl font-bold">Compare Data</h2>
-                        <div className="bg-gray-200 dark:bg-gray-700">
-                          <ComparisonPage data={data} />
-                        </div>
-                      </section>
+              {/* Main Content */}
 
-                      {/* Pay Factors Section */}
-                      <section className="bg-white p-2 shadow-sm dark:bg-gray-800">
-                        <h2 className="mb-4 text-xl font-bold">Pay Factors</h2>
-                        <div className="bg-gray-200 dark:bg-gray-700">
-                          <PayFactors userData={data} />
-                        </div>
-                      </section>
-                    </div>
-                  </main>
-                </div>
+              <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+                {/* Comparison Section */}
+                <section className="bg-white p-2 dark:bg-gray-800">
+                  <ComparisonPage data={data} />
+                </section>
+
+                {/* Pay Factors Section */}
+                <section className="bg-white p-2 shadow-sm dark:bg-gray-800">
+                  <div className="dark:bg-gray-700">
+                    <PayFactors userData={data} />
+                  </div>
+                </section>
               </div>
             </TabPanel>
 

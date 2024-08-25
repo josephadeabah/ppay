@@ -8,6 +8,7 @@ import RootCauseAnalysis from "./rootcauseanalysis";
 const PayFactors = ({ userData }: { userData: any[] }) => {
   return (
     <div className="flex w-full max-w-full flex-col gap-8">
+      <h2 className="text-xl font-bold">Pay Factors</h2>
       {/* Top row with 3 components */}
       <div className="grid grid-cols-1">
         <div className="col-span-1">

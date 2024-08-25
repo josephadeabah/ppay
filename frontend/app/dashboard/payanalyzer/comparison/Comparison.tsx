@@ -5,10 +5,10 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableColumn,
+  TableHead,
   TableHeader,
   TableRow,
-} from "@nextui-org/react";
+} from "@/components/table/Table";
 import { Chart, registerables } from "chart.js";
 import { useState } from "react";
 import { Line } from "react-chartjs-2";
@@ -43,7 +43,7 @@ const ComparisonPage = ({ data }: { data: any[] }) => {
   ];
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-900">
+    <div className="">
       <div className="mb-6">
         <label
           className="mb-2 block text-lg font-medium"
@@ -64,66 +64,32 @@ const ComparisonPage = ({ data }: { data: any[] }) => {
         <Line data={chartData} />
       </div>
 
-      <div className="overflow-x-auto [&::-moz-scrollbar-thumb]:rounded-full [&::-moz-scrollbar-thumb]:bg-gray-200 [&::-moz-scrollbar-track]:m-1 [&::-moz-scrollbar]:w-2 [&::-ms-scrollbar-thumb]:rounded-full [&::-ms-scrollbar-thumb]:bg-gray-200 [&::-ms-scrollbar-track]:m-1 [&::-ms-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-track]:m-1 [&::-webkit-scrollbar]:w-2">
-        <Table
-          aria-label="Comparative Data Table"
-          className="min-w-full divide-y divide-gray-200 dark:divide-gray-700"
-        >
-          <TableHeader className="w-full min-w-full">
-            <TableColumn className="bg-white text-left font-medium text-gray-900 dark:bg-gray-800 dark:text-gray-100">
-              Name
-            </TableColumn>
-            <TableColumn className="bg-white text-left font-medium text-gray-900 dark:bg-gray-800 dark:text-gray-100">
-              Location
-            </TableColumn>
-            <TableColumn className="bg-white text-left font-medium text-gray-900 dark:bg-gray-800 dark:text-gray-100">
-              Job Title
-            </TableColumn>
-            <TableColumn className="bg-white text-left font-medium text-gray-900 dark:bg-gray-800 dark:text-gray-100">
-              Salary
-            </TableColumn>
-            <TableColumn className="bg-white text-left font-medium text-gray-900 dark:bg-gray-800 dark:text-gray-100">
-              Bonus
-            </TableColumn>
-            <TableColumn className="bg-white text-left font-medium text-gray-900 dark:bg-gray-800 dark:text-gray-100">
-              Stock Options
-            </TableColumn>
-            <TableColumn className="bg-white text-left font-medium text-gray-900 dark:bg-gray-800 dark:text-gray-100">
-              Gender
-            </TableColumn>
-          </TableHeader>
-          <TableBody>
-            {data.map((row, idx) => (
-              <TableRow
-                key={idx}
-                className="hover:bg-gray-100 dark:hover:bg-gray-700"
-              >
-                <TableCell className="text-gray-900 dark:text-gray-100">
-                  {row.name}
-                </TableCell>
-                <TableCell className="text-gray-900 dark:text-gray-100">
-                  {row.location}
-                </TableCell>
-                <TableCell className="text-gray-900 dark:text-gray-100">
-                  {row.jobTitle}
-                </TableCell>
-                <TableCell className="text-gray-900 dark:text-gray-100">
-                  {row.salary}
-                </TableCell>
-                <TableCell className="text-gray-900 dark:text-gray-100">
-                  {row.bonus ?? 0}
-                </TableCell>
-                <TableCell className="text-gray-900 dark:text-gray-100">
-                  {row.stockOptions ?? 0}
-                </TableCell>
-                <TableCell className="text-gray-900 dark:text-gray-100">
-                  {row.gender}
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </div>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Name</TableHead>
+            <TableHead>Location</TableHead>
+            <TableHead>Job Title</TableHead>
+            <TableHead>Salary</TableHead>
+            <TableHead>Bonus</TableHead>
+            <TableHead>Stock Options</TableHead>
+            <TableHead>Gender</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {data.map((row, idx) => (
+            <TableRow key={idx} className="">
+              <TableCell>{row.name}</TableCell>
+              <TableCell>{row.location}</TableCell>
+              <TableCell>{row.jobTitle}</TableCell>
+              <TableCell>{row.salary}</TableCell>
+              <TableCell>{row.bonus ?? 0}</TableCell>
+              <TableCell>{row.stockOptions ?? 0}</TableCell>
+              <TableCell>{row.gender}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
     </div>
   );
 };
