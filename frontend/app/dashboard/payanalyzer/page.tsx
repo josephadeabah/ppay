@@ -39,9 +39,7 @@ export default function PayAnalyzerPage() {
       {/* Navbar */}
       <header className="bg-white shadow dark:bg-gray-800">
         <div className="mx-auto flex flex-col items-center justify-between space-y-2 px-4 py-4 sm:flex-row sm:space-y-0 sm:px-6">
-          <h1 className="text-center text-lg font-bold sm:text-left">
-            Pay Equity Analyzer
-          </h1>
+          <h1 className="text-center text-lg font-bold sm:text-left">PayAiD</h1>
           <div className="text-center text-xs text-gray-700 dark:text-gray-50 sm:mb-0 sm:text-right">
             Assess and analyze the fairness and equity of compensation within
             your organization

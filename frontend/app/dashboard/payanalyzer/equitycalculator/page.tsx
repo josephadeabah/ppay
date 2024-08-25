@@ -464,11 +464,10 @@ export default function PayEquityAnalyzer() {
   return (
     <div className="p-4">
       <div className="mb-6 mt-2 flex items-center gap-2 text-xl font-bold text-gray-700 dark:text-gray-50">
-        Pay Equity Analyzer
+        Equity Calculator
       </div>
       <div className="mb-3 text-xs text-gray-700 dark:text-gray-50">
-        Assess and analyze the fairness and equity of compensation within your
-        organization
+        Factorize Your Pay to Avoid Bias
       </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-5">
         {/* Existing dropdowns and sliders */}
