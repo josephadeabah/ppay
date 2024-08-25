@@ -62,8 +62,7 @@ const columns: ColumnDef<EmployeeData, string>[] = [
 ];
 
 const DataTable = ({ data }: { data: EmployeeData[] }) => {
-  if (!data.length) return null;
-
+  // Always call useReactTable unconditionally
   const table = useReactTable({
     data,
     columns,
@@ -74,47 +73,51 @@ const DataTable = ({ data }: { data: EmployeeData[] }) => {
     <div className="overflow-x-auto [&::-moz-scrollbar-thumb]:rounded-full [&::-moz-scrollbar-thumb]:bg-gray-200 [&::-moz-scrollbar-track]:m-1 [&::-moz-scrollbar]:w-2 [&::-ms-scrollbar-thumb]:rounded-full [&::-ms-scrollbar-thumb]:bg-gray-200 [&::-ms-scrollbar-track]:m-1 [&::-ms-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-track]:m-1 [&::-webkit-scrollbar]:w-2">
       <h2 className="mb-4 text-xl font-bold">Table Visualization</h2>
       <TableOperators />
-      {/* Data table */}
-      <table className="min-w-full table-auto border-collapse bg-white dark:bg-gray-900">
-        <thead className="bg-gray-100 text-sm dark:bg-gray-700">
-          {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
-                <th
-                  key={header.id}
-                  className="border px-4 py-2 text-left font-medium text-gray-700 dark:text-gray-300"
-                >
-                  {flexRender(
-                    header.column.columnDef.header,
-                    header.getContext(),
-                  )}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody>
-          {table.getRowModel().rows.map((row) => (
-            <tr
-              key={row.id}
-              className={
-                row.index % 2 === 0
-                  ? "bg-gray-50 dark:bg-gray-800"
-                  : "bg-gray-50 dark:bg-gray-900"
-              }
-            >
-              {row.getVisibleCells().map((cell) => (
-                <td
-                  key={cell.id}
-                  className="border px-4 py-2 text-gray-900 dark:text-gray-100"
-                >
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {/* Conditionally render table only if data exists */}
+      {data.length > 0 ? (
+        <table className="min-w-full table-auto border-collapse bg-white dark:bg-gray-900">
+          <thead className="bg-gray-100 text-sm dark:bg-gray-700">
+            {table.getHeaderGroups().map((headerGroup) => (
+              <tr key={headerGroup.id}>
+                {headerGroup.headers.map((header) => (
+                  <th
+                    key={header.id}
+                    className="border px-4 py-2 text-left font-medium text-gray-700 dark:text-gray-300"
+                  >
+                    {flexRender(
+                      header.column.columnDef.header,
+                      header.getContext(),
+                    )}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody>
+            {table.getRowModel().rows.map((row) => (
+              <tr
+                key={row.id}
+                className={
+                  row.index % 2 === 0
+                    ? "bg-gray-50 dark:bg-gray-800"
+                    : "bg-gray-50 dark:bg-gray-900"
+                }
+              >
+                {row.getVisibleCells().map((cell) => (
+                  <td
+                    key={cell.id}
+                    className="border px-4 py-2 text-gray-900 dark:text-gray-100"
+                  >
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p>No data available.</p>
+      )}
     </div>
   );
 };
