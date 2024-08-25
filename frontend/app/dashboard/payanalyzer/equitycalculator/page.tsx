@@ -647,7 +647,7 @@ export default function PayEquityAnalyzer() {
 
       <div className="mt-4">
         <h2 className="text-lg font-semibold">
-          Adjusted Salary: ${adjustedSalary.toFixed(2)}
+          Recommended Salary: ${adjustedSalary.toFixed(2)}
         </h2>
       </div>
 
