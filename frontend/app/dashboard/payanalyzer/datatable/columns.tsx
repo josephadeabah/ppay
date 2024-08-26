@@ -199,20 +199,26 @@ export const dataColumns: ColumnDef<EmployeeData, string>[] = [
       return (
         <div className="relative flex h-4 w-full max-w-full bg-gray-200">
           <div
-            className="inline-flex h-full items-center bg-green-500 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300"
+            className="inline-flex h-full w-full items-center justify-center bg-green-500 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300"
             style={{ width: `${performancePercent}%` }}
             title={`Performance: ${Math.round(performancePercent)}%`}
-          />
+          >
+            <span className="sr-only">Performance</span>
+          </div>
           <div
-            className="inline-flex h-full items-center bg-yellow-500 text-xs font-medium text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300"
+            className="inline-flex h-full w-full items-center justify-center bg-yellow-500 text-xs font-medium text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300"
             style={{ width: `${managerPercent}%` }}
             title={`Manager Rating: ${Math.round(managerPercent)}%`}
-          />
+          >
+            <span className="sr-only">Manager Rating</span>
+          </div>
           <div
-            className="inline-flex h-full items-center bg-red-500 text-xs font-medium text-red-800 dark:bg-red-900 dark:text-red-300"
+            className="inline-flex h-full w-full items-center justify-center bg-red-500 text-xs font-medium text-red-800 dark:bg-red-900 dark:text-red-300"
             style={{ width: `${employeePercent}%` }}
             title={`Employee Rating: ${Math.round(employeePercent)}%`}
-          />
+          >
+            <span className="sr-only">Employee Rating</span>
+          </div>
           <span className="absolute inset-0 flex items-center justify-center text-xs font-semibold text-white">
             {Math.round(performancePercent + managerPercent + employeePercent)}%
           </span>
