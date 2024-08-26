@@ -1,8 +1,7 @@
 import { AiOutlineScan } from "react-icons/ai";
-import { BiFilterAlt } from "react-icons/bi";
 import { FiGitMerge } from "react-icons/fi";
 import { HiOutlineChartPie } from "react-icons/hi";
-import { MdOutlineCompareArrows, MdSort } from "react-icons/md";
+import { MdOutlineCompareArrows } from "react-icons/md";
 
 const TableOperators = () => {
   return (
@@ -15,24 +14,6 @@ const TableOperators = () => {
         >
           <AiOutlineScan className="h-4 w-4 text-blue-500" />
           <span className="hidden sm:inline">Scan</span>
-        </button>
-
-        {/* Filter Button */}
-        <button
-          data-tip="Narrow down the data by specific criteria (e.g., gender, ethnicity, department, or salary range)."
-          className="flex w-full items-center gap-1 rounded-sm bg-slate-100 p-2 shadow-sm sm:w-auto"
-        >
-          <BiFilterAlt className="h-4 w-4 text-orange-500" />
-          <span className="hidden sm:inline">Filter</span>
-        </button>
-
-        {/* Sort Button */}
-        <button
-          data-tip="Organize the data in ascending or descending order by specific columns (e.g., base salary, years of experience)."
-          className="flex w-full items-center gap-1 rounded-sm bg-slate-100 p-2 shadow-sm sm:w-auto"
-        >
-          <MdSort className="h-4 w-4 text-green-500" />
-          <span className="hidden sm:inline">Sort</span>
         </button>
 
         {/* Aggregate Button */}

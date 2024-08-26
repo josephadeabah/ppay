@@ -1,4 +1,3 @@
-"use client";
 import { BlurPopover } from "@/components/popover/Popover";
 import { EmployeeData } from "@/types/payaid.data";
 import { ColumnDef, createColumnHelper } from "@tanstack/react-table";
@@ -36,11 +35,12 @@ const getSectionPercentages = (employee: EmployeeData) => {
   };
 };
 
-// Define and export columns with an "id" property
+// Define and export columns with sorting enabled
 export const dataColumns: ColumnDef<EmployeeData, string>[] = [
   columnHelper.display({
     id: "actions",
     header: "Actions",
+    enableSorting: false,
     cell: (info) => (
       <BlurPopover
         triggerLabel={<HiOutlineDotsHorizontal size={16} />}
@@ -59,111 +59,138 @@ export const dataColumns: ColumnDef<EmployeeData, string>[] = [
   columnHelper.accessor("employeeId", {
     id: "employeeId",
     header: "ID",
+    enableSorting: true,
     cell: (info) => info.getValue(),
   }),
   columnHelper.accessor("name", {
     id: "name",
     header: "Name",
+    enableSorting: false,
     cell: (info) => info.getValue(),
   }),
   columnHelper.accessor("gender", {
     id: "gender",
     header: "Gender",
+    enableSorting: false,
     cell: (info) => info.getValue(),
   }),
   columnHelper.accessor("ethnicity", {
     id: "ethnicity",
     header: "Ethnicity",
+    enableSorting: false,
     cell: (info) => info.getValue(),
   }),
   columnHelper.accessor("jobTitle", {
     id: "jobTitle",
     header: "Job Title",
+    enableSorting: false,
     cell: (info) => info.getValue(),
   }),
   columnHelper.accessor("department", {
     id: "department",
     header: "Department",
+    enableSorting: false,
     cell: (info) => info.getValue(),
   }),
   columnHelper.accessor("location", {
     id: "location",
     header: "Location",
-    cell: (info) => info.getValue(),
+    enableSorting: true,
+    cell: (info) => (
+      <div className="flex items-center">
+        <span>{info.getValue()}</span>
+        <div className="ml-3" />
+      </div>
+    ),
   }),
   columnHelper.accessor("baseSalary", {
     id: "baseSalary",
     header: "Base Salary",
+    enableSorting: false,
     cell: (info) => info.getValue(),
   }),
   columnHelper.accessor("bonus", {
     id: "bonus",
     header: "Bonus",
+    enableSorting: false,
     cell: (info) => info.getValue(),
   }),
   columnHelper.accessor("stockOptions", {
     id: "stockOptions",
     header: "Stock Options",
+    enableSorting: false,
     cell: (info) => info.getValue(),
   }),
   columnHelper.accessor("yearsOfExperience", {
     id: "yearsOfExperience",
     header: "Experience",
+    enableSorting: false,
     cell: (info) => info.getValue(),
   }),
   columnHelper.accessor("performancePoints", {
     id: "performancePoints",
     header: "Performance Points",
+    enableSorting: false,
     cell: (info) => info.getValue(),
   }),
   columnHelper.accessor("managerRating", {
     id: "managerRating",
     header: "Manager Rating",
+    enableSorting: false,
     cell: (info) => info.getValue(),
   }),
   columnHelper.accessor("employeeRating", {
     id: "employeeRating",
     header: "Employee Rating",
+    enableSorting: false,
     cell: (info) => info.getValue(),
   }),
   columnHelper.accessor("marketRate", {
     id: "marketRate",
     header: "Market Rate",
+    enableSorting: false,
     cell: (info) => info.getValue(),
   }),
   columnHelper.accessor("industryPoints", {
     id: "industryPoints",
     header: "Industry Points",
+    enableSorting: false,
     cell: (info) => info.getValue(),
   }),
   columnHelper.accessor("departmentPoints", {
     id: "departmentPoints",
     header: "Department Points",
+    enableSorting: false,
     cell: (info) => info.getValue(),
   }),
   columnHelper.accessor("seniorityPoints", {
     id: "seniorityPoints",
     header: "Seniority Points",
+    enableSorting: false,
     cell: (info) => info.getValue(),
   }),
   columnHelper.accessor("educationLevelPoints", {
     id: "educationLevelPoints",
     header: "Education Level Points",
+    enableSorting: false,
     cell: (info) => info.getValue(),
   }),
   columnHelper.accessor("companySizePoints", {
     id: "companySizePoints",
     header: "Company Size Points",
+    enableSorting: false,
     cell: (info) => info.getValue(),
   }),
   columnHelper.accessor("seniorityLevel", {
     id: "seniorityLevel",
     header: "Seniority Level",
+    enableSorting: false,
     cell: (info) => info.getValue(),
   }),
   columnHelper.display({
     id: "status",
     header: "Status",
+    enableSorting: true,
     cell: (info) => {
       const status = getStatus(info.row.original);
       let bgColor = "bg-gray-200"; // Default
@@ -192,6 +219,7 @@ export const dataColumns: ColumnDef<EmployeeData, string>[] = [
   columnHelper.display({
     id: "progress",
     header: "Progress",
+    enableSorting: false,
     cell: (info) => {
       const { performancePercent, managerPercent, employeePercent } =
         getSectionPercentages(info.row.original);
