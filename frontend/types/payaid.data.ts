@@ -19,4 +19,6 @@ export interface EmployeeData {
   educationLevelPoints: string;
   companySizePoints: string;
   seniorityLevel: string;
+  managerRating: string; // New field
+  employeeRating: string; // New field
 }

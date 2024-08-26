@@ -1,7 +1,7 @@
 import { AiOutlineScan, AiOutlineSearch } from "react-icons/ai";
 import { BiFilterAlt } from "react-icons/bi";
 import { FiGitMerge } from "react-icons/fi";
-import { HiOutlineAnnotation, HiOutlineChartPie } from "react-icons/hi";
+import { HiOutlineChartPie } from "react-icons/hi";
 import { MdOutlineCompareArrows, MdSort } from "react-icons/md";
 
 const TableOperators = () => {
@@ -60,15 +60,6 @@ const TableOperators = () => {
         >
           <MdOutlineCompareArrows className="h-4 w-4 text-red-500" />
           <span className="hidden sm:inline">Compare</span>
-        </button>
-
-        {/* Annotate Button */}
-        <button
-          data-tip="Add notes or comments to specific rows or cells for context or additional information."
-          className="flex w-full items-center gap-1 rounded-sm bg-slate-100 p-2 shadow-sm sm:w-auto"
-        >
-          <HiOutlineAnnotation className="h-4 w-4 text-violet-500" />
-          <span className="hidden sm:inline">Annotate</span>
         </button>
         {/* Merge Button */}
         <button
