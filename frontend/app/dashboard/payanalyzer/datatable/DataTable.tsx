@@ -33,7 +33,7 @@ const DataTable = ({ data }: { data: EmployeeData[] }) => {
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
-                  <TableHead key={header.id} className="border px-4 py-2">
+                  <TableHead key={header.id} className="border">
                     {flexRender(
                       header.column.columnDef.header,
                       header.getContext(),

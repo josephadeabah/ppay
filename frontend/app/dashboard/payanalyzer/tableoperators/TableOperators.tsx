@@ -1,4 +1,4 @@
-import { AiOutlineScan, AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineScan } from "react-icons/ai";
 import { BiFilterAlt } from "react-icons/bi";
 import { FiGitMerge } from "react-icons/fi";
 import { HiOutlineChartPie } from "react-icons/hi";
@@ -15,15 +15,6 @@ const TableOperators = () => {
         >
           <AiOutlineScan className="h-4 w-4 text-blue-500" />
           <span className="hidden sm:inline">Scan</span>
-        </button>
-
-        {/* Search Button */}
-        <button
-          data-tip="Search the data for specific terms or criteria."
-          className="flex w-full items-center gap-1 rounded-sm bg-slate-100 p-2 shadow-sm sm:w-auto"
-        >
-          <AiOutlineSearch className="h-4 w-4 text-teal-500" />
-          <span className="hidden sm:inline">Search</span>
         </button>
 
         {/* Filter Button */}

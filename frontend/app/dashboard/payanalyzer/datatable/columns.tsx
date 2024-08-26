@@ -47,10 +47,10 @@ export const dataColumns: ColumnDef<EmployeeData, string>[] = [
         triggerVariant="default"
         triggerColor="default"
         content={
-          <div className="flex cursor-pointer items-center gap-2 p-1 hover:bg-gray-50">
+          <span className="flex cursor-pointer items-center p-1 hover:bg-gray-50">
             <HiOutlineAnnotation className="h-4 w-4 text-violet-500" />
             <span>Add Notes</span>
-          </div>
+          </span>
         }
         contentClassName="dark:bg-blue-900 text-gray-500 text-xs"
       />
@@ -108,7 +108,7 @@ export const dataColumns: ColumnDef<EmployeeData, string>[] = [
   }),
   columnHelper.accessor("yearsOfExperience", {
     id: "yearsOfExperience",
-    header: "Years of Experience",
+    header: "Experience",
     cell: (info) => info.getValue(),
   }),
   columnHelper.accessor("performancePoints", {
@@ -167,10 +167,18 @@ export const dataColumns: ColumnDef<EmployeeData, string>[] = [
     cell: (info) => {
       const status = getStatus(info.row.original);
       let bgColor = "bg-gray-200"; // Default
-      if (status === "Risk") bgColor = "bg-red-300";
-      if (status === "Improvement") bgColor = "bg-yellow-300";
-      if (status === "On Track") bgColor = "bg-green-300";
-      if (status === "Exceeds") bgColor = "bg-blue-300";
+      if (status === "Risk")
+        bgColor =
+          "inline-flex items-center rounded bg-red-100 text-xs font-medium text-red-800 dark:bg-red-900 dark:text-red-300";
+      if (status === "Improvement")
+        bgColor =
+          "inline-flex items-center rounded bg-yellow-100 text-xs font-medium text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300";
+      if (status === "On Track")
+        bgColor =
+          "inline-flex items-center rounded bg-blue-100 text-xs font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-300";
+      if (status === "Exceeds")
+        bgColor =
+          "inline-flex items-center rounded bg-green-100 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300";
       return (
         <span
           className={`inline-block rounded-full px-2 py-1 text-xs font-semibold text-gray-800 ${bgColor}`}
@@ -191,17 +199,17 @@ export const dataColumns: ColumnDef<EmployeeData, string>[] = [
       return (
         <div className="relative flex h-4 w-full max-w-full bg-gray-200">
           <div
-            className="h-full bg-green-500"
+            className="inline-flex h-full items-center bg-green-500 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300"
             style={{ width: `${performancePercent}%` }}
             title={`Performance: ${Math.round(performancePercent)}%`}
           />
           <div
-            className="h-full bg-yellow-500"
+            className="inline-flex h-full items-center bg-yellow-500 text-xs font-medium text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300"
             style={{ width: `${managerPercent}%` }}
             title={`Manager Rating: ${Math.round(managerPercent)}%`}
           />
           <div
-            className="h-full bg-red-500"
+            className="inline-flex h-full items-center bg-red-500 text-xs font-medium text-red-800 dark:bg-red-900 dark:text-red-300"
             style={{ width: `${employeePercent}%` }}
             title={`Employee Rating: ${Math.round(employeePercent)}%`}
           />
