@@ -9,12 +9,11 @@ const columnHelper = createColumnHelper<EmployeeData>();
 
 const getStatus = (employee: EmployeeData) => {
   const { performancePoints, marketRate, seniorityPoints } = employee;
-  if (Number(performancePoints) < 50 || Number(marketRate) < 80)
-    return "At Risk";
-  if (Number(performancePoints) < 70) return "Needs Improvement";
+  if (Number(performancePoints) < 50 || Number(marketRate) < 80) return "Risk";
+  if (Number(performancePoints) < 70) return "Improvement";
   if (Number(performancePoints) >= 70 && Number(seniorityPoints) >= 50)
     return "On Track";
-  return "Exceeds Expectations";
+  return "Exceeds";
 };
 
 // Logic to determine the percentage for each section
@@ -44,7 +43,7 @@ export const dataColumns: ColumnDef<EmployeeData, string>[] = [
     header: "Actions",
     cell: (info) => (
       <BlurPopover
-        triggerLabel={<HiOutlineDotsHorizontal size={20} />}
+        triggerLabel={<HiOutlineDotsHorizontal size={16} />}
         triggerVariant="default"
         triggerColor="default"
         content={
@@ -167,12 +166,18 @@ export const dataColumns: ColumnDef<EmployeeData, string>[] = [
     header: "Status",
     cell: (info) => {
       const status = getStatus(info.row.original);
-      let colorClass = "text-gray-500"; // Default
-      if (status === "At Risk") colorClass = "text-red-500";
-      if (status === "Needs Improvement") colorClass = "text-yellow-500";
-      if (status === "On Track") colorClass = "text-green-500";
-      if (status === "Exceeds Expectations") colorClass = "text-blue-500";
-      return <span className={`font-semibold ${colorClass}`}>{status}</span>;
+      let bgColor = "bg-gray-200"; // Default
+      if (status === "Risk") bgColor = "bg-red-300";
+      if (status === "Improvement") bgColor = "bg-yellow-300";
+      if (status === "On Track") bgColor = "bg-green-300";
+      if (status === "Exceeds") bgColor = "bg-blue-300";
+      return (
+        <span
+          className={`inline-block rounded-full px-2 py-1 text-xs font-semibold text-gray-800 ${bgColor}`}
+        >
+          {status}
+        </span>
+      );
     },
   }),
   // Progress Bar Column
