@@ -225,31 +225,29 @@ export const dataColumns: ColumnDef<EmployeeData, string>[] = [
         getSectionPercentages(info.row.original);
 
       return (
-        <div className="relative flex h-4 w-full max-w-full bg-gray-200">
-          <div
-            className="inline-flex h-full w-full items-center justify-center bg-green-500 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300"
-            style={{ width: `${performancePercent}%` }}
-            title={`Performance: ${Math.round(performancePercent)}%`}
-          >
-            <span className="sr-only">Performance</span>
+        <div className="mx-auto w-[300px]">
+          {/* Progress labels */}
+          <div className="flex items-center justify-between text-sm font-bold">
+            <span className="text-[9px] text-red-500">{`${Math.round(performancePercent)}%`}</span>
+            <span className="text-[9px] text-yellow-500">{`${Math.round(managerPercent)}%`}</span>
+            <span className="text-[9px] text-green-500">{`${Math.round(employeePercent)}%`}</span>
           </div>
-          <div
-            className="inline-flex h-full w-full items-center justify-center bg-yellow-500 text-xs font-medium text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300"
-            style={{ width: `${managerPercent}%` }}
-            title={`Manager Rating: ${Math.round(managerPercent)}%`}
-          >
-            <span className="sr-only">Manager Rating</span>
+
+          {/* Combined Progress bar */}
+          <div className="flex h-2 w-full overflow-hidden rounded-full bg-gray-200">
+            <div
+              className="h-full bg-red-600"
+              style={{ width: `${performancePercent}%` }}
+            ></div>
+            <div
+              className="h-full bg-yellow-100"
+              style={{ width: `${managerPercent}%` }}
+            ></div>
+            <div
+              className="h-full bg-green-400"
+              style={{ width: `${employeePercent}%` }}
+            ></div>
           </div>
-          <div
-            className="inline-flex h-full w-full items-center justify-center bg-red-500 text-xs font-medium text-red-800 dark:bg-red-900 dark:text-red-300"
-            style={{ width: `${employeePercent}%` }}
-            title={`Employee Rating: ${Math.round(employeePercent)}%`}
-          >
-            <span className="sr-only">Employee Rating</span>
-          </div>
-          <span className="absolute inset-0 flex items-center justify-center text-xs font-semibold text-white">
-            {Math.round(performancePercent + managerPercent + employeePercent)}%
-          </span>
         </div>
       );
     },
