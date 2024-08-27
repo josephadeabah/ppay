@@ -1,4 +1,5 @@
 import { BlurPopover } from "@/components/popover/Popover";
+import ProgressBar from "@/components/progress/ProgressBar";
 import { EmployeeData } from "@/types/payaid.data";
 import { ColumnDef, createColumnHelper } from "@tanstack/react-table";
 import { HiOutlineAnnotation, HiOutlineDotsHorizontal } from "react-icons/hi";
@@ -225,30 +226,11 @@ export const dataColumns: ColumnDef<EmployeeData, string>[] = [
         getSectionPercentages(info.row.original);
 
       return (
-        <div className="mx-auto w-[300px]">
-          {/* Progress labels */}
-          <div className="flex items-center justify-between text-sm font-bold">
-            <span className="text-[9px] text-red-500">{`${Math.round(performancePercent)}%`}</span>
-            <span className="text-[9px] text-yellow-500">{`${Math.round(managerPercent)}%`}</span>
-            <span className="text-[9px] text-green-500">{`${Math.round(employeePercent)}%`}</span>
-          </div>
-
-          {/* Combined Progress bar */}
-          <div className="flex h-2 w-full overflow-hidden rounded-full bg-gray-200">
-            <div
-              className="h-full bg-red-600"
-              style={{ width: `${performancePercent}%` }}
-            ></div>
-            <div
-              className="h-full bg-yellow-100"
-              style={{ width: `${managerPercent}%` }}
-            ></div>
-            <div
-              className="h-full bg-green-400"
-              style={{ width: `${employeePercent}%` }}
-            ></div>
-          </div>
-        </div>
+        <ProgressBar
+          firstProgress={performancePercent}
+          secondProgress={managerPercent}
+          thirdProgress={employeePercent}
+        />
       );
     },
   }),
