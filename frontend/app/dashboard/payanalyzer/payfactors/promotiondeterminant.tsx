@@ -35,7 +35,7 @@ const PromotionDeterminant = ({ data }: { data: any[] }) => {
               value={menPromotionPercentage}
               size={120}
               strokeWidth={10}
-              color="blue"
+              color="green"
             />
             <p className="mt-2 text-center text-sm dark:text-gray-100">
               {menPromoted} out of {totalMen} men were promoted.

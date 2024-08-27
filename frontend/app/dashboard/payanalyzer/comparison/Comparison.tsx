@@ -78,7 +78,7 @@ const ComparisonPage = ({ data }: { data: any[] }) => {
         <Card>
           <CardHeader title="Prospective Pay" />
           <CardContent className="text-center">
-            <ProgressRing value={85} size={100} color="green" />
+            <ProgressRing value={85} size={100} color="lightgreen" />
             <p>${prospectivePay}</p>
           </CardContent>
         </Card>

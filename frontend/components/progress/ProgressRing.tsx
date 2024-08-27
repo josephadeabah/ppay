@@ -11,7 +11,7 @@ const ProgressRing = ({
   value,
   size = 100,
   strokeWidth = 10,
-  color = "blue",
+  color = "gray",
 }: ProgressRingProps) => {
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
