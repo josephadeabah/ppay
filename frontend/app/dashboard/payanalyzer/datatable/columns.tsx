@@ -108,9 +108,9 @@ export const dataColumns: ColumnDef<EmployeeData, string>[] = [
     header: "Location",
     enableSorting: true,
     cell: (info) => (
-      <div className="flex items-center">
+      <div className="flex w-[4rem] items-center justify-between">
         <span>{info.getValue()}</span>
-        <div className="ml-3" />
+        <div />
       </div>
     ),
   }),
