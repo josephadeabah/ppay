@@ -3,11 +3,11 @@ import { Tooltip } from "react-tooltip";
 
 interface ProgressBarProps {
   firstProgress: number;
-  secondProgress: number | undefined;
-  thirdProgress: number | undefined;
+  secondProgress?: number;
+  thirdProgress?: number;
   firstTooltipContent: string;
-  secondTooltipContent: string | undefined;
-  thirdTooltipContent: string | undefined;
+  secondTooltipContent?: string;
+  thirdTooltipContent?: string;
 }
 
 const ProgressBar: React.FC<ProgressBarProps> = ({
@@ -34,14 +34,14 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
           data-tooltip-id="manager-tooltip"
           data-tooltip-content={secondTooltipContent}
         >
-          {`${Math.round(Number(secondProgress))}%`}
+          {secondProgress && `${Math.round(Number(secondProgress))}%`}
         </span>
         <span
           className="text-[9px] text-green-500"
           data-tooltip-id="employee-tooltip"
           data-tooltip-content={thirdTooltipContent}
         >
-          {`${Math.round(Number(thirdProgress))}%`}
+          {thirdProgress && `${Math.round(Number(thirdProgress))}%`}
         </span>
       </div>
 

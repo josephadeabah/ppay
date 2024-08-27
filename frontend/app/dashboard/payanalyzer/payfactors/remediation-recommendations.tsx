@@ -1,12 +1,33 @@
+import { Card, CardContent, CardHeader } from "@/components/card/Card";
+import ProgressRing from "@/components/progress/ProgressRing";
+
 const RemediationRecommendations = ({ data }: { data: any[] }) => {
   const generateRecommendation = (row: any) => {
-    if (row.rootCause === "Possible gender pay gap") {
-      return "Increase salary to align with male counterparts.";
+    switch (row.indicator) {
+      case "Statistically significant gap":
+        return "Urgent action required to address pay inequity.";
+      case "Approaching statistically significant gap":
+        return "Monitor and assess pay gaps closely.";
+      case "Non-statistically significant gap":
+        return "Pay distribution is fair, but regular monitoring is needed.";
+      case "No comparison possible":
+        return "Insufficient data to determine pay fairness.";
+      default:
+        return "No remediation required.";
     }
-    if (row.rootCause === "Underpaid for management role") {
-      return "Reclassify job role and increase salary.";
+  };
+
+  const getProgressRingColor = (indicator: string) => {
+    switch (indicator) {
+      case "Statistically significant gap":
+        return "red";
+      case "Approaching statistically significant gap":
+        return "orange";
+      case "Non-statistically significant gap":
+        return "green";
+      default:
+        return "gray";
     }
-    return "No remediation required.";
   };
 
   const enrichedData = data.map((row) => ({
@@ -15,50 +36,32 @@ const RemediationRecommendations = ({ data }: { data: any[] }) => {
   }));
 
   return (
-    <div className="w-full max-w-full overflow-hidden bg-white dark:bg-gray-900">
-      <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
-        Remediation Recommendations
+    <div className="w-full max-w-full bg-white p-6 dark:bg-gray-900">
+      <h2 className="mb-6 text-lg font-semibold text-gray-900 dark:text-gray-100">
+        Pay Equity Distribution & Remediation Recommendations
       </h2>
-      <div className="overflow-x-auto [&::-moz-scrollbar-thumb]:rounded-full [&::-moz-scrollbar-thumb]:bg-gray-200 [&::-moz-scrollbar-track]:m-1 [&::-moz-scrollbar]:w-2 [&::-ms-scrollbar-thumb]:rounded-full [&::-ms-scrollbar-thumb]:bg-gray-200 [&::-ms-scrollbar-track]:m-1 [&::-ms-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-track]:m-1 [&::-webkit-scrollbar]:w-2">
-        <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-          <thead className="bg-gray-50 dark:bg-gray-800">
-            <tr>
-              <th className="px-4 py-2 text-left font-medium text-gray-900 dark:text-gray-100">
-                Name
-              </th>
-              <th className="px-4 py-2 text-left font-medium text-gray-900 dark:text-gray-100">
-                Job Title
-              </th>
-              <th className="px-4 py-2 text-left font-medium text-gray-900 dark:text-gray-100">
-                Root Cause
-              </th>
-              <th className="px-4 py-2 text-left font-medium text-gray-900 dark:text-gray-100">
-                Recommendation
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {enrichedData.map((row, idx) => (
-              <tr
-                key={idx}
-                className="hover:bg-gray-100 dark:hover:bg-gray-700"
-              >
-                <td className="border-b px-4 py-2 text-gray-900 dark:text-gray-100">
-                  {row.name}
-                </td>
-                <td className="border-b px-4 py-2 text-gray-900 dark:text-gray-100">
-                  {row.jobTitle}
-                </td>
-                <td className="border-b px-4 py-2 text-gray-900 dark:text-gray-100">
-                  {row.rootCause}
-                </td>
-                <td className="border-b px-4 py-2 text-gray-900 dark:text-gray-100">
-                  {row.recommendation}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {enrichedData.map((row, idx) => (
+          <Card key={idx}>
+            <CardHeader title={row.name} />
+            <CardContent>
+              <p className="text-sm text-gray-700 dark:text-gray-300">
+                <strong>Job Title:</strong> {row.jobTitle}
+              </p>
+              <p className="text-sm text-gray-700 dark:text-gray-300">
+                <strong>Indicator:</strong> {row.indicator}
+              </p>
+              <p className="text-sm text-gray-700 dark:text-gray-300">
+                <strong>Recommendation:</strong> {row.recommendation}
+              </p>
+              {/* Progress Ring based on the indicator */}
+              <ProgressRing
+                value={row.gapPercentage}
+                color={getProgressRingColor(row.indicator)}
+              />
+            </CardContent>
+          </Card>
+        ))}
       </div>
     </div>
   );

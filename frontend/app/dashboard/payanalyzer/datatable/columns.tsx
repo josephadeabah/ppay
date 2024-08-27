@@ -67,7 +67,7 @@ export const dataColumns: ColumnDef<EmployeeData, string>[] = [
   }),
   columnHelper.accessor("name", {
     id: "name",
-    header: "Name",
+    header: () => <span data-tip="Full name of the employee">Name</span>,
     enableSorting: false,
     cell: (info) => (
       <div className="flex w-[7.5rem] items-center">

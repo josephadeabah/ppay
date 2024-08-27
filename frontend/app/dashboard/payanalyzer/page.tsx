@@ -9,10 +9,38 @@ import ComparisonPage from "./comparison/Comparison";
 import PayEquityAnalyzer from "./equitycalculator/page";
 import ManagementComponent from "./managedata/manageData";
 import PayFactors from "./payfactors/payFactors";
+import RemediationRecommendations from "./payfactors/remediation-recommendations";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
+
+const testData = [
+  {
+    name: "John Doe",
+    jobTitle: "Software Engineer",
+    indicator: "Statistically significant gap",
+    gapPercentage: 15, // Example percentage for ProgressRing
+  },
+  {
+    name: "Jane Smith",
+    jobTitle: "Product Manager",
+    indicator: "Approaching statistically significant gap",
+    gapPercentage: 7, // Example percentage for ProgressRing
+  },
+  {
+    name: "Michael Brown",
+    jobTitle: "HR Specialist",
+    indicator: "Non-statistically significant gap",
+    gapPercentage: 3, // Example percentage for ProgressRing
+  },
+  {
+    name: "Emily Johnson",
+    jobTitle: "Marketing Executive",
+    indicator: "No comparison possible",
+    gapPercentage: 0, // No gap percentage because comparison isn't possible
+  },
+];
 
 export default function PayAnalyzerPage() {
   const [data, setData] = useState<any[]>([]);
@@ -103,6 +131,9 @@ export default function PayAnalyzerPage() {
                     <PayFactors userData={data} />
                   </div>
                 </section>
+              </div>
+              <div className="">
+                <RemediationRecommendations data={testData} />
               </div>
             </TabPanel>
 

@@ -1,22 +1,22 @@
 "use client";
 
+import { Card, CardContent, CardHeader } from "@/components/card/Card";
 import DropdownSelect from "@/components/dropdown/DropdownSelect";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/table/Table";
+import ProgressRing from "@/components/progress/ProgressRing";
 import { Chart, registerables } from "chart.js";
 import { useState } from "react";
-import { Line } from "react-chartjs-2";
+import { Doughnut, Line } from "react-chartjs-2";
 
 Chart.register(...registerables);
 
 const ComparisonPage = ({ data }: { data: any[] }) => {
   const [selectedComparison, setSelectedComparison] = useState("salary");
+
+  // Simulate some of the metrics for the cards
+  const prospectivePay = 85000;
+  const internalPayRange = { min: 75000, max: 90000 };
+  const equitablePayRange = { min: 78000, max: 88000 };
+  const predictedCompensation = 86000;
 
   const chartData = {
     labels: data.map((d) => d.name),
@@ -35,6 +35,16 @@ const ComparisonPage = ({ data }: { data: any[] }) => {
     ],
   };
 
+  const genderDistribution = {
+    labels: ["Male", "Female"],
+    datasets: [
+      {
+        data: [60, 40], // Example values
+        backgroundColor: ["#36A2EB", "#FF6384"],
+      },
+    ],
+  };
+
   const comparisonOptions = [
     { value: "salary", label: "Salary" },
     { value: "bonus", label: "Bonus" },
@@ -43,53 +53,70 @@ const ComparisonPage = ({ data }: { data: any[] }) => {
   ];
 
   return (
-    <div className="">
-      <div className="mb-6">
-        <label
-          className="mb-2 block text-lg font-medium"
-          htmlFor="comparisonFactor"
-        >
-          Select Comparison Factor:
-        </label>
-        <DropdownSelect
-          options={comparisonOptions}
-          selectedValue={selectedComparison}
-          onChange={(e) => setSelectedComparison(e.target.value)}
-          placeholder="Select a factor"
-          id="comparisonFactor"
-        />
+    <div className="space-y-8">
+      {/* Header Section */}
+      <div className="flex flex-col space-y-6">
+        <div className="mb-6">
+          <label
+            className="mb-2 block text-lg font-medium"
+            htmlFor="comparisonFactor"
+          >
+            Select Comparison Factor:
+          </label>
+          <DropdownSelect
+            options={comparisonOptions}
+            selectedValue={selectedComparison}
+            onChange={(e) => setSelectedComparison(e.target.value)}
+            placeholder="Select a factor"
+            id="comparisonFactor"
+          />
+        </div>
       </div>
 
+      {/* Metrics Cards Section */}
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <Card>
+          <CardHeader title="Prospective Pay" />
+          <CardContent className="text-center">
+            <ProgressRing value={85} size={100} color="green" />
+            <p>${prospectivePay}</p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader title="Internal Pay Range" />
+          <CardContent>
+            <p>Min: ${internalPayRange.min}</p>
+            <p>Max: ${internalPayRange.max}</p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader title="Equitable Pay Range" />
+          <CardContent>
+            <p>Min: ${equitablePayRange.min}</p>
+            <p>Max: ${equitablePayRange.max}</p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader title="Predicted Compensation" />
+          <CardContent className="text-center">
+            <ProgressRing value={86} size={100} color="blue" />
+            <p>${predictedCompensation}</p>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Gender Promotion vs Compensation Chart */}
       <div className="relative mb-8 h-auto w-full min-w-full bg-gray-50 dark:bg-slate-700">
         <Line data={chartData} />
       </div>
 
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Name</TableHead>
-            <TableHead>Location</TableHead>
-            <TableHead>Job Title</TableHead>
-            <TableHead>Salary</TableHead>
-            <TableHead>Bonus</TableHead>
-            <TableHead>Stock Options</TableHead>
-            <TableHead>Gender</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {data.map((row, idx) => (
-            <TableRow key={idx} className="">
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.location}</TableCell>
-              <TableCell>{row.jobTitle}</TableCell>
-              <TableCell>{row.salary}</TableCell>
-              <TableCell>{row.bonus ?? 0}</TableCell>
-              <TableCell>{row.stockOptions ?? 0}</TableCell>
-              <TableCell>{row.gender}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+      {/* Gender Distribution Ring Chart */}
+      <div className="mx-auto max-w-xs">
+        <Doughnut data={genderDistribution} />
+      </div>
     </div>
   );
 };
