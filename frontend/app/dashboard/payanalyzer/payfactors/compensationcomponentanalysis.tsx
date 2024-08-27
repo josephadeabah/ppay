@@ -1,5 +1,6 @@
 "use client";
 
+import { EmployeeData } from "@/types/payaid.data"; // Adjust the import path as needed
 import { Chart, registerables } from "chart.js";
 import annotationPlugin from "chartjs-plugin-annotation";
 import trendlinePlugin from "chartjs-plugin-trendline";
@@ -8,11 +9,26 @@ import { Scatter } from "react-chartjs-2";
 
 Chart.register(...registerables, annotationPlugin, trendlinePlugin);
 
-const CompensationComponentAnalysis = ({ data }: { data: any[] }) => {
+interface CompensationComponentAnalysisProps {
+  data: EmployeeData[];
+}
+
+const CompensationComponentAnalysis = ({
+  data,
+}: CompensationComponentAnalysisProps) => {
   // Simulating actual vs predicted data points for compensation
   const actualData = data.map((d) => ({
-    x: d.actualCompensation ?? 0,
-    y: d.predictedCompensation ?? 0,
+    x:
+      parseFloat(d.baseSalary) +
+      parseFloat(d.bonus) +
+      parseFloat(d.stockOptions), // Sum of baseSalary, bonus, and stockOptions
+    y:
+      parseFloat(d.marketRate) +
+      parseFloat(d.industryPoints) +
+      parseFloat(d.departmentPoints) +
+      parseFloat(d.seniorityPoints) +
+      parseFloat(d.educationLevelPoints) +
+      parseFloat(d.companySizePoints), // Example prediction
   }));
 
   const chartData = useMemo(

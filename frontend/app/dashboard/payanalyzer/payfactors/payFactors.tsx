@@ -1,32 +1,9 @@
 "use client";
+import { EmployeeData } from "@/types/payaid.data";
 import CompensationComponentAnalysis from "./compensationcomponentanalysis";
 import PromotionDeterminant from "./promotiondeterminant";
 
-const PayFactors = ({ userData }: { userData: any[] }) => {
-  const compensationComponentAnalysisData = [
-    {
-      name: "John Doe",
-      actualCompensation: 90000,
-      predictedCompensation: 85000,
-    },
-    {
-      name: "Jane Smith",
-      actualCompensation: 95000,
-      predictedCompensation: 91000,
-    },
-    {
-      name: "Sam Johnson",
-      actualCompensation: 88000,
-      predictedCompensation: 87000,
-    },
-    {
-      name: "Emily Davis",
-      actualCompensation: 92000,
-      predictedCompensation: 89000,
-    },
-    // more data...
-  ];
-
+const PayFactors = ({ userData }: { userData: EmployeeData[] }) => {
   const genderPromotionData = [
     {
       name: "John Doe",
@@ -58,7 +35,6 @@ const PayFactors = ({ userData }: { userData: any[] }) => {
     },
     // More data...
   ];
-
   return (
     <div className="flex w-full max-w-full flex-col gap-8">
       <h2 className="text-xl font-bold">Pay Factors</h2>
@@ -71,9 +47,7 @@ const PayFactors = ({ userData }: { userData: any[] }) => {
 
       <div className="grid grid-cols-1">
         <div className="col-span-1">
-          <CompensationComponentAnalysis
-            data={compensationComponentAnalysisData}
-          />
+          <CompensationComponentAnalysis data={userData} />
         </div>
       </div>
     </div>
