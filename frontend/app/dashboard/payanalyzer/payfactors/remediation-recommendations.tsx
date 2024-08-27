@@ -1,39 +1,88 @@
 import { Card, CardContent, CardHeader } from "@/components/card/Card";
 import ProgressRing from "@/components/progress/ProgressRing";
+import { EmployeeData } from "@/types/payaid.data";
 
-const RemediationRecommendations = ({ data }: { data: any[] }) => {
-  const generateRecommendation = (row: any) => {
-    switch (row.indicator) {
-      case "Statistically significant gap":
-        return "Urgent action required to address pay inequity.";
-      case "Approaching statistically significant gap":
-        return "Monitor and assess pay gaps closely.";
-      case "Non-statistically significant gap":
-        return "Pay distribution is fair, but regular monitoring is needed.";
-      case "No comparison possible":
-        return "Insufficient data to determine pay fairness.";
-      default:
-        return "No remediation required.";
-    }
+const getIndicator = (gapPercentage: number): string => {
+  if (gapPercentage === 0) return "No comparison possible";
+  if (gapPercentage > 10) return "Approaching statistically significant gap";
+  if (gapPercentage > 60) return "Non-statistically significant gap";
+  return "Statistically significant gap";
+};
+
+const getRecommendation = (indicator: string): string => {
+  const recommendations: Record<string, string> = {
+    "Statistically significant gap":
+      "Urgent action required to address pay inequity.",
+    "Approaching statistically significant gap":
+      "Monitor and assess pay gaps closely.",
+    "Non-statistically significant gap":
+      "Pay distribution is fair, but regular monitoring is needed.",
+    "No comparison possible": "Insufficient data to determine pay fairness.",
   };
+  return recommendations[indicator] || "No remediation required.";
+};
 
-  const getProgressRingColor = (indicator: string) => {
-    switch (indicator) {
-      case "Statistically significant gap":
-        return "red";
-      case "Approaching statistically significant gap":
-        return "orange";
-      case "Non-statistically significant gap":
-        return "green";
-      default:
-        return "gray";
-    }
+const getProgressRingColor = (indicator: string): string => {
+  const colors: Record<string, string> = {
+    "Statistically significant gap": "red",
+    "Approaching statistically significant gap": "orange",
+    "Non-statistically significant gap": "green",
+    "No comparison possible": "gray",
   };
+  return colors[indicator] || "gray";
+};
 
-  const enrichedData = data.map((row) => ({
-    ...row,
-    recommendation: generateRecommendation(row),
-  }));
+const calculateGapPercentage = (row: EmployeeData): number => {
+  // Convert all relevant fields to numeric values, default to 0 if NaN
+  const baseSalary = parseFloat(row.baseSalary) || 0;
+  const bonus = parseFloat(row.bonus) || 0;
+  const stockOptions = parseFloat(row.stockOptions) || 0;
+  const marketRate = parseFloat(row.marketRate) || 0;
+
+  // Performance-related points
+  const performancePoints = parseFloat(row.performancePoints) || 0;
+  const industryPoints = parseFloat(row.industryPoints) || 0;
+  const departmentPoints = parseFloat(row.departmentPoints) || 0;
+  const seniorityPoints = parseFloat(row.seniorityPoints) || 0;
+  const educationLevelPoints = parseFloat(row.educationLevelPoints) || 0;
+  const companySizePoints = parseFloat(row.companySizePoints) || 0;
+  const managerRating = parseFloat(row.managerRating) || 0;
+  const employeeRating = parseFloat(row.employeeRating) || 0;
+
+  // Compute total compensation as a sum of base salary, bonus, and stock options
+  const totalCompensation = baseSalary + bonus + stockOptions;
+
+  // Combine points and ratings into a score
+  const weightedScore =
+    performancePoints +
+    industryPoints +
+    departmentPoints +
+    seniorityPoints +
+    educationLevelPoints +
+    companySizePoints +
+    managerRating +
+    employeeRating;
+
+  // Calculate the gap percentage based on the difference between total compensation and market rate, weighted by the score
+  const gapPercentage =
+    (totalCompensation / (marketRate * weightedScore)) * 100;
+
+  // Ensure the gap percentage is clamped between 0 and 100 for meaningful comparison
+  return Math.max(0, Math.min(gapPercentage, 100));
+};
+
+const RemediationRecommendations = ({ data }: { data: EmployeeData[] }) => {
+  const enrichedData = data.map((row) => {
+    const gapPercentage = calculateGapPercentage(row);
+    const indicator = getIndicator(gapPercentage);
+
+    return {
+      ...row,
+      indicator,
+      recommendation: getRecommendation(indicator),
+      gapPercentage,
+    };
+  });
 
   return (
     <div className="w-full max-w-full bg-white p-6 dark:bg-gray-900">
@@ -54,9 +103,8 @@ const RemediationRecommendations = ({ data }: { data: any[] }) => {
               <p className="text-sm text-gray-700 dark:text-gray-300">
                 <strong>Recommendation:</strong> {row.recommendation}
               </p>
-              {/* Progress Ring based on the indicator */}
               <ProgressRing
-                value={row.gapPercentage}
+                value={Math.round(row.gapPercentage)}
                 color={getProgressRingColor(row.indicator)}
               />
             </CardContent>

@@ -19,9 +19,9 @@ interface CardHeaderProps {
 
 export const CardHeader = ({ title }: CardHeaderProps) => {
   return (
-    <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
+    <span className="text-lg font-semibold text-gray-800 dark:text-white">
       {title}
-    </h3>
+    </span>
   );
 };
 

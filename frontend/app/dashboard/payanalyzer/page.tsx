@@ -15,33 +15,6 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-const testData = [
-  {
-    name: "John Doe",
-    jobTitle: "Software Engineer",
-    indicator: "Statistically significant gap",
-    gapPercentage: 15, // Example percentage for ProgressRing
-  },
-  {
-    name: "Jane Smith",
-    jobTitle: "Product Manager",
-    indicator: "Approaching statistically significant gap",
-    gapPercentage: 7, // Example percentage for ProgressRing
-  },
-  {
-    name: "Michael Brown",
-    jobTitle: "HR Specialist",
-    indicator: "Non-statistically significant gap",
-    gapPercentage: 3, // Example percentage for ProgressRing
-  },
-  {
-    name: "Emily Johnson",
-    jobTitle: "Marketing Executive",
-    indicator: "No comparison possible",
-    gapPercentage: 0, // No gap percentage because comparison isn't possible
-  },
-];
-
 export default function PayAnalyzerPage() {
   const [data, setData] = useState<any[]>([]);
   const [isDataUploaded, setIsDataUploaded] = useState(false);
@@ -133,7 +106,7 @@ export default function PayAnalyzerPage() {
                 </section>
               </div>
               <div className="">
-                <RemediationRecommendations data={testData} />
+                <RemediationRecommendations data={data} />
               </div>
             </TabPanel>
 
