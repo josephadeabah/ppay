@@ -44,11 +44,13 @@ export const dataColumns: ColumnDef<EmployeeData, string>[] = [
     enableSorting: false,
     cell: (info) => (
       <BlurPopover
-        triggerLabel={<HiOutlineDotsHorizontal size={16} />}
-        triggerVariant="default"
+        triggerLabel={
+          <HiOutlineDotsHorizontal className="h-7 w-7 rounded-full bg-gray-200 p-2" />
+        }
+        triggerVariant="flat"
         triggerColor="default"
         content={
-          <span className="flex cursor-pointer items-center p-1 hover:bg-gray-50">
+          <span className="flex cursor-pointer items-center p-2 hover:bg-gray-50">
             <HiOutlineAnnotation className="h-4 w-4 text-violet-500" />
             <span>Add Notes</span>
           </span>
@@ -67,7 +69,11 @@ export const dataColumns: ColumnDef<EmployeeData, string>[] = [
     id: "name",
     header: "Name",
     enableSorting: false,
-    cell: (info) => info.getValue(),
+    cell: (info) => (
+      <div className="flex w-[7.5rem] items-center">
+        <span>{info.getValue()}</span>
+      </div>
+    ),
   }),
   columnHelper.accessor("gender", {
     id: "gender",
@@ -85,7 +91,11 @@ export const dataColumns: ColumnDef<EmployeeData, string>[] = [
     id: "jobTitle",
     header: "Job Title",
     enableSorting: false,
-    cell: (info) => info.getValue(),
+    cell: (info) => (
+      <div className="flex w-[10rem] items-center">
+        <span>{info.getValue()}</span>
+      </div>
+    ),
   }),
   columnHelper.accessor("department", {
     id: "department",
