@@ -230,6 +230,9 @@ export const dataColumns: ColumnDef<EmployeeData, string>[] = [
           firstProgress={performancePercent}
           secondProgress={managerPercent}
           thirdProgress={employeePercent}
+          firstTooltipContent={`Performance: ${Math.round(performancePercent)}%`}
+          secondTooltipContent={`Manager Rating: ${Math.round(managerPercent)}%`}
+          thirdTooltipContent={`Employee Rating: ${Math.round(employeePercent)}%`}
         />
       );
     },
