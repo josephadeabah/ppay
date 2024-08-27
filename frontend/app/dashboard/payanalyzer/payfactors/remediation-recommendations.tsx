@@ -3,10 +3,17 @@ import ProgressRing from "@/components/progress/ProgressRing";
 import { EmployeeData } from "@/types/payaid.data";
 
 const getIndicator = (gapPercentage: number): string => {
-  if (gapPercentage === 0) return "No comparison possible";
-  if (gapPercentage > 10) return "Approaching statistically significant gap";
-  if (gapPercentage > 60) return "Non-statistically significant gap";
-  return "Statistically significant gap";
+  if (gapPercentage === 0) {
+    return "No comparison possible";
+  } else if (gapPercentage >= 1 && gapPercentage < 20) {
+    return "Statistically significant gap";
+  } else if (gapPercentage >= 20 && gapPercentage < 50) {
+    return "Approaching statistically significant gap";
+  } else if (gapPercentage >= 50 && gapPercentage <= 100) {
+    return "Non-statistically significant gap";
+  } else {
+    return "No comparison possible"; // This case handles any out-of-range values
+  }
 };
 
 const getRecommendation = (indicator: string): string => {
@@ -64,8 +71,7 @@ const calculateGapPercentage = (row: EmployeeData): number => {
     employeeRating;
 
   // Calculate the gap percentage based on the difference between total compensation and market rate, weighted by the score
-  const gapPercentage =
-    (totalCompensation / (marketRate * weightedScore)) * 100;
+  const gapPercentage = ((totalCompensation - marketRate) / marketRate) * 100;
 
   // Ensure the gap percentage is clamped between 0 and 100 for meaningful comparison
   return Math.max(0, Math.min(gapPercentage, 100));
@@ -96,6 +102,9 @@ const RemediationRecommendations = ({ data }: { data: EmployeeData[] }) => {
             <CardContent>
               <p className="text-sm text-gray-700 dark:text-gray-300">
                 <strong>Job Title:</strong> {row.jobTitle}
+              </p>
+              <p className="text-sm text-gray-700 dark:text-gray-300">
+                <strong>Gap Percentage:</strong> {row.gapPercentage.toFixed(2)}%
               </p>
               <p className="text-sm text-gray-700 dark:text-gray-300">
                 <strong>Indicator:</strong> {row.indicator}
