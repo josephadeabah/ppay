@@ -148,7 +148,7 @@ const RemediationRecommendations = ({ data }: { data: EmployeeData[] }) => {
   });
 
   return (
-    <div className="w-full max-w-full bg-white p-6 dark:bg-gray-900">
+    <div className="w-full max-w-full bg-white p-2 dark:bg-gray-900">
       <h2 className="mb-6 text-lg font-semibold text-gray-900 dark:text-gray-100">
         Pay Equity Distribution & Remediation Recommendations
       </h2>
@@ -157,41 +157,55 @@ const RemediationRecommendations = ({ data }: { data: EmployeeData[] }) => {
           <Card key={idx}>
             <CardHeader title={row.name} />
             <CardContent>
-              <p className="text-sm text-gray-700 dark:text-gray-300">
-                <strong>Job Title:</strong> {row.jobTitle}
-              </p>
-              <p className="text-sm text-gray-700 dark:text-gray-300">
-                <strong>Gap Percentage:</strong> {row.gapPercentage.toFixed(2)}%
-              </p>
-              <p className="text-sm text-gray-700 dark:text-gray-300">
-                <strong>Indicator:</strong> {row.indicator}
-              </p>
-              <p className="text-sm text-gray-700 dark:text-gray-300">
-                <strong>Recommendation:</strong> {row.recommendation}
-              </p>
-              <p className="text-sm text-gray-700 dark:text-gray-300">
-                <strong>Company Pay Raise Rate:</strong>{" "}
-                {row.companyPayRaiseRate.toFixed(2)}%
-              </p>
-              <p className="text-sm text-gray-700 dark:text-gray-300">
-                <strong>Global Pay Raise Rate:</strong>{" "}
-                {row.globalPayRaiseRate.toFixed(2)}%
-              </p>
-              <p className="text-sm text-gray-700 dark:text-gray-300">
-                <strong>Pay Raise Gap:</strong> {row.payRaiseGap.toFixed(2)}%
-              </p>
-              <p className="text-sm text-gray-700 dark:text-gray-300">
-                <strong>Hourly Rate:</strong> ${row.hourlyRate.toFixed(2)}
-              </p>
-              <div className="flex items-center justify-between">
-                <ProgressRing
-                  value={Math.round(row.gapPercentage)}
-                  color={getProgressRingColor(row.indicator)}
-                />
-                <ProgressRing
-                  value={Math.round(row.payRaiseGap)}
-                  color={getProgressRingColor(row.indicator)}
-                />
+              <div className="flex">
+                {/* Left side: Textual details */}
+                <div className="flex w-2/3 flex-col gap-1">
+                  <p className="text-sm text-gray-700 dark:text-gray-300">
+                    <strong>Job Title:</strong> {row.jobTitle}
+                  </p>
+                  <p className="text-sm text-gray-700 dark:text-gray-300">
+                    <strong>Gap Percentage:</strong>{" "}
+                    {row.gapPercentage.toFixed(2)}%
+                  </p>
+                  <p className="text-sm text-gray-700 dark:text-gray-300">
+                    <strong>Indicator:</strong> {row.indicator}
+                  </p>
+                  <p className="text-sm text-gray-700 dark:text-gray-300">
+                    <strong>Recommendation:</strong> {row.recommendation}
+                  </p>
+                  <div className="w-full border-b-2 border-gray-200 dark:border-gray-700" />
+                  <p className="text-sm text-gray-700 dark:text-gray-300">
+                    <strong>Company Pay Raise Rate:</strong>{" "}
+                    {row.companyPayRaiseRate.toFixed(2)}%
+                  </p>
+                  <p className="text-sm text-gray-700 dark:text-gray-300">
+                    <strong>Global Pay Raise Rate:</strong>{" "}
+                    {row.globalPayRaiseRate.toFixed(2)}%
+                  </p>
+                  <p className="text-sm text-gray-700 dark:text-gray-300">
+                    <strong>Pay Raise Gap:</strong> {row.payRaiseGap.toFixed(2)}
+                    %
+                  </p>
+                  <p className="text-sm text-gray-700 dark:text-gray-300">
+                    <strong>Hourly Rate:</strong> ${row.hourlyRate.toFixed(2)}
+                  </p>
+                </div>
+
+                {/* Right side: Progress Rings */}
+                <div className="flex w-1/3 flex-col items-center justify-between">
+                  <div data-tip data-for="gapPercentage">
+                    <ProgressRing
+                      value={Math.round(row.gapPercentage)}
+                      color={getProgressRingColor(row.indicator)}
+                    />
+                  </div>
+                  <div data-tip data-for="payRaiseGap">
+                    <ProgressRing
+                      value={Math.round(row.payRaiseGap)}
+                      color={getProgressRingColor(row.indicator)}
+                    />
+                  </div>
+                </div>
               </div>
             </CardContent>
           </Card>
