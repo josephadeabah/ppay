@@ -1,88 +1,265 @@
 "use client";
 
+import { BenchmarkDataType } from "@/app/dashboard/benchmark/data";
 import { Card, CardContent, CardHeader } from "@/components/card/Card";
-import ProgressBar from "@/components/progress/ProgressBar";
 import ProgressRing from "@/components/progress/ProgressRing";
 import { EmployeeData } from "@/types/payaid.data";
+import { getCurrentMonthName } from "@/utils/date.utils";
+import { Chart, registerables } from "chart.js";
+import { useMemo } from "react";
+import { Bar } from "react-chartjs-2";
 
-const PromotionDeterminant = ({ data }: { data: EmployeeData[] }) => {
-  // Logic to determine promotion on demand
+Chart.register(...registerables);
+
+const PromotionDeterminant = ({
+  data,
+  benchmarkData,
+}: {
+  data: EmployeeData[];
+  benchmarkData: BenchmarkDataType[];
+}) => {
+  // Function to determine promotion based on multiple factors
   const isPromoted = (row: EmployeeData): boolean => {
-    // Example logic: Assume an employee is promoted if their performancePoints exceed a certain threshold
     const performancePoints = parseFloat(row.performancePoints) || 0;
-    return performancePoints >= 80; // Threshold for promotion
+    const managerRating = parseFloat(row.managerRating) || 0;
+    return performancePoints >= 80 && managerRating >= 4; // Example thresholds
   };
 
-  // Calculate statistics dynamically
-  const totalMen = data.filter((row) => row.gender === "Male").length;
-  const totalWomen = data.filter((row) => row.gender === "Female").length;
+  // Calculate statistics dynamically for multiple factors
+  const calculatePromotionStats = (data: EmployeeData[]) => {
+    const genderStats = data.reduce(
+      (acc, row) => {
+        const gender = row.gender;
+        acc[gender] = acc[gender] || { total: 0, promoted: 0 };
+        acc[gender].total += 1;
+        if (isPromoted(row)) acc[gender].promoted += 1;
+        return acc;
+      },
+      {} as { [key: string]: { total: number; promoted: number } },
+    );
 
-  const menPromoted = data.filter(
-    (row) => row.gender === "Male" && isPromoted(row),
-  ).length;
-  const womenPromoted = data.filter(
-    (row) => row.gender === "Female" && isPromoted(row),
-  ).length;
+    const jobTitleStats = data.reduce(
+      (acc, row) => {
+        const jobTitleStats = row.jobTitle;
+        acc[jobTitleStats] = acc[jobTitleStats] || {
+          total: 0,
+          promoted: 0,
+        };
+        acc[jobTitleStats].total += 1;
+        if (isPromoted(row)) acc[jobTitleStats].promoted += 1;
+        return acc;
+      },
+      {} as { [key: string]: { total: number; promoted: number } },
+    );
 
-  // Ensure promotion percentages are correctly calculated and prevent division by zero
-  const menPromotionPercentage =
-    totalMen > 0 ? Math.round((menPromoted / totalMen) * 100) : 0;
-  const womenPromotionPercentage =
-    totalWomen > 0 ? Math.round((womenPromoted / totalWomen) * 100) : 0;
+    const seniorityLevelStats = data.reduce(
+      (acc, row) => {
+        const seniorityLevel = row.seniorityLevel;
+        acc[seniorityLevel] = acc[seniorityLevel] || { total: 0, promoted: 0 };
+        acc[seniorityLevel].total += 1;
+        if (isPromoted(row)) acc[seniorityLevel].promoted += 1;
+        return acc;
+      },
+      {} as { [key: string]: { total: number; promoted: number } },
+    );
+
+    return { genderStats, jobTitleStats, seniorityLevelStats };
+  };
+
+  const { genderStats, jobTitleStats, seniorityLevelStats } = useMemo(
+    () => calculatePromotionStats(data),
+    [data],
+  );
+
+  // Data for visualizations
+  const createChartData = (stats: {
+    [key: string]: { total: number; promoted: number };
+  }) => {
+    return {
+      labels: Object.keys(stats),
+      datasets: [
+        {
+          label: "Promotion Rate (%)",
+          data: Object.values(stats).map(({ total, promoted }) =>
+            total > 0 ? (promoted / total) * 100 : 0,
+          ),
+          backgroundColor: "rgba(75, 192, 192, 0.2)",
+          borderColor: "rgba(75, 192, 192, 1)",
+          borderWidth: 1,
+        },
+      ],
+    };
+  };
+
+  // Benchmark comparison logic
+  const createBenchmarkComparisonData = () => {
+    const roles = Array.from(new Set(data.map((row) => row.jobTitle)));
+
+    const roleComparison = roles.map((role) => {
+      const internalSalaries = data
+        .filter((row) => row.jobTitle === role)
+        .map((row) => parseFloat(row.baseSalary));
+      const benchmark = benchmarkData?.find((bench) => bench.role === role);
+      const benchmarkSalary = benchmark?.benchmarkSalary ?? 0;
+
+      return {
+        role,
+        averageInternalSalary:
+          internalSalaries.length > 0
+            ? internalSalaries.reduce((a, b) => a + b) / internalSalaries.length
+            : 0,
+        benchmarkSalary,
+      };
+    });
+
+    return {
+      labels: roleComparison.map((comp) => comp.role),
+      datasets: [
+        {
+          label: "Internal Salary",
+          data: roleComparison.map((comp) => comp.averageInternalSalary),
+          backgroundColor: "rgba(75, 192, 192, 0.2)",
+          borderColor: "rgba(75, 192, 192, 1)",
+          borderWidth: 1,
+        },
+        {
+          label: "Benchmark Salary",
+          data: roleComparison.map((comp) => comp.benchmarkSalary),
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          borderColor: "rgba(255, 99, 132, 1)",
+          borderWidth: 1,
+        },
+      ],
+    };
+  };
+
+  const benchmarkComparisonData = createBenchmarkComparisonData();
 
   return (
-    <div className="w-full max-w-full bg-white dark:bg-gray-900">
+    <div className="w-full max-w-full rounded-lg bg-white p-2 dark:bg-gray-900">
       <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
-        Promotion Statistics by Gender
+        Based on the data you provided
       </h2>
 
+      {/* Gender Promotion Stats */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-        {/* Card for Men */}
+        {Object.keys(genderStats).map((gender) => {
+          const { total, promoted } = genderStats[gender];
+          const promotionPercentage =
+            total > 0 ? Math.round((promoted / total) * 100) : 0;
+          return (
+            <Card key={gender}>
+              <CardHeader title={`${gender} Promoted`} />
+              <CardContent>
+                <ProgressRing
+                  value={promotionPercentage}
+                  size={120}
+                  strokeWidth={10}
+                  color={gender === "Male" ? "blue" : "pink"}
+                />
+                <p className="mt-2 text-center text-sm dark:text-gray-100">
+                  {promoted} out of {total} {gender.toLowerCase()}s were likely
+                  to have been promoted this {getCurrentMonthName()}.
+                </p>
+              </CardContent>
+            </Card>
+          );
+        })}
+      </div>
+
+      {/* Job Role Promotion Stats */}
+      <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
         <Card>
-          <CardHeader title="Men Promoted" />
+          <CardHeader title="Promotion by Job Role" />
           <CardContent>
-            <ProgressRing
-              value={menPromotionPercentage}
-              size={120}
-              strokeWidth={10}
-              color="green"
+            <Bar
+              data={createChartData(jobTitleStats)}
+              options={{
+                responsive: true,
+                plugins: {
+                  legend: { position: "top" as const },
+                  tooltip: {
+                    callbacks: {
+                      label: (context) => {
+                        return `${context.label}: ${(context.raw as number).toFixed(2)}%`;
+                      },
+                    },
+                  },
+                },
+                scales: {
+                  x: { title: { display: true, text: "Job Role" } },
+                  y: {
+                    title: { display: true, text: "Promotion Rate (%)" },
+                    beginAtZero: true,
+                  },
+                },
+              }}
             />
-            <p className="mt-2 text-center text-sm dark:text-gray-100">
-              {menPromoted} out of {totalMen} men were promoted.
-            </p>
           </CardContent>
         </Card>
-
-        {/* Card for Women */}
         <Card>
-          <CardHeader title="Women Promoted" />
+          <CardHeader title="Promotion by Seniority Level" />
           <CardContent>
-            <ProgressRing
-              value={womenPromotionPercentage}
-              size={120}
-              strokeWidth={10}
-              color="black"
+            <Bar
+              data={createChartData(seniorityLevelStats)}
+              options={{
+                responsive: true,
+                plugins: {
+                  legend: { position: "top" as const },
+                  tooltip: {
+                    callbacks: {
+                      label: (context) => {
+                        return `${context.label}: ${(context.raw as number).toFixed(2)}%`;
+                      },
+                    },
+                  },
+                },
+                scales: {
+                  x: { title: { display: true, text: "Seniority Level" } },
+                  y: {
+                    title: { display: true, text: "Promotion Rate (%)" },
+                    beginAtZero: true,
+                  },
+                },
+              }}
             />
-            <p className="mt-2 text-center text-sm dark:text-gray-100">
-              {womenPromoted} out of {totalWomen} women were promoted.
-            </p>
           </CardContent>
         </Card>
       </div>
 
+      {/* Seniority Level Promotion Stats */}
+      {/* <div className="mt-8">
+
+      </div> */}
+
+      {/* Benchmark Comparison */}
       <div className="mt-8">
         <Card>
-          <CardHeader title="Overall Promotion Comparison" />
+          <CardHeader title="Your current salary per role compared to global salary benchmarks per role" />
           <CardContent>
-            <ProgressBar
-              firstProgress={menPromotionPercentage}
-              secondProgress={womenPromotionPercentage}
-              firstTooltipContent={`Men: ${menPromotionPercentage}%`}
-              secondTooltipContent={`Women: ${womenPromotionPercentage}%`}
+            <Bar
+              data={benchmarkComparisonData}
+              options={{
+                responsive: true,
+                plugins: {
+                  legend: { position: "top" as const },
+                  tooltip: {
+                    callbacks: {
+                      label: (context) => {
+                        return `${context.label}: ${(context.raw as number).toFixed(2)}%`;
+                      },
+                    },
+                  },
+                },
+                scales: {
+                  x: { title: { display: true, text: "Role" } },
+                  y: {
+                    title: { display: true, text: "Salary ($)" },
+                    beginAtZero: true,
+                  },
+                },
+              }}
             />
-            <p className="mt-4 text-center text-sm dark:text-gray-100">
-              A comparison of promotion rates between men and women.
-            </p>
           </CardContent>
         </Card>
       </div>

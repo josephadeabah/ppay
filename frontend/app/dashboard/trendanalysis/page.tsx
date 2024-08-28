@@ -60,7 +60,19 @@ export default function TrendAnalysis() {
     }, 2000);
   }, []);
 
-  const tableData = [
+  interface TrendDataEntry {
+    country: string;
+    industry: string;
+    company: string;
+    role: string;
+    currentSalaryByCompany: number;
+    currentSalaryByRole: number;
+    change: number;
+    changeTimeframe: string;
+    benefits: string;
+  }
+
+  const tableData: TrendDataEntry[] = [
     // Data entries here...
     {
       country: "USA",
