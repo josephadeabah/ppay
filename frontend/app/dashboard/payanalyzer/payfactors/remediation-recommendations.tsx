@@ -2,6 +2,58 @@ import { Card, CardContent, CardHeader } from "@/components/card/Card";
 import ProgressRing from "@/components/progress/ProgressRing";
 import { EmployeeData } from "@/types/payaid.data";
 
+// Calculate the company's hourly rate for an employee
+const calculateHourlyRate = (baseSalary: number): number => {
+  const workingHoursPerYear = 2080; // 40 hours/week * 52 weeks/year
+  return baseSalary / workingHoursPerYear;
+};
+
+// Calculate the average salary for a specific job title within the company
+const calculateCompanyAverageSalary = (
+  data: EmployeeData[],
+  jobTitle: string,
+): number => {
+  const salaries = data
+    .filter((row) => row.jobTitle === jobTitle)
+    .map((row) => parseFloat(row.baseSalary) || 0);
+  const total = salaries.reduce((sum, salary) => sum + salary, 0);
+  return salaries.length ? total / salaries.length : 0;
+};
+
+// Calculate the global average salary across all job titles within the company
+const calculateGlobalAverageSalary = (data: EmployeeData[]): number => {
+  const salaries = data.map((row) => parseFloat(row.baseSalary) || 0);
+  const total = salaries.reduce((sum, salary) => sum + salary, 0);
+  return salaries.length ? total / salaries.length : 0;
+};
+
+// Calculate the pay raise rates and gaps, including hourly rate
+const calculatePayRaiseGap = (
+  baseSalary: number,
+  companyAvgSalary: number,
+  globalAvgSalary: number,
+): {
+  companyPayRaiseRate: number;
+  globalPayRaiseRate: number;
+  payRaiseGap: number;
+  hourlyRate: number;
+} => {
+  const companyPayRaiseRate =
+    ((baseSalary - companyAvgSalary) / companyAvgSalary) * 100;
+  const globalPayRaiseRate =
+    ((baseSalary - globalAvgSalary) / globalAvgSalary) * 100;
+  const payRaiseGap = companyPayRaiseRate - globalPayRaiseRate;
+
+  const hourlyRate = calculateHourlyRate(baseSalary);
+
+  return {
+    companyPayRaiseRate,
+    globalPayRaiseRate,
+    payRaiseGap,
+    hourlyRate,
+  };
+};
+
 const getIndicator = (gapPercentage: number): string => {
   if (gapPercentage === 0) {
     return "No comparison possible";
@@ -12,7 +64,7 @@ const getIndicator = (gapPercentage: number): string => {
   } else if (gapPercentage >= 50 && gapPercentage <= 100) {
     return "Non-statistically significant gap";
   } else {
-    return "No comparison possible"; // This case handles any out-of-range values
+    return "No comparison possible";
   }
 };
 
@@ -40,13 +92,11 @@ const getProgressRingColor = (indicator: string): string => {
 };
 
 const calculateGapPercentage = (row: EmployeeData): number => {
-  // Convert all relevant fields to numeric values, default to 0 if NaN
   const baseSalary = parseFloat(row.baseSalary) || 0;
   const bonus = parseFloat(row.bonus) || 0;
   const stockOptions = parseFloat(row.stockOptions) || 0;
   const marketRate = parseFloat(row.marketRate) || 0;
 
-  // Performance-related points
   const performancePoints = parseFloat(row.performancePoints) || 0;
   const industryPoints = parseFloat(row.industryPoints) || 0;
   const departmentPoints = parseFloat(row.departmentPoints) || 0;
@@ -56,10 +106,7 @@ const calculateGapPercentage = (row: EmployeeData): number => {
   const managerRating = parseFloat(row.managerRating) || 0;
   const employeeRating = parseFloat(row.employeeRating) || 0;
 
-  // Compute total compensation as a sum of base salary, bonus, and stock options
   const totalCompensation = baseSalary + bonus + stockOptions;
-
-  // Combine points and ratings into a score
   const weightedScore =
     performancePoints +
     industryPoints +
@@ -70,23 +117,33 @@ const calculateGapPercentage = (row: EmployeeData): number => {
     managerRating +
     employeeRating;
 
-  // Calculate the gap percentage based on the difference between total compensation and market rate, weighted by the score
   const gapPercentage = ((totalCompensation - marketRate) / marketRate) * 100;
-
-  // Ensure the gap percentage is clamped between 0 and 100 for meaningful comparison
   return Math.max(0, Math.min(gapPercentage, 100));
 };
 
 const RemediationRecommendations = ({ data }: { data: EmployeeData[] }) => {
+  const globalAvgSalary = calculateGlobalAverageSalary(data);
+
   const enrichedData = data.map((row) => {
     const gapPercentage = calculateGapPercentage(row);
     const indicator = getIndicator(gapPercentage);
+    const companyAvgSalary = calculateCompanyAverageSalary(data, row.jobTitle);
+    const { companyPayRaiseRate, globalPayRaiseRate, payRaiseGap, hourlyRate } =
+      calculatePayRaiseGap(
+        parseFloat(row.baseSalary) || 0,
+        companyAvgSalary,
+        globalAvgSalary,
+      );
 
     return {
       ...row,
       indicator,
       recommendation: getRecommendation(indicator),
       gapPercentage,
+      companyPayRaiseRate,
+      globalPayRaiseRate,
+      payRaiseGap,
+      hourlyRate,
     };
   });
 
@@ -112,10 +169,30 @@ const RemediationRecommendations = ({ data }: { data: EmployeeData[] }) => {
               <p className="text-sm text-gray-700 dark:text-gray-300">
                 <strong>Recommendation:</strong> {row.recommendation}
               </p>
-              <ProgressRing
-                value={Math.round(row.gapPercentage)}
-                color={getProgressRingColor(row.indicator)}
-              />
+              <p className="text-sm text-gray-700 dark:text-gray-300">
+                <strong>Company Pay Raise Rate:</strong>{" "}
+                {row.companyPayRaiseRate.toFixed(2)}%
+              </p>
+              <p className="text-sm text-gray-700 dark:text-gray-300">
+                <strong>Global Pay Raise Rate:</strong>{" "}
+                {row.globalPayRaiseRate.toFixed(2)}%
+              </p>
+              <p className="text-sm text-gray-700 dark:text-gray-300">
+                <strong>Pay Raise Gap:</strong> {row.payRaiseGap.toFixed(2)}%
+              </p>
+              <p className="text-sm text-gray-700 dark:text-gray-300">
+                <strong>Hourly Rate:</strong> ${row.hourlyRate.toFixed(2)}
+              </p>
+              <div className="flex items-center justify-between">
+                <ProgressRing
+                  value={Math.round(row.gapPercentage)}
+                  color={getProgressRingColor(row.indicator)}
+                />
+                <ProgressRing
+                  value={Math.round(row.payRaiseGap)}
+                  color={getProgressRingColor(row.indicator)}
+                />
+              </div>
             </CardContent>
           </Card>
         ))}
