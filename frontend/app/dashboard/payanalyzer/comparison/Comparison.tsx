@@ -6,7 +6,7 @@ import ProgressRing from "@/components/progress/ProgressRing";
 import { EmployeeData } from "@/types/payaid.data";
 import { Chart, registerables } from "chart.js";
 import { useState } from "react";
-import { Doughnut, Line } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 
 Chart.register(...registerables);
 
@@ -156,11 +156,6 @@ const ComparisonPage = ({ data }: { data: EmployeeData[] }) => {
       {/* Gender Promotion vs Compensation Chart */}
       <div className="relative mb-8 h-auto w-full min-w-full bg-gray-50 dark:bg-slate-700">
         <Line data={chartData} />
-      </div>
-
-      {/* Gender Distribution Ring Chart */}
-      <div className="mx-auto max-w-xs">
-        <Doughnut data={genderDistribution} />
       </div>
     </div>
   );
