@@ -21,23 +21,23 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   return (
     <div className="mx-auto w-[300px]">
       {/* Progress labels */}
-      <div className="flex items-center justify-between text-sm font-bold">
+      <div className="text-md flex items-center justify-between font-bold">
         <span
-          className="text-[9px] text-red-500"
+          className="text-red-500"
           data-tooltip-id="performance-tooltip"
           data-tooltip-content={firstTooltipContent}
         >
           {`${Math.round(firstProgress)}%`}
         </span>
         <span
-          className="text-[9px] text-yellow-500"
+          className="text-yellow-500"
           data-tooltip-id="manager-tooltip"
           data-tooltip-content={secondTooltipContent}
         >
           {secondProgress && `${Math.round(Number(secondProgress))}%`}
         </span>
         <span
-          className="text-[9px] text-green-500"
+          className="text-green-500"
           data-tooltip-id="employee-tooltip"
           data-tooltip-content={thirdTooltipContent}
         >

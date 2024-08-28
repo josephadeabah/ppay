@@ -236,14 +236,16 @@ export const dataColumns: ColumnDef<EmployeeData, string>[] = [
         getSectionPercentages(info.row.original);
 
       return (
-        <ProgressBar
-          firstProgress={performancePercent}
-          secondProgress={managerPercent}
-          thirdProgress={employeePercent}
-          firstTooltipContent={`Performance: ${Math.round(performancePercent)}%`}
-          secondTooltipContent={`Manager Rating: ${Math.round(managerPercent)}%`}
-          thirdTooltipContent={`Employee Rating: ${Math.round(employeePercent)}%`}
-        />
+        <div className="w-[300px] text-[11px]">
+          <ProgressBar
+            firstProgress={performancePercent}
+            secondProgress={managerPercent}
+            thirdProgress={employeePercent}
+            firstTooltipContent={`Performance: ${Math.round(performancePercent)}%`}
+            secondTooltipContent={`Manager Rating: ${Math.round(managerPercent)}%`}
+            thirdTooltipContent={`Employee Rating: ${Math.round(employeePercent)}%`}
+          />
+        </div>
       );
     },
   }),
