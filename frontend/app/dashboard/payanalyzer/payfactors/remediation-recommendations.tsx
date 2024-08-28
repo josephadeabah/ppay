@@ -192,7 +192,7 @@ const RemediationRecommendations = ({ data }: { data: EmployeeData[] }) => {
                 </div>
 
                 {/* Right side: Progress Rings */}
-                <div className="flex w-1/3 flex-col items-center justify-between">
+                <div className="flex w-1/3 flex-col items-center justify-between gap-10">
                   <div data-tip data-for="gapPercentage">
                     <ProgressRing
                       value={Math.round(row.gapPercentage)}
