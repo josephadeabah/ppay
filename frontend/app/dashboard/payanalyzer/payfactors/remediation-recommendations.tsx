@@ -55,16 +55,18 @@ const calculatePayRaiseGap = (
 };
 
 const getIndicator = (gapPercentage: number): string => {
-  if (gapPercentage === 0) {
-    return "No comparison possible";
-  } else if (gapPercentage >= 1 && gapPercentage < 20) {
-    return "Statistically significant gap";
-  } else if (gapPercentage >= 20 && gapPercentage < 50) {
-    return "Approaching statistically significant gap";
-  } else if (gapPercentage >= 50 && gapPercentage <= 100) {
+  if (gapPercentage <= 0) {
+    return "No comparison possible"; // Adjusted to handle zero or negative values
+  } else if (gapPercentage >= 90) {
+    return "No significant gap";
+  } else if (gapPercentage >= 50) {
     return "Non-statistically significant gap";
+  } else if (gapPercentage >= 20) {
+    return "Approaching statistically significant gap";
+  } else if (gapPercentage >= 1) {
+    return "Statistically significant gap";
   } else {
-    return "No comparison possible";
+    return "Highly significant gap"; // Should not be reached with valid input
   }
 };
 
@@ -76,18 +78,32 @@ const getRecommendation = (indicator: string): string => {
       "Monitor and assess pay gaps closely.",
     "Non-statistically significant gap":
       "Pay distribution is fair, but regular monitoring is needed.",
+    "Highly significant gap":
+      "Critical gap detected, immediate remediation required.",
+    "No significant gap":
+      "Pay equity is well-managed; continue regular reviews.",
     "No comparison possible": "Insufficient data to determine pay fairness.",
   };
   return recommendations[indicator] || "No remediation required.";
 };
 
-const getProgressRingColor = (indicator: string): string => {
+const getProgressRingColor = (
+  indicator: string,
+  percentage: number,
+): string => {
+  if (percentage <= 0) {
+    return "gray"; // Always gray if percentage is zero or negative
+  }
+
   const colors: Record<string, string> = {
     "Statistically significant gap": "red",
     "Approaching statistically significant gap": "orange",
-    "Non-statistically significant gap": "green",
+    "Non-statistically significant gap": "yellow",
+    "Highly significant gap": "darkred",
+    "No significant gap": "green",
     "No comparison possible": "gray",
   };
+
   return colors[indicator] || "gray";
 };
 
@@ -196,13 +212,19 @@ const RemediationRecommendations = ({ data }: { data: EmployeeData[] }) => {
                   <div data-tip data-for="gapPercentage">
                     <ProgressRing
                       value={Math.round(row.gapPercentage)}
-                      color={getProgressRingColor(row.indicator)}
+                      color={getProgressRingColor(
+                        row.indicator,
+                        row.gapPercentage,
+                      )}
                     />
                   </div>
                   <div data-tip data-for="payRaiseGap">
                     <ProgressRing
                       value={Math.round(row.payRaiseGap)}
-                      color={getProgressRingColor(row.indicator)}
+                      color={getProgressRingColor(
+                        row.indicator,
+                        row.payRaiseGap,
+                      )}
                     />
                   </div>
                 </div>
