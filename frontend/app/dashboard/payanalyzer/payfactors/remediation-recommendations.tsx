@@ -1,6 +1,8 @@
 import { Card, CardContent, CardHeader } from "@/components/card/Card";
+import PaginationComponent from "@/components/pagination/pagination";
 import ProgressRing from "@/components/progress/ProgressRing";
 import { EmployeeData } from "@/types/payaid.data";
+import { useState } from "react";
 
 // Calculate the company's hourly rate for an employee
 const calculateHourlyRate = (baseSalary: number): number => {
@@ -163,6 +165,15 @@ const RemediationRecommendations = ({ data }: { data: EmployeeData[] }) => {
     };
   });
 
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6; // Number of cards per page
+
+  // Calculate the paginated data
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = enrichedData.slice(indexOfFirstItem, indexOfLastItem);
+
   return (
     <div className="w-full max-w-full bg-white p-2 dark:bg-gray-900">
       {enrichedData.length > 0 && (
@@ -172,7 +183,7 @@ const RemediationRecommendations = ({ data }: { data: EmployeeData[] }) => {
         </h2>
       )}
       <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {enrichedData.map((row, idx) => (
+        {currentItems.map((row, idx) => (
           <Card key={idx}>
             <CardHeader title={row.name} />
             <CardContent>
@@ -236,6 +247,13 @@ const RemediationRecommendations = ({ data }: { data: EmployeeData[] }) => {
           </Card>
         ))}
       </div>
+
+      {/* Pagination Component */}
+      <PaginationComponent
+        total={Math.ceil(enrichedData.length / itemsPerPage)}
+        initialPage={1}
+        onPageChange={setCurrentPage}
+      />
     </div>
   );
 };
