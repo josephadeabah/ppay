@@ -115,8 +115,14 @@ export default function PayAnalyzerPage() {
               {/* Management Section */}
               <div className="w-full bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
                 <section className="h-screen bg-white p-4 shadow-sm dark:bg-gray-800">
-                  {data.length > 0 && (
+                  {data.length > 0 ? (
                     <ManagementComponent initialData={data} />
+                  ) : (
+                    <div className="flex h-full items-center justify-center">
+                      <p className="text-center text-2xl font-medium text-gray-700 dark:text-gray-50">
+                        Please upload data first
+                      </p>
+                    </div>
                   )}
                 </section>
               </div>

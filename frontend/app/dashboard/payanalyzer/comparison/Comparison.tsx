@@ -266,7 +266,7 @@ const ComparisonPage = ({ data }: { data: EmployeeData[] }) => {
       </div>
 
       {/* Compensation Analysis Chart */}
-      <div className="relative mb-8 h-auto w-full min-w-full bg-gray-50 dark:bg-slate-700">
+      <div className="relative mb-8 h-auto w-full min-w-full bg-gray-50 shadow-md dark:bg-slate-700">
         <Line data={chartData} />
       </div>
 

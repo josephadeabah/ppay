@@ -235,7 +235,7 @@ const InflationPage: React.FC = () => {
                       ],
                       datasets: countryData.current.datasets.map((dataset) => ({
                         ...dataset,
-                        label: `Overall Inflation Rate per month in ${country}`,
+                        label: `Chart of monthly inflation rate in ${country}`,
                         data: dataset.categories.map(
                           (category) => category.inflationRate || 0,
                         ),
