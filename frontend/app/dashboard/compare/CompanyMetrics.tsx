@@ -91,13 +91,9 @@ const CompanyMetrics: React.FC = () => {
 
   return (
     <div className="flex w-full flex-col p-3">
-      <div className="mb-6 mt-2 flex items-center gap-4 text-xl font-bold text-gray-700 dark:text-gray-50">
-        Company Metrics {new Date().getFullYear()} (Live{" "}
-        <div className="inline-block h-3 w-3 rounded-full bg-green-400"></div>)
-      </div>
       <div className="mb-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {metrics.map((metric) => (
-          <div key={metric.key} className="bg-white p-4 dark:bg-gray-800">
+          <div key={metric.key} className="p-4 dark:bg-gray-800">
             <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-50">
               {metric.label}
             </h3>
@@ -117,11 +113,9 @@ const CompanyMetrics: React.FC = () => {
           </div>
         ))}
       </div>
-      <div className="mt-8">
+      <div className="mt-5">
         <div className="mb-6 mt-2 flex items-center gap-2 text-xl font-bold text-gray-700 dark:text-gray-50">
-          {new Date().getFullYear()} (Live{" "}
-          <div className="inline-block h-3 w-3 rounded-full bg-green-400"></div>
-          ) in Ranking of Best Companies by
+          Ranking of Best Companies by
         </div>
         <div className="overflow-x-auto [&::-moz-scrollbar-thumb]:rounded-full [&::-moz-scrollbar-thumb]:bg-gray-200 [&::-moz-scrollbar-track]:m-1 [&::-moz-scrollbar]:w-2 [&::-ms-scrollbar-thumb]:rounded-full [&::-ms-scrollbar-thumb]:bg-gray-200 [&::-ms-scrollbar-track]:m-1 [&::-ms-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-track]:m-1 [&::-webkit-scrollbar]:w-2">
           <table className="min-w-full border-collapse border border-gray-200 dark:border-gray-700">

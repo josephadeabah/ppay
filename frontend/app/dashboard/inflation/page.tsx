@@ -200,29 +200,31 @@ const InflationPage: React.FC = () => {
                     {countryData.current.datasets[0].overallInflationRate ||
                       "No data available"}
                   </h3>
-                  <Table hoverable={true}>
-                    <Table.Head>
-                      <Table.HeadCell>Category</Table.HeadCell>
-                      <Table.HeadCell>Inflation Rate</Table.HeadCell>
-                    </Table.Head>
-                    <Table.Body className="divide-y">
-                      {countryData.current.datasets[0].categories.map(
-                        (category) => (
-                          <Table.Row
-                            key={category.category}
-                            className="bg-white dark:bg-gray-800"
-                          >
-                            <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                              {category.category}
-                            </Table.Cell>
-                            <Table.Cell>
-                              {category.inflationRate || "No data available"}
-                            </Table.Cell>
-                          </Table.Row>
-                        ),
-                      )}
-                    </Table.Body>
-                  </Table>
+                  <div className="h-[300px] overflow-y-auto [&::-moz-scrollbar-thumb]:rounded-full [&::-moz-scrollbar-thumb]:bg-gray-200 [&::-moz-scrollbar-track]:m-1 [&::-moz-scrollbar]:w-2 [&::-ms-scrollbar-thumb]:rounded-full [&::-ms-scrollbar-thumb]:bg-gray-200 [&::-ms-scrollbar-track]:m-1 [&::-ms-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-track]:m-1 [&::-webkit-scrollbar]:w-2">
+                    <Table hoverable={true}>
+                      <Table.Head>
+                        <Table.HeadCell>Category</Table.HeadCell>
+                        <Table.HeadCell>Inflation Rate</Table.HeadCell>
+                      </Table.Head>
+                      <Table.Body className="divide-y">
+                        {countryData.current.datasets[0].categories.map(
+                          (category) => (
+                            <Table.Row
+                              key={category.category}
+                              className="bg-white dark:bg-gray-800"
+                            >
+                              <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+                                {category.category}
+                              </Table.Cell>
+                              <Table.Cell>
+                                {category.inflationRate || "No data available"}
+                              </Table.Cell>
+                            </Table.Row>
+                          ),
+                        )}
+                      </Table.Body>
+                    </Table>
+                  </div>
                 </div>
                 {/* Inflation rate per month per country Chart Container */}
                 <div className="mt-4 h-96 flex-1 md:mt-0">
