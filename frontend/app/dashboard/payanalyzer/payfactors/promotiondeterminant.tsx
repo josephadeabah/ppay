@@ -71,6 +71,9 @@ const PromotionDeterminant = ({
     [data],
   );
 
+  // Filter employees who are likely promoted
+  const promotedEmployees = data.filter(isPromoted);
+
   // Data for visualizations
   const createChartData = (stats: {
     [key: string]: { total: number; promoted: number };
@@ -140,6 +143,23 @@ const PromotionDeterminant = ({
       <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
         Based on the data you provided
       </h2>
+
+      {/* Display names of promoted employees */}
+      <div className="mb-6">
+        <span className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+          Employees Likely to Have Been Promoted
+        </span>
+        <ul className="mt-2 list-disc pl-5 text-sm">
+          {promotedEmployees.map((employee) => (
+            <li
+              key={employee.employeeId}
+              className="text-gray-700 dark:text-gray-300"
+            >
+              {employee.name}
+            </li>
+          ))}
+        </ul>
+      </div>
 
       {/* Gender Promotion Stats */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -226,11 +246,6 @@ const PromotionDeterminant = ({
           </CardContent>
         </Card>
       </div>
-
-      {/* Seniority Level Promotion Stats */}
-      {/* <div className="mt-8">
-
-      </div> */}
 
       {/* Benchmark Comparison */}
       <div className="mt-8">
