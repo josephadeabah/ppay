@@ -13,6 +13,7 @@ import { useState } from "react";
 import { AiOutlineEdit } from "react-icons/ai";
 import { HiOutlineUserAdd } from "react-icons/hi";
 import { TbFlag } from "react-icons/tb";
+import ExportPdfButton from "../exportbutton/ExportPDFButton";
 
 const ManagementComponent = ({
   initialData,
@@ -63,58 +64,61 @@ const ManagementComponent = ({
           {/* Add user to Flag Button */}
           <button
             data-tip="Allow users to flag or mark specific rows for follow-up or further review."
-            className="flex w-full items-center gap-1 rounded-sm bg-slate-100 p-2 shadow-sm sm:w-auto"
+            className="flex w-full items-center gap-1 rounded-md bg-slate-100 p-2 shadow-sm sm:w-auto"
           >
             <TbFlag className="h-4 w-4" />
-            <span className="hidden sm:inline">Add Flagger</span>
+            <span className="text-sm sm:inline">Add Flagger</span>
           </button>
           {/* Add Viewer Button */}
           <button
             data-tip="Scan the data for potential issues or trends."
-            className="flex w-full items-center gap-1 rounded-sm bg-slate-100 p-2 shadow-sm sm:w-auto"
+            className="flex w-full items-center gap-1 rounded-md bg-slate-100 p-2 shadow-sm sm:w-auto"
           >
             <HiOutlineUserAdd className="h-4 w-4" />
-            <span className="hidden sm:inline">Add Viewer</span>
+            <span className="text-sm sm:inline">Add Viewer</span>
           </button>
           {/* Export Button */}
           <ExportButton data={data} />
+          <ExportPdfButton data={data} />
         </div>
       </div>
 
       {/* Table Component */}
-      <Table className="min-w-full table-auto">
-        <TableHeader>
-          <tr>
-            {headers.map((header) => (
-              <TableHead key={header} className="border px-4 py-2">
-                {header}
-              </TableHead>
-            ))}
-          </tr>
-        </TableHeader>
-        <TableBody>
-          {data.map((row, rowIndex) => (
-            <TableRow key={rowIndex}>
+      <div className="overflow-x-auto">
+        <Table>
+          <TableHeader>
+            <tr>
               {headers.map((header) => (
-                <TableCell key={header} className="relative border px-4 py-2">
-                  <div className="flex items-center justify-between">
-                    <span>{row[header]}</span>
-                    {header === "employeeId" && row[header] && (
-                      <button
-                        className="absolute right-2 top-2 text-blue-500 hover:text-blue-700"
-                        onClick={() => openModal(rowIndex)}
-                      >
-                        <AiOutlineEdit className="h-5 w-5" />
-                        <span className="sr-only">Edit</span>
-                      </button>
-                    )}
-                  </div>
-                </TableCell>
+                <TableHead key={header} className="border px-4 py-2">
+                  {header}
+                </TableHead>
               ))}
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+            </tr>
+          </TableHeader>
+          <TableBody>
+            {data.map((row, rowIndex) => (
+              <TableRow key={row.employeeId}>
+                {headers.map((header) => (
+                  <TableCell key={header} className="relative border px-4 py-2">
+                    <div className="flex items-center justify-between">
+                      <span>{row[header]}</span>
+                      {header === "employeeId" && row[header] && (
+                        <button
+                          className="absolute right-2 top-2 text-blue-500 hover:text-blue-700"
+                          onClick={() => openModal(rowIndex)}
+                        >
+                          <AiOutlineEdit className="h-5 w-5" />
+                          <span className="sr-only">Edit</span>
+                        </button>
+                      )}
+                    </div>
+                  </TableCell>
+                ))}
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
 
       {/* Modal for editing */}
       <ModalComponent
