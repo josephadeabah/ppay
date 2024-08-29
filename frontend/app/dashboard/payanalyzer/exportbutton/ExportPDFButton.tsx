@@ -1,4 +1,3 @@
-// src/components/Dashboard/ExportPdfButton.tsx
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import { TDocumentDefinitions } from "pdfmake/interfaces";
@@ -13,19 +12,12 @@ const ExportPdfButton = ({ data }: { data: any[] }) => {
       return;
     }
 
-    const columnCount = Object.keys(data[0] || {}).length;
+    const headers = Object.keys(data[0] || {});
+    const columnWidths = Array(headers.length).fill("*"); // Adjust column widths as needed
 
-    // Define a default column width
-    const defaultWidth = 40; // Adjust as necessary
-
-    // Calculate percentage width for each column
-    const columnWidths = Array(columnCount).fill(defaultWidth);
-
-    // Define document content
     const docDefinition: TDocumentDefinitions = {
-      pageOrientation: "landscape", // Landscape orientation for more space
-      pageSize: "4A0", // A4 page size
-      // Adjust margins to fit content
+      pageOrientation: "landscape",
+      pageSize: "B0",
       content: [
         { text: "Pay Equity Data", style: "header" },
         {
@@ -33,13 +25,10 @@ const ExportPdfButton = ({ data }: { data: any[] }) => {
             headerRows: 1,
             widths: columnWidths,
             body: [
-              Object.keys(data[0] || {}).map((key) => ({
-                text: key,
-                style: "tableHeader",
-              })), // Header row
+              headers.map((header) => ({ text: header, style: "tableHeader" })), // Header row
               ...data.map((row) =>
-                Object.values(row).map((value) => ({
-                  text: String(value),
+                headers.map((header) => ({
+                  text: String(row[header]),
                   style: "tableData",
                 })),
               ), // Data rows
@@ -65,28 +54,27 @@ const ExportPdfButton = ({ data }: { data: any[] }) => {
         },
         tableHeader: {
           bold: true,
-          fontSize: 10, // Smaller font size for headers
-          color: "black",
+          fontSize: 10,
+          color: "white",
           fillColor: "#4db6ac",
           margin: [0, 5, 0, 5],
         },
         tableData: {
-          fontSize: 8, // Smaller font size for data
-          margin: [0, 2, 0, 2], // Reduced margins for better fit
+          fontSize: 8,
+          margin: [0, 2, 0, 2],
           alignment: "left",
         },
       },
-      pageMargins: [20, 60, 20, 30], // Adjust margins to fit content
+      pageMargins: [20, 60, 20, 30],
     };
 
-    // Generate and download the PDF
     pdfMake.createPdf(docDefinition).download("pay_equity_analysis.pdf");
   };
 
   return (
     <button
       onClick={generatePdf}
-      className="export-button rounded-md bg-blue-500 p-2 text-sm text-white"
+      className="rounded-md bg-blue-400 p-2 text-sm text-white"
     >
       Export as PDF
     </button>

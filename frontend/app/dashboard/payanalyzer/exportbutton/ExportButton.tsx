@@ -12,7 +12,7 @@ const ExportButton = ({ data }: { data: any[] }) => {
       data={exportData}
       headers={headers}
       filename={"pay_equity_analysis.csv"}
-      className="export-button rounded-md bg-green-500 p-2 text-sm text-white"
+      className="export-button rounded-md bg-green-400 p-2 text-sm text-white"
     >
       Export as CSV
     </CSVLink>
