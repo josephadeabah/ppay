@@ -71,7 +71,23 @@ const PayFactors = ({ userData }: { userData: EmployeeData[] }) => {
       yearsOfExperience: 3,
       country: "USA",
     },
+    // Add more benchmark data as needed
   ];
+
+  // Check if both userData and benchmarkData are available
+  const isDataAvailable =
+    userData &&
+    userData.length > 0 &&
+    benchmarkData &&
+    benchmarkData.length > 0;
+
+  if (!isDataAvailable) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <h2 className="text-xl font-bold">Upload data first</h2>
+      </div>
+    );
+  }
 
   return (
     <div className="flex w-full max-w-full flex-col gap-8">

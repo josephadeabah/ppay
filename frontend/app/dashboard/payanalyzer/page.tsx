@@ -95,7 +95,13 @@ export default function PayAnalyzerPage() {
               <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
                 {/* Comparison Section */}
                 <section className="bg-white p-2 dark:bg-gray-800">
-                  <ComparisonPage data={data} />
+                  {data.length > 0 ? (
+                    <ComparisonPage data={data} />
+                  ) : (
+                    <div className="flex min-h-screen items-center justify-center">
+                      <h2 className="text-xl font-bold">Upload data first</h2>
+                    </div>
+                  )}
                 </section>
 
                 {/* Pay Factors Section */}

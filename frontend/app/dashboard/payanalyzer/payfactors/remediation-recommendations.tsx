@@ -165,9 +165,12 @@ const RemediationRecommendations = ({ data }: { data: EmployeeData[] }) => {
 
   return (
     <div className="w-full max-w-full bg-white p-2 dark:bg-gray-900">
-      <h2 className="mb-6 text-lg font-semibold text-gray-900 dark:text-gray-100">
-        Pay Equity Distribution & Remediation Recommendations for your Employees
-      </h2>
+      {enrichedData.length > 0 && (
+        <h2 className="mb-6 text-lg font-semibold text-gray-900 dark:text-gray-100">
+          Pay Equity Distribution & Remediation Recommendations for your
+          Employees
+        </h2>
+      )}
       <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {enrichedData.map((row, idx) => (
           <Card key={idx}>
