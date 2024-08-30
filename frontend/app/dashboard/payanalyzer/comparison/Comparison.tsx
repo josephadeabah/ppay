@@ -60,6 +60,9 @@ const ComparisonPage = ({ data }: { data: EmployeeData[] }) => {
       />
 
       {/* TreeView */}
+      <h1 className="text-lg font-semibold">
+        Departmental Metrics and Employee Analysis Tree
+      </h1>
       <TreeView
         nodes={generateTreeData(data)}
         renderNode={(node) => {
