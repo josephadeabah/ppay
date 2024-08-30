@@ -47,9 +47,8 @@ export const generateTreeData = (employees: EmployeeData[]): TreeNode[] => {
     const departmentEmployees = departmentGroups[department];
     const totalEmployees = departmentEmployees.length;
 
-    // Corrected Total Compensation and Bonus Calculations
     const totalCompensation = departmentEmployees.reduce(
-      (sum, emp) => sum + Number(emp.baseSalary ?? 0),
+      (sum, emp) => sum + Number(emp.totalCompensation ?? emp.baseSalary ?? 0),
       0,
     );
     const avgSalary =
@@ -62,7 +61,31 @@ export const generateTreeData = (employees: EmployeeData[]): TreeNode[] => {
     );
     const avgBonus = totalEmployees > 0 ? employeeBonus / totalEmployees : 0;
 
-    // Generate chart colors and labels based on employee names
+    // Calculate additional metrics
+    const avgExperience =
+      departmentEmployees.reduce(
+        (sum, emp) => sum + Number(emp.yearsOfExperience ?? 0),
+        0,
+      ) / totalEmployees;
+
+    const avgPerformance =
+      departmentEmployees.reduce(
+        (sum, emp) => sum + Number(emp.performancePoints ?? 0),
+        0,
+      ) / totalEmployees;
+
+    const avgManagerRating =
+      departmentEmployees.reduce(
+        (sum, emp) => sum + Number(emp.managerRating ?? 0),
+        0,
+      ) / totalEmployees;
+
+    const avgEmployeeRating =
+      departmentEmployees.reduce(
+        (sum, emp) => sum + Number(emp.employeeRating ?? 0),
+        0,
+      ) / totalEmployees;
+
     const chartLabels = departmentEmployees.map((emp) => emp.name);
     const chartColors = chartLabels.map(
       (_, index) => colorPalette[index % colorPalette.length],
@@ -83,24 +106,48 @@ export const generateTreeData = (employees: EmployeeData[]): TreeNode[] => {
             {
               name: `Total Employees: ${totalEmployees}`,
               type: "progress",
-              value: (totalEmployees / 1000) * 100, // Adjust scaling as needed
+              value: (totalEmployees / 1000) * 100,
               color: "blue",
             },
             {
               name: `Average Salary: $${avgSalary.toFixed(2)}`,
               type: "chart",
-              data: departmentEmployees.map((emp) => emp.baseSalary),
-              labels: chartLabels, // Use actual employee names
-              backgroundColor: chartColors, // Assign colors to each employee
+              data: departmentEmployees.map((emp) => Number(emp.baseSalary)),
+              labels: chartLabels,
+              backgroundColor: chartColors,
             },
             {
               name: `Average Bonus: $${avgBonus.toFixed(2)}`,
               type: "chart",
               data: departmentEmployees.map(
-                (emp) => emp.bonus + emp.stockOptions,
+                (emp) => Number(emp.bonus) + Number(emp.stockOptions),
               ),
-              labels: chartLabels, // Use actual employee names
-              backgroundColor: chartColors, // Assign colors to each employee
+              labels: chartLabels,
+              backgroundColor: chartColors,
+            },
+            {
+              name: `Average Experience: ${avgExperience.toFixed(2)} years`,
+              type: "progress",
+              value: (avgExperience / 20) * 100, // Assuming max experience of 20 years for scaling
+              color: "green",
+            },
+            {
+              name: `Average Performance Points: ${avgPerformance.toFixed(2)}`,
+              type: "progress",
+              value: (avgPerformance / 100) * 100, // Assuming max performance points of 100 for scaling
+              color: "purple",
+            },
+            {
+              name: `Average Manager Rating: ${avgManagerRating.toFixed(2)}`,
+              type: "progress",
+              value: (avgManagerRating / 5) * 100, // Assuming max rating of 5 for scaling
+              color: "orange",
+            },
+            {
+              name: `Average Employee Rating: ${avgEmployeeRating.toFixed(2)}`,
+              type: "progress",
+              value: (avgEmployeeRating / 5) * 100, // Assuming max rating of 5 for scaling
+              color: "red",
             },
           ],
         },

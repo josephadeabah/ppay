@@ -52,13 +52,13 @@ const TreeView: React.FC<TreeViewProps> = ({ nodes, renderNode }) => {
           {node.name}
         </button>
         {expandedNodes.has(node.name) && node.children && (
-          <div className="ml-4">
+          <div className="ml-4 flex flex-col space-y-2 text-sm">
             {node.children.map((child) => {
               if (child.type === "progress") {
                 return (
                   <div
                     key={child.name}
-                    className="my-2 flex items-center space-x-4"
+                    className="my-2 flex items-center justify-between gap-2 space-x-4"
                   >
                     <span className="font-semibold">{child.name}</span>
                     {child.value !== undefined && (
@@ -87,22 +87,27 @@ const TreeView: React.FC<TreeViewProps> = ({ nodes, renderNode }) => {
                 };
 
                 const chartOptions = {
-                  maintainAspectRatio: false, // Allow custom sizing
+                  maintainAspectRatio: true,
                   responsive: true,
                   layout: {
-                    padding: 10, // Adjust the padding as needed
+                    padding: 10,
                   },
                 };
 
                 return (
                   <div
                     key={child.name}
-                    className="my-4"
-                    style={{ display: "flex", width: "200px", height: "200px" }} // Set smaller width and height
+                    className="my-4 flex h-52 w-full items-center justify-between text-sm"
                   >
+                    {/* Name on the left */}
                     <span className="font-semibold">{child.name}</span>
+
+                    {/* Doughnut chart on the right */}
                     {child.data && child.data.length > 0 ? (
-                      <Doughnut data={chartData} options={chartOptions} />
+                      <div className="h-30 w-30 flex justify-between">
+                        <div />
+                        <Doughnut data={chartData} options={chartOptions} />
+                      </div>
                     ) : (
                       <p className="text-gray-500">No data available</p>
                     )}

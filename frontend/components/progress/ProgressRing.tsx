@@ -44,7 +44,7 @@ const ProgressRing = ({
         y="50%"
         textAnchor="middle"
         dominantBaseline="middle"
-        fontSize="1.5rem"
+        fontSize={size / 5}
         fill={color}
         fontWeight="bold"
       >
