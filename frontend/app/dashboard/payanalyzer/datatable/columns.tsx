@@ -145,7 +145,7 @@ export const dataColumns: ColumnDef<EmployeeData, string>[] = [
           benchmark.role === jobTitle && benchmark.jobLevel === jobLevel,
       );
       return (
-        <div className="flex w-[10rem] items-center text-[0.8rem]">
+        <div className="flex w-[6rem] items-center text-[0.8rem]">
           <span>
             {benchmarkEntry
               ? `$${benchmarkEntry.benchmarkSalary.toFixed(2)}`
