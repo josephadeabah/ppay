@@ -192,9 +192,77 @@ export const dataColumns: ColumnDef<EmployeeData, string>[] = [
     enableSorting: false,
     cell: (info) => info.getValue(),
   }),
-  columnHelper.accessor("seniorityLevel", {
-    id: "seniorityLevel",
-    header: "Seniority Level",
+  columnHelper.accessor("jobLevel", {
+    id: "jobLevel",
+    header: "Job Level",
+    enableSorting: false,
+    cell: (info) => info.getValue(),
+  }),
+  columnHelper.accessor("dateOfHire", {
+    id: "dateOfHire",
+    header: "Date of Hire",
+    enableSorting: false,
+    cell: (info) => (
+      <div className="flex w-[8rem] items-center">
+        <span>{info.getValue()}</span>
+      </div>
+    ),
+  }),
+  columnHelper.accessor("lastSalaryIncreaseDate", {
+    id: "lastSalaryIncreaseDate",
+    header: "Last Salary Increase",
+    enableSorting: false,
+    cell: (info) => (
+      <div className="flex w-[8rem] items-center">
+        <span>{info.getValue()}</span>
+      </div>
+    ),
+  }),
+  columnHelper.accessor("lastSalaryIncreasePercentage", {
+    id: "lastSalaryIncreasePercentage",
+    header: "Last Raise %",
+    enableSorting: false,
+    cell: (info) => `${info.getValue()}`,
+  }),
+  columnHelper.accessor("equitablePayRange", {
+    id: "equitablePayRange",
+    header: "Equitable Pay Range",
+    enableSorting: false,
+    cell: (info) => (
+      <div className="flex w-[10rem] items-center">
+        <span>{info.getValue()}</span>
+      </div>
+    ),
+  }),
+  columnHelper.accessor("internalPayRange", {
+    id: "internalPayRange",
+    header: "Internal Pay Range",
+    enableSorting: false,
+    cell: (info) => (
+      <div className="flex w-[8rem] items-center">
+        <span>{info.getValue()}</span>
+      </div>
+    ),
+  }),
+  columnHelper.accessor("benefits", {
+    id: "benefits",
+    header: "Benefits",
+    enableSorting: false,
+    cell: (info) => (
+      <div className="flex w-[10rem] items-center">
+        <span>{info.getValue()}</span>
+      </div>
+    ),
+  }),
+  columnHelper.accessor("totalCompensation", {
+    id: "totalCompensation",
+    header: "Total Compensation",
+    enableSorting: false,
+    cell: (info) => info.getValue(),
+  }),
+  columnHelper.accessor("costOfLivingAdjustment", {
+    id: "costOfLivingAdjustment",
+    header: "Cost of Living Adjustment",
     enableSorting: false,
     cell: (info) => info.getValue(),
   }),
@@ -219,22 +287,20 @@ export const dataColumns: ColumnDef<EmployeeData, string>[] = [
           "inline-flex items-center rounded bg-green-100 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300";
       return (
         <span
-          className={`inline-block rounded-full px-2 py-1 text-xs font-semibold text-gray-800 ${bgColor}`}
+          className={`${bgColor} rounded-full px-2 py-1 text-xs font-medium`}
         >
           {status}
         </span>
       );
     },
   }),
-  // Progress Bar Column
   columnHelper.display({
-    id: "progress",
-    header: "Progress",
+    id: "metrics",
+    header: "Metrics",
     enableSorting: false,
     cell: (info) => {
       const { performancePercent, managerPercent, employeePercent } =
         getSectionPercentages(info.row.original);
-
       return (
         <div className="w-[300px] text-[11px]">
           <ProgressBar

@@ -52,21 +52,21 @@ const PromotionDeterminant = ({
       {} as { [key: string]: { total: number; promoted: number } },
     );
 
-    const seniorityLevelStats = data.reduce(
+    const jobLevelStats = data.reduce(
       (acc, row) => {
-        const seniorityLevel = row.seniorityLevel;
-        acc[seniorityLevel] = acc[seniorityLevel] || { total: 0, promoted: 0 };
-        acc[seniorityLevel].total += 1;
-        if (isPromoted(row)) acc[seniorityLevel].promoted += 1;
+        const jobLevel = row.jobLevel;
+        acc[jobLevel] = acc[jobLevel] || { total: 0, promoted: 0 };
+        acc[jobLevel].total += 1;
+        if (isPromoted(row)) acc[jobLevel].promoted += 1;
         return acc;
       },
       {} as { [key: string]: { total: number; promoted: number } },
     );
 
-    return { genderStats, jobTitleStats, seniorityLevelStats };
+    return { genderStats, jobTitleStats, jobLevelStats };
   };
 
-  const { genderStats, jobTitleStats, seniorityLevelStats } = useMemo(
+  const { genderStats, jobTitleStats, jobLevelStats } = useMemo(
     () => calculatePromotionStats(data),
     [data],
   );
@@ -221,7 +221,7 @@ const PromotionDeterminant = ({
           <CardHeader title="Promotion by Seniority Level" />
           <CardContent>
             <Bar
-              data={createChartData(seniorityLevelStats)}
+              data={createChartData(jobLevelStats)}
               options={{
                 responsive: true,
                 plugins: {
@@ -235,7 +235,7 @@ const PromotionDeterminant = ({
                   },
                 },
                 scales: {
-                  x: { title: { display: true, text: "Seniority Level" } },
+                  x: { title: { display: true, text: "Job Level" } },
                   y: {
                     title: { display: true, text: "Promotion Rate (%)" },
                     beginAtZero: true,

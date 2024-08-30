@@ -1,17 +1,31 @@
-employeeId,name,gender,ethnicity,jobTitle,department,location,baseSalary,bonus,stockOptions,yearsOfExperience,performancePoints,marketRate,industryPoints,departmentPoints,seniorityPoints,educationLevelPoints,companySizePoints,seniorityLevel,managerRating,employeeRating
-001,John Doe,Male,White,Software Engineer,IT,USA,105000,5500,25000,12,95,100000,15,10,7,8,9,Senior,95,100
-002,Jane Smith,Female,Asian,Project Manager,Operations,USA,92000,4200,16000,8,60,90000,13,8,7,6,8,Senior,85,70
-003,Mike Lee,Male,Asian,Data Scientist,IT,USA,125000,7000,27000,5,75,115000,14,10,6,9,10,Senior,50,60
-004,Anna Ivan,Female,White,HR Specialist,HR,USA,87000,3200,11000,5,85,85000,10,7,5,6,7,Mid,4,6
-005,Ahmed Ali,Male,Middle Eastern,Software Engineer,IT,Canada,102000,5000,19000,7,50,98000,10,8,8,7,8,Senior,45,65
-006,Emily Davis,Female,Black,Marketing Manager,Marketing,UK,92000,3800,13000,9,90,90000,11,8,7,7,8,Senior,15,35
-007,Rajesh Kumar,Male,Indian,DevOps Engineer,IT,India,78000,2200,10500,10,70,75000,12,7,6,6,7,Senior,35,55
-008,Susan Lee,Female,Asian,Financial Analyst,Finance,USA,88000,3200,11500,6,25,87000,9,7,6,7,9,Mid,4,6
-009,David Kim,Male,Korean,Product Manager,Product,South Korea,97000,4300,15500,7,65,95000,14,10,8,8,9,Senior,20,50
-010,Olivia Martin,Female,Hispanic,UX Designer,Design,Brazil,85000,2700,9500,5,80,82000,8,6,6,7,8,Mid,25,20
-011,Luis Gonzalez,Male,Hispanic,Data Engineer,IT,Mexico,80000,3200,11000,4,70,77000,10,8,5,6,7,Junior,5,5
-012,Chen Wang,Male,Chinese,Cybersecurity Analyst,Security,China,86000,3600,12500,6,30,84000,11,8,6,7,8,Mid,45,50
-013,Maria Garcia,Female,Hispanic,Operations Manager,Operations,Spain,93000,4200,14500,12,65,92000,12,8,9,8,9,Senior,55,55
-014,Tommy Brown,Male,Black,Sales Executive,Sales,USA,88000,3100,10500,5,80,86000,10,6,6,7,7,Mid,15,20
-015,Amira Khalid,Female,Middle Eastern,Quality Assurance Engineer,IT,UAE,92000,3600,12500,7,85,90000,11,8,6,8,8,Mid,10,25
-016,Ben Sight,Male,Middle Eastern,Quality Assurance Engineer,IT,UAE,92000,3500,13000,7,75,90000,10,7,6,8,8,Mid,30,75
+employeeId,name,gender,ethnicity,jobTitle,department,location,baseSalary,bonus,stockOptions,yearsOfExperience,performancePoints,marketRate,industryPoints,departmentPoints,seniorityPoints,educationLevelPoints,companySizePoints,jobLevel,managerRating,employeeRating,dateOfHire,lastSalaryIncreaseDate,lastSalaryIncreasePercentage,equitablePayRange,internalPayRange,benefits,totalCompensation,costOfLivingAdjustment,
+001,John Doe,Male,White,Software Engineer,IT,USA,105000,5500,25000,12,95,100000,15,10,7,8,9,Senior,95,100,2012-03-15,2023-01-10,5,95000-110000,100000-120000,Health Insurance,135500,1000
+002,Jane Smith,Female,Asian,Project Manager,Operations,USA,92000,4200,16000,8,60,90000,13,8,7,6,8,Senior,85,70,2015-07-22,2023-03-20,4,87000-105000,90000-115000,Health Insurance,112200,950
+003,Mike Lee,Male,Asian,Data Scientist,IT,USA,125000,7000,27000,5,75,115000,14,10,6,9,10,Senior,50,60,2017-09-18,2023-05-25,6,110000-130000,115000-135000,Health Insurance,159000,1200
+004,Anna Ivan,Female,White,HR Specialist,HR,USA,87000,3200,11000,5,85,85000,10,7,5,6,7,Mid,4,6,2018-06-12,2023-07-30,3,82000-95000,85000-100000,Health Insurance,103200,900
+005,Ahmed Ali,Male,Middle Eastern,Software Engineer,IT,Canada,102000,5000,19000,7,50,98000,10,8,8,7,8,Senior,45,65,2014-11-01,2023-02-15,5,95000-115000,98000-120000,Dental Insurance,126000,1100
+006,Emily Davis,Female,Black,Marketing Manager,Marketing,UK,92000,3800,13000,9,90,90000,11,8,7,7,8,Senior,15,35,2016-01-20,2023-04-18,4,88000-102000,90000-110000,Health Insurance,108800,1050
+007,Rajesh Kumar,Male,Indian,DevOps Engineer,IT,India,78000,2200,10500,10,70,75000,12,7,6,6,7,Senior,35,55,2013-08-15,2023-01-05,5,74000-90000,75000-95000,Health Insurance,102700,850
+008,Susan Lee,Female,Asian,Financial Analyst,Finance,USA,88000,3200,11500,6,25,87000,9,7,6,7,9,Mid,4,6,2019-03-11,2023-07-12,3,83000-98000,87000-100000,Health Insurance,112300,900
+009,David Kim,Male,Korean,Product Manager,Product,South Korea,97000,4300,15500,7,65,95000,14,10,8,8,9,Senior,20,50,2017-11-27,2023-03-03,4,92000-107000,95000-115000,Health Insurance,128800,1000
+010,Olivia Martin,Female,Hispanic,UX Designer,Design,Brazil,85000,2700,9500,5,80,82000,8,6,6,7,8,Mid,25,20,2018-04-16,2023-08-10,3,80000-95000,82000-100000,Health Insurance,105200,900
+011,Luis Gonzalez,Male,Hispanic,Data Engineer,IT,Mexico,80000,3200,11000,4,70,77000,10,8,5,6,7,Junior,5,5,2020-06-08,2023-07-20,2,75000-85000,77000-95000,Health Insurance,104200,850
+012,Chen Wang,Male,Chinese,Cybersecurity Analyst,Security,China,86000,3600,12500,6,30,84000,11,8,6,7,8,Mid,45,50,2016-09-14,2023-06-30,4,81000-96000,84000-100000,Health Insurance,111100,900
+013,Maria Garcia,Female,Hispanic,Operations Manager,Operations,Spain,93000,4200,14500,12,65,92000,12,8,9,8,9,Senior,55,55,2013-12-10,2023-05-28,5,90000-105000,92000-115000,Health Insurance,132700,1050
+014,Tommy Brown,Male,Black,Sales Executive,Sales,USA,88000,3100,10500,5,80,86000,10,6,6,7,7,Mid,15,20,2019-02-14,2023-07-22,3,83000-97000,86000-100000,Health Insurance,109600,950
+015,Amira Khalid,Female,Middle Eastern,Quality Assurance Engineer,IT,UAE,92000,3600,12500,7,85,90000,11,8,6,8,8,Mid,10,25,2018-07-01,2023-01-30,3,88000-102000,90000-110000,Health Insurance,115100,1000
+016,Ben Sight,Male,Middle Eastern,Quality Assurance Engineer,IT,UAE,92000,3500,13000,7,75,90000,10,7,6,8,8,Mid,30,75,2018-08-20,2023-02-17,4,88000-105000,90000-110000,Health Insurance,118500,1000
+017,Elena Rossi,Female,White,Customer Service Specialist,Customer Service,Italy,82000,3000,9000,6,70,80000,9,7,5,6,7,Mid,35,45,2017-04-24,2023-05-14,3,78000-90000,80000-95000,Health Insurance,104000,950
+018,Victor Blanco,Male,Hispanic,Network Engineer,IT,Spain,87000,3100,11500,8,80,86000,11,8,7,8,8,Senior,25,55,2016-10-12,2023-03-01,4,83000-96000,86000-105000,Dental Insurance,121600,1000
+019,Grace Wang,Female,Chinese,Data Scientist,IT,China,118000,6500,25000,7,85,115000,14,9,7,8,9,Senior,40,70,2015-12-15,2023-06-15,5,110000-130000,115000-135000,Health Insurance,149500,1100
+020,Andres Castillo,Male,Hispanic,Software Engineer,IT,Mexico,98000,4100,14500,4,75,95000,12,8,6,7,8,Junior,20,45,2020-03-25,2023-04-25,3,93000-110000,95000-120000,Health Insurance,126600,1050
+021,Emma Schmidt,Female,White,HR Specialist,HR,Germany,86000,3300,10500,7,60,85000,10,8,7,7,8,Mid,45,55,2017-07-05,2023-06-01,3,83000-97000,85000-105000,Health Insurance,109800,950
+022,Daniel Tan,Male,Asian,Product Manager,Product,Singapore,97000,4400,15500,9,70,94000,14,10,8,8,9,Senior,35,60,2014-02-18,2023-03-20,5,92000-107000,94000-115000,Health Insurance,128400,1050
+023,Lena Nowak,Female,White,UX Designer,Design,Poland,85000,2700,9500,5,75,83000,8,7,6,7,8,Mid,20,30,2019-05-10,2023-08-15,3,81000-95000,83000-105000,Health Insurance,107200,950
+024,Samir Patel,Male,Indian,Cybersecurity Analyst,Security,India,86000,3500,12000,6,65,84000,11,8,6,7,8,Mid,50,65,2017-08-07,2023-05-07,4,82000-98000,84000-105000,Health Insurance,111500,900
+025,Isabella Russo,Female,White,Operations Manager,Operations,Italy,93000,4100,14000,12,80,92000,12,8,9,8,9,Senior,60,65,2013-11-03,2023-04-18,5,90000-105000,92000-115000,Health Insurance,133100,1050
+026,Hassan Yusuf,Male,Middle Eastern,Sales Executive,Sales,UAE,88000,3200,10500,5,70,86000,10,7,6,7,7,Mid,25,45,2019-03-25,2023-07-12,3,83000-97000,86000-100000,Health Insurance,109700,1000
+027,Sophia Laurent,Female,Black,Marketing Manager,Marketing,France,92000,3900,13000,9,85,90000,11,8,7,7,8,Senior,40,50,2016-06-10,2023-02-25,4,88000-102000,90000-110000,Health Insurance,109900,1050
+028,Alberto Silva,Male,Hispanic,Quality Assurance Engineer,IT,Brazil,92000,3500,12500,7,75,90000,10,7,6,8,8,Mid,15,40,2018-08-22,2023-01-17,4,88000-105000,90000-110000,Health Insurance,116000,1000
+029,Mei Zhang,Female,Chinese,Data Engineer,IT,China,80000,3300,11000,4,70,78000,10,8,6,7,7,Junior,10,20,2020-09-28,2023-07-28,2,75000-85000,78000-95000,Health Insurance,105300,850
+030,Ricardo Costa,Male,Hispanic,Network Engineer,IT,Portugal,87000,3200,11500,8,80,85000,11,8,7,8,8,Senior,30,55,2015-05-18,2023-04-01,4%,83000-96000,85000-105000,Health Insurance,120700,1000
