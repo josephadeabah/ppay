@@ -66,14 +66,20 @@ export const getEquityStatus = (employee: EmployeeData) => {
       return "On Track";
     case base < benchmark && performance >= 70 && seniority < 5:
       return "Exceeds";
-    case base === benchmark && performance < 70:
+    case base === benchmark && performance < 50 && seniority < 5:
+      return "Risk";
+    case base === benchmark && performance < 70 && seniority >= 5:
       return "On Track";
-    case base === benchmark && performance >= 70:
+    case base === benchmark && performance >= 70 && seniority < 5:
+      return "Improvement";
+    case base === benchmark && performance >= 70 && seniority >= 5:
       return "Exceeds";
-    case base > benchmark && performance < 70:
+    case base > benchmark && performance < 50 && seniority < 5:
+      return "Risk";
+    case base > benchmark && performance < 70 && seniority >= 5:
       return "On Track";
     case base > benchmark && performance >= 70 && seniority < 5:
-      return "On Track";
+      return "Improvement";
     case base > benchmark && performance >= 70 && seniority >= 5:
       return "Exceeds";
     default:

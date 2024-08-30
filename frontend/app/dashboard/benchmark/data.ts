@@ -32,7 +32,7 @@ export const benchmarkData: BenchmarkDataType[] = [
   },
   {
     role: "Software Engineer",
-    jobLevel: "Mid-Level",
+    jobLevel: "Senior-Level",
     skills: ["Programming", "System Design"],
     responsibilities: [
       "Develop software",
