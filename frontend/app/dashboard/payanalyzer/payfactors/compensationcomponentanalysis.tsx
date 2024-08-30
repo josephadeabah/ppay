@@ -1,11 +1,8 @@
-"use client";
-
-import DropdownSelect from "@/components/dropdown/DropdownSelect"; // Adjust the import path as needed
 import { EmployeeData } from "@/types/payaid.data";
 import { Chart, registerables } from "chart.js";
 import annotationPlugin from "chartjs-plugin-annotation";
 import trendlinePlugin from "chartjs-plugin-trendline";
-import { SetStateAction, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { Scatter } from "react-chartjs-2";
 import { tTestTwoSample } from "simple-statistics";
 
@@ -13,6 +10,8 @@ Chart.register(...registerables, annotationPlugin, trendlinePlugin);
 
 interface CompensationComponentAnalysisProps {
   data: EmployeeData[];
+  selectedDemographic: string;
+  selectedRole: string;
 }
 
 const colorPalette = [
@@ -26,18 +25,12 @@ const colorPalette = [
 
 const CompensationComponentAnalysis = ({
   data,
+  selectedDemographic,
+  selectedRole,
 }: CompensationComponentAnalysisProps) => {
-  const [selectedDemographic, setSelectedDemographic] =
-    useState<string>("gender");
-  const [selectedRole, setSelectedRole] = useState<string>("All Roles");
-
   const demographicGroups = useMemo(() => {
     return Array.from(new Set(data.map((d) => d[selectedDemographic])));
   }, [data, selectedDemographic]);
-
-  const roleGroups = useMemo(() => {
-    return Array.from(new Set(data.map((d) => d.jobTitle)));
-  }, [data]);
 
   const filteredData = useMemo(() => {
     return data.filter(
@@ -171,35 +164,6 @@ const CompensationComponentAnalysis = ({
       <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
         Compensation Analysis by {selectedDemographic}
       </h2>
-
-      {/* Demographic and Role Filters */}
-      <div className="mb-4 flex gap-4">
-        <DropdownSelect
-          options={[
-            { value: "gender", label: "Gender" },
-            { value: "ethnicity", label: "Ethnicity" },
-            { value: "department", label: "Department" },
-            { value: "location", label: "Location" },
-          ]}
-          selectedValue={selectedDemographic}
-          onChange={(e) => setSelectedDemographic(e.target.value)}
-          placeholder="Select Demographic"
-          className="border p-2"
-        />
-
-        <DropdownSelect
-          options={[
-            { value: "All Roles", label: "All Roles" },
-            ...roleGroups.map((role) => ({ value: role, label: role })),
-          ]}
-          selectedValue={selectedRole}
-          onChange={(e: { target: { value: SetStateAction<string> } }) =>
-            setSelectedRole(e.target.value)
-          }
-          placeholder="Select Role"
-          className="border p-2"
-        />
-      </div>
 
       <div className="h-96 w-full">
         <Scatter data={chartData} options={chartOptions} />

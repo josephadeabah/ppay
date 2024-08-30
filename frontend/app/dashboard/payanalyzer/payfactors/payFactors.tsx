@@ -1,7 +1,6 @@
 "use client";
 import { EmployeeData } from "@/types/payaid.data";
 import { BenchmarkDataType } from "../../benchmark/data";
-import CompensationComponentAnalysis from "./compensationcomponentanalysis";
 import PromotionDeterminant from "./promotiondeterminant";
 
 const PayFactors = ({ userData }: { userData: EmployeeData[] }) => {
@@ -96,12 +95,6 @@ const PayFactors = ({ userData }: { userData: EmployeeData[] }) => {
       <div className="grid grid-cols-1">
         <div className="col-span-1">
           <PromotionDeterminant data={userData} benchmarkData={benchmarkData} />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1">
-        <div className="col-span-1">
-          <CompensationComponentAnalysis data={userData} />
         </div>
       </div>
     </div>
