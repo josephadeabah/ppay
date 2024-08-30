@@ -54,7 +54,6 @@ const TreeView: React.FC<TreeViewProps> = ({ nodes, renderNode }) => {
         {expandedNodes.has(node.name) && node.children && (
           <div className="ml-4">
             {node.children.map((child) => {
-              // Check if the node is a metric
               if (child.type === "progress") {
                 return (
                   <div
@@ -65,8 +64,8 @@ const TreeView: React.FC<TreeViewProps> = ({ nodes, renderNode }) => {
                     {child.value !== undefined && (
                       <ProgressRing
                         value={child.value}
-                        size={60}
-                        strokeWidth={8}
+                        size={80}
+                        strokeWidth={6}
                         color={child.color ?? "lightblue"}
                       />
                     )}
@@ -87,18 +86,29 @@ const TreeView: React.FC<TreeViewProps> = ({ nodes, renderNode }) => {
                   ],
                 };
 
+                const chartOptions = {
+                  maintainAspectRatio: false, // Allow custom sizing
+                  responsive: true,
+                  layout: {
+                    padding: 10, // Adjust the padding as needed
+                  },
+                };
+
                 return (
-                  <div key={child.name} className="my-4">
+                  <div
+                    key={child.name}
+                    className="my-4"
+                    style={{ display: "flex", width: "200px", height: "200px" }} // Set smaller width and height
+                  >
                     <span className="font-semibold">{child.name}</span>
                     {child.data && child.data.length > 0 ? (
-                      <Doughnut data={chartData} />
+                      <Doughnut data={chartData} options={chartOptions} />
                     ) : (
                       <p className="text-gray-500">No data available</p>
                     )}
                   </div>
                 );
               } else if (child.children) {
-                // Recursively render child nodes
                 return (
                   <TreeView
                     key={child.name}
