@@ -1,4 +1,3 @@
-// components/TreeView.js
 import { EmployeeData } from "@/types/payaid.data";
 import React, { useState } from "react";
 
@@ -31,9 +30,9 @@ const TreeView: React.FC<TreeViewProps> = ({ nodes, renderNode }) => {
   const renderTreeNodes = (nodes: TreeNode[]) =>
     nodes.map((node) => (
       <div key={node.name} className="relative ml-4">
-        <div
+        <button
           onClick={() => toggleNode(node.name)}
-          className="mb-1 flex cursor-pointer select-none items-center rounded border border-gray-100 bg-gray-50 px-4 py-2"
+          className="mb-1 flex w-full cursor-pointer select-none items-center rounded border border-gray-100 bg-gray-50 px-4 py-1"
         >
           {node.children && node.children.length > 0 && (
             <span className="mr-2">
@@ -41,7 +40,7 @@ const TreeView: React.FC<TreeViewProps> = ({ nodes, renderNode }) => {
             </span>
           )}
           {node.name}
-        </div>
+        </button>
         {expandedNodes.has(node.name) && node.children && (
           <div className="ml-4">{renderTreeNodes(node.children)}</div>
         )}
