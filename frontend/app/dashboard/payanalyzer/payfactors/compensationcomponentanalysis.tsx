@@ -12,6 +12,7 @@ interface CompensationComponentAnalysisProps {
   data: EmployeeData[];
   selectedDemographic: string;
   selectedRole: string;
+  selectedControls: string[];
 }
 
 const colorPalette = [
@@ -27,16 +28,42 @@ const CompensationComponentAnalysis = ({
   data,
   selectedDemographic,
   selectedRole,
+  selectedControls,
 }: CompensationComponentAnalysisProps) => {
   const demographicGroups = useMemo(() => {
     return Array.from(new Set(data.map((d) => d[selectedDemographic])));
   }, [data, selectedDemographic]);
 
   const filteredData = useMemo(() => {
-    return data.filter(
+    let filtered = data.filter(
       (d) => selectedRole === "All Roles" || d.jobTitle === selectedRole,
     );
-  }, [data, selectedRole]);
+
+    // Apply selected controls filtering
+    if (selectedControls.includes("yearsOfExperience")) {
+      filtered = filtered.filter(
+        (d) => d.yearsOfExperience && parseInt(d.yearsOfExperience) > 0,
+      );
+    }
+    if (selectedControls.includes("performancePoints")) {
+      filtered = filtered.filter(
+        (d) => d.performancePoints && parseInt(d.performancePoints) > 0,
+      );
+    }
+    if (selectedControls.includes("educationLevelPoints")) {
+      filtered = filtered.filter(
+        (d) => d.educationLevelPoints && parseInt(d.educationLevelPoints) > 0,
+      );
+    }
+    if (selectedControls.includes("location")) {
+      filtered = filtered.filter((d) => d.location !== undefined);
+    }
+    if (selectedControls.includes("city")) {
+      filtered = filtered.filter((d) => d.city !== undefined);
+    }
+
+    return filtered;
+  }, [data, selectedRole, selectedControls]);
 
   const actualData = useMemo(() => {
     const datasets = demographicGroups.map((group, index) => {
@@ -45,18 +72,18 @@ const CompensationComponentAnalysis = ({
       );
       const actualComp = groupData.map(
         (d) =>
-          parseFloat(d.baseSalary) +
-          parseFloat(d.bonus) +
-          parseFloat(d.stockOptions),
+          parseFloat(d.baseSalary || "0") +
+          parseFloat(d.bonus || "0") +
+          parseFloat(d.stockOptions || "0"),
       );
       const predictedComp = groupData.map(
         (d) =>
-          parseFloat(d.marketRate) +
-          parseFloat(d.industryPoints) +
-          parseFloat(d.departmentPoints) +
-          parseFloat(d.seniorityPoints) +
-          parseFloat(d.educationLevelPoints) +
-          parseFloat(d.companySizePoints),
+          parseFloat(d.marketRate || "0") +
+          parseFloat(d.industryPoints || "0") +
+          parseFloat(d.departmentPoints || "0") +
+          parseFloat(d.seniorityPoints || "0") +
+          parseFloat(d.educationLevelPoints || "0") +
+          parseFloat(d.companySizePoints || "0"),
       );
 
       let pValue: number | null = null;
@@ -77,97 +104,58 @@ const CompensationComponentAnalysis = ({
             : colorPalette[index % colorPalette.length],
         borderColor:
           pValue !== null && pValue < 0.05
-            ? "rgba(255, 99, 132, 1)"
-            : "rgba(75, 192, 192, 1)",
-        borderWidth: 1,
-        pointRadius: 5,
+            ? colorPalette[index % colorPalette.length]
+            : colorPalette[index % colorPalette.length],
       };
     });
 
-    return datasets;
+    return {
+      datasets,
+    };
   }, [filteredData, demographicGroups, selectedDemographic]);
 
-  const chartData = useMemo(
-    () => ({
-      datasets: actualData,
-    }),
-    [actualData],
-  );
-
-  const chartOptions = useMemo(() => {
-    const allActualComp = actualData.flatMap((dataset) =>
-      dataset.data.map((point) => point.x),
-    );
-    const allPredictedComp = actualData.flatMap((dataset) =>
-      dataset.data.map((point) => point.y),
-    );
-
-    const maxActualComp = Math.max(...allActualComp, 0);
-    const maxPredictedComp = Math.max(...allPredictedComp, 0);
-
-    return {
-      scales: {
-        x: {
-          title: {
-            display: true,
-            text: "Actual Compensation ($)",
-          },
-          ticks: {
-            beginAtZero: true,
-            stepSize: Math.max(maxActualComp / 10, 10000),
-          },
-        },
-        y: {
-          title: {
-            display: true,
-            text: "Predicted Compensation ($)",
-          },
-          ticks: {
-            beginAtZero: true,
-            stepSize: Math.max(maxPredictedComp / 10, 10000),
-          },
-        },
-      },
-      plugins: {
-        legend: {
-          display: true,
-          position: "bottom" as const,
-        },
-        annotation: {
-          annotations: {
-            line1: {
-              type: "line" as const,
-              xMin: 0,
-              xMax: maxActualComp,
-              yMin: 0,
-              yMax: maxPredictedComp,
-              borderColor: "rgba(0, 0, 0, 0.8)",
-              borderWidth: 2,
-              label: {
-                content: "Ideal Compensation",
-                enabled: true,
-                position: "end" as const,
-                backgroundColor: "rgba(0, 0, 0, 0.8)",
-                color: "#fff",
-                xAdjust: 10,
-                yAdjust: 10,
+  return (
+    <div className="p-4">
+      <h2 className="mb-4 text-lg font-semibold">Compensation Analysis</h2>
+      <Scatter
+        data={actualData}
+        options={{
+          responsive: true,
+          plugins: {
+            legend: {
+              display: true,
+              position: "top",
+            },
+            tooltip: {
+              callbacks: {
+                label: (context) => {
+                  const { raw }: { raw: any } = context;
+                  const actualComp = raw.x;
+                  const predictedComp = raw.y;
+                  return `Actual: $${actualComp.toFixed(2)}, Predicted: $${predictedComp.toFixed(2)}`;
+                },
               },
             },
           },
-        },
-      },
-    };
-  }, [actualData]);
-
-  return (
-    <div className="w-full max-w-full bg-white p-6 shadow-md dark:bg-gray-900">
-      <h2 className="mb-4 text-lg font-semibold text-gray-900 dark:text-gray-100">
-        Compensation Analysis by {selectedDemographic}
-      </h2>
-
-      <div className="h-96 w-full">
-        <Scatter data={chartData} options={chartOptions} />
-      </div>
+          scales: {
+            x: {
+              type: "linear",
+              position: "bottom",
+              title: {
+                display: true,
+                text: "Actual Compensation ($)",
+              },
+            },
+            y: {
+              type: "linear",
+              title: {
+                display: true,
+                text: "Predicted Compensation ($)",
+              },
+            },
+          },
+        }}
+      />
     </div>
   );
 };
