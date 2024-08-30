@@ -1,10 +1,20 @@
-import { EmployeeData } from "@/types/payaid.data";
+import ProgressRing from "@/components/progress/ProgressRing";
+import { ArcElement, Chart as ChartJS, Legend, Tooltip } from "chart.js";
 import React, { useState } from "react";
+import { Doughnut } from "react-chartjs-2";
+
+// Register Chart.js components
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 interface TreeNode {
   name: string;
   children?: TreeNode[];
-  data?: EmployeeData; // Adjust this based on your actual data type
+  type?: "progress" | "chart"; // Optional: Only for metric nodes
+  value?: number; // For progress rings
+  data?: number[]; // For charts
+  color?: string; // Optional: Color for the progress ring or chart
+  labels?: string[]; // Optional: Labels for the chart
+  backgroundColor?: string[]; // Optional: Colors for the chart data points
 }
 
 interface TreeViewProps {
@@ -42,7 +52,69 @@ const TreeView: React.FC<TreeViewProps> = ({ nodes, renderNode }) => {
           {node.name}
         </button>
         {expandedNodes.has(node.name) && node.children && (
-          <div className="ml-4">{renderTreeNodes(node.children)}</div>
+          <div className="ml-4">
+            {node.children.map((child) => {
+              // Check if the node is a metric
+              if (child.type === "progress") {
+                return (
+                  <div
+                    key={child.name}
+                    className="my-2 flex items-center space-x-4"
+                  >
+                    <span className="font-semibold">{child.name}</span>
+                    {child.value !== undefined && (
+                      <ProgressRing
+                        value={child.value}
+                        size={60}
+                        strokeWidth={8}
+                        color={child.color ?? "lightblue"}
+                      />
+                    )}
+                  </div>
+                );
+              } else if (child.type === "chart") {
+                const chartData = {
+                  labels: child.labels || [],
+                  datasets: [
+                    {
+                      label: child.name,
+                      data: child.data || [],
+                      backgroundColor:
+                        child.backgroundColor || "rgba(75, 192, 192, 0.2)",
+                      borderColor: "rgba(75, 192, 192, 1)",
+                      borderWidth: 1,
+                    },
+                  ],
+                };
+
+                return (
+                  <div key={child.name} className="my-4">
+                    <span className="font-semibold">{child.name}</span>
+                    {child.data && child.data.length > 0 ? (
+                      <Doughnut data={chartData} />
+                    ) : (
+                      <p className="text-gray-500">No data available</p>
+                    )}
+                  </div>
+                );
+              } else if (child.children) {
+                // Recursively render child nodes
+                return (
+                  <TreeView
+                    key={child.name}
+                    nodes={[child]}
+                    renderNode={renderNode}
+                  />
+                );
+              } else {
+                return (
+                  <p key={child.name} className="my-2">
+                    {child.name}
+                  </p>
+                );
+              }
+            })}
+          </div>
         )}
       </div>
     ));
