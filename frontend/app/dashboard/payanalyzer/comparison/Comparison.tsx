@@ -52,6 +52,12 @@ const ComparisonPage = ({ data }: { data: EmployeeData[] }) => {
           </button>
         ))}
       </div>
+      {/* Compensation Analysis */}
+      <CompensationComponentAnalysis
+        data={filteredData}
+        selectedDemographic={selectedDemographic}
+        selectedRole={selectedRole}
+      />
 
       {/* TreeView */}
       <TreeView
@@ -74,13 +80,6 @@ const ComparisonPage = ({ data }: { data: EmployeeData[] }) => {
             </Card>
           );
         }}
-      />
-
-      {/* Compensation Analysis */}
-      <CompensationComponentAnalysis
-        data={filteredData}
-        selectedDemographic={selectedDemographic}
-        selectedRole={selectedRole}
       />
     </div>
   );
