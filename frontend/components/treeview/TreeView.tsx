@@ -1,10 +1,11 @@
 // components/TreeView.js
+import { EmployeeData } from "@/types/payaid.data";
 import React, { useState } from "react";
 
 interface TreeNode {
   name: string;
   children?: TreeNode[];
-  data?: any; // Adjust this based on your actual data type
+  data?: EmployeeData; // Adjust this based on your actual data type
 }
 
 interface TreeViewProps {
@@ -32,7 +33,7 @@ const TreeView: React.FC<TreeViewProps> = ({ nodes, renderNode }) => {
       <div key={node.name} className="relative ml-4">
         <div
           onClick={() => toggleNode(node.name)}
-          className="mb-1 flex cursor-pointer select-none items-center rounded border border-gray-300 bg-gray-100 px-4 py-2"
+          className="mb-1 flex cursor-pointer select-none items-center rounded border border-gray-100 bg-gray-50 px-4 py-2"
         >
           {node.children && node.children.length > 0 && (
             <span className="mr-2">

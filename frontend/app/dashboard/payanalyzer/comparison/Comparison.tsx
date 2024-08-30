@@ -57,20 +57,25 @@ const ComparisonPage = ({ data }: { data: EmployeeData[] }) => {
       <TreeView
         nodes={generateTreeData(data)}
         renderNode={(node) => {
-          // You can include any additional metrics if needed
           return (
             <Card>
               <CardHeader title={node.name} />
               <CardContent>
                 <div className="grid gap-4 md:grid-cols-2">
-                  {/* Example metric display */}
-                  <p>Total Employees: {node.data.length}</p>
+                  {node.children && node.children.length > 0 ? (
+                    node.children.map((child) => (
+                      <p key={child.name}>{child.name}</p>
+                    ))
+                  ) : (
+                    <p>No data available</p>
+                  )}
                 </div>
               </CardContent>
             </Card>
           );
         }}
       />
+
       {/* Compensation Analysis */}
       <CompensationComponentAnalysis
         data={filteredData}
