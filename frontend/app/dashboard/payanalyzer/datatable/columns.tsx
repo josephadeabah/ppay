@@ -1,42 +1,20 @@
 import { BlurPopover } from "@/components/popover/Popover";
 import ProgressBar from "@/components/progress/ProgressBar";
 import { EmployeeData } from "@/types/payaid.data";
+import {
+  calculateEquitablePayRange,
+  calculateInternalPayRange,
+  calculateLastSalaryIncreasePercentage,
+  calculateTotalCompensation,
+  getEquityStatus,
+  getSectionPercentages,
+} from "@/utils/salary.utils";
 import { ColumnDef, createColumnHelper } from "@tanstack/react-table";
 import { HiOutlineAnnotation, HiOutlineDotsHorizontal } from "react-icons/hi";
+import { benchmarkData } from "../../benchmark/data";
 
 // Create a column helper for EmployeeData
 const columnHelper = createColumnHelper<EmployeeData>();
-
-const getStatus = (employee: EmployeeData) => {
-  const { performancePoints, marketRate, seniorityPoints } = employee;
-  if (Number(performancePoints) < 50 || Number(marketRate) < 80) return "Risk";
-  if (Number(performancePoints) < 70) return "Improvement";
-  if (Number(performancePoints) >= 70 && Number(seniorityPoints) >= 50)
-    return "On Track";
-  return "Exceeds";
-};
-
-// Logic to determine the percentage for each section
-const getSectionPercentages = (employee: EmployeeData) => {
-  const { performancePoints, managerRating, employeeRating } = employee;
-  const maxPoints = 100; // Assume max points for each metric
-
-  const totalPoints =
-    Number(performancePoints) + Number(managerRating) + Number(employeeRating);
-  const totalMaxPoints = 3 * maxPoints; // Three metrics
-
-  const performancePercent = (Number(performancePoints) / totalMaxPoints) * 100;
-  const managerPercent = (Number(managerRating) / totalMaxPoints) * 100;
-  const employeePercent = (Number(employeeRating) / totalMaxPoints) * 100;
-
-  return {
-    performancePercent,
-    managerPercent,
-    employeePercent,
-  };
-};
-
-// Define and export columns with sorting enabled
 export const dataColumns: ColumnDef<EmployeeData, string>[] = [
   columnHelper.display({
     id: "actions",
@@ -160,7 +138,22 @@ export const dataColumns: ColumnDef<EmployeeData, string>[] = [
     id: "marketRate",
     header: "Market Rate",
     enableSorting: false,
-    cell: (info) => info.getValue(),
+    cell: (info) => {
+      const { jobTitle, jobLevel } = info.row.original;
+      const benchmarkEntry = benchmarkData.find(
+        (benchmark) =>
+          benchmark.role === jobTitle && benchmark.jobLevel === jobLevel,
+      );
+      return (
+        <div className="flex w-[10rem] items-center text-[0.8rem]">
+          <span>
+            {benchmarkEntry
+              ? `$${benchmarkEntry.benchmarkSalary.toFixed(2)}`
+              : "N/A"}
+          </span>
+        </div>
+      );
+    },
   }),
   columnHelper.accessor("industryPoints", {
     id: "industryPoints",
@@ -196,7 +189,11 @@ export const dataColumns: ColumnDef<EmployeeData, string>[] = [
     id: "jobLevel",
     header: "Job Level",
     enableSorting: false,
-    cell: (info) => info.getValue(),
+    cell: (info) => (
+      <div className="flex w-[6rem] items-center">
+        <span>{info.getValue()}</span>
+      </div>
+    ),
   }),
   columnHelper.accessor("dateOfHire", {
     id: "dateOfHire",
@@ -222,34 +219,64 @@ export const dataColumns: ColumnDef<EmployeeData, string>[] = [
     id: "lastSalaryIncreasePercentage",
     header: "Last Raise %",
     enableSorting: false,
-    cell: (info) => `${info.getValue()}`,
+    cell: (info) => {
+      const { baseSalary, bonus, stockOptions } = info.row.original;
+      return (
+        <div>
+          {calculateLastSalaryIncreasePercentage(
+            calculateTotalCompensation(
+              Number(baseSalary),
+              Number(bonus),
+              Number(stockOptions),
+            ),
+            Number(baseSalary),
+          ).toFixed(2)}
+        </div>
+      );
+    },
   }),
   columnHelper.accessor("equitablePayRange", {
     id: "equitablePayRange",
     header: "Equitable Pay Range",
     enableSorting: false,
-    cell: (info) => (
-      <div className="flex w-[10rem] items-center">
-        <span>{info.getValue()}</span>
-      </div>
-    ),
+    cell: (info) => {
+      const { marketRate } = info.row.original;
+      const [lowerBound, upperBound] = calculateEquitablePayRange(
+        Number(marketRate),
+      );
+      return (
+        <div className="flex w-[10rem] items-center text-[0.8rem]">
+          <span>{`$${lowerBound.toFixed(2)} - $${upperBound.toFixed(2)}`}</span>
+        </div>
+      );
+    },
   }),
   columnHelper.accessor("internalPayRange", {
     id: "internalPayRange",
     header: "Internal Pay Range",
     enableSorting: false,
-    cell: (info) => (
-      <div className="flex w-[8rem] items-center">
-        <span>{info.getValue()}</span>
-      </div>
-    ),
+    cell: (info) => {
+      const { baseSalary, jobLevel, yearsOfExperience } = info.row.original;
+      const [lowerBound, upperBound] = calculateInternalPayRange(
+        Number(baseSalary),
+        jobLevel,
+        Number(yearsOfExperience),
+      );
+      return (
+        <div className="flex w-[10rem] items-center text-[0.8rem]">
+          <span>
+            {`$${lowerBound.toFixed(2)} - $${upperBound.toFixed(2)}`}{" "}
+          </span>
+        </div>
+      );
+    },
   }),
   columnHelper.accessor("benefits", {
     id: "benefits",
     header: "Benefits",
     enableSorting: false,
     cell: (info) => (
-      <div className="flex w-[10rem] items-center">
+      <div className="flex w-[8rem] items-center text-[0.8rem]">
         <span>{info.getValue()}</span>
       </div>
     ),
@@ -258,7 +285,10 @@ export const dataColumns: ColumnDef<EmployeeData, string>[] = [
     id: "totalCompensation",
     header: "Total Compensation",
     enableSorting: false,
-    cell: (info) => info.getValue(),
+    cell: (info) => {
+      const { baseSalary, bonus, stockOptions } = info.row.original;
+      return `$${calculateTotalCompensation(Number(baseSalary), Number(bonus), Number(stockOptions)).toFixed(2)}`;
+    },
   }),
   columnHelper.accessor("costOfLivingAdjustment", {
     id: "costOfLivingAdjustment",
@@ -271,23 +301,22 @@ export const dataColumns: ColumnDef<EmployeeData, string>[] = [
     header: "Status",
     enableSorting: true,
     cell: (info) => {
-      const status = getStatus(info.row.original);
+      const status = getEquityStatus(info.row.original);
       let bgColor = "bg-gray-200"; // Default
       if (status === "Risk")
-        bgColor =
-          "inline-flex items-center rounded bg-red-100 text-xs font-medium text-red-800 dark:bg-red-900 dark:text-red-300";
+        bgColor = "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300";
       if (status === "Improvement")
         bgColor =
-          "inline-flex items-center rounded bg-yellow-100 text-xs font-medium text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300";
+          "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300";
       if (status === "On Track")
         bgColor =
-          "inline-flex items-center rounded bg-blue-100 text-xs font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-300";
+          "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300";
       if (status === "Exceeds")
         bgColor =
-          "inline-flex items-center rounded bg-green-100 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300";
+          "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300";
       return (
         <span
-          className={`${bgColor} rounded-full px-2 py-1 text-xs font-medium`}
+          className={`${bgColor} flex w-[6rem] items-center justify-center rounded-full px-1 py-1 text-xs font-medium`}
         >
           {status}
         </span>

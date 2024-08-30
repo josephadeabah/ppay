@@ -13,6 +13,212 @@ export type BenchmarkDataType = {
   country?: string;
 };
 
+export const benchmarkData: BenchmarkDataType[] = [
+  {
+    role: "Data Scientist",
+    jobLevel: "Senior-Level",
+    skills: ["Python", "Machine Learning"],
+    responsibilities: [
+      "Analyze large datasets to extract insights",
+      "Build predictive models for industrial applications",
+    ],
+    currentSalary: 90000, // EUR
+    benchmarkSalary: 95000, // EUR
+    salaryRange: "85,000 - 100,000",
+    careerPath: "Lead Data Scientist",
+    growthOpportunities: "Advanced certifications, conferences",
+    yearsOfExperience: 7,
+    country: "Germany",
+  },
+  {
+    role: "Software Engineer",
+    jobLevel: "Mid-Level",
+    skills: ["Programming", "System Design"],
+    responsibilities: [
+      "Develop software",
+      "Code review",
+      "Collaborate with global teams",
+    ],
+    currentSalary: 70000, // EUR
+    benchmarkSalary: 75000, // EUR
+    salaryRange: "65,000 - 80,000",
+    careerPath: "Senior Software Engineer",
+    growthOpportunities: "Global mobility, certifications",
+    yearsOfExperience: 5,
+    country: "Germany",
+  },
+  {
+    role: "Product Manager",
+    jobLevel: "Mid-Level",
+    skills: ["Product Strategy", "Market Research"],
+    responsibilities: [
+      "Manage product lifecycle",
+      "Coordinate with teams",
+      "Develop product roadmap",
+    ],
+    currentSalary: 95000, // EUR
+    benchmarkSalary: 100000, // EUR
+    salaryRange: "90,000 - 110,000",
+    careerPath: "Senior Product Manager",
+    growthOpportunities: "High",
+    yearsOfExperience: 6,
+    country: "Germany",
+  },
+  {
+    role: "Network Engineer",
+    jobLevel: "Mid-Level",
+    skills: ["Networking", "System Administration"],
+    responsibilities: [
+      "Design and manage network infrastructure",
+      "Troubleshoot network issues",
+      "Ensure network security",
+    ],
+    currentSalary: 70000, // EUR
+    benchmarkSalary: 75000, // EUR
+    salaryRange: "65,000 - 80,000",
+    careerPath: "Senior Network Engineer",
+    growthOpportunities: "Certifications, team leadership",
+    yearsOfExperience: 5,
+    country: "Germany",
+  },
+  {
+    role: "HR Specialist",
+    jobLevel: "Junior-Level",
+    skills: ["Recruitment", "Employee Relations"],
+    responsibilities: [
+      "Manage recruitment processes",
+      "Handle employee relations",
+      "Administer HR policies",
+    ],
+    currentSalary: 50000, // EUR
+    benchmarkSalary: 55000, // EUR
+    salaryRange: "45,000 - 60,000",
+    careerPath: "HR Manager",
+    growthOpportunities: "Certifications, advanced HR roles",
+    yearsOfExperience: 3,
+    country: "Germany",
+  },
+  {
+    role: "Marketing Manager",
+    jobLevel: "Mid-Level",
+    skills: ["Market Analysis", "Campaign Management"],
+    responsibilities: [
+      "Develop marketing strategies",
+      "Manage advertising campaigns",
+      "Analyze market trends",
+    ],
+    currentSalary: 80000, // EUR
+    benchmarkSalary: 85000, // EUR
+    salaryRange: "75,000 - 90,000",
+    careerPath: "Senior Marketing Manager",
+    growthOpportunities: "Leadership roles, advanced marketing strategies",
+    yearsOfExperience: 5,
+    country: "Germany",
+  },
+  {
+    role: "DevOps Engineer",
+    jobLevel: "Mid-Level",
+    skills: ["CI/CD", "Infrastructure Management"],
+    responsibilities: [
+      "Implement CI/CD pipelines",
+      "Manage infrastructure",
+      "Ensure application reliability",
+    ],
+    currentSalary: 75000, // EUR
+    benchmarkSalary: 80000, // EUR
+    salaryRange: "70,000 - 85,000",
+    careerPath: "Senior DevOps Engineer",
+    growthOpportunities: "Advanced DevOps practices, leadership",
+    yearsOfExperience: 4,
+    country: "Germany",
+  },
+  {
+    role: "Financial Analyst",
+    jobLevel: "Mid-Level",
+    skills: ["Financial Modeling", "Data Analysis"],
+    responsibilities: [
+      "Create financial models",
+      "Analyze financial data",
+      "Prepare reports for stakeholders",
+    ],
+    currentSalary: 70000, // EUR
+    benchmarkSalary: 75000, // EUR
+    salaryRange: "65,000 - 80,000",
+    careerPath: "Senior Financial Analyst",
+    growthOpportunities: "Advanced certifications, managerial roles",
+    yearsOfExperience: 5,
+    country: "Germany",
+  },
+  {
+    role: "Cybersecurity Analyst",
+    jobLevel: "Mid-Level",
+    skills: ["Security Monitoring", "Incident Response"],
+    responsibilities: [
+      "Monitor security systems",
+      "Respond to security incidents",
+      "Implement security protocols",
+    ],
+    currentSalary: 80000, // EUR
+    benchmarkSalary: 85000, // EUR
+    salaryRange: "75,000 - 90,000",
+    careerPath: "Senior Cybersecurity Analyst",
+    growthOpportunities: "Advanced security certifications, leadership",
+    yearsOfExperience: 5,
+    country: "Germany",
+  },
+  {
+    role: "Customer Service Specialist",
+    jobLevel: "Junior-Level",
+    skills: ["Communication", "Problem-Solving"],
+    responsibilities: [
+      "Assist customers with inquiries",
+      "Resolve customer issues",
+      "Provide product information",
+    ],
+    currentSalary: 40000, // EUR
+    benchmarkSalary: 45000, // EUR
+    salaryRange: "40,000 - 50,000",
+    careerPath: "Customer Service Manager",
+    growthOpportunities: "Team leadership, advanced customer service roles",
+    yearsOfExperience: 2,
+    country: "Germany",
+  },
+  {
+    role: "Sales Executive",
+    jobLevel: "Mid-Level",
+    skills: ["Sales Strategy", "Negotiation"],
+    responsibilities: [
+      "Develop sales strategies",
+      "Manage client relationships",
+      "Achieve sales targets",
+    ],
+    currentSalary: 65000, // EUR
+    benchmarkSalary: 70000, // EUR
+    salaryRange: "60,000 - 80,000",
+    careerPath: "Sales Manager",
+    growthOpportunities: "High earnings potential, advanced sales roles",
+    yearsOfExperience: 4,
+    country: "Germany",
+  },
+  {
+    role: "Quality Assurance Engineer",
+    jobLevel: "Mid-Level",
+    skills: ["Testing", "Automation"],
+    responsibilities: [
+      "Design and execute test plans",
+      "Identify and report defects",
+      "Ensure software quality",
+    ],
+    currentSalary: 70000, // EUR
+    benchmarkSalary: 75000, // EUR
+    salaryRange: "65,000 - 80,000",
+    careerPath: "Senior Quality Assurance Engineer",
+    growthOpportunities: "Advanced testing tools, leadership",
+    yearsOfExperience: 5,
+    country: "Germany",
+  },
+];
+
 export type DataStructure = {
   [country: string]: {
     inflationRate: number;
