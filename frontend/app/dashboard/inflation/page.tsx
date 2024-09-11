@@ -137,7 +137,7 @@ const InflationPage: React.FC = () => {
   return loading ? (
     <InflationLoading />
   ) : (
-    <div className="flex min-h-screen flex-col p-4">
+    <div className="flex min-h-screen flex-col bg-white p-4">
       <div className="flex flex-grow flex-col">
         <div className="mb-6 mt-2 flex items-center gap-2 text-xl font-bold text-gray-700 dark:text-gray-50">
           Inflation Analysis (Live{" "}

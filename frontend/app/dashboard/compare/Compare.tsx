@@ -123,7 +123,7 @@ const Compare: React.FC = () => {
   return loading ? (
     <CompareSkeletonLoader />
   ) : (
-    <div className="flex w-full flex-col">
+    <div className="flex w-full flex-col bg-white">
       <div className="flex w-full flex-col lg:flex-row">
         <div className="flex w-full flex-col p-3 lg:w-1/2">
           <div className="mb-6 mt-2 flex items-center gap-2 text-xl font-bold text-gray-700 dark:text-gray-50">

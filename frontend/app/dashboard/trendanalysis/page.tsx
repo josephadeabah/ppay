@@ -302,7 +302,7 @@ export default function TrendAnalysis() {
   };
 
   return (
-    <div className="mx-auto flex flex-col px-4">
+    <div className="mx-auto flex flex-col bg-white px-4">
       {loading ? (
         <LoadingSkeleton /> // Show skeleton while loading
       ) : (
