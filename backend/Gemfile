@@ -11,6 +11,10 @@ gem "sprockets-rails"
 # Use google cloud storage for active storage
 gem "google-cloud-storage"
 
+# Use activerecord-oracle_enhanced-adapter as the database for Active Record
+gem 'activerecord-oracle_enhanced-adapter'
+
+
 # Use dotenv for environment variables
 # Gemfile
 gem 'dotenv-rails', groups: [:development, :test, :production]
