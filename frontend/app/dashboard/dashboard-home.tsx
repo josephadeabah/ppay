@@ -53,7 +53,7 @@ export const HomePageContent: NextPage = function () {
       </section>
 
       {/* Conditionally render the rest of the content if user exists */}
-      {!user && (
+      {user && (
         <>
           <div className="flex items-center bg-white p-4 text-xl font-bold text-gray-700 dark:bg-gray-800 dark:text-gray-50">
             Dashboard Insights Summary
