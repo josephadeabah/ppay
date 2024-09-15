@@ -51,7 +51,6 @@ export const HomePageContent: NextPage = function () {
           </div>
         </div>
       </section>
-
       {/* Conditionally render the rest of the content if user exists */}
       {user && (
         <>
