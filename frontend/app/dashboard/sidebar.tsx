@@ -72,7 +72,7 @@ export const DashboardSidebar: FC = function () {
       )}
     >
       <Sidebar.ItemGroup>
-        {!user && (
+        {user && (
           <>
             <Sidebar.Item
               as={Link}
@@ -197,7 +197,7 @@ export const DashboardSidebar: FC = function () {
           </>
         )}
         {/* Restricted Items */}
-        {user && <RenderRestrictedItemComponent isCollapsed={isCollapsed} />}
+        {!user && <RenderRestrictedItemComponent isCollapsed={isCollapsed} />}
         <Sidebar.Item
           as={Link}
           href="/dashboard/upgrade"
