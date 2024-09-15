@@ -62,7 +62,7 @@ export default function UsersPage() {
 
   return (
     <div>
-      <section className="bg-gray-50 dark:bg-gray-900 sm:py-5">
+      <section className="m-4 bg-white px-4 dark:bg-gray-900 sm:py-5">
         <div className="mx-auto w-full px-1">
           <div className="relative overflow-hidden bg-white dark:bg-gray-800">
             <div className="h-screen overflow-x-auto">

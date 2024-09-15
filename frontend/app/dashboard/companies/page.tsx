@@ -82,8 +82,8 @@ const CompaniesPage: React.FC = () => {
   }
 
   return (
-    <div className="mx-auto bg-white px-4 py-8">
-      <div className="min-h-screen">
+    <div className="m-4 bg-white px-4">
+      <div className="min-h-screen p-3">
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
           <div className="lg:col-span-3">
             <div className="mb-8 space-y-4">

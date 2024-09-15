@@ -114,7 +114,7 @@ export default function CompliancePage() {
   }
 
   return (
-    <div className="bg-gray-50 p-6 dark:bg-gray-900">
+    <div className="m-4 bg-white px-4 dark:bg-gray-900">
       <h1 className="mb-6 text-3xl font-bold text-gray-900 dark:text-white">
         Compliance and Regulatory Insights
       </h1>

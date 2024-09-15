@@ -137,8 +137,8 @@ export default function MarketSalaryBenchmarks() {
   return loading ? (
     <MarketSalaryBenchmarksSkeleton />
   ) : (
-    <div className="mx-auto bg-white px-4">
-      <div className="mb-6 mt-2 flex items-center gap-2 text-xl font-bold text-gray-700 dark:text-gray-50">
+    <div className="m-4 bg-white px-4">
+      <div className="mb-6 mt-2 flex items-center gap-2 py-3 text-sm font-bold text-gray-700 dark:text-gray-50">
         Market Salary Benchmarks (Live{" "}
         <div className="inline-block h-3 w-3 rounded-full bg-green-400"></div>)
       </div>
