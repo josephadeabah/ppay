@@ -177,7 +177,7 @@ export const DashboardNavbar: FC = function () {
 
   return (
     <header>
-      <nav className="fixed top-0 z-30 w-full border-b border-s-0 border-gray-200 p-0 dark:border-gray-700 dark:bg-gray-800 sm:p-0">
+      <nav className="fixed top-0 z-30 w-full border-b border-s-0 border-gray-200 bg-white p-0 dark:border-gray-700 dark:bg-gray-800 sm:p-0">
         <div className="flex w-full items-center justify-between p-3 pr-4">
           <div className="flex items-center">
             {user && renderSidebarToggleButton()}
